@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<!--
+  Orient Petroleum Equipment — Oilfield Equipment (oilfield.html)
+  Direction 01 "国际大厂 / Corporate Authority". Static, bilingual, responsive.
+  hreflang: at launch add <link rel="alternate" hreflang="zh-CN" href="..."> ,
+            <link rel="alternate" hreflang="en" href="..."> and x-default per page.
+-->
+<html lang="zh-CN" data-lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>油田设备 Oilfield Equipment · 东方钻采装备 Orient Petroleum Equipment</title>
+  <meta name="description" content="东方钻采装备八大类油田装备总览：钻井、固井、修井、压裂、连续油管、不压井、高压流体控制及海洋装备。均为 SJPETRO 石油四机原厂产品，附旗舰型号与关键参数表。" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Apply persisted language before paint to avoid a flash -->
+  <script>
+    (function () {
+      try {
+        var l = localStorage.getItem('ope-lang');
+        if (l === 'en') { document.documentElement.setAttribute('data-lang','en'); document.documentElement.setAttribute('lang','en'); }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main"><span class="zh">跳到主要内容</span><span class="en">Skip to content</span></a>
+  <div class="keyline-top" aria-hidden="true"></div>
+
+  <!-- ============ HEADER (shared shell — keep identical across pages) ============ -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <!-- TODO: replace wordmark with client logo asset -->
+      <a class="brand" href="index.html" aria-label="东方钻采装备 Orient Petroleum Equipment">
+        <span class="brand-name"><span class="zh">东方钻采装备</span><span class="en">Orient Petroleum Equipment</span></span>
+        <span class="brand-sub">SJPETRO · Authorized Distributor</span>
+      </a>
+      <nav class="primary-nav" id="primary-nav" aria-label="主导航 Primary">
+        <ul>
+          <li><a href="about.html" data-page="about.html"><span class="zh">公司简介</span><span class="en">Company</span></a></li>
+          <li><a href="generators.html" data-page="generators.html"><span class="zh">发电机组</span><span class="en">Generators</span></a></li>
+          <li><a href="engines.html" data-page="engines.html"><span class="zh">工业发动机</span><span class="en">Engines</span></a></li>
+          <li><a href="oilfield.html" data-page="oilfield.html"><span class="zh">油田设备</span><span class="en">Oilfield Equipment</span></a></li>
+          <li><a href="service.html" data-page="service.html"><span class="zh">技术服务</span><span class="en">Service</span></a></li>
+          <li><a href="contact.html" data-page="contact.html"><span class="zh">联系方式</span><span class="en">Contact</span></a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-toggle" role="group" aria-label="Language / 语言">
+          <button type="button" data-set="zh" aria-label="切换到中文">中</button>
+          <button type="button" data-set="en" aria-label="Switch to English">EN</button>
+        </div>
+        <a class="btn btn-primary" href="contact.html"><span class="zh">获取报价</span><span class="en">Get a Quote</span></a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="打开菜单 Open menu" aria-expanded="false" aria-controls="primary-nav">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ PAGE HERO ============ -->
+    <section class="page-hero">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="面包屑 Breadcrumb">
+          <a href="index.html"><span class="zh">首页</span><span class="en">Home</span></a>
+          <span class="sep" aria-hidden="true">/</span>
+          <span><span class="zh">油田设备</span><span class="en">Oilfield Equipment</span></span>
+        </nav>
+        <p class="eyebrow"><span class="zh">油田设备</span><span class="en">Oilfield Equipment</span></p>
+        <h1>
+          <span class="zh">八大类装备，覆盖钻采全流程。</span>
+          <span class="en">Eight equipment categories across the full drilling-to-production chain.</span>
+        </h1>
+        <p class="lead">
+          <span class="zh">以下八大类均为 SJ 石油四机（SJPETRO）原厂产品，按旗舰型号与关键参数列出。从钻井、固井、修井、压裂，到连续油管、不压井、高压流体控制与海洋装备，成套供货、直达井场。</span>
+          <span class="en">All eight categories below are original SJPETRO products, listed with flagship models and key parameters. From drilling, cementing, workover and fracturing to coiled tubing, snubbing, high-pressure fluid control and offshore equipment — supplied as complete packages, delivered to the wellsite.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ CHIP NAV ============ -->
+    <div class="wrap">
+      <div class="chip-nav">
+        <a href="#drilling"><span class="num">01</span><span class="zh">钻井设备</span><span class="en">Drilling</span></a>
+        <a href="#cementing"><span class="num">02</span><span class="zh">固井设备</span><span class="en">Cementing</span></a>
+        <a href="#workover"><span class="num">03</span><span class="zh">修井机</span><span class="en">Workover</span></a>
+        <a href="#fracturing"><span class="num">04</span><span class="zh">压裂设备</span><span class="en">Fracturing</span></a>
+        <a href="#coiled-tubing"><span class="num">05</span><span class="zh">连续油管</span><span class="en">Coiled Tubing</span></a>
+        <a href="#snubbing"><span class="num">06</span><span class="zh">不压井作业机</span><span class="en">Snubbing</span></a>
+        <a href="#fluid-control"><span class="num">07</span><span class="zh">高压流体控制</span><span class="en">Fluid Control</span></a>
+        <a href="#offshore"><span class="num">08</span><span class="zh">海洋装备</span><span class="en">Offshore</span></a>
+      </div>
+    </div>
+
+    <!-- ============ EIGHT EQUIPMENT SECTIONS ============ -->
+    <section>
+      <div class="wrap">
+
+        <!-- 01 Drilling -->
+        <article class="oil-section" id="drilling">
+          <div class="oil-head">
+            <span class="idx">01</span>
+            <h2><span class="zh">钻井设备</span><span class="en">Drilling Equipment</span></h2>
+            <p class="en-sub">Series modularized drilling rigs ZJ30–ZJ90</p>
+          </div>
+          <p class="intro">
+            <span class="zh">系列化模块钻机，三种动力可选（电驱 / 复合 / 机械），含钻机自动化系统与泥浆泵。</span>
+            <span class="en">Series modularized drilling rigs with three drive options (electric / compound / mechanical), including rig automation systems and mud pumps.</span>
+          </p>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <caption><span class="zh">钻井设备旗舰型号与关键参数</span><span class="en">Drilling equipment flagship models and key parameters</span></caption>
+              <thead>
+                <tr>
+                  <th scope="col">Model</th>
+                  <th scope="col"><span class="zh">名义钻深</span><span class="en">Depth</span> <span class="unit">(m)</span></th>
+                  <th scope="col"><span class="zh">最大钩载</span><span class="en">Hookload</span> <span class="unit">(kN)</span></th>
+                  <th scope="col"><span class="zh">绞车功率</span><span class="en">Drawworks</span> <span class="unit">(hp)</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="model">SZJ180 (ZJ30)</td><td>3000</td><td>1800</td><td>800</td></tr>
+                <tr><td class="model">SZJ225 (ZJ40)</td><td>4000</td><td>2250</td><td>1100</td></tr>
+                <tr><td class="model">SZJ315 (ZJ50)</td><td>5000</td><td>3150</td><td>1470</td></tr>
+                <tr><td class="model">SZJ450 (ZJ70)</td><td>7000</td><td>4500</td><td>2000</td></tr>
+                <tr><td class="model">SZJ585 (ZJ80)</td><td>8000</td><td>5850</td><td>2720</td></tr>
+                <tr><td class="model">SZJ675 (ZJ90)</td><td>9000</td><td>6750</td><td>3000</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tag-row">
+            <span class="tag-chip"><span class="zh">电驱 / 复合 / 机械驱动</span><span class="en">Electric / compound / mechanical drive</span></span>
+            <span class="tag-chip"><span class="zh">钻机自动化系统</span><span class="en">Rig automation system</span></span>
+            <span class="tag-chip"><span class="zh">泥浆泵</span><span class="en">Mud pumps</span> STP1600 / SQP2800</span>
+            <span class="tag-chip"><span class="zh">沙漠 / 低温 / 直升机钻机</span><span class="en">Desert / low-temp / heli-portable rigs</span></span>
+            <span class="tag-chip"><span class="zh">车装钻机</span><span class="en">Truck-mounted rigs</span></span>
+          </div>
+        </article>
+
+        <!-- 02 Cementing -->
+        <article class="oil-section" id="cementing">
+          <div class="oil-head">
+            <span class="idx">02</span>
+            <h2><span class="zh">固井设备</span><span class="en">Cementing Equipment</span></h2>
+            <p class="en-sub">Plunger pumps · ACM auto-mixing (5th gen)</p>
+          </div>
+          <p class="intro">
+            <span class="zh">中国最大固井装备研发制造基地，固井"单项冠军"。</span>
+            <span class="en">China's largest cementing equipment R&D and manufacturing base, a "single champion" in cementing.</span>
+          </p>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <caption><span class="zh">固井设备旗舰型号与关键参数</span><span class="en">Cementing equipment flagship models and key parameters</span></caption>
+              <thead>
+                <tr>
+                  <th scope="col">Model</th>
+                  <th scope="col"><span class="zh">输入功率</span><span class="en">Power</span> <span class="unit">(hp)</span></th>
+                  <th scope="col"><span class="zh">冲程</span><span class="en">Stroke</span> <span class="unit">(in)</span></th>
+                  <th scope="col"><span class="zh">最大冲次</span><span class="en">Max rate</span> <span class="unit">(rpm)</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="model">STP350</td><td>350</td><td>5</td><td>350</td></tr>
+                <tr><td class="model">STP400</td><td>600</td><td>8</td><td>350</td></tr>
+                <tr><td class="model">SQP1000</td><td>1000</td><td>6</td><td>450</td></tr>
+                <tr><td class="model">SQP2500L</td><td>2000</td><td>6</td><td>330</td></tr>
+                <tr><td class="model">SQP2500</td><td>2500</td><td>8</td><td>330</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tag-row">
+            <span class="tag-chip"><span class="zh">ACM 自动混浆（第 5 代）</span><span class="en">ACM auto-mixing (5th gen)</span></span>
+            <span class="tag-chip"><span class="zh">固井车 / 撬</span><span class="en">Cementing trucks / skids</span> SGJ350–SGJ2500</span>
+            <span class="tag-chip"><span class="zh">泡沫固井</span><span class="en">Foam cementing</span></span>
+            <span class="tag-chip"><span class="zh">连续配浆车</span><span class="en">Continuous mixing unit</span> SHJC16</span>
+          </div>
+        </article>
+
+        <!-- 03 Workover -->
+        <article class="oil-section" id="workover">
+          <div class="oil-head">
+            <span class="idx">03</span>
+            <h2><span class="zh">修井机</span><span class="en">Workover Rigs</span></h2>
+            <p class="en-sub">2000+ built · 834 exported to 30+ countries</p>
+          </div>
+          <p class="intro">
+            <span class="zh">中国最大修井装备制造基地，产销与出口量国内第一。</span>
+            <span class="en">China's largest workover equipment manufacturing base, ranked first domestically in output, sales and exports.</span>
+          </p>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <caption><span class="zh">修井机旗舰型号与关键参数</span><span class="en">Workover rig flagship models and key parameters</span></caption>
+              <thead>
+                <tr>
+                  <th scope="col">Model</th>
+                  <th scope="col"><span class="zh">名义钩载</span><span class="en">Nominal</span> <span class="unit">(kN)</span></th>
+                  <th scope="col"><span class="zh">最大钩载</span><span class="en">Max</span> <span class="unit">(kN)</span></th>
+                  <th scope="col"><span class="zh">发动机功率</span><span class="en">Engine</span> <span class="unit">(kW)</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="model">SXJ160 (XJ600)</td><td>300</td><td>600</td><td>175</td></tr>
+                <tr><td class="model">SXJ350 (XJ900)</td><td>600</td><td>900</td><td>287</td></tr>
+                <tr><td class="model">SXJ450 (XJ1100)</td><td>800</td><td>1100</td><td>354</td></tr>
+                <tr><td class="model">SXJ550 (XJ1350)</td><td>1000</td><td>1350</td><td>403</td></tr>
+                <tr><td class="model">SXJ650 (XJ1600)</td><td>1200</td><td>1600</td><td>529</td></tr>
+                <tr><td class="model">SXJ1000 (XJ2250)</td><td>1800</td><td>2250</td><td>940</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tag-row">
+            <span class="tag-chip"><span class="zh">全电动</span><span class="en">All-electric</span> XJ350</span>
+            <span class="tag-chip"><span class="zh">超级电容修井机</span><span class="en">Supercapacitor workover rig</span></span>
+            <span class="tag-chip"><span class="zh">LNG / 柴电双驱</span><span class="en">LNG / diesel-electric dual drive</span></span>
+            <span class="tag-chip"><span class="zh">沙漠 / 山地 / 冷区修井机</span><span class="en">Desert / mountain / cold-region rigs</span></span>
+          </div>
+        </article>
+
+        <!-- 04 Fracturing -->
+        <article class="oil-section" id="fracturing">
+          <div class="oil-head">
+            <span class="idx">04</span>
+            <h2><span class="zh">压裂设备</span><span class="en">Fracturing Equipment</span></h2>
+            <p class="en-sub">Full-electric fracturing skids</p>
+          </div>
+          <p class="intro">
+            <span class="zh">世界一流压裂成套装备基地；柱塞泵 350–8000 hp。</span>
+            <span class="en">A world-class complete fracturing equipment base; plunger pumps from 350 to 8000 hp.</span>
+          </p>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <caption><span class="zh">压裂设备旗舰型号与关键参数</span><span class="en">Fracturing equipment flagship models and key parameters</span></caption>
+              <thead>
+                <tr>
+                  <th scope="col">Model</th>
+                  <th scope="col"><span class="zh">输出功率</span><span class="en">Output</span> <span class="unit">(hp)</span></th>
+                  <th scope="col"><span class="zh">工作压力</span><span class="en">Pressure</span> <span class="unit">(MPa)</span></th>
+                  <th scope="col"><span class="zh">排量</span><span class="en">Flow</span> <span class="unit">(m³/min)</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="model">SYL2500Q</td><td>2500</td><td>140</td><td>1.6</td></tr>
+                <tr><td class="model">SYL5000Q</td><td>5000</td><td>140</td><td>3.3</td></tr>
+                <tr><td class="model">SCF5000Q</td><td>5000</td><td>140</td><td>2.4</td></tr>
+                <tr><td class="model">SYL6000Q</td><td>6000</td><td>140</td><td>3.3</td></tr>
+                <tr><td class="model">SYL8000Q</td><td>7600</td><td>140</td><td>2.6</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tag-row">
+            <span class="tag-chip"><span class="zh">柱塞泵</span><span class="en">Plunger pumps</span> 350–8000 hp</span>
+            <span class="tag-chip"><span class="zh">混砂车</span><span class="en">Blenders</span> SHS</span>
+            <span class="tag-chip"><span class="zh">压裂管汇</span><span class="en">Fracturing manifolds</span></span>
+            <span class="tag-chip"><span class="zh">CO₂ / 干法压裂</span><span class="en">CO₂ / dry fracturing</span></span>
+            <span class="tag-chip"><span class="zh">返排液处理</span><span class="en">Flowback treatment</span></span>
+          </div>
+        </article>
+
+        <!-- 05 Coiled Tubing -->
+        <article class="oil-section" id="coiled-tubing">
+          <div class="oil-head">
+            <span class="idx">05</span>
+            <h2><span class="zh">连续油管作业机</span><span class="en">Coiled Tubing Units</span></h2>
+            <p class="en-sub">In-house SZR-series injector heads</p>
+          </div>
+          <p class="intro">
+            <span class="zh">核心部件自主，车装 / 半挂 / 撬装，出口南美 / 非洲 / 中东 / 俄罗斯 / 印尼。</span>
+            <span class="en">Self-developed core components; truck-mounted / semi-trailer / skid-mounted, exported to South America, Africa, the Middle East, Russia and Indonesia.</span>
+          </p>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <caption><span class="zh">连续油管作业机旗舰型号与关键参数</span><span class="en">Coiled tubing unit flagship models and key parameters</span></caption>
+              <thead>
+                <tr>
+                  <th scope="col">Model</th>
+                  <th scope="col"><span class="zh">最大拉力</span><span class="en">Max pull</span> <span class="unit">(t)</span></th>
+                  <th scope="col"><span class="zh">最大下压</span><span class="en">Max snub</span> <span class="unit">(t)</span></th>
+                  <th scope="col"><span class="zh">工作压力</span><span class="en">Pressure</span> <span class="unit">(MPa)</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="model">SLG50</td><td>5</td><td>2.5</td><td>35</td></tr>
+                <tr><td class="model">SLG180</td><td>18</td><td>9</td><td>—</td></tr>
+                <tr><td class="model">SLG270</td><td>27</td><td>13.5</td><td>69–103</td></tr>
+                <tr><td class="model">SLG360</td><td>36</td><td>18</td><td>—</td></tr>
+                <tr><td class="model">SLG450</td><td>45</td><td>22.5</td><td>—</td></tr>
+                <tr><td class="model">SLG620</td><td>63</td><td>31</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tag-row">
+            <span class="tag-chip"><span class="zh">注入头</span><span class="en">Injector heads</span> SZR270–SZR620</span>
+            <span class="tag-chip"><span class="zh">车装 / 半挂 / 撬装</span><span class="en">Truck / semi-trailer / skid</span></span>
+            <span class="tag-chip"><span class="zh">电驱自动</span><span class="en">Electric automated</span> SLG630DQ</span>
+          </div>
+        </article>
+
+        <!-- 06 Snubbing -->
+        <article class="oil-section" id="snubbing">
+          <div class="oil-head">
+            <span class="idx">06</span>
+            <h2><span class="zh">不压井作业机</span><span class="en">Snubbing Units</span></h2>
+            <p class="en-sub">Live-well (no-kill) operation</p>
+          </div>
+          <p class="intro">
+            <span class="zh">全液压带压作业，不停产即可修井，保障井控安全。</span>
+            <span class="en">Fully hydraulic live-well operation, enabling workover without stopping production while safeguarding well control.</span>
+          </p>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <caption><span class="zh">不压井作业机旗舰型号与关键参数</span><span class="en">Snubbing unit flagship models and key parameters</span></caption>
+              <thead>
+                <tr>
+                  <th scope="col">Model</th>
+                  <th scope="col"><span class="zh">最大提升</span><span class="en">Max lift</span> <span class="unit">(kN)</span></th>
+                  <th scope="col"><span class="zh">最大下压</span><span class="en">Max snub</span> <span class="unit">(kN)</span></th>
+                  <th scope="col"><span class="zh">发动机功率</span><span class="en">Engine</span> <span class="unit">(kW)</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="model">SDYJ40</td><td>400</td><td>280</td><td>175</td></tr>
+                <tr><td class="model">SDYJ70</td><td>675</td><td>350</td><td>242</td></tr>
+                <tr><td class="model">SDYJ90</td><td>900</td><td>550</td><td>287</td></tr>
+                <tr><td class="model">SDYJ110</td><td>1125</td><td>850</td><td>335</td></tr>
+                <tr><td class="model">SDYJ160</td><td>1575</td><td>1000</td><td>354</td></tr>
+                <tr><td class="model">SDYJ225</td><td>2250</td><td>1160</td><td>403</td></tr>
+                <tr><td class="model">SDYJ270</td><td>2700</td><td>1700</td><td>403</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tag-row">
+            <span class="tag-chip"><span class="zh">中低压 / 高压 / 深井油气井</span><span class="en">Low-med / high pressure / deep wells</span></span>
+            <span class="tag-chip"><span class="zh">遥控 / 自动化</span><span class="en">Remote-controlled / automated</span></span>
+            <span class="tag-chip"><span class="zh">海洋液压修井</span><span class="en">Offshore hydraulic workover</span> XJY160–270</span>
+          </div>
+        </article>
+
+        <!-- 07 High Pressure Fluid Control -->
+        <article class="oil-section" id="fluid-control">
+          <div class="oil-head">
+            <span class="idx">07</span>
+            <h2><span class="zh">高压流体控制产品</span><span class="en">High Pressure Fluid Control</span></h2>
+            <p class="en-sub">API 6A / 16C · 7–175 MPa (1000–25000 psi)</p>
+          </div>
+          <p class="intro">
+            <span class="zh">尺寸 1"–7 1/16"，符合 API 6A / 16C，ABS 认证。</span>
+            <span class="en">Sizes from 1" to 7 1/16", compliant with API 6A / 16C and ABS certified.</span>
+          </p>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <caption><span class="zh">高压流体控制产品类型与关键参数</span><span class="en">High-pressure fluid control product types and key parameters</span></caption>
+              <thead>
+                <tr>
+                  <th scope="col"><span class="zh">类型</span><span class="en">Type</span></th>
+                  <th scope="col"><span class="zh">环境</span><span class="en">Service</span></th>
+                  <th scope="col"><span class="zh">尺寸</span><span class="en">Size</span></th>
+                  <th scope="col"><span class="zh">工作压力</span><span class="en">Pressure</span> <span class="unit">(MPa)</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="model"><span class="zh">旋塞阀</span><span class="en">Plug valve</span></td><td>Normal / H₂S</td><td>1"–4"</td><td>35–175</td></tr>
+                <tr><td class="model"><span class="zh">闸阀</span><span class="en">Gate valve</span></td><td>H₂S</td><td>2"–7"</td><td>35–140</td></tr>
+                <tr><td class="model"><span class="zh">单流阀</span><span class="en">Check valve</span></td><td>Normal / H₂S</td><td>2"–4"</td><td>35–175</td></tr>
+                <tr><td class="model"><span class="zh">节流阀</span><span class="en">Choke valve</span></td><td>H₂S</td><td>2"–3"</td><td>35–105</td></tr>
+                <tr><td class="model"><span class="zh">旋转接头</span><span class="en">Swivel joint</span></td><td>Normal / H₂S</td><td>1.5"–4"</td><td>35–175</td></tr>
+                <tr><td class="model"><span class="zh">由壬</span><span class="en">Union</span></td><td>Normal / H₂S</td><td>1"–4"</td><td>35–175</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tag-row">
+            <span class="tag-chip"><span class="zh">压裂管汇</span><span class="en">Fracturing manifolds</span> 3"–7 1/16"</span>
+            <span class="tag-chip">175 MPa / 25000 psi</span>
+            <span class="tag-chip"><span class="zh">节流压井管汇</span><span class="en">Choke &amp; kill manifolds</span></span>
+            <span class="tag-chip"><span class="zh">管线快卸装置</span><span class="en">Quick-release line connectors</span></span>
+          </div>
+        </article>
+
+        <!-- 08 Offshore -->
+        <article class="oil-section" id="offshore">
+          <div class="oil-head">
+            <span class="idx">08</span>
+            <h2><span class="zh">海洋装备</span><span class="en">Offshore Equipment</span></h2>
+            <p class="en-sub">Jack-up rigs · 25000 HP stimulation vessel</p>
+          </div>
+          <p class="intro">
+            <span class="zh">中国海洋钻采装备骨干；渤海 / 东海 / 南海，出口美国 / 马来西亚。</span>
+            <span class="en">A backbone of China's offshore drilling and production equipment; deployed in the Bohai, East China and South China Seas, exported to the USA and Malaysia.</span>
+          </p>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <caption><span class="zh">海洋装备旗舰型号与关键参数</span><span class="en">Offshore equipment flagship models and key parameters</span></caption>
+              <thead>
+                <tr>
+                  <th scope="col">Model</th>
+                  <th scope="col"><span class="zh">类型</span><span class="en">Type</span></th>
+                  <th scope="col"><span class="zh">钩载</span><span class="en">Hookload</span> <span class="unit">(kN)</span></th>
+                  <th scope="col"><span class="zh">井架高度</span><span class="en">Derrick</span> <span class="unit">(m)</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="model">SJK450DB</td><td><span class="zh">自升式</span><span class="en">Jack-up</span></td><td>4500</td><td>56</td></tr>
+                <tr><td class="model">SJK675DB</td><td><span class="zh">自升式</span><span class="en">Jack-up</span></td><td>6750</td><td>56</td></tr>
+                <tr><td class="model">SJK900DB</td><td><span class="zh">自升式</span><span class="en">Jack-up</span></td><td>9000</td><td>56</td></tr>
+                <tr><td class="model">SJF180–450DB</td><td><span class="zh">固定平台</span><span class="en">Fixed platform</span></td><td>1800–4500</td><td>—</td></tr>
+                <tr><td class="model">SHXU90–225</td><td><span class="zh">平台修井</span><span class="en">Platform workover</span></td><td>900–2250</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tag-row">
+            <span class="tag-chip"><span class="zh">25000 HP 海上增产船</span><span class="en">25000 HP offshore stimulation vessel</span> (DP2 · <span class="zh">续航 60 天</span><span class="en">60-day endurance</span>)</span>
+            <span class="tag-chip"><span class="zh">海洋固井 / 防砂</span><span class="en">Offshore cementing / sand control</span></span>
+            <span class="tag-chip"><span class="zh">自动化海洋钻 / 修机</span><span class="en">Automated offshore drilling / workover rigs</span></span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ CTA BAND ============ -->
+    <section class="cta-band">
+      <div class="wrap inner">
+        <h2><span class="zh">选定型号或仍在选型？告诉我们井场需求，我们回原厂报价。</span><span class="en">Picked a model or still selecting? Tell us your wellsite needs — we'll reply with factory pricing.</span></h2>
+        <div class="actions">
+          <a class="btn btn-primary" href="contact.html"><span class="zh">获取报价</span><span class="en">Get a Quote</span></a>
+          <a class="btn btn-ghost" href="service.html"><span class="zh">技术服务</span><span class="en">Service</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER (shared shell — keep identical across pages) ============ -->
+  <footer class="site-footer">
+    <div class="footer-rail">
+      <div class="wrap rail-inner">
+        <div class="rail-item"><span class="k">API Q1</span><span class="v">ISO 9001 · HSE</span></div>
+        <div class="rail-item"><span class="k">1941</span><span class="v"><span class="zh">原厂积淀</span><span class="en">Heritage</span></span></div>
+        <div class="rail-item"><span class="k">40+</span><span class="v"><span class="zh">出口国家</span><span class="en">Countries</span></span></div>
+        <div class="rail-item"><span class="k">SJPETRO</span><span class="v"><span class="zh">授权代理</span><span class="en">Authorized Distributor</span></span></div>
+      </div>
+    </div>
+    <div class="wrap footer-main">
+      <div>
+        <!-- TODO: replace wordmark with client logo asset -->
+        <span class="brand-name"><span class="zh">东方钻采装备</span><span class="en">Orient Petroleum Equipment</span></span>
+        <p><span class="zh">SJ 石油四机（SJPETRO · SINOPEC EQUIPMENT）授权代理，为全球油田提供成套钻采装备与本地化技术服务。</span><span class="en">Authorized distributor of SJ Petroleum Machinery (SJPETRO · SINOPEC EQUIPMENT), delivering complete oilfield equipment and local service worldwide.</span></p>
+      </div>
+      <div class="footer-col">
+        <h4><span class="zh">产品</span><span class="en">Products</span></h4>
+        <a href="oilfield.html"><span class="zh">油田设备</span><span class="en">Oilfield Equipment</span></a>
+        <a href="generators.html"><span class="zh">发电机组</span><span class="en">Generators</span></a>
+        <a href="engines.html"><span class="zh">工业发动机</span><span class="en">Engines</span></a>
+        <a href="service.html"><span class="zh">技术服务</span><span class="en">Service</span></a>
+      </div>
+      <div class="footer-col">
+        <h4><span class="zh">公司</span><span class="en">Company</span></h4>
+        <a href="about.html"><span class="zh">公司简介</span><span class="en">About</span></a>
+        <a href="contact.html"><span class="zh">联系方式</span><span class="en">Contact</span></a>
+        <!-- TODO: replace with client WhatsApp number -->
+        <a href="https://wa.me/0000000000" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© <span class="en">2026 Orient Petroleum Equipment. All rights reserved.</span><span class="zh">2026 东方钻采装备 版权所有。</span></span>
+      <span class="disclaimer"><span class="zh">SJPETRO / 石油四机 / SINOPEC EQUIPMENT 为其各自所有者的商标；本站为授权代理网站。</span><span class="en">SJPETRO / SINOPEC EQUIPMENT are trademarks of their respective owners; this is an authorized-distributor website.</span></span>
+    </div>
+  </footer>
+
+  <!-- ============ FLOATING WHATSAPP (shared) ============ -->
+  <!-- TODO: replace with client WhatsApp number -->
+  <a class="wa-float" href="https://wa.me/0000000000" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.23 8.23 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+  </a>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
