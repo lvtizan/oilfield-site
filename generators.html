@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css?v=20260707-frameworkX" />
+  <!-- 预加载 hero 大图(LCP 优化) -->
+  <link rel="preload" as="image" href="assets/img/products/gen-hero-2000.webp" type="image/webp" imagesrcset="assets/img/products/gen-hero-1000.webp 1000w, assets/img/products/gen-hero-2000.webp 2000w" imagesizes="100vw" />
   <script>(function(){try{var l=localStorage.getItem('ope-lang');if(l==='en'){document.documentElement.setAttribute('data-lang','en');document.documentElement.setAttribute('lang','en');}}catch(e){}})();</script>
 </head>
 <body>
@@ -55,7 +57,10 @@
 
   <main id="main">
     <section class="prod-hero">
-      <img class="prod-hero-img" src="assets/img/products/gen.jpg" alt="陆用油田发电机组 Land oilfield generator sets" style="object-position:center 60%" />
+      <picture>
+        <source type="image/webp" srcset="assets/img/products/gen-hero-1000.webp 1000w, assets/img/products/gen-hero-2000.webp 2000w" sizes="100vw" />
+        <img class="prod-hero-img" src="assets/img/products/gen-hero-2000.jpg" srcset="assets/img/products/gen-hero-1000.jpg 1000w, assets/img/products/gen-hero-2000.jpg 2000w" sizes="100vw" width="2000" height="667" alt="陆用油田发电机组与新能源微电网 Land oilfield gensets with renewable microgrid" fetchpriority="high" decoding="async" />
+      </picture>
       <div class="prod-hero-scrim"></div>
       <div class="wrap prod-hero-copy">
         <nav class="breadcrumb" aria-label="面包屑 Breadcrumb">
