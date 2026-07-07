@@ -1,46 +1,42 @@
 <!DOCTYPE html>
-<!-- Orient Petroleum Equipment — Generators (发电机组). Content pending client materials. -->
+<!-- 发电机组 Generator Sets — Cummins 陆用油田发电机组。静态·中英双语·响应式。技术为主，无授权表述。 -->
 <html lang="zh-CN" data-lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>发电机组 Generators · 东方钻采装备 Orient Petroleum Equipment</title>
-  <meta name="description" content="发电机组产品线即将上线。东方钻采装备（Orient Petroleum Equipment）— SJPETRO 石油四机授权代理。如需相关产品资料，欢迎联系我们。" />
-
+  <title>发电机组 Generator Sets · 陆用油田发电机组 322–578 kW</title>
+  <meta name="description" content="陆用油田发电机组，功率 322–578 kW，400/480V、60Hz、Tier 4 排放；配套钻井电动力模块 1000–1900 kW。按功率与工况选型询价。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
-
-  <script>
-    (function () {
-      try {
-        var l = localStorage.getItem('ope-lang');
-        if (l === 'en') { document.documentElement.setAttribute('data-lang','en'); document.documentElement.setAttribute('lang','en'); }
-      } catch (e) {}
-    })();
-  </script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260707-frameworkX" />
+  <script>(function(){try{var l=localStorage.getItem('ope-lang');if(l==='en'){document.documentElement.setAttribute('data-lang','en');document.documentElement.setAttribute('lang','en');}}catch(e){}})();</script>
 </head>
-
 <body>
   <a class="skip-link" href="#main"><span class="zh">跳到主要内容</span><span class="en">Skip to content</span></a>
-  <div class="keyline-top" aria-hidden="true"></div>
 
-  <header class="site-header">
+  <header class="site-header" id="site-header">
     <div class="wrap header-inner">
-      <!-- TODO: replace wordmark with client logo asset -->
-      <a class="brand" href="index.html" aria-label="东方钻采装备 Orient Petroleum Equipment">
-        <span class="brand-name"><span class="zh">东方钻采装备</span><span class="en">Orient Petroleum Equipment</span></span>
-        <span class="brand-sub">SJPETRO · Authorized Distributor</span>
+      <a class="brand" href="index.html" aria-label="Company home">
+        <span class="brand-name"><span class="zh">【公司名称】</span><span class="en">Your Company</span></span>
+        <span class="brand-sub"><span class="zh">动力与油田钻采装备</span><span class="en">Power &amp; Oilfield Equipment</span></span>
       </a>
       <nav class="primary-nav" id="primary-nav" aria-label="主导航 Primary">
         <ul>
-          <li><a href="about.html" data-page="about.html"><span class="zh">公司简介</span><span class="en">Company</span></a></li>
-          <li><a href="generators.html" data-page="generators.html"><span class="zh">发电机组</span><span class="en">Generators</span></a></li>
-          <li><a href="engines.html" data-page="engines.html"><span class="zh">工业发动机</span><span class="en">Engines</span></a></li>
-          <li><a href="oilfield.html" data-page="oilfield.html"><span class="zh">油田设备</span><span class="en">Oilfield Equipment</span></a></li>
-          <li><a href="service.html" data-page="service.html"><span class="zh">技术服务</span><span class="en">Service</span></a></li>
-          <li><a href="contact.html" data-page="contact.html"><span class="zh">联系方式</span><span class="en">Contact</span></a></li>
+          <li><a href="about.html"><span class="zh">公司简介</span><span class="en">Company</span></a></li>
+          <li><a href="generators.html" aria-current="page"><span class="zh">发电机组</span><span class="en">Generator Sets</span></a></li>
+          <li><a href="engines.html"><span class="zh">工业发动机</span><span class="en">Industrial Engines</span></a></li>
+          <li class="has-sub">
+            <a href="oilfield.html" aria-haspopup="true"><span class="zh">油田钻采设备</span><span class="en">Oilfield Drilling &amp; Production</span> <span class="caret" aria-hidden="true">▾</span></a>
+            <ul class="subnav">
+              <li><a href="oilfield.html#drilling"><span class="zh">钻井装备</span><span class="en">Drilling Equipment</span></a></li>
+              <li><a href="oilfield.html#workover"><span class="zh">修井装备</span><span class="en">Workover Equipment</span></a></li>
+              <li><a href="oilfield.html#cementing"><span class="zh">固井装备</span><span class="en">Cementing Equipment</span></a></li>
+              <li><a href="oilfield.html#fracturing"><span class="zh">压裂装备</span><span class="en">Fracturing Equipment</span></a></li>
+            </ul>
+          </li>
+          <li><a href="service.html"><span class="zh">技术服务</span><span class="en">Service</span></a></li>
+          <li><a href="contact.html"><span class="zh">联系方式</span><span class="en">Contact</span></a></li>
         </ul>
       </nav>
       <div class="header-actions">
@@ -48,7 +44,7 @@
           <button type="button" data-set="zh" aria-label="切换到中文">中</button>
           <button type="button" data-set="en" aria-label="Switch to English">EN</button>
         </div>
-        <a class="btn btn-primary" href="contact.html"><span class="zh">获取报价</span><span class="en">Get a Quote</span></a>
+        <a class="btn btn-primary" href="contact.html"><span class="zh">询价</span><span class="en">Inquiry</span></a>
         <button class="nav-toggle" id="nav-toggle" aria-label="打开菜单 Open menu" aria-expanded="false" aria-controls="primary-nav">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         </button>
@@ -57,82 +53,103 @@
   </header>
 
   <main id="main">
-    <section class="page-hero">
-      <div class="wrap">
+    <section class="prod-hero">
+      <img class="prod-hero-img" src="assets/img/products/gen.jpg" alt="陆用油田发电机组 Land oilfield generator sets" style="object-position:center 60%" />
+      <div class="prod-hero-scrim"></div>
+      <div class="wrap prod-hero-copy">
         <nav class="breadcrumb" aria-label="面包屑 Breadcrumb">
-          <a href="index.html"><span class="zh">首页</span><span class="en">Home</span></a>
-          <span class="sep" aria-hidden="true">/</span>
-          <span><span class="zh">发电机组</span><span class="en">Generators</span></span>
+          <a href="index.html"><span class="zh">首页</span><span class="en">Home</span></a> ／ <span class="zh">发电机组</span><span class="en">Generator Sets</span>
         </nav>
-        <p class="eyebrow"><span class="zh">发电机组</span><span class="en">Generators</span></p>
-        <h1><span class="zh">发电机组，即将上线。</span><span class="en">Generators, coming soon.</span></h1>
-        <p class="lead"><span class="zh">该产品线正在整理中。如您对油田及工业用发电机组有采购需求，欢迎先与我们联系，我们可提供选型建议与报价。</span><span class="en">This product line is being prepared. If you have requirements for oilfield or industrial generator sets, contact us now for selection advice and pricing.</span></p>
+        <h1><span class="zh">发电机组</span><span class="en">Generator Sets</span></h1>
+        <p><span class="zh">陆用油田发电机组，功率 322–578 kW，400/480V、60Hz、Tier 4 排放；配套钻井电动力模块。产品主要按功率大小区分。</span><span class="en">Land-based oilfield generator sets, 322–578 kW, 400/480V, 60Hz, Tier 4; plus drilling power modules. Models differ mainly by power rating.</span></p>
       </div>
     </section>
 
     <section>
       <div class="wrap">
-        <div class="coming-note">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
-          <h2><span class="zh">内容即将上线</span><span class="en">Content coming soon</span></h2>
-          <p><span class="zh">我们正在完善发电机组产品资料与参数。上线前，任何询价都可直接联系我们。</span><span class="en">We're finalizing generator product materials and specs. In the meantime, reach out for any inquiry.</span></p>
-          <a class="btn btn-primary" href="contact.html"><span class="zh">联系我们</span><span class="en">Contact Us</span></a>
+        <div class="table-scroll">
+          <table class="spec-table">
+            <caption><span class="zh">陆用油田发电机组 型号与参数</span><span class="en">Land-based oilfield generator sets — models &amp; specs</span></caption>
+            <thead>
+              <tr>
+                <th scope="col">Model</th>
+                <th scope="col"><span class="zh">功率</span><span class="en">Power</span> <span class="unit">(kW)</span></th>
+                <th scope="col"><span class="zh">输出</span><span class="en">Output</span> <span class="unit">(bhp)</span></th>
+                <th scope="col"><span class="zh">转速</span><span class="en">Speed</span> <span class="unit">(rpm)</span></th>
+                <th scope="col"><span class="zh">电压</span><span class="en">Voltage</span> <span class="unit">(V)</span></th>
+                <th scope="col"><span class="zh">排放</span><span class="en">Emissions</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="model">QSX15-G</td><td>322–439</td><td>454–620</td><td>1800</td><td>400/480</td><td>Tier 4</td></tr>
+              <tr><td class="model">QSK19-G</td><td>507–578</td><td>715–815</td><td>1800</td><td>400/480</td><td>Tier 4</td></tr>
+            </tbody>
+          </table>
         </div>
-      </div>
-    </section>
-
-    <section class="cta-band">
-      <div class="wrap inner">
-        <h2><span class="zh">先看看我们的油田设备主线。</span><span class="en">Meanwhile, explore our core oilfield equipment.</span></h2>
-        <div class="actions">
-          <a class="btn btn-primary" href="oilfield.html"><span class="zh">浏览油田设备</span><span class="en">Browse Oilfield Equipment</span></a>
-          <a class="btn btn-ghost" href="contact.html"><span class="zh">获取报价</span><span class="en">Get a Quote</span></a>
+        <div class="table-scroll" style="margin-top:1.5rem">
+          <table class="spec-table">
+            <caption><span class="zh">陆用钻井电动力模块 型号与参数</span><span class="en">Land-based drilling power modules — models &amp; specs</span></caption>
+            <thead>
+              <tr>
+                <th scope="col">Model</th>
+                <th scope="col"><span class="zh">功率</span><span class="en">Power</span> <span class="unit">(kW)</span></th>
+                <th scope="col"><span class="zh">转速</span><span class="en">Speed</span> <span class="unit">(rpm)</span></th>
+                <th scope="col"><span class="zh">电压</span><span class="en">Voltage</span> <span class="unit">(V)</span></th>
+                <th scope="col"><span class="zh">排放</span><span class="en">Emissions</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="model">KTA50</td><td>1096–1306</td><td>1200–1500</td><td>600/690</td><td>—</td></tr>
+              <tr><td class="model">QSK50</td><td>1104–1417</td><td>1200–1800</td><td>600/690</td><td>Tier 4</td></tr>
+            </tbody>
+          </table>
         </div>
+        <div class="tag-row">
+          <span class="tag-chip"><span class="zh">陆用油田发电机组</span><span class="en">Land oilfield gensets</span></span>
+          <span class="tag-chip"><span class="zh">钻井电动力模块</span><span class="en">Drilling power modules</span> 1000–1900 kW</span>
+          <span class="tag-chip">400/480V · 60Hz</span>
+          <span class="tag-chip"><span class="zh">Tier 4 排放</span><span class="en">Tier 4 emissions</span></span>
+        </div>
+        <aside class="quote-panel">
+          <div>
+            <p class="eyebrow"><span class="zh">询盘</span><span class="en">Inquiry</span></p>
+            <h2><span class="zh">告诉我们所需功率与工况，我们回复匹配型号。</span><span class="en">Tell us the power and duty you need — we'll reply with matching models.</span></h2>
+          </div>
+          <a class="btn btn-primary" href="contact.html"><span class="zh">发送询盘</span><span class="en">Send Inquiry</span></a>
+        </aside>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-rail">
-      <div class="wrap rail-inner">
-        <div class="rail-item"><span class="k">API Q1</span><span class="v">ISO 9001 · HSE</span></div>
-        <div class="rail-item"><span class="k">1941</span><span class="v"><span class="zh">原厂积淀</span><span class="en">Heritage</span></span></div>
-        <div class="rail-item"><span class="k">40+</span><span class="v"><span class="zh">出口国家</span><span class="en">Countries</span></span></div>
-        <div class="rail-item"><span class="k">SJPETRO</span><span class="v"><span class="zh">授权代理</span><span class="en">Authorized Distributor</span></span></div>
-      </div>
-    </div>
     <div class="wrap footer-main">
       <div>
-        <!-- TODO: replace wordmark with client logo asset -->
-        <span class="brand-name"><span class="zh">东方钻采装备</span><span class="en">Orient Petroleum Equipment</span></span>
-        <p><span class="zh">SJ 石油四机（SJPETRO · SINOPEC EQUIPMENT）授权代理，为全球油田提供成套钻采装备与本地化技术服务。</span><span class="en">Authorized distributor of SJ Petroleum Machinery (SJPETRO · SINOPEC EQUIPMENT), delivering complete oilfield equipment and local service worldwide.</span></p>
+        <span class="brand-name"><span class="zh">【公司名称】</span><span class="en">Your Company</span></span>
+        <p><span class="zh">供应发电机组、工业发动机与油田钻采设备，按型号参数选型询价。</span><span class="en">Supplying generator sets, industrial engines and oilfield drilling &amp; production equipment — selection and quotation by model specifications.</span></p>
       </div>
       <div class="footer-col">
         <h4><span class="zh">产品</span><span class="en">Products</span></h4>
-        <a href="oilfield.html"><span class="zh">油田设备</span><span class="en">Oilfield Equipment</span></a>
-        <a href="generators.html"><span class="zh">发电机组</span><span class="en">Generators</span></a>
-        <a href="engines.html"><span class="zh">工业发动机</span><span class="en">Engines</span></a>
-        <a href="service.html"><span class="zh">技术服务</span><span class="en">Service</span></a>
+        <a href="generators.html"><span class="zh">发电机组</span><span class="en">Generator Sets</span></a>
+        <a href="engines.html"><span class="zh">工业发动机</span><span class="en">Industrial Engines</span></a>
+        <a href="oilfield.html"><span class="zh">油田钻采设备</span><span class="en">Oilfield Equipment</span></a>
       </div>
       <div class="footer-col">
         <h4><span class="zh">公司</span><span class="en">Company</span></h4>
         <a href="about.html"><span class="zh">公司简介</span><span class="en">About</span></a>
+        <a href="service.html"><span class="zh">技术服务</span><span class="en">Service</span></a>
         <a href="contact.html"><span class="zh">联系方式</span><span class="en">Contact</span></a>
-        <!-- TODO: replace with client WhatsApp number -->
-        <a href="https://wa.me/0000000000" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
     <div class="wrap footer-bottom">
-      <span>© <span class="en">2026 Orient Petroleum Equipment. All rights reserved.</span><span class="zh">2026 东方钻采装备 版权所有。</span></span>
-      <span class="disclaimer"><span class="zh">SJPETRO / 石油四机 / SINOPEC EQUIPMENT 为其各自所有者的商标；本站为授权代理网站。</span><span class="en">SJPETRO / SINOPEC EQUIPMENT are trademarks of their respective owners; this is an authorized-distributor website.</span></span>
+      <span>© <span class="en">2026 Your Company. All rights reserved.</span><span class="zh">2026 【公司名称】 版权所有。</span></span>
+      <span class="disclaimer"><span class="zh">文中产品型号与商标归各自制造商所有。</span><span class="en">Product model names and trademarks belong to their respective manufacturers.</span></span>
     </div>
   </footer>
 
-  <!-- TODO: replace with client WhatsApp number -->
-  <a class="wa-float" href="https://wa.me/0000000000" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.23 8.23 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+  <a class="wa-float wa-float--wechat" href="contact.html" aria-label="WeChat">
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M9.5 4C5.36 4 2 6.86 2 10.38c0 1.98 1.06 3.75 2.73 4.94L4 18l2.5-1.3c.9.25 1.86.38 2.85.38.24 0 .47-.01.7-.03a5.6 5.6 0 0 1-.3-1.8c0-3.2 3.04-5.78 6.79-5.78.24 0 .48.01.71.04C16.53 6.29 13.32 4 9.5 4zM7 8.6a.94.94 0 1 1 0 1.88.94.94 0 0 1 0-1.88zm5 0a.94.94 0 1 1 0 1.88.94.94 0 0 1 0-1.88z"/><path d="M22 15.5c0-2.8-2.7-5.06-6-5.06s-6 2.26-6 5.06 2.7 5.07 6 5.07c.72 0 1.42-.1 2.06-.29L20 21.5l-.46-1.5C21.02 19.06 22 17.38 22 15.5zm-8-1.1a.78.78 0 1 1 0 1.56.78.78 0 0 1 0-1.56zm4 0a.78.78 0 1 1 0 1.56.78.78 0 0 1 0-1.56z"/></svg>
+    <span class="wa-label">WeChat</span>
   </a>
-
   <script src="assets/js/main.js"></script>
 </body>
 </html>

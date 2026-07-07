@@ -837,3 +837,17 @@ a.contact-tile:hover { border-color: var(--color-brand); }
   .primary-nav .subnav { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: 0; padding-left: 1rem; min-width: 0; background: transparent; }
   .primary-nav .subnav a { color: var(--color-ink) !important; }
 }
+
+/* ============ 产品页 大主图 (prod-hero) ============ */
+.prod-hero { position: relative; min-height: clamp(320px, 42vh, 460px); display: flex; align-items: flex-end; overflow: hidden; padding: 0; }
+.prod-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.prod-hero-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(31,41,51,.18) 0%, rgba(31,41,51,.46) 55%, rgba(31,41,51,.82) 100%); }
+.prod-hero-copy { position: relative; z-index: 2; color: var(--color-on-dark); padding-block: clamp(1.4rem,4vw,2.6rem); width: 100%; }
+.prod-hero-copy h1 { color: var(--color-on-dark); font-size: var(--fs-page-title); margin: .5rem 0 .6rem; }
+.prod-hero-copy p { color: var(--color-on-dark-soft); max-width: 64ch; margin: 0; }
+.prod-hero-copy .breadcrumb, .prod-hero-copy .breadcrumb a { color: var(--color-on-dark-soft); text-decoration: none; }
+.prod-hero-copy .breadcrumb a:hover { color: var(--color-on-dark); }
+.grp-title { font-size: var(--fs-h2); margin: 0 0 1rem; }
+
+/* 分类主图 (油田钻采 各子类) */
+.cat-img { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; border-radius: var(--radius); margin: 0 0 1.4rem; background: var(--color-surface-2); border: 1px solid var(--color-border); }
