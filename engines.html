@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- 工业发动机 Industrial Engines — Cummins 矿用+油气钻井发动机。静态·中英双语·响应式。技术为主，无授权表述。 -->
+<!-- 工业发动机 Industrial Engines — 编辑式版式(数字一览/型谱/图文分栏/应用)。Cummins 矿用+油气钻井。静态·中英双语·响应式。文案自撰，技术为主，无授权表述。 -->
 <html lang="zh-CN" data-lang="zh">
 <head>
   <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260707-frameworkX" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260707-editorial" />
   <script>(function(){try{var l=localStorage.getItem('ope-lang');if(l==='en'){document.documentElement.setAttribute('data-lang','en');document.documentElement.setAttribute('lang','en');}}catch(e){}})();</script>
 </head>
 <body>
@@ -53,32 +53,64 @@
   </header>
 
   <main id="main">
-    <section class="prod-hero">
-      <img class="prod-hero-img" src="assets/img/products/engine.jpg" alt="工业发动机 Industrial engines" style="object-position:center 55%" />
+    <!-- HERO 全屏横向大图 -->
+    <section class="prod-hero prod-hero--tall">
+      <img class="prod-hero-img" src="assets/img/products/engine-hero.jpg" alt="矿用工况 Mining operation" />
       <div class="prod-hero-scrim"></div>
       <div class="wrap prod-hero-copy">
         <nav class="breadcrumb" aria-label="面包屑 Breadcrumb">
           <a href="index.html"><span class="zh">首页</span><span class="en">Home</span></a> ／ <span class="zh">工业发动机</span><span class="en">Industrial Engines</span>
         </nav>
         <h1><span class="zh">工业发动机</span><span class="en">Industrial Engines</span></h1>
-        <p><span class="zh">矿用与油气钻井工业发动机，功率 74–4400 hp，排量 3.8–95 L；F3.8 至 QSK95 全型谱，Tier 4 Final / Stage V 排放。产品主要按功率大小区分。</span><span class="en">Mining and oil &amp; gas drilling engines, 74–4400 hp, 3.8–95 L; full range from F3.8 to QSK95, Tier 4 Final / Stage V. Models differ mainly by power rating.</span></p>
+        <p><span class="zh">矿用与油气钻井发动机，功率 74–4400 hp、排量 3.8–95 L，全系满足 Tier 4 Final / Stage V 排放。按功率与工况选型。</span><span class="en">Mining and oil &amp; gas drilling engines — 74–4400 hp, 3.8–95 L, Tier 4 Final / Stage V across the range. Select by power and duty.</span></p>
       </div>
     </section>
 
+    <!-- 数字一览 -->
+    <section class="stat-band">
+      <div class="wrap">
+        <div class="stat-grid">
+          <div class="stat-card is-brand"><span class="num">74–4400<span class="u"> hp</span></span><span class="lbl"><span class="zh">功率覆盖</span><span class="en">Power range</span></span></div>
+          <div class="stat-card"><span class="num">3.8–95<span class="u"> L</span></span><span class="lbl"><span class="zh">排量范围</span><span class="en">Displacement</span></span></div>
+          <div class="stat-card is-ink"><span class="num">25<span class="u"> +</span></span><span class="lbl"><span class="zh">型号可选</span><span class="en">Models available</span></span></div>
+          <div class="stat-card"><span class="num">Tier 4F</span><span class="lbl"><span class="zh">/ Stage V 排放</span><span class="en">/ Stage V emissions</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 发动机型谱一排 -->
+    <section class="lineup-band">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow"><span class="zh">发动机型谱</span><span class="en">Engine Range</span></p>
+          <h2><span class="zh">从 3.8L 到 95L，覆盖地下与地面矿用及油气钻井工况。</span><span class="en">From 3.8 L to 95 L — for underground &amp; surface mining and oil &amp; gas drilling.</span></h2>
+        </div>
+        <figure class="lineup-figure">
+          <img src="assets/img/products/engine-lineup-1.jpg" alt="发动机型谱 F3.8 B4.5 B6.7 L9 X12 X15 QSK19 QSK23 QST30" loading="lazy" />
+        </figure>
+        <figure class="lineup-figure">
+          <img src="assets/img/products/engine-lineup-2.jpg" alt="大功率发动机型谱 QSK38 QSK50 QSK60 QSK78 QSK95" loading="lazy" />
+          <figcaption><span class="zh">大功率型谱 QSK38–QSK95，功率至 4400 hp。</span><span class="en">High-horsepower range QSK38–QSK95, up to 4400 hp.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 矿用发动机：图文分栏 + 表 -->
     <section>
       <div class="wrap">
-        <h2 class="grp-title"><span class="zh">矿用发动机</span><span class="en">Mining Engines</span></h2>
-        <div class="table-scroll">
+        <div class="feature-split">
+          <div class="fs-media"><img src="assets/img/products/scene-mine.jpg" alt="露天矿山 Surface mine" loading="lazy" /></div>
+          <div class="fs-body">
+            <p class="eyebrow"><span class="zh">矿用发动机</span><span class="en">Mining Engines</span></p>
+            <h2><span class="zh">面向极端工况的高可靠动力。</span><span class="en">Reliable power for the harshest duty.</span></h2>
+            <p><span class="zh">覆盖地下与地面矿用，从 F3.8 到 QSK95；应用于矿卡、挖掘机、装载机与钻机，功率 74–4400 hp。</span><span class="en">Underground and surface mining, from F3.8 to QSK95; powering haul trucks, excavators, loaders and drills, 74–4400 hp.</span></p>
+          </div>
+        </div>
+        <div class="table-scroll" style="margin-top:1.8rem">
           <table class="spec-table">
             <caption><span class="zh">矿用发动机 型号与参数（F3.8–QSK95）</span><span class="en">Mining engines — models &amp; specs (F3.8–QSK95)</span></caption>
             <thead>
-              <tr>
-                <th scope="col">Model</th>
-                <th scope="col"><span class="zh">排量</span><span class="en">Displacement</span> <span class="unit">(L)</span></th>
-                <th scope="col"><span class="zh">功率</span><span class="en">Power</span> <span class="unit">(hp)</span></th>
-                <th scope="col"><span class="zh">扭矩</span><span class="en">Torque</span> <span class="unit">(lb-ft)</span></th>
-                <th scope="col"><span class="zh">排放</span><span class="en">Emissions</span></th>
-              </tr>
+              <tr><th scope="col">Model</th><th scope="col"><span class="zh">排量</span><span class="en">Displacement</span> <span class="unit">(L)</span></th><th scope="col"><span class="zh">功率</span><span class="en">Power</span> <span class="unit">(hp)</span></th><th scope="col"><span class="zh">扭矩</span><span class="en">Torque</span> <span class="unit">(lb-ft)</span></th><th scope="col"><span class="zh">排放</span><span class="en">Emissions</span></th></tr>
             </thead>
             <tbody>
               <tr><td class="model">F3.8</td><td>3.8</td><td>74–173</td><td>295–457</td><td>Tier 4F / Stage V</td></tr>
@@ -98,19 +130,25 @@
             </tbody>
           </table>
         </div>
+      </div>
+    </section>
 
-        <h2 class="grp-title" style="margin-top:2.5rem"><span class="zh">油气钻井发动机</span><span class="en">Oil &amp; Gas Drilling Engines</span></h2>
-        <div class="table-scroll">
+    <!-- 油气钻井发动机：图文分栏(反向) + 表 -->
+    <section class="surface">
+      <div class="wrap">
+        <div class="feature-split reverse">
+          <div class="fs-media"><img src="assets/img/products/scene-ecosystem.jpg" alt="油气钻井工况 Oil &amp; gas operation" loading="lazy" /></div>
+          <div class="fs-body">
+            <p class="eyebrow"><span class="zh">油气钻井发动机</span><span class="en">Oil &amp; Gas Drilling Engines</span></p>
+            <h2><span class="zh">机械钻井动力，250–2500 bhp。</span><span class="en">Mechanical drilling power, 250–2500 bhp.</span></h2>
+            <p><span class="zh">面向陆地钻机的机械驱动动力，缸型 I-6 / V-12 / V-16，可配套 SCR / DPF 后处理与钻井电动力模块。</span><span class="en">Mechanical drive power for land rigs — I-6 / V-12 / V-16, with SCR / DPF aftertreatment and drilling power module options.</span></p>
+          </div>
+        </div>
+        <div class="table-scroll" style="margin-top:1.8rem">
           <table class="spec-table">
             <caption><span class="zh">机械钻井发动机 型号与参数</span><span class="en">Mechanical drilling engines — models &amp; specs</span></caption>
             <thead>
-              <tr>
-                <th scope="col">Model</th>
-                <th scope="col"><span class="zh">排量</span><span class="en">Displacement</span> <span class="unit">(L)</span></th>
-                <th scope="col"><span class="zh">缸型</span><span class="en">Config</span></th>
-                <th scope="col"><span class="zh">功率</span><span class="en">Power</span> <span class="unit">(bhp)</span></th>
-                <th scope="col"><span class="zh">排放</span><span class="en">Emissions</span></th>
-              </tr>
+              <tr><th scope="col">Model</th><th scope="col"><span class="zh">排量</span><span class="en">Displacement</span> <span class="unit">(L)</span></th><th scope="col"><span class="zh">缸型</span><span class="en">Config</span></th><th scope="col"><span class="zh">功率</span><span class="en">Power</span> <span class="unit">(bhp)</span></th><th scope="col"><span class="zh">排放</span><span class="en">Emissions</span></th></tr>
             </thead>
             <tbody>
               <tr><td class="model">L9</td><td>9</td><td>I-6</td><td>250–400</td><td>Tier 4F / Stage V</td></tr>
@@ -127,12 +165,18 @@
             </tbody>
           </table>
         </div>
+      </div>
+    </section>
 
-        <div class="tag-row">
-          <span class="tag-chip"><span class="zh">应用</span><span class="en">Applications</span>：<span class="zh">矿卡 / 挖掘机 / 装载机 / 钻机</span><span class="en">Haul trucks / excavators / loaders / drills</span></span>
-          <span class="tag-chip"><span class="zh">排量</span><span class="en">Displacement</span> 3.8–95 L</span>
-          <span class="tag-chip"><span class="zh">功率</span><span class="en">Power</span> 74–4400 hp</span>
-          <span class="tag-chip">Tier 4F / Stage V</span>
+    <!-- 应用领域 图标卡 -->
+    <section>
+      <div class="wrap">
+        <div class="sec-head"><p class="eyebrow"><span class="zh">应用领域</span><span class="en">Applications</span></p><h2><span class="zh">为矿山与油气装备提供动力。</span><span class="en">Powering mining and oil &amp; gas equipment.</span></h2></div>
+        <div class="app-cards">
+          <div class="app-card"><span class="circle"><svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16V9h9l3 3h6v4M3 16h18M6 16a2 2 0 1 0 4 0M15 16a2 2 0 1 0 4 0"/></svg></span><h3><span class="zh">矿卡</span><span class="en">Haul trucks</span></h3></div>
+          <div class="app-card"><span class="circle"><svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h8v-4H4zM12 18l4-8 5 2-2 6M12 10l3-1M8 16v-3"/></svg></span><h3><span class="zh">挖掘机</span><span class="en">Excavators</span></h3></div>
+          <div class="app-card"><span class="circle"><svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15l4-1 3-4h6v9H4zM15 10l5 3v3M6 19a2 2 0 1 0 4 0M15 19a2 2 0 1 0 4 0"/></svg></span><h3><span class="zh">装载机</span><span class="en">Loaders</span></h3></div>
+          <div class="app-card"><span class="circle"><svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v14M9 6l3-3 3 3M8 22h8M10 16v6M14 16v6"/></svg></span><h3><span class="zh">钻机</span><span class="en">Drills</span></h3></div>
         </div>
         <aside class="quote-panel">
           <div>
