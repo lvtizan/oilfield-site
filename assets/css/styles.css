@@ -841,7 +841,7 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 /* ============ 产品页 大主图 (prod-hero) ============ */
 .prod-hero { position: relative; min-height: clamp(480px, 80svh, 860px); display: flex; align-items: flex-end; overflow: hidden; padding: 0; }
 .prod-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-.prod-hero-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(31,41,51,.05) 0%, rgba(31,41,51,.12) 42%, rgba(31,41,51,.55) 78%, rgba(31,41,51,.88) 100%); }
+.prod-hero-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(31,41,51,0) 0%, rgba(31,41,51,0) 52%, rgba(31,41,51,.34) 80%, rgba(31,41,51,.82) 100%); }
 .prod-hero-copy { position: relative; z-index: 2; color: var(--color-on-dark); padding-block: clamp(2rem,5vw,4rem); width: 100%; }
 .prod-hero-copy h1 { color: var(--color-on-dark); font-size: var(--fs-hero); line-height: 1.02; margin: .6rem 0 .8rem; }
 .prod-hero-copy p { color: var(--color-on-dark-soft); max-width: 56ch; margin: 0; font-size: var(--fs-lead); }
@@ -1014,11 +1014,11 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 .engine-range .engine-section-head p:not(.eyebrow) { color: var(--color-on-dark-soft); }
 .engine-range .eyebrow { color: var(--color-on-dark); }
 .engine-lineup-card {
-  border: 1px solid rgba(255,255,255,.14); background: #020509;
+  border: 1px solid rgba(255,255,255,.18); background: #e8ecf2;
   border-radius: var(--radius); overflow: hidden; box-shadow: 0 26px 70px rgba(0,0,0,.35);
 }
-.engine-lineup-card img { width: 100%; height: auto; background: #020509; }
-.engine-lineup-card img + img { border-top: 1px solid rgba(255,255,255,.1); }
+.engine-lineup-card img { width: 100%; height: auto; background: #e8ecf2; }
+.engine-lineup-card img + img { border-top: 1px solid rgba(8,14,23,.12); }
 .engine-specs { background: var(--color-bg); }
 .engine-table-shell { border-radius: var(--radius); box-shadow: var(--shadow-card); }
 .engine-service { background: #111922; color: var(--color-on-dark); }
