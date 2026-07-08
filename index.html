@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260707-frameworkX" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260708-home-integrated" />
 
   <script>
     (function () {
@@ -30,11 +30,11 @@
   <a class="skip-link" href="#main"><span class="zh">跳到主要内容</span><span class="en">Skip to content</span></a>
 
   <!-- ============ HEADER ============ -->
-  <header class="site-header" id="site-header">
+  <header class="site-header site-header--overlay" id="site-header">
     <div class="wrap header-inner">
       <!-- TODO: 替换为客户 Logo 与公司名 -->
-      <a class="brand" href="index.html" aria-label="Company home">
-        <span class="brand-name"><span class="zh">【公司名称】</span><span class="en">Your Company</span></span>
+      <a class="brand" href="index.html" aria-label="Guangzhou KST Mechanical Equipment Co., Ltd home">
+        <span class="brand-name"><span class="zh">广州市泽康松特机械设备有限公司</span><span class="en">Guangzhou KST Mechanical Equipment Co., Ltd</span></span>
         <span class="brand-sub"><span class="zh">动力与油田钻采装备</span><span class="en">Power &amp; Oilfield Equipment</span></span>
       </a>
       <nav class="primary-nav" id="primary-nav" aria-label="主导航 Primary">
@@ -102,72 +102,83 @@
       </a>
     </section>
 
-    <!-- ============ ② 应用领域 ============ -->
-    <section class="app-strip" aria-labelledby="app-title">
-      <div class="wrap">
-        <h2 id="app-title" class="strip-title"><span class="zh">应用领域</span><span class="en">Applications</span></h2>
-        <ul class="app-list">
-          <li><span class="app-ico" aria-hidden="true">⬢</span><span class="zh">石油</span><span class="en">Oil</span></li>
-          <li><span class="app-ico" aria-hidden="true">◈</span><span class="zh">天然气</span><span class="en">Gas</span></li>
-          <li><span class="app-ico" aria-hidden="true">⛏</span><span class="zh">钻井</span><span class="en">Drilling</span></li>
-          <li><span class="app-ico" aria-hidden="true">▲</span><span class="zh">矿山</span><span class="en">Mining</span></li>
-          <li><span class="app-ico" aria-hidden="true">⚡</span><span class="zh">电力</span><span class="en">Power</span></li>
+    <!-- ============ ② 应用与能力 ============ -->
+    <section class="capability" aria-labelledby="capability-title">
+      <div class="wrap capability-shell">
+        <div class="capability-copy">
+          <p class="eyebrow"><span class="zh">应用与能力</span><span class="en">Applications &amp; capability</span></p>
+          <h2 id="capability-title"><span class="zh">覆盖油气、矿山与电力现场。</span><span class="en">Built for oil, gas, mining and power sites.</span></h2>
+          <p><span class="zh">从主机动力、钻井装备到压裂设备和发电机组，按设备工况、功率区间与交付场景快速锁定型号。</span><span class="en">From prime power and drilling packages to fracturing equipment and generator sets, shortlist models by duty, power and delivery scenario.</span></p>
+        </div>
+        <div class="capability-board">
+          <img src="assets/img/products/scene-ecosystem.jpg" alt="Oilfield, mining and power equipment operation scene" loading="lazy" />
+          <div class="capability-stats" aria-label="Technical capability">
+            <div><span class="k">74-4400</span><span class="u">hp</span><span class="v"><span class="zh">功率覆盖</span><span class="en">Power range</span></span></div>
+            <div><span class="k">9000</span><span class="u">m</span><span class="v"><span class="zh">最大钻深</span><span class="en">Max drilling depth</span></span></div>
+            <div><span class="k">175</span><span class="u">MPa</span><span class="v"><span class="zh">最高工作压力</span><span class="en">Max pressure</span></span></div>
+            <div><span class="k">Tier 4</span><span class="u">Stage V</span><span class="v"><span class="zh">排放标准</span><span class="en">Emissions</span></span></div>
+          </div>
+        </div>
+        <ul class="capability-list">
+          <li><span class="app-ico" aria-hidden="true"></span><span class="zh">石油</span><span class="en">Oil</span></li>
+          <li><span class="app-ico" aria-hidden="true"></span><span class="zh">天然气</span><span class="en">Gas</span></li>
+          <li><span class="app-ico" aria-hidden="true"></span><span class="zh">钻井</span><span class="en">Drilling</span></li>
+          <li><span class="app-ico" aria-hidden="true"></span><span class="zh">矿山</span><span class="en">Mining</span></li>
+          <li><span class="app-ico" aria-hidden="true"></span><span class="zh">电力</span><span class="en">Power</span></li>
         </ul>
       </div>
     </section>
 
-    <!-- ============ ③ 技术实力(真实硬指标) ============ -->
-    <section class="tech-bar" aria-labelledby="tech-title">
+    <!-- ============ ③ 选型分流 ============ -->
+    <section class="selection" aria-labelledby="selection-title">
       <div class="wrap">
-        <h2 id="tech-title" class="sr-only">技术实力 Technical strength</h2>
-        <div class="tech-grid">
-          <div class="tech-item"><span class="k">74–4400<span class="u"> hp</span></span><span class="v"><span class="zh">功率覆盖</span><span class="en">Power range</span></span></div>
-          <div class="tech-item"><span class="k">9000<span class="u"> m</span></span><span class="v"><span class="zh">最大钻深</span><span class="en">Max drilling depth</span></span></div>
-          <div class="tech-item"><span class="k">175<span class="u"> MPa</span></span><span class="v"><span class="zh">最高工作压力</span><span class="en">Max working pressure</span></span></div>
-          <div class="tech-item"><span class="k">Tier 4<span class="u"> / Stage V</span></span><span class="v"><span class="zh">排放标准</span><span class="en">Emissions standard</span></span></div>
+        <div class="selection-head">
+          <div>
+            <p class="eyebrow"><span class="zh">选型分流</span><span class="en">Selection paths</span></p>
+            <h2 id="selection-title"><span class="zh">先确定设备场景，再确认关键参数。</span><span class="en">Start with the duty, then confirm the key parameters.</span></h2>
+          </div>
+          <p><span class="zh">首页不堆型号图，把客户最常问的选型入口放清楚：需要动力、井场装备还是压裂/固井设备，下一步该提供什么参数。</span><span class="en">Instead of decorative model thumbnails, this section routes buyers by product duty and shows what details are needed for a useful quotation.</span></p>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ ④ 精选型号 ============ -->
-    <section class="featured" aria-labelledby="feat-title">
-      <div class="wrap">
-        <div class="sec-head">
-          <p class="eyebrow"><span class="zh">精选型号</span><span class="en">Featured Models</span></p>
-          <h2 id="feat-title"><span class="zh">按功率与工况选型。</span><span class="en">Select by power and duty.</span></h2>
-        </div>
-        <div class="feat-grid">
-          <article class="feat-card">
-            <div class="feat-img" style="background-image:url('assets/img/products/engine.jpg')"></div>
-            <div class="feat-body">
-              <span class="feat-cat"><span class="zh">工业发动机</span><span class="en">Engine</span></span>
-              <h3>QSK50</h3>
-              <p>1500–2000 hp · 50 L · V-16 · Tier 4</p>
-            </div>
+        <div class="selection-grid">
+          <article class="selection-card">
+            <span class="selection-num">01</span>
+            <h3><span class="zh">工业发动机</span><span class="en">Industrial Engines</span></h3>
+            <p><span class="zh">矿卡、挖掘机、钻机、泵车与油气现场主机动力。</span><span class="en">Prime movers for haul trucks, excavators, drills, pumps and oilfield equipment.</span></p>
+            <dl>
+              <div><dt><span class="zh">范围</span><span class="en">Range</span></dt><dd>74-4400 hp</dd></div>
+              <div><dt><span class="zh">确认</span><span class="en">Confirm</span></dt><dd><span class="zh">功率、排放、海拔、负载率</span><span class="en">power, emissions, altitude, load factor</span></dd></div>
+            </dl>
+            <a href="engines.html"><span class="zh">查看发动机</span><span class="en">View engines</span> →</a>
           </article>
-          <article class="feat-card">
-            <div class="feat-img" style="background-image:url('assets/img/products/gen.jpg')"></div>
-            <div class="feat-body">
-              <span class="feat-cat"><span class="zh">发电机组</span><span class="en">Genset</span></span>
-              <h3>QSK19-G</h3>
-              <p>507–578 kW · 400/480 V · 60 Hz</p>
-            </div>
+          <article class="selection-card">
+            <span class="selection-num">02</span>
+            <h3><span class="zh">发电机组</span><span class="en">Generator Sets</span></h3>
+            <p><span class="zh">陆用油田、矿区营地、备用电源与连续供电场景。</span><span class="en">Land oilfield power, mining camps, standby power and continuous supply.</span></p>
+            <dl>
+              <div><dt><span class="zh">范围</span><span class="en">Range</span></dt><dd>322-578 kW</dd></div>
+              <div><dt><span class="zh">确认</span><span class="en">Confirm</span></dt><dd><span class="zh">电压、频率、并机、燃油</span><span class="en">voltage, frequency, paralleling, fuel</span></dd></div>
+            </dl>
+            <a href="generators.html"><span class="zh">查看机组</span><span class="en">View gensets</span> →</a>
           </article>
-          <article class="feat-card">
-            <div class="feat-img" style="background-image:url('assets/img/catalog/page-03.jpg')"></div>
-            <div class="feat-body">
-              <span class="feat-cat"><span class="zh">钻井装备</span><span class="en">Drilling</span></span>
-              <h3>SZJ675 (ZJ90)</h3>
-              <p><span class="zh">钻深</span><span class="en">Depth</span> 9000 m · <span class="zh">钩载</span><span class="en">Hookload</span> 6750 kN</p>
-            </div>
+          <article class="selection-card">
+            <span class="selection-num">03</span>
+            <h3><span class="zh">钻井与修井装备</span><span class="en">Drilling &amp; Workover</span></h3>
+            <p><span class="zh">钻机、修井机、井架、绞车、转盘和配套动力系统。</span><span class="en">Rigs, workover units, masts, drawworks, rotary tables and power systems.</span></p>
+            <dl>
+              <div><dt><span class="zh">能力</span><span class="en">Capacity</span></dt><dd><span class="zh">钻深至 9000 m</span><span class="en">up to 9000 m depth</span></dd></div>
+              <div><dt><span class="zh">确认</span><span class="en">Confirm</span></dt><dd><span class="zh">井深、钩载、移运方式</span><span class="en">depth, hookload, mobility</span></dd></div>
+            </dl>
+            <a href="oilfield.html#drilling"><span class="zh">查看钻井装备</span><span class="en">View drilling</span> →</a>
           </article>
-          <article class="feat-card">
-            <div class="feat-img" style="background-image:url('assets/img/catalog/page-15.jpg')"></div>
-            <div class="feat-body">
-              <span class="feat-cat"><span class="zh">压裂装备</span><span class="en">Fracturing</span></span>
-              <h3>SYL5000Q</h3>
-              <p>5000 hp · 140 MPa · 3.3 m³/min</p>
-            </div>
+          <article class="selection-card">
+            <span class="selection-num">04</span>
+            <h3><span class="zh">固井与压裂装备</span><span class="en">Cementing &amp; Fracturing</span></h3>
+            <p><span class="zh">固井车、混砂车、压裂车、管汇和高压流体控制装备。</span><span class="en">Cementing units, blenders, fracturing trucks, manifolds and high-pressure fluid control.</span></p>
+            <dl>
+              <div><dt><span class="zh">能力</span><span class="en">Capacity</span></dt><dd>140-175 MPa</dd></div>
+              <div><dt><span class="zh">确认</span><span class="en">Confirm</span></dt><dd><span class="zh">压力、排量、介质、底盘</span><span class="en">pressure, flow, media, chassis</span></dd></div>
+            </dl>
+            <a href="oilfield.html#fracturing"><span class="zh">查看压裂装备</span><span class="en">View fracturing</span> →</a>
           </article>
         </div>
       </div>
@@ -210,7 +221,7 @@
     <div class="wrap footer-main">
       <div>
         <!-- TODO: 替换为客户 Logo 与公司名 -->
-        <span class="brand-name"><span class="zh">【公司名称】</span><span class="en">Your Company</span></span>
+        <span class="brand-name"><span class="zh">广州市泽康松特机械设备有限公司</span><span class="en">Guangzhou KST Mechanical Equipment Co., Ltd</span></span>
         <p><span class="zh">供应发电机组、工业发动机与油田钻采设备，面向全球油田、矿山与电力客户，按型号参数选型询价。</span><span class="en">Supplying generator sets, industrial engines and oilfield drilling &amp; production equipment for oilfield, mining and power customers worldwide — selection and quotation by model specifications.</span></p>
       </div>
       <div class="footer-col">
@@ -234,7 +245,7 @@
       </div>
     </div>
     <div class="wrap footer-bottom">
-      <span>© <span class="en">2026 Your Company. All rights reserved.</span><span class="zh">2026 【公司名称】 版权所有。</span></span>
+      <span>© <span class="en">2026 Guangzhou KST Mechanical Equipment Co., Ltd. All rights reserved.</span><span class="zh">2026 广州市泽康松特机械设备有限公司 版权所有。</span></span>
       <span class="disclaimer"><span class="zh">文中产品型号与商标归各自制造商所有。</span><span class="en">Product model names and trademarks belong to their respective manufacturers.</span></span>
     </div>
   </footer>
