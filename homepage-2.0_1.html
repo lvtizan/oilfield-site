@@ -93,12 +93,12 @@ header.open~.scrim{opacity:1;visibility:visible}
 /* 实拍图:盖在线稿之上;三张统一压暗降饱和,保证同屏调性一致。图缺失时 onerror 移除,自动回退线稿 */
 .panel .art img.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12) translateZ(0);transition:transform .9s var(--ease)}
 #p-gen .art img.ph{object-position:58% 47%}
-#p-eng .art img.ph{object-position:50% 56%;transform:scale(1.17) translateZ(0)}
+#p-eng .art img.ph{object-position:50% 56%;transform:scale(1.06) translateZ(0)}
 #p-oil .art img.ph{object-position:50% 62%}
 /* hover 时图片轻微放大,盖住 50vw 定宽画面两侧的软边 */
-.panel:hover .art img.ph,.hero.engaged .panel.hot .art img.ph{transform:scale(1.17) translateZ(0)}
+.panel:hover .art img.ph,.hero.engaged .panel.hot .art img.ph{transform:scale(1.06) translateZ(0)}
 /* 中间屏默认已放大到 1.17,hover 时再多放大一点(需 id 权重压过上面的 class 规则) */
-#p-eng:hover .art img.ph,.hero.engaged #p-eng.hot .art img.ph{transform:scale(1.22) translateZ(0)}
+#p-eng:hover .art img.ph,.hero.engaged #p-eng.hot .art img.ph{transform:scale(1.08) translateZ(0)}
 @keyframes kenburns{0%{transform:translate(-50%,-50%) scale(1.006)}100%{transform:translate(-50%,-50%) scale(1.035)}}
 .panel .art{animation:kenburns 34s ease-in-out infinite alternate;backface-visibility:hidden}
 /* 首屏滚出视口后暂停 Ken Burns,不再空耗 GPU */
