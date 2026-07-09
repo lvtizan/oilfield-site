@@ -1,261 +1,734 @@
 <!DOCTYPE html>
-<!--
-  首页 index.html — 框架 X「全屏三分屏」。静态 · 中英双语 · 响应式。
-  文案以技术为主，不含授权/认证类表述。联系走 邮箱 + WeChat（不做 WhatsApp）。
-  hreflang: 上线时补 <link rel="alternate" hreflang="zh-CN"/> 与 hreflang="en" / x-default。
--->
-<html lang="zh-CN" data-lang="zh">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>动力与油田钻采装备 · 发电机组 / 工业发动机 / 油田钻采设备 | Power & Oilfield Equipment</title>
-  <meta name="description" content="供应发电机组、工业发动机与油田钻采设备（钻井/修井/固井/压裂）。功率覆盖 74–4400 hp，钻深至 9000 m，工作压力至 175 MPa。面向全球油田、矿山与电力客户，按型号参数选型询价。" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KST POWER — 从井口到电网 · A Trusted Name in Power Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" type="image/webp" imagesrcset="images/hero-genset-900.webp 900w, images/hero-genset.webp 1600w" imagesizes="(max-width:960px) 112vw, 50vw">
+<link rel="preload" as="image" type="image/webp" imagesrcset="images/hero-truck-900.webp 900w, images/hero-truck.webp 1600w" imagesizes="(max-width:960px) 112vw, 50vw">
+<link rel="preload" as="image" type="image/webp" imagesrcset="images/hero-rig-900.webp 1280w, images/hero-rig.webp 2560w" imagesizes="(max-width:960px) 112vw, 50vw">
+<style>
+:root{
+  --bg:#0f1317;          /* 主深色 */
+  --bg-2:#141a20;
+  --paper:#f2f1ed;       /* 亮节奏底色 */
+  --ink:#e9ecef;
+  --ink-dark:#171b1f;
+  --mut:#8b959e;
+  --mut-dark:#6d7378;
+  --acc:#e8232b;         /* 品牌红(取自 KST POWER logo):仅用于 CTA / 数字 / 指示 */
+  --line:rgba(255,255,255,.10);
+  --line-dark:rgba(0,0,0,.12);
+  --cn:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  --num:'Barlow Condensed','Arial Narrow',sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--cn);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--acc);color:#fff}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260708-home-integrated" />
+/* ---------- 顶栏:透明浮层,与英雄区同一构图 ---------- */
+header{position:fixed;inset:0 0 auto 0;z-index:100;transition:background .5s var(--ease),box-shadow .5s var(--ease)}
+header .bar{display:flex;align-items:center;height:76px;padding:0 48px;gap:52px}
+header.solid{background:rgba(15,19,23,.96);box-shadow:0 1px 0 var(--line)}
+site-logo{display:contents}
+.logo{display:flex;flex-direction:column;align-items:flex-start;gap:2px;flex-shrink:0}
+.logo .mark{font-family:var(--num);font-weight:600;font-style:italic;font-size:25px;letter-spacing:.06em;color:#fff;text-transform:uppercase}
+.logo .mark b{color:var(--acc);font-weight:600;margin-left:.28em}
+.logo .sub{font-family:var(--num);font-size:10.5px;letter-spacing:.08em;color:var(--mut)}
+.kstmark{font-family:var(--num);font-style:italic;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;color:var(--ink)}
+.kstmark b{color:var(--acc);font-weight:600;margin-left:.22em}
+/* 顶部 LOGO 放大,使 KST POWER 宽度≈下方口号 */
+header .logo .mark{font-size:30px}
+nav{display:flex;gap:40px;margin-left:auto;align-items:flex-start}
+nav a{position:relative;font-size:14.5px;font-weight:400;letter-spacing:.08em;color:rgba(233,236,239,.85);padding:8px 0;transition:color .3s}
+nav a:hover{color:#fff}
+nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+nav a.on::after,nav a:hover::after{transform:scaleX(1)}
+nav a .en{display:block;font-family:var(--num);font-size:9px;letter-spacing:.3em;color:var(--mut);text-transform:uppercase;margin-top:1px}
+.lang{margin-left:44px;font-family:var(--num);font-size:13px;letter-spacing:.18em;color:var(--mut);border:1px solid var(--line);padding:7px 14px;transition:.3s}
+.lang:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+.lang b{color:#fff;font-weight:500}
+.verswitch{margin-left:22px;font-family:var(--num);font-size:12px;letter-spacing:.12em;color:#fff;background:var(--acc);padding:7px 15px;border-radius:3px;text-transform:uppercase;transition:.25s;flex-shrink:0}
+.verswitch:hover{filter:brightness(1.12)}
+/* ---------- 导航下拉:油田钻采设备四大类;三角内联在"备"字后 ---------- */
+nav .ni{position:relative;display:flex;flex-direction:column;align-items:flex-start}
+nav .caret{display:inline-block;margin-left:6px;font-size:9px;line-height:1;color:var(--mut);vertical-align:middle;transition:transform .3s var(--ease),color .3s}
+nav .ni:hover .caret{transform:rotate(180deg);color:#fff}
+.subnav{position:absolute;top:100%;left:0;min-width:184px;padding:10px 0;background:rgba(15,19,23,.96);border:1px solid var(--line);box-shadow:0 26px 52px -22px rgba(0,0,0,.65);
+  opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px);transition:opacity .3s var(--ease),transform .3s var(--ease);z-index:120}
+nav .ni:hover .subnav{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.subnav a{display:block;padding:11px 22px;font-size:13.5px;font-weight:400;letter-spacing:.06em;color:rgba(233,236,239,.82);transition:background .25s,color .25s,padding .25s}
+.subnav a::after{display:none}
+.subnav a .en{display:block;font-family:var(--num);font-size:8.5px;letter-spacing:.28em;color:var(--mut);text-transform:uppercase;margin-top:2px}
+.subnav a:hover{background:rgba(255,255,255,.05);color:#fff;padding-left:26px}
+.subnav a:hover .en{color:var(--acc)}
+/* 移动端汉堡按钮 + 抽屉遮罩(PC 隐藏) */
+.burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;padding:0;margin-left:16px;background:none;border:none;cursor:pointer;flex-shrink:0;z-index:110}
+.burger span{display:block;width:24px;height:2px;background:#fff;transition:transform .3s var(--ease),opacity .25s}
+header.open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+header.open .burger span:nth-child(2){opacity:0}
+header.open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .3s;z-index:95}
+header.open~.scrim{opacity:1;visibility:visible}
 
-  <script>
-    (function () {
-      try {
-        var l = localStorage.getItem('ope-lang');
-        if (l === 'en') { document.documentElement.setAttribute('data-lang','en'); document.documentElement.setAttribute('lang','en'); }
-      } catch (e) {}
-    })();
-  </script>
+/* ---------- 英雄区:品牌陈述 + 三分屏 ---------- */
+.hero{position:relative;height:100vh;min-height:640px;display:flex}
+/* 三条分隔线贯穿到视口最顶端 → 导航与面板成为同一构图 */
+.panel{position:relative;flex:1 1 0;overflow:hidden;cursor:pointer;border-left:1px solid var(--line);
+  contain:layout paint;transition:flex .35s var(--ease)}
+.panel:first-child{border-left:none}
+.panel .dim{position:absolute;inset:0;z-index:2;background:#0c1116;opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
+.hero.engaged .panel .dim{opacity:.68}
+.hero.engaged .panel.hot{flex:1.45 1 0}
+.hero.engaged .panel.hot .dim{opacity:0}
+.panel .art{position:absolute;left:50%;top:50%;width:50vw;height:112vh;transform:translate(-50%,-50%)}
+.panel .art svg{position:absolute;inset:0;width:100%;height:100%}
+.panel .art.ld svg{display:none}
+/* 实拍图:盖在线稿之上;三张统一压暗降饱和,保证同屏调性一致。图缺失时 onerror 移除,自动回退线稿 */
+.panel .art img.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12) translateZ(0);transition:transform .9s var(--ease)}
+#p-gen .art img.ph{object-position:58% 47%}
+#p-eng .art img.ph{object-position:50% 56%;transform:scale(1.06) translateZ(0)}
+#p-oil .art img.ph{object-position:50% 40%;transform:scale(1.06) translateZ(0)}
+/* hover 时图片轻微放大,盖住 50vw 定宽画面两侧的软边 */
+.panel:hover .art img.ph,.hero.engaged .panel.hot .art img.ph{transform:scale(1.06) translateZ(0)}
+/* 中间屏默认已放大到 1.17,hover 时再多放大一点(需 id 权重压过上面的 class 规则) */
+#p-eng:hover .art img.ph,.hero.engaged #p-eng.hot .art img.ph{transform:scale(1.32) translateZ(0)}
+@keyframes kenburns{0%{transform:translate(-50%,-50%) scale(1.006)}100%{transform:translate(-50%,-50%) scale(1.035)}}
+.panel .art{animation:kenburns 34s ease-in-out infinite alternate;backface-visibility:hidden}
+/* 首屏滚出视口后暂停 Ken Burns,不再空耗 GPU */
+.hero.rest .panel .art{animation-play-state:paused}
+.panel .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,19,23,.72) 0%,rgba(15,19,23,.12) 34%,rgba(15,19,23,.12) 52%,rgba(15,19,23,.92) 100%),linear-gradient(0deg,rgba(16,24,34,.26),rgba(16,24,34,.26))}
+.panel .txt{position:absolute;left:44px;right:36px;bottom:52px;z-index:3}
+.panel .en{font-family:var(--num);font-size:12px;letter-spacing:.42em;text-transform:uppercase;color:var(--mut);margin-bottom:14px;transition:color .5s}
+.panel.hot .en{color:var(--acc)}
+.panel h2{font-size:clamp(26px,2.6vw,40px);font-weight:500;letter-spacing:.06em;line-height:1.2;color:#fff}
+.panel .tag{margin-top:12px;font-size:14px;font-weight:300;letter-spacing:.06em;color:rgba(233,236,239,.62)}
+.panel .tag i{font-style:normal;font-family:var(--num);font-size:16px;letter-spacing:.05em;color:rgba(255,255,255,.85)}
+.panel .go{display:inline-flex;align-items:center;gap:12px;margin-top:26px;font-family:var(--num);font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#fff;
+  opacity:0;transform:translateY(14px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.panel .go .ln{display:block;width:44px;height:1px;background:var(--acc);transition:width .5s var(--ease)}
+.panel.hot .go{opacity:1;transform:translateY(0)}
+.panel.hot .go:hover .ln{width:72px}
+/* 品牌陈述层:横跨三栏,不阻挡面板交互 */
+.claim{position:absolute;z-index:5;left:0;right:0;top:24vh;text-align:center;pointer-events:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.hero.engaged .claim{opacity:0;transform:translateY(-26px)}
+.claim h1,.claim .en,.claim p{text-shadow:0 2px 26px rgba(0,0,0,.55)}
+.panel .txt{text-shadow:0 1px 18px rgba(0,0,0,.55)}
+.claim .en{font-family:var(--num);font-size:13px;letter-spacing:.6em;text-transform:uppercase;color:#aeb8c2;margin-bottom:22px}
+.claim h1{font-size:clamp(38px,5.2vw,78px);font-weight:300;letter-spacing:.18em;color:#fff}
+.claim h1 b{font-weight:500;color:var(--acc)}
+.claim p{margin-top:22px;font-size:15px;letter-spacing:.32em;color:rgba(233,236,239,.55)}
+.scrolldn{position:absolute;z-index:5;left:50%;bottom:26px;transform:translateX(-50%);pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:10px;transition:opacity .5s var(--ease)}
+.hero.engaged .scrolldn{opacity:0}
+.scrolldn span{font-family:var(--num);font-size:10px;letter-spacing:.4em;color:var(--mut);text-transform:uppercase}
+.scrolldn .stem{width:1px;height:44px;background:linear-gradient(180deg,var(--acc),transparent);animation:drip 2.2s var(--ease) infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- 通用区块 ---------- */
+section{position:relative}
+.wrap{max-width:1400px;margin:0 auto;padding:0 48px}
+.shead{display:flex;align-items:flex-end;gap:28px;padding:132px 0 64px}
+.shead .no{font-family:var(--num);font-size:15px;font-weight:500;letter-spacing:.1em;color:var(--acc)}
+.shead .rule{flex:0 0 64px;height:1px;background:currentColor;opacity:.25;margin-bottom:9px}
+.shead h3{font-size:clamp(28px,3vw,44px);font-weight:500;letter-spacing:.1em;line-height:1}
+.shead .en{margin-left:auto;font-family:var(--num);font-size:12px;letter-spacing:.42em;text-transform:uppercase;opacity:.45;margin-bottom:6px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- 01 应用领域:全宽五联图片带 ---------- */
+.apps{background:var(--paper);color:var(--ink-dark)}
+.appstrip{display:flex;height:56vh;min-height:420px}
+.app{position:relative;flex:1;overflow:hidden;border-left:1px solid rgba(255,255,255,.09);cursor:pointer;
+  contain:layout paint;transition:flex .8s var(--ease)}
+.app:first-child{border-left:none}
+.app .bg{position:absolute;inset:0;transition:transform 1s var(--ease)}
+.app::after{content:"";position:absolute;inset:0;z-index:1;background:#0c1013;opacity:.42;pointer-events:none;transition:opacity .7s var(--ease)}
+.app:hover::after{opacity:0}
+.app:hover .bg{transform:scale(1.04)}
+.app:hover{flex:1.45}
+.app .bg svg{width:100%;height:100%}
+.app .bg img{width:100%;height:100%;object-fit:cover;display:block}
+.app .cap{position:absolute;left:26px;bottom:30px;z-index:2;color:#fff}
+.app .cap .ic{margin-bottom:16px;opacity:.9}
+.app .cap .ic svg{width:34px;height:34px;stroke:#fff;fill:none;stroke-width:1.4}
+.app .cap h4{font-size:19px;font-weight:500;letter-spacing:.14em}
+.app .cap span{display:block;margin-top:6px;font-family:var(--num);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.apps .lead{padding-bottom:120px;padding-top:56px;max-width:680px;font-size:16px;line-height:2;color:var(--mut-dark);letter-spacing:.04em}
+
+/* ---------- 02 技术实力:深色数字条 ---------- */
+.stats{background:var(--bg);color:var(--ink);overflow:hidden}
+.stats .backwash{position:absolute;inset:0;opacity:.5;pointer-events:none}
+.stats .backwash svg{width:100%;height:100%}
+.statgrid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:140px}
+.stat{background:var(--bg);padding:58px 40px 54px}
+.stat .num{font-family:var(--num);font-weight:300;font-size:clamp(52px,5.4vw,88px);line-height:.95;color:#fff;letter-spacing:.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.stat .num .pre{font-size:.42em;color:var(--mut);margin-right:.08em;letter-spacing:.05em}
+.stat .num .unit{font-size:.3em;color:var(--acc);margin-left:.14em;letter-spacing:.08em}
+.stat .lab{margin-top:18px;font-size:14px;letter-spacing:.14em;color:var(--mut)}
+.stats .note{position:relative;padding-bottom:36px;margin-top:-104px;margin-bottom:110px;font-size:13px;letter-spacing:.2em;color:var(--mut-dark)}
+
+/* ---------- 03 精选型号 ---------- */
+.models{background:var(--paper);color:var(--ink-dark)}
+.modelgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-bottom:140px}
+.model{position:relative;background:#fff;border:1px solid var(--line-dark);overflow:hidden;padding:38px 34px 34px;min-height:430px;display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.model:hover{transform:translateY(-8px);box-shadow:0 30px 60px -30px rgba(23,27,31,.35)}
+.model .ghost{position:absolute;right:-10px;top:2px;font-family:var(--num);font-weight:600;font-size:150px;line-height:1;color:rgba(23,27,31,.05);letter-spacing:-.01em;user-select:none;transition:color .5s}
+.model:hover .ghost{color:rgba(232,35,43,.12)}
+.model .cat{font-family:var(--num);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--mut-dark)}
+.model h4{margin-top:10px;font-family:var(--num);font-weight:500;font-size:44px;letter-spacing:.02em;color:var(--ink-dark)}
+.model .desc{margin-top:6px;font-size:14px;letter-spacing:.08em;color:var(--mut-dark)}
+.model .fig{margin:26px 0 8px;flex:1;display:flex;align-items:center;justify-content:center}
+.model .fig svg{width:86%;max-height:170px;stroke:#2a3138;fill:none;stroke-width:1.3;opacity:.85}
+.model .kv{display:flex;gap:34px;border-top:1px solid var(--line-dark);padding-top:22px}
+.model .kv div b{display:block;font-family:var(--num);font-weight:400;font-size:30px;color:var(--ink-dark)}
+.model .kv div b i{font-style:normal;font-size:.5em;color:var(--acc);margin-left:2px}
+.model .kv div span{font-size:12px;letter-spacing:.12em;color:var(--mut-dark)}
+
+/* ---------- 04 询盘 CTA ---------- */
+.cta{background:var(--bg-2);overflow:hidden}
+.cta .inner{position:relative;padding:150px 0 150px;text-align:center}
+.cta .en{font-family:var(--num);font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--mut)}
+.cta h3{margin-top:26px;font-size:clamp(30px,4vw,58px);font-weight:400;letter-spacing:.14em;color:#fff}
+.cta h3 b{color:var(--acc);font-weight:500}
+.cta p{margin-top:22px;font-size:15px;letter-spacing:.1em;color:var(--mut);line-height:1.9}
+.cta .act{margin-top:52px;display:flex;align-items:center;justify-content:center;gap:38px}
+.btn{display:inline-block;background:var(--acc);color:#fff;font-weight:500;font-size:15px;letter-spacing:.22em;padding:20px 52px;transition:.35s var(--ease)}
+.btn:hover{background:#fff;color:#14181c}
+.cta .tel{font-family:var(--num);font-size:22px;letter-spacing:.1em;color:#fff}
+.cta .tel span{display:block;font-size:10px;letter-spacing:.34em;color:var(--mut);text-transform:uppercase;margin-bottom:4px}
+.cta .glowline{position:absolute;left:50%;top:0;transform:translateX(-50%);width:1px;height:86px;background:linear-gradient(180deg,var(--acc),transparent)}
+
+/* ---------- 页脚 ---------- */
+footer{background:#0a0d10;position:relative;overflow:hidden}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:40px;padding:96px 0 72px;position:relative;z-index:2}
+footer h5{font-family:var(--num);font-size:11px;letter-spacing:.38em;text-transform:uppercase;color:var(--mut);margin-bottom:24px}
+footer li{list-style:none;margin-bottom:13px}
+footer li a{font-size:14px;letter-spacing:.08em;color:rgba(233,236,239,.66);transition:color .3s}
+footer li a:hover{color:#fff}
+footer .about .logo .mark{font-size:34px}
+footer .about p{font-size:14px;line-height:2;letter-spacing:.05em;color:var(--mut);max-width:340px;margin-top:18px}
+footer .base{position:relative;z-index:2;border-top:1px solid var(--line);padding:26px 90px 30px 0;display:flex;gap:28px;font-size:12px;letter-spacing:.1em;color:var(--mut-dark)}
+footer .base span:last-child{margin-left:auto}
+footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:center;font-family:var(--num);font-weight:600;font-size:clamp(90px,13vw,210px);letter-spacing:.06em;color:rgba(255,255,255,.028);line-height:1;user-select:none;pointer-events:none;white-space:nowrap}
+
+/* ---------- 微信浮窗 ---------- */
+.float{position:fixed;right:26px;bottom:26px;z-index:150;width:52px;height:52px;border:1px solid var(--line);background:rgba(15,19,23,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.3s}
+.float:hover{border-color:var(--acc)}
+.float svg{width:24px;height:24px;fill:none;stroke:var(--mut);stroke-width:1.5;transition:.3s}
+.float:hover svg{stroke:var(--acc)}
+
+/* ---------- 响应式 ---------- */
+@media (max-width:960px){
+  header .bar{padding:0 22px;gap:20px}
+  .burger{display:flex}
+  .scrim{display:block}
+  .lang{margin-left:auto}
+  nav{position:fixed;top:0;right:0;z-index:100;width:min(82vw,320px);height:100dvh;margin:0;
+    flex-direction:column;align-items:stretch;gap:0;background:rgba(10,13,16,.98);
+    padding:88px 26px 40px;overflow-y:auto;transform:translateX(100%);transition:transform .4s var(--ease)}
+  header.open nav{transform:translateX(0)}
+  nav a{font-size:17px;padding:15px 2px;border-bottom:1px solid var(--line)}
+  nav a::after{display:none}
+  nav a .en{font-size:9px;letter-spacing:.28em;margin-top:3px}
+  nav .ni{display:block}
+  nav .ni .caret{display:none}
+  nav .subnav{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;min-width:0;padding:0 0 6px 14px;background:none;border:none;box-shadow:none}
+  nav .subnav a{padding:11px 0;font-size:14px;border-bottom:none;color:rgba(233,236,239,.62)}
+  nav .subnav a:hover{padding-left:0;background:none}
+  .hero{flex-direction:column;height:auto;min-height:auto;padding-top:76px}
+  .panel{min-height:58vh;border-left:none;border-top:1px solid var(--line)}
+  /* 图片铺满面板,消除 112vw 造成的左右模糊穿帮 */
+  .panel .art{left:0;top:0;width:100%;height:100%;transform:none}
+  #p-gen .art img.ph{object-position:50% 45%;transform:scale(1.05)}
+  #p-eng .art img.ph{object-position:50% 66%;transform:scale(1.24)}
+  #p-oil .art img.ph{object-position:50% 62%}
+  /* 底部加重深色,标题落在黑色蒙层区 */
+  .panel .veil{background:linear-gradient(180deg,rgba(15,19,23,.30) 0%,rgba(15,19,23,0) 26%,rgba(15,19,23,.55) 62%,rgba(15,19,23,.96) 100%)}
+  .panel .txt{left:24px;right:24px;bottom:30px}
+  .panel h2{font-size:30px}
+  .panel .tag{font-size:13px}
+  .panel .go{display:none}
+  .hero.engaged .panel.hot{flex:1.3 1 0}
+  .claim{display:none}
+  .wrap{padding:0 22px}
+  .appstrip{flex-direction:column;height:auto;gap:10px;background:var(--bg)}
+  .app{min-height:180px;border:none}
+  .statgrid{grid-template-columns:1fr 1fr}
+  .modelgrid{grid-template-columns:1fr}
+  footer .cols{grid-template-columns:1fr 1fr}
+  .cta .act{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){.panel .art{animation:none}.scrolldn .stem{animation:none}*{transition-duration:.01ms!important}}
+</style>
 </head>
+<body>
 
-<body class="home home--x">
-  <a class="skip-link" href="#main"><span class="zh">跳到主要内容</span><span class="en">Skip to content</span></a>
-
-  <!-- ============ HEADER ============ -->
-  <header class="site-header site-header--overlay" id="site-header">
-    <div class="wrap header-inner">
-      <!-- TODO: 替换为客户 Logo 与公司名 -->
-      <a class="brand" href="index.html" aria-label="Guangzhou KST Mechanical Equipment Co., Ltd home">
-        <span class="brand-name"><span class="zh">广州市泽康松特机械设备有限公司</span><span class="en">Guangzhou KST Mechanical Equipment Co., Ltd</span></span>
-        <span class="brand-sub"><span class="zh">动力与油田钻采装备</span><span class="en">Power &amp; Oilfield Equipment</span></span>
-      </a>
-      <nav class="primary-nav" id="primary-nav" aria-label="主导航 Primary">
-        <ul>
-          <li><a href="index.html"><span class="zh">首页</span><span class="en">Home</span></a></li>
-          <li><a href="about.html"><span class="zh">公司简介</span><span class="en">Company</span></a></li>
-          <li><a href="generators.html"><span class="zh">发电机组</span><span class="en">Generator Sets</span></a></li>
-          <li><a href="engines.html"><span class="zh">工业发动机</span><span class="en">Industrial Engines</span></a></li>
-          <li class="has-sub">
-            <a href="oilfield.html" aria-haspopup="true"><span class="zh">油田钻采设备</span><span class="en">Oilfield Drilling &amp; Production</span> <span class="caret" aria-hidden="true">▾</span></a>
-            <ul class="subnav">
-              <li><a href="oilfield.html#drilling"><span class="zh">钻井装备</span><span class="en">Drilling Equipment</span></a></li>
-              <li><a href="oilfield.html#workover"><span class="zh">修井装备</span><span class="en">Workover Equipment</span></a></li>
-              <li><a href="oilfield.html#cementing"><span class="zh">固井装备</span><span class="en">Cementing Equipment</span></a></li>
-              <li><a href="oilfield.html#fracturing"><span class="zh">压裂装备</span><span class="en">Fracturing Equipment</span></a></li>
-            </ul>
-          </li>
-          <li><a href="service.html"><span class="zh">技术服务</span><span class="en">Service</span></a></li>
-          <li><a href="contact.html"><span class="zh">联系方式</span><span class="en">Contact</span></a></li>
-        </ul>
-      </nav>
-      <div class="header-actions">
-        <div class="lang-toggle" role="group" aria-label="Language / 语言">
-          <button type="button" data-set="zh" aria-label="切换到中文">中</button>
-          <button type="button" data-set="en" aria-label="Switch to English">EN</button>
+<!-- ═════════ 顶栏 ═════════ -->
+<header id="hd">
+  <div class="bar">
+    <site-logo href="#"></site-logo>
+    <nav>
+      <a href="#p-gen" data-panel="0">发电机组<span class="en">Generator Sets</span></a>
+      <a href="#p-eng" data-panel="1">工业发动机<span class="en">Industrial Engines</span></a>
+      <span class="ni">
+        <a href="#p-oil" data-panel="2">油田钻采设备<span class="caret">▾</span><span class="en">Drilling &amp; Production</span></a>
+        <div class="subnav">
+          <a href="oilfield.html#drilling">钻井装备<span class="en">Drilling</span></a>
+          <a href="oilfield.html#workover">修井装备<span class="en">Workover</span></a>
+          <a href="oilfield.html#cementing">固井装备<span class="en">Cementing</span></a>
+          <a href="oilfield.html#fracturing">压裂装备<span class="en">Fracturing</span></a>
         </div>
-        <a class="btn btn-primary" href="#contact"><span class="zh">询价</span><span class="en">Inquiry</span></a>
-        <button class="nav-toggle" id="nav-toggle" aria-label="打开菜单 Open menu" aria-expanded="false" aria-controls="primary-nav">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-        </button>
+      </span>
+      <a href="#s-apps">应用领域<span class="en">Applications</span></a>
+      <a href="#s-cta">联系我们<span class="en">Contact</span></a>
+    </nav>
+    <a class="lang" href="#"><b>中</b> / EN</a>
+    <button class="burger" id="burger" aria-label="打开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="scrim" id="scrim"></div>
+
+<!-- ═════════ 英雄区:品牌陈述 + 三分屏(分隔线贯穿至顶) ═════════ -->
+<section class="hero" id="hero">
+
+  <div class="claim">
+    <div class="en">A&nbsp;Trusted&nbsp;Name&nbsp;in&nbsp;Power&nbsp;Solutions</div>
+    <h1>从井口<b>&nbsp;·&nbsp;</b>到电网</h1>
+    <p>发电机组&nbsp;/&nbsp;工业发动机&nbsp;/&nbsp;油田钻采成套设备</p>
+  </div>
+
+  <!-- 面板 1:发电机组 -->
+  <div class="panel" id="p-gen" data-panel="0">
+    <div class="art">
+      <svg viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1b242e"/><stop offset="1" stop-color="#10151b"/>
+          </linearGradient>
+          <radialGradient id="g1r" cx=".5" cy=".42" r=".7">
+            <stop offset="0" stop-color="#3c4f61" stop-opacity=".55"/><stop offset="1" stop-color="#0f1317" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="800" height="900" fill="url(#g1)"/>
+        <rect width="800" height="900" fill="url(#g1r)"/>
+        <g stroke="#9fb4c6" stroke-width="1.6" fill="none" opacity=".32" transform="translate(120,330)">
+          <rect x="0" y="60" width="560" height="300" rx="6"/>
+          <rect x="0" y="0" width="560" height="60" rx="6"/>
+          <line x1="40" y1="60" x2="40" y2="360"/><line x1="520" y1="60" x2="520" y2="360"/>
+          <g opacity=".8">
+            <line x1="80" y1="100" x2="80" y2="320"/><line x1="120" y1="100" x2="120" y2="320"/>
+            <line x1="160" y1="100" x2="160" y2="320"/><line x1="200" y1="100" x2="200" y2="320"/>
+            <line x1="240" y1="100" x2="240" y2="320"/><line x1="280" y1="100" x2="280" y2="320"/>
+          </g>
+          <circle cx="420" cy="210" r="70"/><circle cx="420" cy="210" r="46"/>
+          <line x1="0" y1="400" x2="560" y2="400" opacity=".6"/>
+          <rect x="30" y="360" width="40" height="40"/><rect x="490" y="360" width="40" height="40"/>
+        </g>
+      </svg>
+      <picture>
+        <source type="image/webp" srcset="images/hero-genset-900.webp 900w, images/hero-genset.webp 1600w" sizes="(max-width:960px) 112vw, 50vw">
+        <img class="ph" src="images/hero-genset.jpg" alt="发电机组实拍" decoding="async" fetchpriority="high"
+             onload="this.closest('.art').classList.add('ld')" onerror="this.closest('picture').remove()">
+      </picture>
+    </div>
+    <div class="veil"></div>
+    <div class="dim"></div>
+    <div class="txt">
+      <div class="en">Generator&nbsp;Sets</div>
+      <h2>发电机组</h2>
+      <div class="tag">功率覆盖 <i>74 – 4400 hp</i> · 陆地井场 / 电站 / 备用电源</div>
+      <span class="go"><span class="ln"></span>进入&nbsp;ENTER</span>
+    </div>
+  </div>
+
+  <!-- 面板 2:工业发动机 -->
+  <div class="panel" id="p-eng" data-panel="1">
+    <div class="art">
+      <svg viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#241f1a"/><stop offset="1" stop-color="#14110e"/>
+          </linearGradient>
+          <radialGradient id="g2r" cx=".5" cy=".4" r=".7">
+            <stop offset="0" stop-color="#6b4c2c" stop-opacity=".5"/><stop offset="1" stop-color="#14110e" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="800" height="900" fill="url(#g2)"/>
+        <rect width="800" height="900" fill="url(#g2r)"/>
+        <g stroke="#d0b28c" stroke-width="1.6" fill="none" opacity=".3" transform="translate(150,300)">
+          <rect x="60" y="130" width="400" height="220" rx="8"/>
+          <g opacity=".9">
+            <rect x="90" y="60" width="52" height="70" rx="4"/><rect x="162" y="60" width="52" height="70" rx="4"/>
+            <rect x="234" y="60" width="52" height="70" rx="4"/><rect x="306" y="60" width="52" height="70" rx="4"/>
+            <rect x="378" y="60" width="52" height="70" rx="4"/>
+          </g>
+          <path d="M90 60 Q90 20 130 20 H420 Q470 20 470 70" opacity=".7"/>
+          <circle cx="140" cy="240" r="44"/><circle cx="140" cy="240" r="20"/>
+          <rect x="230" y="200" width="180" height="90" rx="6"/>
+          <line x1="60" y1="350" x2="460" y2="350"/>
+          <rect x="80" y="350" width="46" height="34"/><rect x="394" y="350" width="46" height="34"/>
+          <path d="M460 180 H520 V120" opacity=".7"/><circle cx="520" cy="100" r="18" opacity=".7"/>
+        </g>
+      </svg>
+      <picture>
+        <source type="image/webp" srcset="images/hero-truck-900.webp 900w, images/hero-truck.webp 1600w" sizes="(max-width:960px) 112vw, 50vw">
+        <img class="ph" src="images/hero-truck.jpg" alt="工业发动机·矿用工况实拍" decoding="async" fetchpriority="high"
+             onload="this.closest('.art').classList.add('ld')" onerror="this.closest('picture').remove()">
+      </picture>
+    </div>
+    <div class="veil"></div>
+    <div class="dim"></div>
+    <div class="txt">
+      <div class="en">Industrial&nbsp;Engines</div>
+      <h2>工业发动机</h2>
+      <div class="tag">矿用 / 钻井动力 · 高原高寒工况长周期运转</div>
+      <span class="go"><span class="ln"></span>进入&nbsp;ENTER</span>
+    </div>
+  </div>
+
+  <!-- 面板 3:油田钻采设备 -->
+  <div class="panel" id="p-oil" data-panel="2">
+    <div class="art">
+      <svg viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#16222a"/><stop offset="1" stop-color="#0d1418"/>
+          </linearGradient>
+          <radialGradient id="g3r" cx=".5" cy=".35" r=".75">
+            <stop offset="0" stop-color="#2d5566" stop-opacity=".5"/><stop offset="1" stop-color="#0d1418" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="800" height="900" fill="url(#g3)"/>
+        <rect width="800" height="900" fill="url(#g3r)"/>
+        <g stroke="#9cc3d5" stroke-width="1.6" fill="none" opacity=".3" transform="translate(200,120)">
+          <!-- 井架桁架 -->
+          <path d="M120 0 L60 560 M280 0 L340 560 M120 0 H280"/>
+          <path d="M112 80 H288 M104 160 H296 M96 240 H304 M88 320 H312 M80 400 H320 M72 480 H328"/>
+          <path d="M112 80 L296 160 M288 80 L104 160 M104 160 L304 240 M296 160 L96 240 M96 240 L312 320 M304 240 L88 320 M88 320 L320 400 M312 320 L80 400 M80 400 L328 480 M320 400 L72 480"/>
+          <rect x="30" y="560" width="340" height="26"/>
+          <line x1="200" y1="0" x2="200" y2="560" opacity=".55"/>
+          <circle cx="200" cy="36" r="16" opacity=".8"/>
+        </g>
+      </svg>
+      <picture>
+        <source type="image/webp" srcset="images/hero-rig-900.webp 1280w, images/hero-rig.webp 2560w" sizes="(max-width:960px) 112vw, 50vw">
+        <img class="ph" src="images/hero-rig.jpg" alt="油田钻采设备实拍" decoding="async" fetchpriority="high"
+             onload="this.closest('.art').classList.add('ld')" onerror="this.closest('picture').remove()">
+      </picture>
+    </div>
+    <div class="veil"></div>
+    <div class="dim"></div>
+    <div class="txt">
+      <div class="en">Drilling&nbsp;&amp;&nbsp;Production</div>
+      <h2>油田钻采设备</h2>
+      <div class="tag">钻采成套 · 最大钻深 <i>9000 m</i> · 最大工压 <i>175 MPa</i></div>
+      <span class="go"><span class="ln"></span>进入&nbsp;ENTER</span>
+    </div>
+  </div>
+
+  <div class="scrolldn"><span>Scroll</span><span class="stem"></span></div>
+</section>
+
+<!-- ═════════ 01 应用领域 ═════════ -->
+<section class="apps" id="s-apps">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="no">01</span><span class="rule"></span>
+      <h3>应用领域</h3>
+      <span class="en">Applications</span>
+    </div>
+  </div>
+  <div class="appstrip reveal">
+    <!-- 石油 -->
+    <div class="app"><div class="bg">
+      <img class="bg-img" src="images/apps/oilfield.jpg" alt="石油应用场景" loading="lazy" decoding="async">
+    </div><div class="cap">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3c3.5 4.4 6 7.6 6 10.5a6 6 0 1 1-12 0C6 10.6 8.5 7.4 12 3Z"/></svg></div>
+      <h4>石　油</h4><span>Oilfield</span>
+    </div></div>
+    <!-- 天然气 -->
+    <div class="app"><div class="bg">
+      <img class="bg-img" src="images/apps/gas.jpg" alt="天然气应用场景" loading="lazy" decoding="async">
+    </div><div class="cap">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M8.5 14a5 5 0 1 0 7-4.6C16 6.5 14 4.5 11.5 3c.6 2.8-.4 4.5-1.8 6C8.6 10.2 8.5 12 8.5 14Z"/></svg></div>
+      <h4>天然气</h4><span>Natural&nbsp;Gas</span>
+    </div></div>
+    <!-- 钻井 -->
+    <div class="app"><div class="bg">
+      <img class="bg-img" src="images/apps/drilling.jpg" alt="钻井应用场景" loading="lazy" decoding="async">
+    </div><div class="cap">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M9.2 21 12 3l2.8 18M7.6 15.4h8.8M8.8 9.4h6.4M5.5 21h13"/></svg></div>
+      <h4>钻　井</h4><span>Drilling</span>
+    </div></div>
+    <!-- 矿山 -->
+    <div class="app"><div class="bg">
+      <img class="bg-img" src="images/apps/mining.jpg" alt="矿山应用场景" loading="lazy" decoding="async">
+    </div><div class="cap">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 20 10 6l4 7 3-4 4 11H3Z"/></svg></div>
+      <h4>矿　山</h4><span>Mining</span>
+    </div></div>
+    <!-- 电力 -->
+    <div class="app"><div class="bg">
+      <img class="bg-img" src="images/apps/power.jpg" alt="电力应用场景" loading="lazy" decoding="async">
+    </div><div class="cap">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div>
+      <h4>电　力</h4><span>Power</span>
+    </div></div>
+  </div>
+  <div class="wrap"><p class="lead reveal">五大应用场景,同一套动力标准。从油气井场的钻采动力,到矿区与电站的持续供电,<span class="kstmark">KST<b>POWER</b></span> 以成套化设备与实测硬指标交付。</p></div>
+</section>
+
+<!-- ═════════ 02 技术实力 ═════════ -->
+<section class="stats" id="s-stats">
+  <div class="backwash">
+    <svg viewBox="0 0 1600 700" preserveAspectRatio="xMidYMid slice">
+      <defs><radialGradient id="bw" cx=".78" cy=".2" r=".9"><stop offset="0" stop-color="#22303c"/><stop offset="1" stop-color="#0f1317" stop-opacity="0"/></radialGradient></defs>
+      <rect width="1600" height="700" fill="url(#bw)"/>
+      <g stroke="#3a4a58" stroke-width="1" fill="none" opacity=".25" transform="translate(1150,90)">
+        <path d="M60 460 L110 40 H150 L200 460 M72 360 H188 M84 260 H176 M96 160 H164"/>
+        <line x1="130" y1="40" x2="130" y2="500" opacity=".6"/>
+      </g>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="shead reveal" style="color:var(--ink)">
+      <span class="no">02</span><span class="rule"></span>
+      <h3>技术实力</h3>
+      <span class="en">Capabilities&nbsp;·&nbsp;Measured,&nbsp;Not&nbsp;Claimed</span>
+    </div>
+    <div class="statgrid reveal">
+      <div class="stat">
+        <div class="num"><span class="pre">74–</span><span class="cnt" data-to="4400">0</span><span class="unit">hp</span></div>
+        <div class="lab">功率覆盖范围</div>
+      </div>
+      <div class="stat">
+        <div class="num"><span class="cnt" data-to="9000">0</span><span class="unit">m</span></div>
+        <div class="lab">最大钻井深度</div>
+      </div>
+      <div class="stat">
+        <div class="num"><span class="cnt" data-to="175">0</span><span class="unit">MPa</span></div>
+        <div class="lab">最大工作压力</div>
+      </div>
+      <div class="stat">
+        <div class="num"><span class="pre">Tier</span><span class="cnt" data-to="4">0</span></div>
+        <div class="lab">非道路排放标准</div>
       </div>
     </div>
-  </header>
+    <p class="note reveal">— 全部为实测硬指标 · 拒绝资质吹嘘 —</p>
+  </div>
+</section>
 
-  <main id="main">
-
-    <!-- ============ ① 全屏三分屏 HERO ============ -->
-    <section class="hero-panels" aria-label="产品线 Product lines">
-      <a class="hero-panel" href="generators.html">
-        <img class="panel-bg" src="assets/img/products/gen.jpg" alt="发电机组 Generator set" style="object-position:center 60%" />
-        <div class="hero-panel-inner">
-          <span class="hp-kicker">01</span>
-          <h2 class="hp-title"><span class="zh">发电机组</span><span class="en">Generator Sets</span></h2>
-          <p class="hp-sub"><span class="zh">陆用油田发电机组 · 322–578 kW · Tier 4</span><span class="en">Land oilfield gensets · 322–578 kW · Tier 4</span></p>
-          <span class="hp-enter"><span class="zh">进入</span><span class="en">Enter</span> →</span>
+<!-- ═════════ 03 精选型号 ═════════ -->
+<section class="models" id="s-models">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="no">03</span><span class="rule"></span>
+      <h3>精选型号</h3>
+      <span class="en">Featured&nbsp;Models</span>
+    </div>
+    <div class="modelgrid">
+      <!-- QSK50 -->
+      <div class="model reveal">
+        <div class="ghost">QSK50</div>
+        <div class="cat">Generator&nbsp;Engine&nbsp;·&nbsp;发电机组</div>
+        <h4>QSK50</h4>
+        <div class="desc">50L 排量 16 缸 · 井场主电源平台</div>
+        <div class="fig">
+          <svg viewBox="0 0 300 160">
+            <rect x="30" y="52" width="200" height="80" rx="5"/>
+            <rect x="30" y="30" width="200" height="22" rx="5"/>
+            <line x1="55" y1="52" x2="55" y2="132"/><line x1="80" y1="52" x2="80" y2="132"/>
+            <line x1="105" y1="52" x2="105" y2="132"/><line x1="130" y1="52" x2="130" y2="132"/>
+            <circle cx="192" cy="92" r="26"/><circle cx="192" cy="92" r="14"/>
+            <rect x="238" y="66" width="34" height="52" rx="4"/>
+            <line x1="20" y1="140" x2="280" y2="140"/>
+          </svg>
         </div>
-      </a>
-      <a class="hero-panel" href="engines.html">
-        <img class="panel-bg" src="assets/img/products/engine.jpg" alt="工业发动机 Industrial engine" style="object-position:center 55%" />
-        <div class="hero-panel-inner">
-          <span class="hp-kicker">02</span>
-          <h2 class="hp-title"><span class="zh">工业发动机</span><span class="en">Industrial Engines</span></h2>
-          <p class="hp-sub"><span class="zh">矿用与油气钻井发动机 · 74–4400 hp</span><span class="en">Mining &amp; drilling engines · 74–4400 hp</span></p>
-          <span class="hp-enter"><span class="zh">进入</span><span class="en">Enter</span> →</span>
-        </div>
-      </a>
-      <a class="hero-panel" href="oilfield.html">
-        <img class="panel-bg" src="assets/img/products/oilfield.jpg" alt="油田钻采设备 Oilfield drilling and production equipment" />
-        <div class="hero-panel-inner">
-          <span class="hp-kicker">03</span>
-          <h2 class="hp-title"><span class="zh">油田钻采设备</span><span class="en">Oilfield Drilling &amp; Production</span></h2>
-          <p class="hp-sub"><span class="zh">钻井 · 修井 · 固井 · 压裂 · 钻深至 9000 m</span><span class="en">Drilling · Workover · Cementing · Fracturing · up to 9000 m</span></p>
-          <span class="hp-enter"><span class="zh">进入</span><span class="en">Enter</span> →</span>
-        </div>
-      </a>
-    </section>
-
-    <!-- ============ ② 应用与能力 ============ -->
-    <section class="capability" aria-labelledby="capability-title">
-      <div class="wrap capability-shell">
-        <div class="capability-copy">
-          <p class="eyebrow"><span class="zh">应用与能力</span><span class="en">Applications &amp; capability</span></p>
-          <h2 id="capability-title"><span class="zh">覆盖油气、矿山与电力现场。</span><span class="en">Built for oil, gas, mining and power sites.</span></h2>
-          <p><span class="zh">从主机动力、钻井装备到压裂设备和发电机组，按设备工况、功率区间与交付场景快速锁定型号。</span><span class="en">From prime power and drilling packages to fracturing equipment and generator sets, shortlist models by duty, power and delivery scenario.</span></p>
-        </div>
-        <div class="capability-board">
-          <img src="assets/img/products/scene-ecosystem.jpg" alt="Oilfield, mining and power equipment operation scene" loading="lazy" />
-          <div class="capability-stats" aria-label="Technical capability">
-            <div><span class="k">74-4400</span><span class="u">hp</span><span class="v"><span class="zh">功率覆盖</span><span class="en">Power range</span></span></div>
-            <div><span class="k">9000</span><span class="u">m</span><span class="v"><span class="zh">最大钻深</span><span class="en">Max drilling depth</span></span></div>
-            <div><span class="k">175</span><span class="u">MPa</span><span class="v"><span class="zh">最高工作压力</span><span class="en">Max pressure</span></span></div>
-            <div><span class="k">Tier 4</span><span class="u">Stage V</span><span class="v"><span class="zh">排放标准</span><span class="en">Emissions</span></span></div>
-          </div>
-        </div>
-        <ul class="capability-list">
-          <li><span class="app-ico" aria-hidden="true"></span><span class="zh">石油</span><span class="en">Oil</span></li>
-          <li><span class="app-ico" aria-hidden="true"></span><span class="zh">天然气</span><span class="en">Gas</span></li>
-          <li><span class="app-ico" aria-hidden="true"></span><span class="zh">钻井</span><span class="en">Drilling</span></li>
-          <li><span class="app-ico" aria-hidden="true"></span><span class="zh">矿山</span><span class="en">Mining</span></li>
-          <li><span class="app-ico" aria-hidden="true"></span><span class="zh">电力</span><span class="en">Power</span></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ============ ③ 选型分流 ============ -->
-    <section class="selection" aria-labelledby="selection-title">
-      <div class="wrap">
-        <div class="selection-head">
-          <div>
-            <p class="eyebrow"><span class="zh">选型分流</span><span class="en">Selection paths</span></p>
-            <h2 id="selection-title"><span class="zh">先确定设备场景，再确认关键参数。</span><span class="en">Start with the duty, then confirm the key parameters.</span></h2>
-          </div>
-          <p><span class="zh">首页不堆型号图，把客户最常问的选型入口放清楚：需要动力、井场装备还是压裂/固井设备，下一步该提供什么参数。</span><span class="en">Instead of decorative model thumbnails, this section routes buyers by product duty and shows what details are needed for a useful quotation.</span></p>
-        </div>
-        <div class="selection-grid">
-          <article class="selection-card">
-            <span class="selection-num">01</span>
-            <h3><span class="zh">工业发动机</span><span class="en">Industrial Engines</span></h3>
-            <p><span class="zh">矿卡、挖掘机、钻机、泵车与油气现场主机动力。</span><span class="en">Prime movers for haul trucks, excavators, drills, pumps and oilfield equipment.</span></p>
-            <dl>
-              <div><dt><span class="zh">范围</span><span class="en">Range</span></dt><dd>74-4400 hp</dd></div>
-              <div><dt><span class="zh">确认</span><span class="en">Confirm</span></dt><dd><span class="zh">功率、排放、海拔、负载率</span><span class="en">power, emissions, altitude, load factor</span></dd></div>
-            </dl>
-            <a href="engines.html"><span class="zh">查看发动机</span><span class="en">View engines</span> →</a>
-          </article>
-          <article class="selection-card">
-            <span class="selection-num">02</span>
-            <h3><span class="zh">发电机组</span><span class="en">Generator Sets</span></h3>
-            <p><span class="zh">陆用油田、矿区营地、备用电源与连续供电场景。</span><span class="en">Land oilfield power, mining camps, standby power and continuous supply.</span></p>
-            <dl>
-              <div><dt><span class="zh">范围</span><span class="en">Range</span></dt><dd>322-578 kW</dd></div>
-              <div><dt><span class="zh">确认</span><span class="en">Confirm</span></dt><dd><span class="zh">电压、频率、并机、燃油</span><span class="en">voltage, frequency, paralleling, fuel</span></dd></div>
-            </dl>
-            <a href="generators.html"><span class="zh">查看机组</span><span class="en">View gensets</span> →</a>
-          </article>
-          <article class="selection-card">
-            <span class="selection-num">03</span>
-            <h3><span class="zh">钻井与修井装备</span><span class="en">Drilling &amp; Workover</span></h3>
-            <p><span class="zh">钻机、修井机、井架、绞车、转盘和配套动力系统。</span><span class="en">Rigs, workover units, masts, drawworks, rotary tables and power systems.</span></p>
-            <dl>
-              <div><dt><span class="zh">能力</span><span class="en">Capacity</span></dt><dd><span class="zh">钻深至 9000 m</span><span class="en">up to 9000 m depth</span></dd></div>
-              <div><dt><span class="zh">确认</span><span class="en">Confirm</span></dt><dd><span class="zh">井深、钩载、移运方式</span><span class="en">depth, hookload, mobility</span></dd></div>
-            </dl>
-            <a href="oilfield.html#drilling"><span class="zh">查看钻井装备</span><span class="en">View drilling</span> →</a>
-          </article>
-          <article class="selection-card">
-            <span class="selection-num">04</span>
-            <h3><span class="zh">固井与压裂装备</span><span class="en">Cementing &amp; Fracturing</span></h3>
-            <p><span class="zh">固井车、混砂车、压裂车、管汇和高压流体控制装备。</span><span class="en">Cementing units, blenders, fracturing trucks, manifolds and high-pressure fluid control.</span></p>
-            <dl>
-              <div><dt><span class="zh">能力</span><span class="en">Capacity</span></dt><dd>140-175 MPa</dd></div>
-              <div><dt><span class="zh">确认</span><span class="en">Confirm</span></dt><dd><span class="zh">压力、排量、介质、底盘</span><span class="en">pressure, flow, media, chassis</span></dd></div>
-            </dl>
-            <a href="oilfield.html#fracturing"><span class="zh">查看压裂装备</span><span class="en">View fracturing</span> →</a>
-          </article>
+        <div class="kv">
+          <div><b>1875<i>hp</i></b><span>额定功率</span></div>
+          <div><b>16<i>缸</i></b><span>气缸数</span></div>
         </div>
       </div>
-    </section>
-
-    <!-- ============ ⑤ 询盘 / 联系 ============ -->
-    <section class="inquiry" id="contact" aria-labelledby="inq-title">
-      <div class="wrap inquiry-grid">
-        <div class="inquiry-copy">
-          <p class="eyebrow"><span class="zh">询盘</span><span class="en">Inquiry</span></p>
-          <h2 id="inq-title"><span class="zh">告诉我们功率或井场需求，我们回复型号与参数。</span><span class="en">Tell us your power or wellsite needs — we'll reply with models and specs.</span></h2>
-          <p class="inquiry-hint"><span class="zh">建议提供：产品类别、目标型号或功率、应用场景、目的国家、数量与交期。</span><span class="en">Helpful details: category, target model or power, application, destination country, quantity and delivery.</span></p>
+      <!-- SZJ180 -->
+      <div class="model reveal" style="transition-delay:.12s">
+        <div class="ghost">SZJ180</div>
+        <div class="cat">Drilling&nbsp;Rig&nbsp;·&nbsp;钻机</div>
+        <h4>SZJ180</h4>
+        <div class="desc">车载钻机 · 快速搬迁 · 沙漠戈壁工况</div>
+        <div class="fig">
+          <svg viewBox="0 0 300 160">
+            <path d="M96 130 L120 22 H132 L156 130 M102 100 H150 M108 70 H144 M114 44 H138"/>
+            <line x1="126" y1="22" x2="126" y2="130" opacity=".7"/>
+            <rect x="40" y="118" width="200" height="16" rx="3"/>
+            <circle cx="70" cy="142" r="10"/><circle cx="110" cy="142" r="10"/><circle cx="190" cy="142" r="10"/><circle cx="225" cy="142" r="10"/>
+            <rect x="196" y="92" width="48" height="26" rx="3"/>
+          </svg>
         </div>
-        <div class="inquiry-contacts">
-          <!-- TODO: 替换为客户真实邮箱 -->
-          <a class="contact-tile" href="mailto:your@email.com">
-            <span class="ct-ico" aria-hidden="true">✉</span>
-            <span class="ct-k"><span class="zh">邮箱</span><span class="en">Email</span></span>
-            <span class="ct-v">your@email.com <span class="todo">(TODO)</span></span>
-          </a>
-          <!-- TODO: 替换为客户微信二维码图 assets/img/wechat-qr.png -->
-          <div class="contact-tile contact-tile--wechat">
-            <span class="ct-ico" aria-hidden="true">💬</span>
-            <span class="ct-k">WeChat</span>
-            <span class="ct-v"><span class="zh">扫码添加</span><span class="en">Scan to add</span> <span class="todo">(QR TODO)</span></span>
-          </div>
-          <!-- TODO: 替换为客户电话 -->
-          <a class="contact-tile" href="tel:+860000000000">
-            <span class="ct-ico" aria-hidden="true">☎</span>
-            <span class="ct-k"><span class="zh">电话</span><span class="en">Phone</span></span>
-            <span class="ct-v">+86 000 0000 0000 <span class="todo">(TODO)</span></span>
-          </a>
+        <div class="kv">
+          <div><b>1800<i>m</i></b><span>钻井深度</span></div>
+          <div><b>≤48<i>h</i></b><span>整机搬迁</span></div>
         </div>
       </div>
-    </section>
-  </main>
+      <!-- SGJ600 -->
+      <div class="model reveal" style="transition-delay:.24s">
+        <div class="ghost">SGJ600</div>
+        <div class="cat">Workover&nbsp;·&nbsp;修井机</div>
+        <h4>SGJ600</h4>
+        <div class="desc">大修作业 · 深井提升 · 成套交付</div>
+        <div class="fig">
+          <svg viewBox="0 0 300 160">
+            <path d="M120 128 L142 18 H150 L172 128 M126 96 H166 M132 62 H160"/>
+            <path d="M146 18 L110 128 M146 18 L182 128" opacity=".5"/>
+            <rect x="60" y="116" width="180" height="16" rx="3"/>
+            <circle cx="90" cy="142" r="10"/><circle cx="125" cy="142" r="10"/><circle cx="205" cy="142" r="10"/>
+            <path d="M146 18 V10" opacity=".8"/><circle cx="146" cy="34" r="8"/>
+          </svg>
+        </div>
+        <div class="kv">
+          <div><b>600<i>kN</i></b><span>最大钩载</span></div>
+          <div><b>6000<i>m</i></b><span>修井深度</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="site-footer">
-    <div class="wrap footer-main">
+<!-- ═════════ 04 询盘 CTA ═════════ -->
+<section class="cta" id="s-cta">
+  <div class="glowline"></div>
+  <div class="wrap">
+    <div class="inner reveal">
+      <div class="en">Tell&nbsp;Us&nbsp;Your&nbsp;Requirements</div>
+      <h3>告诉我们您的<b>功率</b>与<b>井场需求</b></h3>
+      <p>提供工况参数,72 小时内回复选型方案与报价。<br>支持整机出口 · 成套配置 · 现场调试</p>
+      <div class="act">
+        <a class="btn" href="mailto:sales@example.com">获取选型方案</a>
+        <div class="tel"><span>Sales&nbsp;Hotline</span>+86&nbsp;400-000-0000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 页脚 ═════════ -->
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <site-logo></site-logo>
+        <p>专注油气田动力与钻采成套设备,以实测硬指标交付,服务石油、天然气、矿山与电力行业。</p>
+      </div>
       <div>
-        <!-- TODO: 替换为客户 Logo 与公司名 -->
-        <span class="brand-name"><span class="zh">广州市泽康松特机械设备有限公司</span><span class="en">Guangzhou KST Mechanical Equipment Co., Ltd</span></span>
-        <p><span class="zh">供应发电机组、工业发动机与油田钻采设备，面向全球油田、矿山与电力客户，按型号参数选型询价。</span><span class="en">Supplying generator sets, industrial engines and oilfield drilling &amp; production equipment for oilfield, mining and power customers worldwide — selection and quotation by model specifications.</span></p>
+        <h5>产品&nbsp;Products</h5>
+        <ul>
+          <li><a href="#p-gen">发电机组</a></li>
+          <li><a href="#p-eng">工业发动机</a></li>
+          <li><a href="#p-oil">油田钻采设备</a></li>
+        </ul>
       </div>
-      <div class="footer-col">
-        <h4><span class="zh">产品</span><span class="en">Products</span></h4>
-        <a href="generators.html"><span class="zh">发电机组</span><span class="en">Generator Sets</span></a>
-        <a href="engines.html"><span class="zh">工业发动机</span><span class="en">Industrial Engines</span></a>
-        <a href="oilfield.html"><span class="zh">油田钻采设备</span><span class="en">Oilfield Equipment</span></a>
+      <div>
+        <h5>导航&nbsp;Sitemap</h5>
+        <ul>
+          <li><a href="#s-apps">应用领域</a></li>
+          <li><a href="#s-stats">技术实力</a></li>
+          <li><a href="#s-models">精选型号</a></li>
+        </ul>
       </div>
-      <div class="footer-col">
-        <h4><span class="zh">油田钻采</span><span class="en">Oilfield</span></h4>
-        <a href="oilfield.html#drilling"><span class="zh">钻井装备</span><span class="en">Drilling</span></a>
-        <a href="oilfield.html#workover"><span class="zh">修井装备</span><span class="en">Workover</span></a>
-        <a href="oilfield.html#cementing"><span class="zh">固井装备</span><span class="en">Cementing</span></a>
-        <a href="oilfield.html#fracturing"><span class="zh">压裂装备</span><span class="en">Fracturing</span></a>
-      </div>
-      <div class="footer-col">
-        <h4><span class="zh">公司</span><span class="en">Company</span></h4>
-        <a href="about.html"><span class="zh">公司简介</span><span class="en">About</span></a>
-        <a href="service.html"><span class="zh">技术服务</span><span class="en">Service</span></a>
-        <a href="contact.html"><span class="zh">联系方式</span><span class="en">Contact</span></a>
+      <div>
+        <h5>联系&nbsp;Contact</h5>
+        <ul>
+          <li><a href="mailto:sales@example.com">sales@example.com</a></li>
+          <li><a href="tel:+864000000000">+86 400-000-0000</a></li>
+          <li><a href="#">微信公众号 / WeChat</a></li>
+        </ul>
       </div>
     </div>
-    <div class="wrap footer-bottom">
-      <span>© <span class="en">2026 Guangzhou KST Mechanical Equipment Co., Ltd. All rights reserved.</span><span class="zh">2026 广州市泽康松特机械设备有限公司 版权所有。</span></span>
-      <span class="disclaimer"><span class="zh">文中产品型号与商标归各自制造商所有。</span><span class="en">Product model names and trademarks belong to their respective manufacturers.</span></span>
+    <div class="base">
+      <span>© 2026 KST POWER</span>
+      <span>A Trusted Name in Power Solutions</span>
+      <span>某ICP备00000000号</span>
     </div>
-  </footer>
+  </div>
+  <div class="watermark">KST&nbsp;POWER</div>
+</footer>
 
-  <!-- ============ WeChat 浮窗 ============ -->
-  <a class="wa-float wa-float--wechat" href="#contact" aria-label="WeChat">
-    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M9.5 4C5.36 4 2 6.86 2 10.38c0 1.98 1.06 3.75 2.73 4.94L4 18l2.5-1.3c.9.25 1.86.38 2.85.38.24 0 .47-.01.7-.03a5.6 5.6 0 0 1-.3-1.8c0-3.2 3.04-5.78 6.79-5.78.24 0 .48.01.71.04C16.53 6.29 13.32 4 9.5 4zM7 8.6a.94.94 0 1 1 0 1.88.94.94 0 0 1 0-1.88zm5 0a.94.94 0 1 1 0 1.88.94.94 0 0 1 0-1.88z"/><path d="M22 15.5c0-2.8-2.7-5.06-6-5.06s-6 2.26-6 5.06 2.7 5.07 6 5.07c.72 0 1.42-.1 2.06-.29L20 21.5l-.46-1.5C21.02 19.06 22 17.38 22 15.5zm-8-1.1a.78.78 0 1 1 0 1.56.78.78 0 0 1 0-1.56zm4 0a.78.78 0 1 1 0 1.56.78.78 0 0 1 0-1.56z"/></svg>
-    <span class="wa-label">WeChat</span>
-  </a>
+<!-- 微信浮窗 -->
+<div class="float" title="微信咨询">
+  <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.6 9.6 0 0 1-2.6-.4L5 21l1-3.1A8.2 8.2 0 0 1 3 11.5C3 6.8 7 3 12 3s9 3.8 9 8.5Z"/><circle cx="9" cy="11" r=".8" fill="currentColor"/><circle cx="15" cy="11" r=".8" fill="currentColor"/></svg>
+</div>
 
-  <script src="assets/js/main.js"></script>
+<script>
+/* ── 品牌 LOGO 组件:header / footer 共用同一处定义;有 href 则渲染为链接 ── */
+customElements.define('site-logo', class extends HTMLElement{
+  connectedCallback(){
+    const href=this.getAttribute('href');
+    const inner='<span class="mark">KST<b>POWER</b></span>'+
+                '<span class="sub">A trusted name in power solutions.</span>';
+    this.innerHTML = href
+      ? '<a class="logo" href="'+href+'">'+inner+'</a>'
+      : '<span class="logo">'+inner+'</span>';
+  }
+});
+
+/* ── 顶栏:滚动变实底 ── */
+const hd=document.getElementById('hd');
+addEventListener('scroll',()=>{hd.classList.toggle('solid',scrollY>40)},{passive:true});
+
+/* ── 移动端汉堡菜单开合 ── */
+const burger=document.getElementById('burger'),scrim=document.getElementById('scrim');
+const closeMenu=()=>{hd.classList.remove('open');burger.setAttribute('aria-expanded','false')};
+burger.addEventListener('click',()=>burger.setAttribute('aria-expanded',hd.classList.toggle('open')));
+scrim.addEventListener('click',closeMenu);
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',closeMenu));
+
+/* ── 导航 ↔ 三分屏 双向联动 ── */
+const hero=document.getElementById('hero');
+const panels=[...document.querySelectorAll('.panel')];
+const navLinks=[...document.querySelectorAll('nav a[data-panel]')];
+function engage(i){
+  hero.classList.add('engaged');
+  panels.forEach((p,k)=>p.classList.toggle('hot',k===i));
+  navLinks.forEach((a,k)=>a.classList.toggle('on',k===i));
+}
+function disengage(){
+  hero.classList.remove('engaged');
+  panels.forEach(p=>p.classList.remove('hot'));
+  navLinks.forEach(a=>a.classList.remove('on'));
+}
+panels.forEach((p,i)=>{
+  p.addEventListener('mouseenter',()=>engage(i));
+  p.addEventListener('mouseleave',disengage);
+});
+/* 导航仅保留自身下划线 hover,不再联动触发下方面板 */
+
+/* ── 首屏移出视口即暂停 Ken Burns ── */
+new IntersectionObserver(es=>{
+  hero.classList.toggle('rest',!es[0].isIntersecting);
+},{threshold:0}).observe(hero);
+
+/* ── 滚动入场 ── */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ── 数字滚动 ── */
+const nio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  const el=e.target,to=+el.dataset.to,t0=performance.now(),D=1800;
+  (function tick(t){
+    const p=Math.min((t-t0)/D,1),v=Math.round(to*(1-Math.pow(1-p,3)));
+    el.textContent=v;
+    if(p<1)requestAnimationFrame(tick);
+  })(t0);
+  nio.unobserve(el);
+}),{threshold:.6});
+document.querySelectorAll('.cnt').forEach(el=>nio.observe(el));
+</script>
 </body>
 </html>
