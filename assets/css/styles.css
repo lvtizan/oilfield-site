@@ -76,10 +76,6 @@ img, svg { display: block; max-width: 100%; }
 /* Both languages stay in the DOM for SEO; CSS shows one set at a time. */
 html[data-lang="zh"] .en { display: none; }
 html[data-lang="en"] .zh { display: none; }
-html[data-lang="zh"] .ru,
-html[data-lang="en"] .ru,
-html[data-lang="ru"] .zh,
-html[data-lang="ru"] .en { display: none; }
 
 /* ============ ACCESSIBILITY ============ */
 :focus-visible {
@@ -116,7 +112,7 @@ section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
 
 .site-header {
   position: sticky; top: 0; z-index: 100;
-  background: var(--color-bg);
+  background: rgba(255,255,255,.97);
   border-bottom: 1px solid var(--color-border);
 }
 .header-inner { display: flex; align-items: center; gap: 1.5rem; min-height: 76px; max-width: none; padding-inline: clamp(1.2rem, 2.6vw, 3rem); }
@@ -167,20 +163,12 @@ section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
 /* ---- 2.0 式双语两行导航(仅一级项) ---- */
 .primary-nav > ul > li > a { line-height: 1.15; }
 html[data-lang="zh"] .primary-nav > ul > li > a .zh,
-html[data-lang="en"] .primary-nav > ul > li > a .en,
-html[data-lang="ru"] .primary-nav > ul > li > a .ru { display: block; font-size: .82rem; letter-spacing: .08em; }
+html[data-lang="en"] .primary-nav > ul > li > a .zh { display: block; font-size: .82rem; letter-spacing: .08em; }
 html[data-lang="zh"] .primary-nav > ul > li > a .en,
-html[data-lang="zh"] .primary-nav > ul > li > a .ru,
-html[data-lang="en"] .primary-nav > ul > li > a .zh,
-html[data-lang="en"] .primary-nav > ul > li > a .ru,
-html[data-lang="ru"] .primary-nav > ul > li > a .zh,
-html[data-lang="ru"] .primary-nav > ul > li > a .en { display: none; }
- .primary-nav > ul > li > a .zh,
- .primary-nav > ul > li > a .en,
- .primary-nav > ul > li > a .ru {
-  font-family: "Barlow Condensed","Arial Narrow",var(--font-display);
-  font-size: .92rem; font-weight: 500; letter-spacing: .04em;
-  white-space: nowrap;
+html[data-lang="en"] .primary-nav > ul > li > a .en {
+  display: block; font-family: "Barlow Condensed","Arial Narrow",var(--font-display);
+  font-size: .56rem; font-weight: 400; letter-spacing: .2em; text-transform: uppercase;
+  opacity: .5; margin-top: 3px; white-space: nowrap;
 }
 .primary-nav .has-sub .caret { display: none; }
 
@@ -196,8 +184,7 @@ html[data-lang="ru"] .primary-nav > ul > li > a .en { display: none; }
   color: var(--color-ink-soft); transition: background var(--dur), color var(--dur);
 }
 html[data-lang="zh"] .lang-toggle [data-set="zh"],
-html[data-lang="en"] .lang-toggle [data-set="en"],
-html[data-lang="ru"] .lang-toggle [data-set="ru"] {
+html[data-lang="en"] .lang-toggle [data-set="en"] {
   background: var(--color-ink); color: var(--color-on-dark);
 }
 
@@ -344,10 +331,10 @@ html[data-lang="ru"] .lang-toggle [data-set="ru"] {
 /* ============ INTERIOR PAGE HERO ============ */
 .page-hero {
   background: linear-gradient(180deg, var(--color-bg), var(--color-surface) 160%);
-  padding-block: clamp(2.8rem, 6vw, 5rem) clamp(2.4rem, 4.5vw, 3.6rem);
+  padding-block: clamp(2.4rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
   border-bottom: 1px solid var(--color-border);
 }
-.breadcrumb { font-size: var(--fs-small); color: var(--color-ink-soft); margin-bottom: 1.15rem; display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+.breadcrumb { font-size: var(--fs-small); color: var(--color-ink-soft); margin-bottom: .9rem; display: flex; gap: .5rem; flex-wrap: wrap; }
 .breadcrumb a:hover { color: var(--color-brand); }
 .breadcrumb .sep { color: var(--color-ink-line); }
 .page-hero h1 {
@@ -356,7 +343,6 @@ html[data-lang="ru"] .lang-toggle [data-set="ru"] {
 }
 .page-hero h1 .zh { font-family: var(--font-zh); font-weight: 900; letter-spacing: -.01em; }
 .page-hero .lead { font-size: var(--fs-lead); color: var(--color-ink-soft); max-width: 60ch; }
-.page-hero .eyebrow { margin-bottom: .35rem; }
 .page-hero-grid {
   display: grid;
   grid-template-columns: 1.05fr .75fr;
@@ -542,26 +528,25 @@ a.card { color: inherit; }
 .card .more { margin-top: 1rem; font-size: .8rem; font-weight: 600; color: var(--color-brand); display: inline-flex; gap: .35rem; align-items: center; }
 
 /* ============ OILFIELD PAGE: category chips + sections + spec tables ============ */
-.chip-nav { display: flex; flex-wrap: wrap; gap: .6rem; margin: clamp(1.2rem, 3vw, 2rem) 0 clamp(2.4rem, 4vw, 3.4rem); padding: .65rem; border: 1px solid var(--color-border); background: var(--color-surface); }
+.chip-nav { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: clamp(2rem,4vw,3rem); }
 .chip-nav a {
   font-family: var(--font-display); font-size: .82rem; font-weight: 600;
-  min-height: 2.75rem; display: inline-flex; align-items: center;
-  border: 1px solid var(--color-border); border-radius: 999px; padding: .4rem 1rem;
+  border: 1px solid var(--color-border); border-radius: 999px; padding: .4rem .9rem;
   color: var(--color-ink-soft); background: var(--color-bg); transition: all var(--dur);
 }
 .chip-nav a:hover { border-color: var(--color-ink); color: var(--color-ink); }
 .chip-nav a .num { color: var(--color-brand); font-weight: 700; margin-right: .35rem; }
 
-.oil-section { padding-block: clamp(2.8rem, 5vw, 4.4rem); border-top: 1px solid var(--color-border); scroll-margin-top: 96px; }
+.oil-section { padding-block: clamp(2.2rem, 4vw, 3.4rem); border-top: 1px solid var(--color-border); scroll-margin-top: 96px; }
 .oil-section:first-of-type { border-top: 0; }
 .oil-head { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; }
 .oil-head .idx { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: var(--color-brand); letter-spacing: .06em; line-height: 1; padding-top: .25rem; }
 .oil-head h2 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
 .oil-head h2 .zh { font-family: var(--font-zh); font-weight: 900; }
 .oil-head .en-sub { font-size: .9rem; color: var(--color-ink-soft); font-weight: 500; margin-top: .15rem; }
-.oil-section .intro { color: var(--color-ink-soft); max-width: 68ch; margin-bottom: 1.6rem; }
+.oil-section .intro { color: var(--color-ink-soft); max-width: 68ch; margin-bottom: 1.4rem; }
 
-.table-scroll { overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius); -webkit-overflow-scrolling: touch; overscroll-behavior-inline: contain; }
+.table-scroll { overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius); -webkit-overflow-scrolling: touch; }
 .spec-table { width: 100%; border-collapse: collapse; font-size: var(--fs-small); min-width: 520px; }
 .spec-table caption { text-align: left; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-ink-soft); padding: .8rem 1rem; border-bottom: 1px solid var(--color-border); background: var(--color-surface); }
 .spec-table thead th {
@@ -590,8 +575,6 @@ a.card { color: inherit; }
   border-radius: var(--radius);
   background: var(--color-surface);
 }
-.oil-section + .oil-section { scroll-margin-top: 104px; }
-.quote-panel { margin-top: clamp(2rem, 4vw, 3.2rem); }
 .quote-panel h2 {
   font-family: var(--font-display);
   font-size: clamp(1.35rem, 2.4vw, 2rem);
@@ -729,8 +712,7 @@ a.card { color: inherit; }
 
 @media (max-width: 1440px) {
   html[data-lang="zh"] .primary-nav > ul > li > a .en,
-  html[data-lang="en"] .primary-nav > ul > li > a .en,
-  html[data-lang="ru"] .primary-nav > ul > li > a .ru { letter-spacing: .12em; }
+  html[data-lang="en"] .primary-nav > ul > li > a .en { letter-spacing: .12em; }
   .primary-nav ul { gap: 1.1rem; }
 }
 /* ============ RESPONSIVE ============ */
@@ -783,8 +765,7 @@ a.card { color: inherit; }
   .primary-nav a { display: block; padding: .8rem 0; font-size: 1rem; }
   .primary-nav a::after { display: none; }
   html[data-lang="zh"] .primary-nav > ul > li > a .zh,
-  html[data-lang="en"] .primary-nav > ul > li > a .en,
-  html[data-lang="ru"] .primary-nav > ul > li > a .ru { font-size: .95rem; }
+  html[data-lang="en"] .primary-nav > ul > li > a .zh { font-size: .95rem; }
   /* 移动端下拉菜单是浅色底:overlay 页强制回深色文字 */
   .site-header--overlay .primary-nav > ul > li > a { color: var(--color-ink); letter-spacing: 0; font-weight: 500; }
 }
@@ -824,8 +805,7 @@ a.card { color: inherit; }
 .site-header--overlay .lang-toggle button { color: rgba(255,255,255,.6); }
 .site-header--overlay .lang-toggle { background: transparent; border-color: rgba(255,255,255,.3); border-radius: 0; }
 html[data-lang="zh"] .site-header--overlay .lang-toggle [data-set="zh"],
-html[data-lang="en"] .site-header--overlay .lang-toggle [data-set="en"],
-html[data-lang="ru"] .site-header--overlay .lang-toggle [data-set="ru"] { background: rgba(255,255,255,.16); color:#fff; }
+html[data-lang="en"] .site-header--overlay .lang-toggle [data-set="en"] { background: rgba(255,255,255,.16); color:#fff; }
 .site-header--overlay .brand-sub { color: var(--color-on-dark-soft); }
 .site-header--overlay.is-solid { background: rgba(15,19,23,.96); border-bottom-color: rgba(255,255,255,.1); }
 
@@ -1138,7 +1118,6 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 .prod-hero-copy p { color: var(--color-on-dark-soft); max-width: 56ch; margin: 0; font-size: var(--fs-lead); }
 .prod-hero-copy .breadcrumb, .prod-hero-copy .breadcrumb a { color: var(--color-on-dark-soft); text-decoration: none; }
 .prod-hero-copy .breadcrumb a:hover { color: var(--color-on-dark); }
-.prod-hero-copy .breadcrumb { margin-bottom: clamp(1rem, 2vw, 1.5rem); }
 .grp-title { font-size: var(--fs-h2); margin: 0 0 1rem; }
 
 /* 分类主图 (油田钻采 各子类) */
