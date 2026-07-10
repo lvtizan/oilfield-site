@@ -7,13 +7,14 @@
 (function () {
   'use strict';
   var root = document.documentElement;
-  var STORE_KEY = 'ope-lang';
+  var STORE_KEY = 'kst-lang';
 
   /* ---- Language: apply persisted choice, wire toggle ---- */
   function applyLang(lang) {
-    lang = (lang === 'en') ? 'en' : 'zh';
+    lang = (lang === 'ru' || lang === 'zh') ? lang : 'en';
+    if (window.KST_I18N) window.KST_I18N.applyLanguage(lang);
     root.setAttribute('data-lang', lang);
-    root.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+    root.setAttribute('lang', lang === 'zh' ? 'zh-CN' : lang);
     document.querySelectorAll('.lang-toggle button').forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.getAttribute('data-set') === lang));
     });
