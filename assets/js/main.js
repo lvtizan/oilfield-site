@@ -129,7 +129,10 @@
     var slides = Array.prototype.slice.call(gallery.querySelectorAll('.generator-slide'));
     var dots = Array.prototype.slice.call(gallery.querySelectorAll('[data-gallery-dot]'));
     var index = 0;
-    if (slides.length < 2) return;
+    if (slides.length < 2) {
+      gallery.classList.add('is-single');
+      return;
+    }
 
     function show(next) {
       index = (next + slides.length) % slides.length;

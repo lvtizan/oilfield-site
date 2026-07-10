@@ -1430,18 +1430,22 @@ a.contact-tile:hover { border-color: var(--color-brand); }
   position: relative;
   background: transparent;
 }
+.generator-gallery.is-single { grid-template-columns: minmax(0, 1fr); }
+.generator-gallery.is-single .generator-gallery-arrow,
+.generator-gallery.is-single .generator-gallery-thumbs { display: none; }
 .generator-gallery-track {
   min-width: 0;
-  min-height: clamp(300px, 48vw, 620px);
+  height: min(620px, calc((100vw - 2 * var(--gutter) - clamp(78px, 10vw, 120px) - 1.2rem) * .75));
+  min-height: 300px;
   overflow: hidden;
   display: flex;
   transform: translate3d(0,0,0);
   transition: transform .65s cubic-bezier(.22,.61,.36,1);
   will-change: transform;
 }
-.generator-slide { flex: 0 0 100%; display: grid; place-items: center; height: clamp(300px, 48vw, 620px); }
-.generator-slide img { width: 100%; height: 100%; object-fit: contain; background: transparent; }
-.generator-slide--detail img { transform: scale(1.18); }
+.generator-gallery.is-single .generator-gallery-track { height: min(620px, calc((100vw - 2 * var(--gutter)) * .75)); }
+.generator-slide { flex: 0 0 100%; display: grid; place-items: center; height: 100%; }
+.generator-slide img { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; background: transparent; }
 .generator-gallery-arrow {
   position: absolute; top: 50%; transform: translateY(-50%);
   width: 3rem; height: 3rem; border: 1px solid var(--color-border-strong);
@@ -1489,7 +1493,8 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 
 @media (max-width: 800px) {
   .generator-gallery { grid-template-columns: 1fr; }
-  .generator-gallery-track, .generator-slide { min-height: clamp(260px, 70vw, 480px); height: clamp(260px, 70vw, 480px); }
+  .generator-gallery.is-single { grid-template-columns: 1fr; }
+  .generator-gallery-track, .generator-gallery.is-single .generator-gallery-track { min-height: 260px; height: min(480px, 75vw); }
   .generator-gallery-thumbs { flex-direction: row; overflow-x: auto; }
   .generator-gallery-thumbs button { flex: 0 0 74px; }
   .generator-gallery-arrow--next { right: .6rem; }
