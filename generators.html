@@ -71,7 +71,116 @@
       </div>
     </section>
 
-    <section>
+    <section class="generator-brand-showcase" aria-labelledby="generator-brands-title">
+      <div class="wrap">
+        <div class="generator-section-head">
+          <p class="eyebrow"><span class="zh">三大品牌</span><span class="en">Three brands</span></p>
+          <h2 id="generator-brands-title"><span class="zh">按品牌查看发电机组性能。</span><span class="en">Compare generator sets by brand.</span></h2>
+          <p><span class="zh">切换品牌，查看产品图、核心参数和适用场景。数据按产品资料整理，最终配置以正式技术文件为准。</span><span class="en">Switch brands to compare product visuals, core specifications and applications. Final configuration is subject to the formal technical documentation.</span></p>
+        </div>
+
+        <div class="generator-tabs" role="tablist" aria-label="发电机组品牌 Generator set brands">
+          <button type="button" class="generator-tab is-active" id="generator-tab-cummins" role="tab" aria-selected="true" aria-controls="generator-panel-cummins" data-generator-tab="generator-panel-cummins">
+            <span class="zh">康明斯</span><span class="en">Cummins</span>
+          </button>
+          <button type="button" class="generator-tab" id="generator-tab-cat" role="tab" aria-selected="false" aria-controls="generator-panel-cat" data-generator-tab="generator-panel-cat">
+            <span class="zh">卡特彼勒</span><span class="en">Caterpillar</span>
+          </button>
+          <button type="button" class="generator-tab" id="generator-tab-weichai" role="tab" aria-selected="false" aria-controls="generator-panel-weichai" data-generator-tab="generator-panel-weichai">
+            <span class="zh">潍柴</span><span class="en">Weichai</span>
+          </button>
+        </div>
+
+        <article class="generator-brand-panel is-active" id="generator-panel-cummins" role="tabpanel" aria-labelledby="generator-tab-cummins">
+          <div class="generator-brand-grid">
+            <figure class="generator-brand-visual">
+              <img src="assets/img/products/gen-hero-2172.jpg" alt="康明斯陆用油田发电机组 Cummins land oilfield generator set" loading="lazy" />
+              <figcaption><span class="zh">陆用油田发电机组</span><span class="en">Land oilfield gensets</span></figcaption>
+            </figure>
+            <div class="generator-brand-content">
+              <p class="eyebrow"><span class="zh">康明斯 · 陆用油田动力</span><span class="en">Cummins · Land oilfield power</span></p>
+              <h3><span class="zh">322–578 kW 油田发电机组</span><span class="en">322–578 kW oilfield generator sets</span></h3>
+              <p><span class="zh">覆盖陆地井场主电源、备用电源与钻井电动力模块，按功率、频率和排放要求选型。</span><span class="en">For land-based wellsite prime power, standby power and drilling power modules, selected by rating, frequency and emissions.</span></p>
+              <div class="table-scroll">
+                <table class="spec-table">
+                  <caption><span class="zh">康明斯产品参数</span><span class="en">Cummins product specifications</span></caption>
+                  <thead><tr><th>Model</th><th><span class="zh">功率 (kW)</span><span class="en">Power (kW)</span></th><th><span class="zh">输出 (bhp)</span><span class="en">Output (bhp)</span></th><th><span class="zh">排放</span><span class="en">Emissions</span></th></tr></thead>
+                  <tbody>
+                    <tr><td class="model">QSX15-G</td><td>322–439</td><td>454–620</td><td>Tier 4</td></tr>
+                    <tr><td class="model">QSK19-G</td><td>507–578</td><td>715–815</td><td>Tier 4</td></tr>
+                    <tr><td class="model">QSK50</td><td>1104–1417</td><td>—</td><td>Tier 4</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="generator-brand-panel" id="generator-panel-cat" role="tabpanel" aria-labelledby="generator-tab-cat" hidden>
+          <div class="generator-brand-grid">
+            <figure class="generator-brand-visual">
+              <img src="assets/img/products/generator-brands/cat-g3516c.png" alt="卡特彼勒 G3516C 燃气发电机组 Caterpillar G3516C gas generator set" loading="lazy" />
+              <figcaption><span class="zh">G3516C 燃气发电机组</span><span class="en">G3516C gas generator set</span></figcaption>
+            </figure>
+            <div class="generator-brand-content">
+              <p class="eyebrow"><span class="zh">卡特彼勒 · G3516C</span><span class="en">Caterpillar · G3516C</span></p>
+              <h3><span class="zh">1555 ekW 连续额定功率</span><span class="en">1555 ekW continuous rating</span></h3>
+              <p><span class="zh">适用于需要稳定燃气动力和高效率的电力场景；参数根据卡特彼勒中国官方 G3516C 产品页整理。</span><span class="en">For power applications requiring stable gas power and high efficiency; specifications are organized from the official Caterpillar China G3516C product page.</span></p>
+              <div class="table-scroll">
+                <table class="spec-table">
+                  <caption><span class="zh">卡特彼勒 G3516C 技术规格</span><span class="en">Caterpillar G3516C technical specifications</span></caption>
+                  <thead><tr><th><span class="zh">项目</span><span class="en">Item</span></th><th><span class="zh">规格</span><span class="en">Specification</span></th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="zh">连续额定功率</span><span class="en">Continuous rating</span></td><td>1555 ekW</td></tr>
+                    <tr><td><span class="zh">备用额定功率</span><span class="en">Standby rating</span></td><td>1500</td></tr>
+                    <tr><td><span class="zh">最高电力效率</span><span class="en">Max. electrical efficiency</span></td><td>37.70%</td></tr>
+                    <tr><td><span class="zh">发动机排量</span><span class="en">Displacement</span></td><td>69 L</td></tr>
+                    <tr><td><span class="zh">缸径 × 冲程</span><span class="en">Bore × stroke</span></td><td>170 × 190 mm</td></tr>
+                    <tr><td><span class="zh">频率 / 转速</span><span class="en">Frequency / speed</span></td><td>50/60 Hz · 1500/1800 rpm</td></tr>
+                    <tr><td><span class="zh">外形尺寸</span><span class="en">Dimensions</span></td><td>5553 × 1828 × 2340 mm</td></tr>
+                    <tr><td><span class="zh">发电机组干重</span><span class="en">Dry weight</span></td><td>14161 kg</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="generator-source"><span class="zh">数据来源：卡特彼勒中国官方 G3516C 产品页。</span><span class="en">Source: official Caterpillar China G3516C product page.</span></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="generator-brand-panel" id="generator-panel-weichai" role="tabpanel" aria-labelledby="generator-tab-weichai" hidden>
+          <div class="generator-brand-grid">
+            <figure class="generator-brand-visual">
+              <img src="assets/img/products/generator-brands/weichai-16m55.jpg" alt="潍柴 16M55 系列陆用发电机组 Weichai 16M55 land generator set" loading="lazy" />
+              <figcaption><span class="zh">16M55 系列陆用发电机组</span><span class="en">16M55 land generator sets</span></figcaption>
+            </figure>
+            <div class="generator-brand-content">
+              <p class="eyebrow"><span class="zh">潍柴 · 16M55 系列</span><span class="en">Weichai · 16M55 series</span></p>
+              <h3><span class="zh">3300–4125 kVA 陆用标准型发电机组</span><span class="en">3300–4125 kVA standard land generator sets</span></h3>
+              <p><span class="zh">16 缸、87.5 L 排量，额定转速 1500 r/min，适用于大功率陆用电力场景。</span><span class="en">A 16-cylinder, 87.5 L platform at 1500 r/min for high-power land-based applications.</span></p>
+              <div class="table-scroll">
+                <table class="spec-table">
+                  <caption><span class="zh">潍柴 16M55 系列型谱表</span><span class="en">Weichai 16M55 series specifications</span></caption>
+                  <thead><tr><th>Model</th><th><span class="zh">额定功率 (kWe)</span><span class="en">Rated power (kWe)</span></th><th><span class="zh">备用容量 (kVA)</span><span class="en">Standby (kVA)</span></th><th><span class="zh">发动机功率 (kWm)</span><span class="en">Engine power (kWm)</span></th><th><span class="zh">尺寸 / 湿重</span><span class="en">Dimensions / wet weight</span></th></tr></thead>
+                  <tbody>
+                    <tr><td class="model">WPG3300B73</td><td>2400</td><td>3300</td><td>2646 / 2900</td><td>7090×3000×3580 mm / 25400 kg</td></tr>
+                    <tr><td class="model">WPG3575B73</td><td>2600</td><td>3575</td><td>2900 / 3300</td><td>7090×3000×3580 mm / 25500 kg</td></tr>
+                    <tr><td class="model">WPG4125B73</td><td>3000</td><td>4125</td><td>3300 / 3600</td><td>7290×3000×3760 mm / 26500 kg</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="tag-row">
+                <span class="tag-chip"><span class="zh">额定转速 1500 r/min</span><span class="en">1500 r/min</span></span>
+                <span class="tag-chip"><span class="zh">87.5 L 排量</span><span class="en">87.5 L displacement</span></span>
+                <span class="tag-chip"><span class="zh">燃油消耗率 ≤189 g/(kW·h)</span><span class="en">Fuel consumption ≤189 g/(kW·h)</span></span>
+              </div>
+              <p class="generator-source"><span class="zh">数据来源：潍柴集团官方 16M55 系列陆用发电机组产品页。</span><span class="en">Source: official Weichai 16M55 land generator set product page.</span></p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="generator-legacy-section">
       <div class="wrap">
         <div class="table-scroll">
           <table class="spec-table">

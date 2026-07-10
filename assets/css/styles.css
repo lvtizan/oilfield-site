@@ -1356,6 +1356,77 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 .prod-hero--pano { min-height: clamp(300px, 52vh, 620px); }
 .prod-hero--pano .prod-hero-img { object-position: center 42%; }
 
+/* ============ Generator brand switcher ============ */
+.generator-brand-showcase {
+  background: var(--color-bg);
+  padding-block: clamp(3rem, 7vw, 6rem);
+}
+.generator-section-head { max-width: 760px; margin-bottom: clamp(1.8rem, 4vw, 3rem); }
+.generator-section-head h2 { font-size: var(--fs-h2); line-height: 1.1; margin: .45rem 0 .8rem; }
+.generator-section-head h2 .zh,
+.generator-brand-content h3 .zh { font-family: var(--font-zh); font-weight: 900; }
+.generator-section-head > p:last-child { color: var(--color-ink-soft); max-width: 66ch; font-size: var(--fs-lead); }
+.generator-tabs {
+  display: flex;
+  gap: .4rem;
+  overflow-x: auto;
+  padding-bottom: .7rem;
+  margin-bottom: clamp(1.8rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--color-border);
+  scrollbar-width: thin;
+}
+.generator-tab {
+  flex: 0 0 auto;
+  min-height: 3rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: .65rem 1.2rem;
+  background: var(--color-bg);
+  color: var(--color-ink-soft);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--dur), color var(--dur), border-color var(--dur), transform var(--dur);
+}
+.generator-tab:hover,
+.generator-tab:focus-visible { border-color: var(--color-ink); color: var(--color-ink); }
+.generator-tab.is-active { background: var(--color-ink); border-color: var(--color-ink); color: var(--color-on-dark); }
+.generator-brand-panel[hidden] { display: none; }
+.generator-brand-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, .9fr) minmax(0, 1.1fr);
+  gap: clamp(1.6rem, 5vw, 4rem);
+  align-items: start;
+}
+.generator-brand-visual {
+  position: sticky;
+  top: 1.5rem;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+.generator-brand-visual img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: #fff; }
+.generator-brand-visual figcaption { padding: .75rem 1rem; border-top: 1px solid var(--color-border); color: var(--color-ink-soft); font-size: .84rem; }
+.generator-brand-content h3 { font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1.12; margin: .45rem 0 .75rem; }
+.generator-brand-content > p:not(.eyebrow):not(.generator-source) { color: var(--color-ink-soft); max-width: 62ch; margin-bottom: 1.3rem; }
+.generator-brand-content .table-scroll { margin-top: 1.2rem; }
+.generator-brand-content .spec-table { min-width: 640px; }
+.generator-source { color: var(--color-ink-soft); font-size: .78rem; margin-top: 1rem; }
+.generator-legacy-section { display: none; }
+
+@media (max-width: 800px) {
+  .generator-brand-grid { grid-template-columns: 1fr; }
+  .generator-brand-visual { position: static; max-width: 680px; }
+}
+
+@media (max-width: 560px) {
+  .generator-tabs { margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+  .generator-brand-content .spec-table { min-width: 680px; }
+}
+
 
 /* ============================================================
    KST-LOWER — 自 homepage-2.0 移植的下半部(精选型号/询盘/页脚)

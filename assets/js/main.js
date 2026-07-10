@@ -89,3 +89,37 @@
     onScroll();
   }
 })();
+
+/* ---- Generator brand tabs ---- */
+(function () {
+  'use strict';
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-generator-tab]'));
+  if (!tabs.length) return;
+
+  function activate(tab) {
+    var panelId = tab.getAttribute('data-generator-tab');
+    tabs.forEach(function (item) {
+      var active = item === tab;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+      var panel = document.getElementById(item.getAttribute('aria-controls'));
+      if (panel) panel.hidden = !active;
+    });
+    var activePanel = document.getElementById(panelId);
+    if (activePanel) activePanel.focus({ preventScroll: true });
+  }
+
+  tabs.forEach(function (tab, index) {
+    tab.addEventListener('click', function () { activate(tab); });
+    tab.addEventListener('keydown', function (event) {
+      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+      event.preventDefault();
+      var next = event.key === 'ArrowRight' ? index + 1 : index - 1;
+      if (next < 0) next = tabs.length - 1;
+      if (next >= tabs.length) next = 0;
+      tabs[next].focus();
+      activate(tabs[next]);
+    });
+  });
+})();
