@@ -133,6 +133,8 @@
 
     function show(next) {
       index = (next + slides.length) % slides.length;
+      var track = gallery.querySelector('.generator-gallery-track');
+      if (track) track.style.transform = 'translate3d(-' + (index * 100) + '%,0,0)';
       slides.forEach(function (slide, i) { slide.classList.toggle('is-active', i === index); });
       dots.forEach(function (dot, i) { dot.classList.toggle('is-active', i === index); });
     }
