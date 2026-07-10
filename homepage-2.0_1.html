@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,9 +51,11 @@ nav a:hover{color:#fff}
 nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
 nav a.on::after,nav a:hover::after{transform:scaleX(1)}
 nav a .en{display:block;font-family:var(--num);font-size:9px;letter-spacing:.3em;color:var(--mut);text-transform:uppercase;margin-top:1px}
-.lang{margin-left:44px;font-family:var(--num);font-size:13px;letter-spacing:.18em;color:var(--mut);border:1px solid var(--line);padding:7px 14px;transition:.3s}
+.lang{margin-left:44px;font-family:var(--num);font-size:13px;letter-spacing:.18em;color:var(--mut);border:1px solid var(--line);padding:3px 5px;transition:.3s}
 .lang:hover{color:#fff;border-color:rgba(255,255,255,.4)}
-.lang b{color:#fff;font-weight:500}
+.kst-lang{display:inline-flex;gap:2px}
+.kst-lang button{border:0;background:transparent;color:var(--mut);font:inherit;letter-spacing:.1em;padding:4px 8px;cursor:pointer}
+.kst-lang button[aria-pressed="true"]{color:#fff;background:rgba(255,255,255,.12)}
 .verswitch{margin-left:22px;font-family:var(--num);font-size:12px;letter-spacing:.12em;color:#fff;background:var(--acc);padding:7px 15px;border-radius:3px;text-transform:uppercase;transition:.25s;flex-shrink:0}
 .verswitch:hover{filter:brightness(1.12)}
 /* ---------- 导航下拉:油田钻采设备四大类;三角内联在"备"字后 ---------- */
@@ -274,22 +276,25 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
   <div class="bar">
     <site-logo href="#"></site-logo>
     <nav>
-      <a href="#p-gen" data-panel="0">发电机组<span class="en">Generator Sets</span></a>
-      <a href="#p-eng" data-panel="1">工业发动机<span class="en">Industrial Engines</span></a>
+      <a href="generators.html" data-panel="0"><span data-i18n-key="nav.generators">发电机组</span></a>
+      <a href="engines.html" data-panel="1"><span data-i18n-key="nav.engines">工业发动机</span></a>
       <span class="ni">
-        <a href="#p-oil" data-panel="2">油田钻采设备<span class="caret">▾</span><span class="en">Drilling &amp; Production</span></a>
+        <a href="oilfield.html" data-panel="2"><span data-i18n-key="nav.oilfield">油田钻采设备</span><span class="caret">▾</span></a>
         <div class="subnav">
-          <a href="oilfield.html#drilling">钻井装备<span class="en">Drilling</span></a>
-          <a href="oilfield.html#workover">修井装备<span class="en">Workover</span></a>
-          <a href="oilfield.html#cementing">固井装备<span class="en">Cementing</span></a>
-          <a href="oilfield.html#fracturing">压裂装备<span class="en">Fracturing</span></a>
+          <a href="oilfield.html#drilling"><span data-i18n-key="nav.drilling">钻井装备</span></a>
+          <a href="oilfield.html#workover"><span data-i18n-key="nav.workover">修井装备</span></a>
+          <a href="oilfield.html#cementing"><span data-i18n-key="nav.cementing">固井装备</span></a>
+          <a href="oilfield.html#fracturing"><span data-i18n-key="nav.fracturing">压裂装备</span></a>
         </div>
       </span>
-      <a href="#s-apps">应用领域<span class="en">Applications</span></a>
-      <a href="#s-cta">联系我们<span class="en">Contact</span></a>
+      <a href="#s-apps"><span data-i18n-key="legacy.nav.applications">应用领域</span></a>
+      <a href="#s-cta"><span data-i18n-key="legacy.nav.contact">联系我们</span></a>
     </nav>
     <a class="verswitch" href="homepage-3.0.html">切换 3.0 版</a>
-    <a class="lang" href="#"><b>中</b> / EN</a>
+    <div class="kst-lang lang" role="group" aria-label="Language">
+      <button type="button" data-set="en" aria-label="Switch to English">EN</button>
+      <button type="button" data-set="ru" aria-label="Переключить на русский">RU</button>
+    </div>
     <button class="burger" id="burger" aria-label="打开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -300,12 +305,12 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
 
   <div class="claim">
     <div class="en">A&nbsp;Trusted&nbsp;Name&nbsp;in&nbsp;Power&nbsp;Solutions</div>
-    <h1>从井口<b>&nbsp;·&nbsp;</b>到电网</h1>
-    <p>发电机组&nbsp;/&nbsp;工业发动机&nbsp;/&nbsp;油田钻采成套设备</p>
+    <h1 data-i18n-key="legacy.hero.claim">从井口 · 到电网</h1>
+    <p data-i18n-key="legacy.hero.subline">发电机组 / 工业发动机 / 油田钻采成套设备</p>
   </div>
 
   <!-- 面板 1:发电机组 -->
-  <div class="panel" id="p-gen" data-panel="0">
+  <a class="panel" id="p-gen" data-panel="0" href="generators.html" aria-label="进入发电机组 Generator Sets">
     <div class="art">
       <svg viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice">
         <defs>
@@ -341,15 +346,15 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
     <div class="veil"></div>
     <div class="dim"></div>
     <div class="txt">
-      <div class="en">Generator&nbsp;Sets</div>
-      <h2>发电机组</h2>
+      <div class="en" data-i18n-key="legacy.panel.generators">Generator&nbsp;Sets</div>
+      <h2 data-i18n-key="legacy.panel.generators">发电机组</h2>
       <div class="tag">功率覆盖 <i>74 – 4400 hp</i> · 陆地井场 / 电站 / 备用电源</div>
-      <span class="go"><span class="ln"></span>进入&nbsp;ENTER</span>
+      <span class="go"><span class="ln"></span><span data-i18n-key="legacy.panel.enter">进入</span></span>
     </div>
-  </div>
+  </a>
 
   <!-- 面板 2:工业发动机 -->
-  <div class="panel" id="p-eng" data-panel="1">
+  <a class="panel" id="p-eng" data-panel="1" href="engines.html" aria-label="进入工业发动机 Industrial Engines">
     <div class="art">
       <svg viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice">
         <defs>
@@ -386,15 +391,15 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
     <div class="veil"></div>
     <div class="dim"></div>
     <div class="txt">
-      <div class="en">Industrial&nbsp;Engines</div>
-      <h2>工业发动机</h2>
+      <div class="en" data-i18n-key="legacy.panel.engines">Industrial&nbsp;Engines</div>
+      <h2 data-i18n-key="legacy.panel.engines">工业发动机</h2>
       <div class="tag">矿用 / 钻井动力 · 高原高寒工况长周期运转</div>
-      <span class="go"><span class="ln"></span>进入&nbsp;ENTER</span>
+      <span class="go"><span class="ln"></span><span data-i18n-key="legacy.panel.enter">进入</span></span>
     </div>
-  </div>
+  </a>
 
   <!-- 面板 3:油田钻采设备 -->
-  <div class="panel" id="p-oil" data-panel="2">
+  <a class="panel" id="p-oil" data-panel="2" href="oilfield.html" aria-label="进入油田钻采设备 Drilling and Production">
     <div class="art">
       <svg viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice">
         <defs>
@@ -426,12 +431,12 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
     <div class="veil"></div>
     <div class="dim"></div>
     <div class="txt">
-      <div class="en">Drilling&nbsp;&amp;&nbsp;Production</div>
-      <h2>油田钻采设备</h2>
+      <div class="en" data-i18n-key="legacy.panel.oilfield">Drilling&nbsp;&amp;&nbsp;Production</div>
+      <h2 data-i18n-key="legacy.panel.oilfield">油田钻采设备</h2>
       <div class="tag">钻采成套 · 最大钻深 <i>9000 m</i> · 最大工压 <i>175 MPa</i></div>
-      <span class="go"><span class="ln"></span>进入&nbsp;ENTER</span>
+      <span class="go"><span class="ln"></span><span data-i18n-key="legacy.panel.enter">进入</span></span>
     </div>
-  </div>
+  </a>
 
   <div class="scrolldn"><span>Scroll</span><span class="stem"></span></div>
 </section>
@@ -606,10 +611,10 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
   <div class="wrap">
     <div class="inner reveal">
       <div class="en">Tell&nbsp;Us&nbsp;Your&nbsp;Requirements</div>
-      <h3>告诉我们您的<b>功率</b>与<b>井场需求</b></h3>
+      <h3 data-i18n-key="legacy.cta.title">告诉我们您的功率与井场需求</h3>
       <p>提供工况参数,72 小时内回复选型方案与报价。<br>支持整机出口 · 成套配置 · 现场调试</p>
       <div class="act">
-        <a class="btn" href="mailto:sales@example.com">获取选型方案</a>
+        <a class="btn" href="mailto:sales@example.com" data-i18n-key="legacy.cta.action">获取选型方案</a>
         <div class="tel"><span>Sales&nbsp;Hotline</span>+86&nbsp;400-000-0000</div>
       </div>
     </div>
@@ -627,9 +632,9 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
       <div>
         <h5>产品&nbsp;Products</h5>
         <ul>
-          <li><a href="#p-gen">发电机组</a></li>
-          <li><a href="#p-eng">工业发动机</a></li>
-          <li><a href="#p-oil">油田钻采设备</a></li>
+          <li><a href="generators.html" data-i18n-key="nav.generators">发电机组</a></li>
+          <li><a href="engines.html" data-i18n-key="nav.engines">工业发动机</a></li>
+          <li><a href="oilfield.html" data-i18n-key="nav.oilfield">油田钻采设备</a></li>
         </ul>
       </div>
       <div>
@@ -731,5 +736,6 @@ const nio=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.6});
 document.querySelectorAll('.cnt').forEach(el=>nio.observe(el));
 </script>
+<script src="assets/js/languages.js"></script>
 </body>
 </html>

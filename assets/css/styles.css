@@ -76,6 +76,10 @@ img, svg { display: block; max-width: 100%; }
 /* Both languages stay in the DOM for SEO; CSS shows one set at a time. */
 html[data-lang="zh"] .en { display: none; }
 html[data-lang="en"] .zh { display: none; }
+html[data-lang="zh"] .ru,
+html[data-lang="en"] .ru,
+html[data-lang="ru"] .zh,
+html[data-lang="ru"] .en { display: none; }
 
 /* ============ ACCESSIBILITY ============ */
 :focus-visible {
@@ -112,7 +116,7 @@ section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
 
 .site-header {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(255,255,255,.97);
+  background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
 }
 .header-inner { display: flex; align-items: center; gap: 1.5rem; min-height: 76px; max-width: none; padding-inline: clamp(1.2rem, 2.6vw, 3rem); }
@@ -163,12 +167,20 @@ section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
 /* ---- 2.0 式双语两行导航(仅一级项) ---- */
 .primary-nav > ul > li > a { line-height: 1.15; }
 html[data-lang="zh"] .primary-nav > ul > li > a .zh,
-html[data-lang="en"] .primary-nav > ul > li > a .zh { display: block; font-size: .82rem; letter-spacing: .08em; }
+html[data-lang="en"] .primary-nav > ul > li > a .en,
+html[data-lang="ru"] .primary-nav > ul > li > a .ru { display: block; font-size: .82rem; letter-spacing: .08em; }
 html[data-lang="zh"] .primary-nav > ul > li > a .en,
-html[data-lang="en"] .primary-nav > ul > li > a .en {
-  display: block; font-family: "Barlow Condensed","Arial Narrow",var(--font-display);
-  font-size: .56rem; font-weight: 400; letter-spacing: .2em; text-transform: uppercase;
-  opacity: .5; margin-top: 3px; white-space: nowrap;
+html[data-lang="zh"] .primary-nav > ul > li > a .ru,
+html[data-lang="en"] .primary-nav > ul > li > a .zh,
+html[data-lang="en"] .primary-nav > ul > li > a .ru,
+html[data-lang="ru"] .primary-nav > ul > li > a .zh,
+html[data-lang="ru"] .primary-nav > ul > li > a .en { display: none; }
+ .primary-nav > ul > li > a .zh,
+ .primary-nav > ul > li > a .en,
+ .primary-nav > ul > li > a .ru {
+  font-family: "Barlow Condensed","Arial Narrow",var(--font-display);
+  font-size: .92rem; font-weight: 500; letter-spacing: .04em;
+  white-space: nowrap;
 }
 .primary-nav .has-sub .caret { display: none; }
 
@@ -184,7 +196,8 @@ html[data-lang="en"] .primary-nav > ul > li > a .en {
   color: var(--color-ink-soft); transition: background var(--dur), color var(--dur);
 }
 html[data-lang="zh"] .lang-toggle [data-set="zh"],
-html[data-lang="en"] .lang-toggle [data-set="en"] {
+html[data-lang="en"] .lang-toggle [data-set="en"],
+html[data-lang="ru"] .lang-toggle [data-set="ru"] {
   background: var(--color-ink); color: var(--color-on-dark);
 }
 
@@ -331,10 +344,10 @@ html[data-lang="en"] .lang-toggle [data-set="en"] {
 /* ============ INTERIOR PAGE HERO ============ */
 .page-hero {
   background: linear-gradient(180deg, var(--color-bg), var(--color-surface) 160%);
-  padding-block: clamp(2.4rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
+  padding-block: clamp(2.8rem, 6vw, 5rem) clamp(2.4rem, 4.5vw, 3.6rem);
   border-bottom: 1px solid var(--color-border);
 }
-.breadcrumb { font-size: var(--fs-small); color: var(--color-ink-soft); margin-bottom: .9rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+.breadcrumb { font-size: var(--fs-small); color: var(--color-ink-soft); margin-bottom: 1.15rem; display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
 .breadcrumb a:hover { color: var(--color-brand); }
 .breadcrumb .sep { color: var(--color-ink-line); }
 .page-hero h1 {
@@ -343,6 +356,7 @@ html[data-lang="en"] .lang-toggle [data-set="en"] {
 }
 .page-hero h1 .zh { font-family: var(--font-zh); font-weight: 900; letter-spacing: -.01em; }
 .page-hero .lead { font-size: var(--fs-lead); color: var(--color-ink-soft); max-width: 60ch; }
+.page-hero .eyebrow { margin-bottom: .35rem; }
 .page-hero-grid {
   display: grid;
   grid-template-columns: 1.05fr .75fr;
@@ -528,25 +542,26 @@ a.card { color: inherit; }
 .card .more { margin-top: 1rem; font-size: .8rem; font-weight: 600; color: var(--color-brand); display: inline-flex; gap: .35rem; align-items: center; }
 
 /* ============ OILFIELD PAGE: category chips + sections + spec tables ============ */
-.chip-nav { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: clamp(2rem,4vw,3rem); }
+.chip-nav { display: flex; flex-wrap: wrap; gap: .6rem; margin: clamp(1.2rem, 3vw, 2rem) 0 clamp(2.4rem, 4vw, 3.4rem); padding: .65rem; border: 1px solid var(--color-border); background: var(--color-surface); }
 .chip-nav a {
   font-family: var(--font-display); font-size: .82rem; font-weight: 600;
-  border: 1px solid var(--color-border); border-radius: 999px; padding: .4rem .9rem;
+  min-height: 2.75rem; display: inline-flex; align-items: center;
+  border: 1px solid var(--color-border); border-radius: 999px; padding: .4rem 1rem;
   color: var(--color-ink-soft); background: var(--color-bg); transition: all var(--dur);
 }
 .chip-nav a:hover { border-color: var(--color-ink); color: var(--color-ink); }
 .chip-nav a .num { color: var(--color-brand); font-weight: 700; margin-right: .35rem; }
 
-.oil-section { padding-block: clamp(2.2rem, 4vw, 3.4rem); border-top: 1px solid var(--color-border); scroll-margin-top: 96px; }
+.oil-section { padding-block: clamp(2.8rem, 5vw, 4.4rem); border-top: 1px solid var(--color-border); scroll-margin-top: 96px; }
 .oil-section:first-of-type { border-top: 0; }
 .oil-head { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; }
 .oil-head .idx { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: var(--color-brand); letter-spacing: .06em; line-height: 1; padding-top: .25rem; }
 .oil-head h2 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
 .oil-head h2 .zh { font-family: var(--font-zh); font-weight: 900; }
 .oil-head .en-sub { font-size: .9rem; color: var(--color-ink-soft); font-weight: 500; margin-top: .15rem; }
-.oil-section .intro { color: var(--color-ink-soft); max-width: 68ch; margin-bottom: 1.4rem; }
+.oil-section .intro { color: var(--color-ink-soft); max-width: 68ch; margin-bottom: 1.6rem; }
 
-.table-scroll { overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius); -webkit-overflow-scrolling: touch; }
+.table-scroll { overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius); -webkit-overflow-scrolling: touch; overscroll-behavior-inline: contain; }
 .spec-table { width: 100%; border-collapse: collapse; font-size: var(--fs-small); min-width: 520px; }
 .spec-table caption { text-align: left; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-ink-soft); padding: .8rem 1rem; border-bottom: 1px solid var(--color-border); background: var(--color-surface); }
 .spec-table thead th {
@@ -575,6 +590,8 @@ a.card { color: inherit; }
   border-radius: var(--radius);
   background: var(--color-surface);
 }
+.oil-section + .oil-section { scroll-margin-top: 104px; }
+.quote-panel { margin-top: clamp(2rem, 4vw, 3.2rem); }
 .quote-panel h2 {
   font-family: var(--font-display);
   font-size: clamp(1.35rem, 2.4vw, 2rem);
@@ -712,7 +729,8 @@ a.card { color: inherit; }
 
 @media (max-width: 1440px) {
   html[data-lang="zh"] .primary-nav > ul > li > a .en,
-  html[data-lang="en"] .primary-nav > ul > li > a .en { letter-spacing: .12em; }
+  html[data-lang="en"] .primary-nav > ul > li > a .en,
+  html[data-lang="ru"] .primary-nav > ul > li > a .ru { letter-spacing: .12em; }
   .primary-nav ul { gap: 1.1rem; }
 }
 /* ============ RESPONSIVE ============ */
@@ -765,7 +783,8 @@ a.card { color: inherit; }
   .primary-nav a { display: block; padding: .8rem 0; font-size: 1rem; }
   .primary-nav a::after { display: none; }
   html[data-lang="zh"] .primary-nav > ul > li > a .zh,
-  html[data-lang="en"] .primary-nav > ul > li > a .zh { font-size: .95rem; }
+  html[data-lang="en"] .primary-nav > ul > li > a .en,
+  html[data-lang="ru"] .primary-nav > ul > li > a .ru { font-size: .95rem; }
   /* 移动端下拉菜单是浅色底:overlay 页强制回深色文字 */
   .site-header--overlay .primary-nav > ul > li > a { color: var(--color-ink); letter-spacing: 0; font-weight: 500; }
 }
@@ -805,7 +824,8 @@ a.card { color: inherit; }
 .site-header--overlay .lang-toggle button { color: rgba(255,255,255,.6); }
 .site-header--overlay .lang-toggle { background: transparent; border-color: rgba(255,255,255,.3); border-radius: 0; }
 html[data-lang="zh"] .site-header--overlay .lang-toggle [data-set="zh"],
-html[data-lang="en"] .site-header--overlay .lang-toggle [data-set="en"] { background: rgba(255,255,255,.16); color:#fff; }
+html[data-lang="en"] .site-header--overlay .lang-toggle [data-set="en"],
+html[data-lang="ru"] .site-header--overlay .lang-toggle [data-set="ru"] { background: rgba(255,255,255,.16); color:#fff; }
 .site-header--overlay .brand-sub { color: var(--color-on-dark-soft); }
 .site-header--overlay.is-solid { background: rgba(15,19,23,.96); border-bottom-color: rgba(255,255,255,.1); }
 
@@ -1118,6 +1138,7 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 .prod-hero-copy p { color: var(--color-on-dark-soft); max-width: 56ch; margin: 0; font-size: var(--fs-lead); }
 .prod-hero-copy .breadcrumb, .prod-hero-copy .breadcrumb a { color: var(--color-on-dark-soft); text-decoration: none; }
 .prod-hero-copy .breadcrumb a:hover { color: var(--color-on-dark); }
+.prod-hero-copy .breadcrumb { margin-bottom: clamp(1rem, 2vw, 1.5rem); }
 .grp-title { font-size: var(--fs-h2); margin: 0 0 1rem; }
 
 /* 分类主图 (油田钻采 各子类) */
@@ -1356,6 +1377,86 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 .prod-hero--pano { min-height: clamp(300px, 52vh, 620px); }
 .prod-hero--pano .prod-hero-img { object-position: center 42%; }
 
+
+/* ============================================================
+   KST-LOWER — 自 homepage-2.0 移植的下半部(精选型号/询盘/页脚)
+   作用域隔离:全部规则以 .kst-lower 为前缀,不影响全站其他组件
+   ============================================================ */
+.kst-lower{
+  --k-bg:#0f1317; --k-bg2:#141a20; --k-paper:#f2f1ed; --k-ink:#e9ecef; --k-ink-dark:#171b1f;
+  --k-mut:#8b959e; --k-mut-dark:#6d7378; --k-acc:#E60012;
+  --k-line:rgba(255,255,255,.10); --k-line-dark:rgba(0,0,0,.12);
+  --k-num:'Barlow Condensed','Arial Narrow',sans-serif;
+  --k-cn:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  --k-ease:cubic-bezier(.22,.61,.36,1);
+  font-family:var(--k-cn); font-weight:300;
+}
+.kst-lower .wrap{max-width:1400px;margin:0 auto;padding:0 48px}
+.kst-lower .shead{display:flex;align-items:flex-end;gap:28px;padding:132px 0 64px}
+.kst-lower .shead .no{font-family:var(--k-num);font-size:15px;font-weight:500;letter-spacing:.1em;color:var(--k-acc)}
+.kst-lower .shead .rule{flex:0 0 64px;height:1px;background:currentColor;opacity:.25;margin-bottom:9px}
+.kst-lower .shead h3{font-size:clamp(28px,3vw,44px);font-weight:500;letter-spacing:.1em;line-height:1;margin:0}
+.kst-lower .shead .en{margin-left:auto;font-family:var(--k-num);font-size:12px;letter-spacing:.42em;text-transform:uppercase;opacity:.45;margin-bottom:6px}
+.kst-lower .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--k-ease),transform .8s var(--k-ease)}
+.kst-lower .reveal.in{opacity:1;transform:none}
+
+/* 精选型号 */
+.kst-lower .models{background:var(--k-paper);color:var(--k-ink-dark);padding:0}
+.kst-lower .modelgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-bottom:140px}
+.kst-lower .model{position:relative;background:#fff;border:1px solid var(--k-line-dark);overflow:hidden;padding:38px 34px 34px;min-height:430px;display:flex;flex-direction:column;transition:transform .5s var(--k-ease),box-shadow .5s var(--k-ease)}
+.kst-lower .model:hover{transform:translateY(-8px);box-shadow:0 30px 60px -30px rgba(23,27,31,.35)}
+.kst-lower .model .ghost{position:absolute;right:-10px;top:2px;font-family:var(--k-num);font-weight:600;font-size:150px;line-height:1;color:rgba(23,27,31,.05);letter-spacing:-.01em;user-select:none;transition:color .5s}
+.kst-lower .model:hover .ghost{color:rgba(230,0,18,.12)}
+.kst-lower .model .cat{font-family:var(--k-num);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--k-mut-dark)}
+.kst-lower .model h4{margin:10px 0 0;font-family:var(--k-num);font-weight:500;font-size:44px;letter-spacing:.02em;color:var(--k-ink-dark)}
+.kst-lower .model .desc{margin-top:6px;font-size:14px;letter-spacing:.08em;color:var(--k-mut-dark)}
+.kst-lower .model .fig{margin:26px 0 8px;flex:1;display:flex;align-items:center;justify-content:center}
+.kst-lower .model .fig svg{width:86%;max-height:170px;stroke:#2a3138;fill:none;stroke-width:1.3;opacity:.85}
+.kst-lower .model .kv{display:flex;gap:34px;border-top:1px solid var(--k-line-dark);padding-top:22px}
+.kst-lower .model .kv div b{display:block;font-family:var(--k-num);font-weight:400;font-size:30px;color:var(--k-ink-dark)}
+.kst-lower .model .kv div b i{font-style:normal;font-size:.5em;color:var(--k-acc);margin-left:2px}
+.kst-lower .model .kv div span{font-size:12px;letter-spacing:.12em;color:var(--k-mut-dark)}
+
+/* 询盘 CTA */
+.kst-lower .cta{background:var(--k-bg2);overflow:hidden;position:relative;padding:0}
+.kst-lower .cta .inner{position:relative;padding:150px 0;text-align:center}
+.kst-lower .cta .en{font-family:var(--k-num);font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--k-mut)}
+.kst-lower .cta h3{margin:26px 0 0;font-size:clamp(30px,4vw,58px);font-weight:400;letter-spacing:.14em;color:#fff}
+.kst-lower .cta h3 b{color:var(--k-acc);font-weight:500}
+.kst-lower .cta p{margin-top:22px;font-size:15px;letter-spacing:.1em;color:var(--k-mut);line-height:1.9}
+.kst-lower .cta .act{margin-top:52px;display:flex;align-items:center;justify-content:center;gap:38px}
+.kst-lower .cta .btn{display:inline-block;background:var(--k-acc);color:#fff;font-weight:500;font-size:15px;letter-spacing:.22em;padding:20px 52px;border-radius:0;transition:.35s var(--k-ease)}
+.kst-lower .cta .btn:hover{background:#fff;color:#14181c}
+.kst-lower .cta .tel{font-family:var(--k-num);font-size:22px;letter-spacing:.1em;color:#fff}
+.kst-lower .cta .tel span{display:block;font-size:10px;letter-spacing:.34em;color:var(--k-mut);text-transform:uppercase;margin-bottom:4px}
+.kst-lower .cta .glowline{position:absolute;left:50%;top:0;transform:translateX(-50%);width:1px;height:86px;background:linear-gradient(180deg,var(--k-acc),transparent)}
+
+/* 页脚 */
+footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var(--k-ink)}
+.kst-footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:40px;padding:96px 0 72px;position:relative;z-index:2}
+.kst-footer h5{font-family:var(--k-num);font-size:11px;letter-spacing:.38em;text-transform:uppercase;color:var(--k-mut);margin:0 0 24px}
+.kst-footer ul{margin:0;padding:0}
+.kst-footer li{list-style:none;margin-bottom:13px}
+.kst-footer li a{font-size:14px;letter-spacing:.08em;color:rgba(233,236,239,.66);transition:color .3s;text-decoration:none}
+.kst-footer li a:hover{color:#fff}
+.kst-footer .flogo .mark{font-family:var(--k-num);font-weight:600;font-style:italic;font-size:25px;letter-spacing:.06em;color:#fff;text-transform:uppercase}
+.kst-footer .flogo .mark b{color:var(--k-acc);font-weight:600;margin-left:.28em}
+.kst-footer .about p{font-size:14px;line-height:2;letter-spacing:.05em;color:var(--k-mut);max-width:340px;margin:18px 0 0}
+.kst-footer .base{position:relative;z-index:2;border-top:1px solid var(--k-line);padding:26px 90px 30px 0;display:flex;gap:28px;font-size:12px;letter-spacing:.1em;color:var(--k-mut-dark)}
+.kst-footer .base span:last-child{margin-left:auto}
+.kst-footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:center;font-family:var(--k-num);font-weight:600;font-size:clamp(90px,13vw,210px);letter-spacing:.06em;color:rgba(255,255,255,.028);line-height:1;user-select:none;pointer-events:none;white-space:nowrap}
+
+@media (max-width:960px){
+  .kst-lower .wrap{padding:0 22px}
+  .kst-lower .modelgrid{grid-template-columns:1fr}
+  .kst-lower .cta .act{flex-direction:column}
+  .kst-footer .cols{grid-template-columns:1fr 1fr}
+}
+
+/* ============ 统一品牌 logo(KST POWER,浅色内页) ============ */
+.brand-mark { font-family: var(--font-display); font-weight: 800; font-style: italic; font-size: 1.34rem; letter-spacing: .03em; color: var(--color-ink); text-transform: uppercase; line-height: 1; }
+.brand-mark b { color: var(--color-brand); font-weight: 800; margin-left: .2em; }
+
 /* Generator banner: keep a quiet white breathing space under the dark header and show the complete image. */
 .generator-page .prod-hero--pano {
   margin-top: clamp(2rem, 5vw, 4.5rem);
@@ -1519,82 +1620,3 @@ a.contact-tile:hover { border-color: var(--color-brand); }
   .generator-brand-content .spec-table td { overflow-wrap: anywhere; word-break: break-word; }
 }
 
-
-/* ============================================================
-   KST-LOWER — 自 homepage-2.0 移植的下半部(精选型号/询盘/页脚)
-   作用域隔离:全部规则以 .kst-lower 为前缀,不影响全站其他组件
-   ============================================================ */
-.kst-lower{
-  --k-bg:#0f1317; --k-bg2:#141a20; --k-paper:#f2f1ed; --k-ink:#e9ecef; --k-ink-dark:#171b1f;
-  --k-mut:#8b959e; --k-mut-dark:#6d7378; --k-acc:#E60012;
-  --k-line:rgba(255,255,255,.10); --k-line-dark:rgba(0,0,0,.12);
-  --k-num:'Barlow Condensed','Arial Narrow',sans-serif;
-  --k-cn:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
-  --k-ease:cubic-bezier(.22,.61,.36,1);
-  font-family:var(--k-cn); font-weight:300;
-}
-.kst-lower .wrap{max-width:1400px;margin:0 auto;padding:0 48px}
-.kst-lower .shead{display:flex;align-items:flex-end;gap:28px;padding:132px 0 64px}
-.kst-lower .shead .no{font-family:var(--k-num);font-size:15px;font-weight:500;letter-spacing:.1em;color:var(--k-acc)}
-.kst-lower .shead .rule{flex:0 0 64px;height:1px;background:currentColor;opacity:.25;margin-bottom:9px}
-.kst-lower .shead h3{font-size:clamp(28px,3vw,44px);font-weight:500;letter-spacing:.1em;line-height:1;margin:0}
-.kst-lower .shead .en{margin-left:auto;font-family:var(--k-num);font-size:12px;letter-spacing:.42em;text-transform:uppercase;opacity:.45;margin-bottom:6px}
-.kst-lower .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--k-ease),transform .8s var(--k-ease)}
-.kst-lower .reveal.in{opacity:1;transform:none}
-
-/* 精选型号 */
-.kst-lower .models{background:var(--k-paper);color:var(--k-ink-dark);padding:0}
-.kst-lower .modelgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-bottom:140px}
-.kst-lower .model{position:relative;background:#fff;border:1px solid var(--k-line-dark);overflow:hidden;padding:38px 34px 34px;min-height:430px;display:flex;flex-direction:column;transition:transform .5s var(--k-ease),box-shadow .5s var(--k-ease)}
-.kst-lower .model:hover{transform:translateY(-8px);box-shadow:0 30px 60px -30px rgba(23,27,31,.35)}
-.kst-lower .model .ghost{position:absolute;right:-10px;top:2px;font-family:var(--k-num);font-weight:600;font-size:150px;line-height:1;color:rgba(23,27,31,.05);letter-spacing:-.01em;user-select:none;transition:color .5s}
-.kst-lower .model:hover .ghost{color:rgba(230,0,18,.12)}
-.kst-lower .model .cat{font-family:var(--k-num);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--k-mut-dark)}
-.kst-lower .model h4{margin:10px 0 0;font-family:var(--k-num);font-weight:500;font-size:44px;letter-spacing:.02em;color:var(--k-ink-dark)}
-.kst-lower .model .desc{margin-top:6px;font-size:14px;letter-spacing:.08em;color:var(--k-mut-dark)}
-.kst-lower .model .fig{margin:26px 0 8px;flex:1;display:flex;align-items:center;justify-content:center}
-.kst-lower .model .fig svg{width:86%;max-height:170px;stroke:#2a3138;fill:none;stroke-width:1.3;opacity:.85}
-.kst-lower .model .kv{display:flex;gap:34px;border-top:1px solid var(--k-line-dark);padding-top:22px}
-.kst-lower .model .kv div b{display:block;font-family:var(--k-num);font-weight:400;font-size:30px;color:var(--k-ink-dark)}
-.kst-lower .model .kv div b i{font-style:normal;font-size:.5em;color:var(--k-acc);margin-left:2px}
-.kst-lower .model .kv div span{font-size:12px;letter-spacing:.12em;color:var(--k-mut-dark)}
-
-/* 询盘 CTA */
-.kst-lower .cta{background:var(--k-bg2);overflow:hidden;position:relative;padding:0}
-.kst-lower .cta .inner{position:relative;padding:150px 0;text-align:center}
-.kst-lower .cta .en{font-family:var(--k-num);font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--k-mut)}
-.kst-lower .cta h3{margin:26px 0 0;font-size:clamp(30px,4vw,58px);font-weight:400;letter-spacing:.14em;color:#fff}
-.kst-lower .cta h3 b{color:var(--k-acc);font-weight:500}
-.kst-lower .cta p{margin-top:22px;font-size:15px;letter-spacing:.1em;color:var(--k-mut);line-height:1.9}
-.kst-lower .cta .act{margin-top:52px;display:flex;align-items:center;justify-content:center;gap:38px}
-.kst-lower .cta .btn{display:inline-block;background:var(--k-acc);color:#fff;font-weight:500;font-size:15px;letter-spacing:.22em;padding:20px 52px;border-radius:0;transition:.35s var(--k-ease)}
-.kst-lower .cta .btn:hover{background:#fff;color:#14181c}
-.kst-lower .cta .tel{font-family:var(--k-num);font-size:22px;letter-spacing:.1em;color:#fff}
-.kst-lower .cta .tel span{display:block;font-size:10px;letter-spacing:.34em;color:var(--k-mut);text-transform:uppercase;margin-bottom:4px}
-.kst-lower .cta .glowline{position:absolute;left:50%;top:0;transform:translateX(-50%);width:1px;height:86px;background:linear-gradient(180deg,var(--k-acc),transparent)}
-
-/* 页脚 */
-footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var(--k-ink)}
-.kst-footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:40px;padding:96px 0 72px;position:relative;z-index:2}
-.kst-footer h5{font-family:var(--k-num);font-size:11px;letter-spacing:.38em;text-transform:uppercase;color:var(--k-mut);margin:0 0 24px}
-.kst-footer ul{margin:0;padding:0}
-.kst-footer li{list-style:none;margin-bottom:13px}
-.kst-footer li a{font-size:14px;letter-spacing:.08em;color:rgba(233,236,239,.66);transition:color .3s;text-decoration:none}
-.kst-footer li a:hover{color:#fff}
-.kst-footer .flogo .mark{font-family:var(--k-num);font-weight:600;font-style:italic;font-size:25px;letter-spacing:.06em;color:#fff;text-transform:uppercase}
-.kst-footer .flogo .mark b{color:var(--k-acc);font-weight:600;margin-left:.28em}
-.kst-footer .about p{font-size:14px;line-height:2;letter-spacing:.05em;color:var(--k-mut);max-width:340px;margin:18px 0 0}
-.kst-footer .base{position:relative;z-index:2;border-top:1px solid var(--k-line);padding:26px 90px 30px 0;display:flex;gap:28px;font-size:12px;letter-spacing:.1em;color:var(--k-mut-dark)}
-.kst-footer .base span:last-child{margin-left:auto}
-.kst-footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:center;font-family:var(--k-num);font-weight:600;font-size:clamp(90px,13vw,210px);letter-spacing:.06em;color:rgba(255,255,255,.028);line-height:1;user-select:none;pointer-events:none;white-space:nowrap}
-
-@media (max-width:960px){
-  .kst-lower .wrap{padding:0 22px}
-  .kst-lower .modelgrid{grid-template-columns:1fr}
-  .kst-lower .cta .act{flex-direction:column}
-  .kst-footer .cols{grid-template-columns:1fr 1fr}
-}
-
-/* ============ 统一品牌 logo(KST POWER,浅色内页) ============ */
-.brand-mark { font-family: var(--font-display); font-weight: 800; font-style: italic; font-size: 1.34rem; letter-spacing: .03em; color: var(--color-ink); text-transform: uppercase; line-height: 1; }
-.brand-mark b { color: var(--color-brand); font-weight: 800; margin-left: .2em; }

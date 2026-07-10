@@ -6,7 +6,7 @@
   hreflang: at launch add <link rel="alternate" hreflang="zh-CN" href="..."> ,
             <link rel="alternate" hreflang="en" href="..."> and x-default per page.
 -->
-<html lang="zh-CN" data-lang="zh">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,8 +22,8 @@
   <script>
     (function () {
       try {
-        var l = localStorage.getItem('ope-lang');
-        if (l === 'en') { document.documentElement.setAttribute('data-lang','en'); document.documentElement.setAttribute('lang','en'); }
+        var l = localStorage.getItem('kst-lang');
+        if (l === 'en' || l === 'ru' || l === 'zh') { document.documentElement.setAttribute('data-lang', l); document.documentElement.setAttribute('lang', l === 'zh' ? 'zh-CN' : l); }
       } catch (e) {}
     })();
   </script>
@@ -61,8 +61,8 @@
       </nav>
       <div class="header-actions">
         <div class="lang-toggle" role="group" aria-label="Language / 语言">
-          <button type="button" data-set="zh" aria-label="切换到中文">中</button>
           <button type="button" data-set="en" aria-label="Switch to English">EN</button>
+          <button type="button" data-set="ru" aria-label="Переключить на русский">RU</button>
         </div>
         <a class="btn btn-primary" href="contact.html"><span class="zh">询价</span><span class="en">Inquiry</span></a>
         <button class="nav-toggle" id="nav-toggle" aria-label="打开菜单 Open menu" aria-expanded="false" aria-controls="primary-nav">
@@ -208,6 +208,7 @@
     <span class="wa-label">WeChat</span>
   </a>
 
+  <script src="assets/js/languages.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

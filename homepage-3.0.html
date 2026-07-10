@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,9 +50,11 @@ nav a:hover{color:#fff}
 nav>a::after,nav .ni>a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
 nav a:hover::after{transform:scaleX(1)}
 nav a .en{display:block;font-family:var(--num);font-size:9px;letter-spacing:.3em;color:var(--mut);text-transform:uppercase;margin-top:1px}
-.lang{margin-left:44px;font-family:var(--num);font-size:13px;letter-spacing:.18em;color:var(--mut);border:1px solid var(--line);padding:7px 14px;transition:.3s;flex-shrink:0}
+.lang{margin-left:44px;font-family:var(--num);font-size:13px;letter-spacing:.18em;color:var(--mut);border:1px solid var(--line);padding:3px 5px;transition:.3s;flex-shrink:0}
 .lang:hover{color:#fff;border-color:rgba(255,255,255,.4)}
-.lang b{color:#fff;font-weight:500}
+.kst-lang{display:inline-flex;gap:2px}
+.kst-lang button{border:0;background:transparent;color:var(--mut);font:inherit;letter-spacing:.1em;padding:4px 8px;cursor:pointer}
+.kst-lang button[aria-pressed="true"]{color:#fff;background:rgba(255,255,255,.12)}
 .verswitch{margin-left:22px;font-family:var(--num);font-size:12px;letter-spacing:.12em;color:#fff;background:var(--acc);padding:7px 15px;border-radius:3px;text-transform:uppercase;transition:.25s;flex-shrink:0}
 .verswitch:hover{filter:brightness(1.12)}
 /* 下拉 */
@@ -263,22 +265,25 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-34px;text-align:cente
   <div class="bar">
     <site-logo href="#"></site-logo>
     <nav>
-      <a href="#products">产品线<span class="en">Products</span></a>
-      <a href="#s-apps">应用领域<span class="en">Applications</span></a>
+      <a href="#products"><span data-i18n-key="legacy3.nav.products">产品线</span></a>
+      <a href="#s-apps"><span data-i18n-key="legacy3.nav.applications">应用领域</span></a>
       <span class="ni">
-        <a href="oilfield.html">油田钻采设备<span class="caret">▾</span><span class="en">Drilling &amp; Production</span></a>
+        <a href="oilfield.html"><span data-i18n-key="nav.oilfield">油田钻采设备</span><span class="caret">▾</span></a>
         <div class="subnav">
-          <a href="oilfield.html#drilling">钻井装备<span class="en">Drilling</span></a>
-          <a href="oilfield.html#workover">修井装备<span class="en">Workover</span></a>
-          <a href="oilfield.html#cementing">固井装备<span class="en">Cementing</span></a>
-          <a href="oilfield.html#fracturing">压裂装备<span class="en">Fracturing</span></a>
+          <a href="oilfield.html#drilling"><span data-i18n-key="nav.drilling">钻井装备</span></a>
+          <a href="oilfield.html#workover"><span data-i18n-key="nav.workover">修井装备</span></a>
+          <a href="oilfield.html#cementing"><span data-i18n-key="nav.cementing">固井装备</span></a>
+          <a href="oilfield.html#fracturing"><span data-i18n-key="nav.fracturing">压裂装备</span></a>
         </div>
       </span>
-      <a href="#s-stats">技术实力<span class="en">Capabilities</span></a>
-      <a href="#s-cta">联系我们<span class="en">Contact</span></a>
+      <a href="#s-stats"><span data-i18n-key="legacy3.nav.capabilities">技术实力</span></a>
+      <a href="#s-cta"><span data-i18n-key="legacy3.nav.contact">联系我们</span></a>
     </nav>
     <a class="verswitch" href="homepage-2.0_1.html">切换 2.0 版</a>
-    <a class="lang" href="#"><b>中</b> / EN</a>
+    <div class="kst-lang lang" role="group" aria-label="Language">
+      <button type="button" data-set="en" aria-label="Switch to English">EN</button>
+      <button type="button" data-set="ru" aria-label="Переключить на русский">RU</button>
+    </div>
     <button class="burger" id="burger" aria-label="打开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -289,11 +294,11 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-34px;text-align:cente
   <div class="bg"><img src="images/hero-rigs.jpg" alt="KST POWER 油田钻采成套装备 · 日落井场"></div>
   <div class="wrap">
     <div class="eyebrow reveal">A&nbsp;Trusted&nbsp;Name&nbsp;in&nbsp;Power&nbsp;Solutions</div>
-    <h1 class="reveal">从井口<b>&nbsp;·&nbsp;</b>到电网</h1>
-    <p class="lead reveal">发电机组 / 工业发动机 / 油田钻采成套设备。<br>覆盖 <i>74–4400 hp</i> 动力区间，以实测硬指标交付，服务石油、天然气、矿山与电力行业。</p>
+    <h1 class="reveal" data-i18n-key="legacy3.hero.claim">从井口 · 到电网</h1>
+    <p class="lead reveal" data-i18n-key="legacy3.hero.subline">发电机组 / 工业发动机 / 油田钻采成套设备</p>
     <div class="act reveal">
-      <a class="btn btn-fill" href="#s-cta">获取选型方案 <span class="ar">→</span></a>
-      <a class="btn btn-line" href="#products">浏览产品 <span class="ar">→</span></a>
+      <a class="btn btn-fill" href="#s-cta"><span data-i18n-key="legacy3.action.quote">获取选型方案</span> <span class="ar">→</span></a>
+      <a class="btn btn-line" href="#products"><span data-i18n-key="legacy3.action.browse">浏览产品</span> <span class="ar">→</span></a>
     </div>
   </div>
   <div class="kpis reveal">
@@ -311,8 +316,7 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-34px;text-align:cente
   <div class="wrap">
     <div class="shead reveal" style="color:var(--ink)">
       <span class="no">—</span><span class="rule"></span>
-      <h3>产品线</h3>
-      <span class="en">Our&nbsp;Products</span>
+      <h3 data-i18n-key="legacy3.section.products">产品线</h3>
     </div>
     <div class="prodgrid">
       <!-- 发电机组 -->
@@ -530,5 +534,6 @@ const nio=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.6});
 document.querySelectorAll('.cnt').forEach(el=>nio.observe(el));
 </script>
+<script src="assets/js/languages.js"></script>
 </body>
 </html>
