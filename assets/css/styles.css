@@ -1368,19 +1368,18 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 .generator-section-head > p:last-child { color: var(--color-ink-soft); max-width: 66ch; font-size: var(--fs-lead); }
 .generator-tabs {
   display: flex;
-  gap: .55rem;
+  gap: clamp(1.5rem, 4vw, 3rem);
   overflow: visible;
-  padding-bottom: .85rem;
+  padding-bottom: 0;
   margin-bottom: clamp(1.8rem, 4vw, 3rem);
-  border-bottom: 1px solid var(--color-border);
 }
 .generator-tab {
   flex: 0 0 auto;
-  min-height: 3.15rem;
+  min-height: 3rem;
   border: 0;
   border-radius: 0;
   border-bottom: 2px solid transparent;
-  padding: .65rem 1.1rem .7rem;
+  padding: .55rem .1rem .7rem;
   background: transparent;
   color: var(--color-ink-soft);
   font: inherit;
@@ -1389,8 +1388,8 @@ a.contact-tile:hover { border-color: var(--color-brand); }
   transition: color var(--dur), border-color var(--dur);
 }
 .generator-tab:hover,
-.generator-tab:focus-visible { border-color: var(--color-ink); color: var(--color-ink); }
-.generator-tab.is-active { border-color: var(--color-brand); color: var(--color-ink); }
+.generator-tab:focus-visible { border-bottom-color: var(--color-brand); color: var(--color-brand); }
+.generator-tab.is-active { border-bottom-color: var(--color-brand); color: var(--color-ink); }
 .generator-brand-panel[hidden] { display: none; }
 .generator-brand-layout {
   display: grid;
@@ -1460,7 +1459,7 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 }
 
 @media (max-width: 560px) {
-  .generator-tabs { gap: .15rem; }
+  .generator-tabs { gap: 1.25rem; }
   .generator-tab { padding-inline: .65rem; font-size: .92rem; }
   .generator-gallery-arrow { width: 2.5rem; height: 2.5rem; }
   .generator-brand-content h3 { font-size: clamp(1.8rem, 9vw, 2.6rem); }
