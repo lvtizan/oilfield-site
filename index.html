@@ -270,32 +270,7 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
 <body>
 
 <!-- ═════════ 顶栏 ═════════ -->
-<header id="hd">
-  <div class="bar">
-    <site-logo href="#"></site-logo>
-    <nav>
-      <a href="generators.html" data-panel="0"><span data-i18n-key="nav.generators">发电机组</span></a>
-      <a href="engines.html" data-panel="1"><span data-i18n-key="nav.engines">工业发动机</span></a>
-      <span class="ni">
-        <a href="oilfield.html" data-panel="2"><span data-i18n-key="nav.oilfield">油田钻采设备</span><span class="caret">▾</span></a>
-        <div class="subnav">
-          <a href="oilfield.html#drilling"><span data-i18n-key="nav.drilling">钻井装备</span></a>
-          <a href="oilfield.html#workover"><span data-i18n-key="nav.workover">修井装备</span></a>
-          <a href="oilfield.html#cementing"><span data-i18n-key="nav.cementing">固井装备</span></a>
-          <a href="oilfield.html#fracturing"><span data-i18n-key="nav.fracturing">压裂装备</span></a>
-        </div>
-      </span>
-      <a href="#s-apps"><span data-i18n-key="legacy.nav.applications">应用领域</span></a>
-      <a href="#s-cta"><span data-i18n-key="legacy.nav.contact">联系我们</span></a>
-    </nav>
-    <div class="kst-lang lang" role="group" aria-label="Language">
-      <button type="button" data-set="en" aria-label="Switch to English">EN</button>
-      <button type="button" data-set="ru" aria-label="Переключить на русский">RU</button>
-    </div>
-    <button class="burger" id="burger" aria-label="打开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
-  </div>
-</header>
-<div class="scrim" id="scrim"></div>
+<site-header active="home" base="" transparent></site-header>
 
 <!-- ═════════ 英雄区:品牌陈述 + 三分屏(分隔线贯穿至顶) ═════════ -->
 <section class="hero" id="hero">
@@ -628,16 +603,7 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
 
 <script>
 
-/* ── 顶栏:滚动变实底 ── */
-const hd=document.getElementById('hd');
-addEventListener('scroll',()=>{hd.classList.toggle('solid',scrollY>40)},{passive:true});
-
-/* ── 移动端汉堡菜单开合 ── */
-const burger=document.getElementById('burger'),scrim=document.getElementById('scrim');
-const closeMenu=()=>{hd.classList.remove('open');burger.setAttribute('aria-expanded','false')};
-burger.addEventListener('click',()=>burger.setAttribute('aria-expanded',hd.classList.toggle('open')));
-scrim.addEventListener('click',closeMenu);
-document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',closeMenu));
+/* 顶栏/汉堡菜单已迁移至 <site-header> 组件 */
 
 /* ── 导航 ↔ 三分屏 双向联动 ── */
 const hero=document.getElementById('hero');
