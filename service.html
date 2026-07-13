@@ -26,6 +26,7 @@
       } catch (e) {}
     })();
   </script>
+  <script src="assets/js/brand.js"></script>
 </head>
 
 <body>
@@ -35,10 +36,7 @@
   <!-- ============ HEADER (shared shell — keep identical across pages) ============ -->
   <header class="site-header" id="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="index.html" aria-label="Guangzhou KST Mechanical Equipment Co., Ltd home">
-        <span class="brand-mark">KST<b>POWER</b></span>
-        <span class="brand-sub"><span class="zh">动力与油田钻采装备</span><span class="en">Power &amp; Oilfield Equipment</span></span>
-      </a>
+      <site-logo href="index.html" theme="ink"></site-logo>
       <nav class="primary-nav" id="primary-nav" aria-label="主导航 Primary">
         <ul>
           <li><a href="index.html"><span class="zh">首页</span><span class="en">Home</span></a></li>
@@ -149,30 +147,7 @@
   </main>
 
   <!-- ============ FOOTER (shared shell — keep identical across pages) ============ -->
-  <footer class="site-footer">
-    <div class="wrap footer-main">
-      <div>
-        <span class="brand-mark">KST<b>POWER</b></span>
-        <p><span class="zh">供应发电机组、工业发动机与油田钻采设备，按型号参数选型询价。</span><span class="en">Supplying generator sets, industrial engines and oilfield drilling &amp; production equipment — selection and quotation by model specifications.</span></p>
-      </div>
-      <div class="footer-col">
-        <h4><span class="zh">产品</span><span class="en">Products</span></h4>
-        <a href="generators.html"><span class="zh">发电机组</span><span class="en">Generator Sets</span></a>
-        <a href="engines.html"><span class="zh">工业发动机</span><span class="en">Industrial Engines</span></a>
-        <a href="oilfield.html"><span class="zh">油田钻采设备</span><span class="en">Oilfield Equipment</span></a>
-      </div>
-      <div class="footer-col">
-        <h4><span class="zh">公司</span><span class="en">Company</span></h4>
-        <a href="about.html"><span class="zh">公司简介</span><span class="en">About</span></a>
-        <a href="service.html"><span class="zh">技术服务</span><span class="en">Service</span></a>
-        <a href="contact.html"><span class="zh">联系方式</span><span class="en">Contact</span></a>
-      </div>
-    </div>
-    <div class="wrap footer-bottom">
-      <span>© <span class="en">2026 Guangzhou KST Mechanical Equipment Co., Ltd. All rights reserved.</span><span class="zh">2026 广州市泽康松特机械设备有限公司 版权所有。</span></span>
-      <span class="disclaimer"><span class="zh">文中产品型号与商标归各自制造商所有。</span><span class="en">Product model names and trademarks belong to their respective manufacturers.</span></span>
-    </div>
-  </footer>
+  <site-footer base=""></site-footer>
 
   <!-- ============ FLOATING WHATSAPP (shared) ============ -->
   <!-- TODO: replace with client WhatsApp number -->

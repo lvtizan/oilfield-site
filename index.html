@@ -265,6 +265,7 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
 }
 @media (prefers-reduced-motion:reduce){.panel .art{animation:none}.scrolldn .stem{animation:none}*{transition-duration:.01ms!important}}
 </style>
+<script src="assets/js/brand.js"></script>
 </head>
 <body>
 
@@ -618,46 +619,7 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
 </section>
 
 <!-- ═════════ 页脚 ═════════ -->
-<footer>
-  <div class="wrap">
-    <div class="cols">
-      <div class="about">
-        <site-logo></site-logo>
-        <p>专注油气田动力与钻采成套设备,以实测硬指标交付,服务石油、天然气、矿山与电力行业。</p>
-      </div>
-      <div>
-        <h5>产品&nbsp;Products</h5>
-        <ul>
-          <li><a href="generators.html" data-i18n-key="nav.generators">发电机组</a></li>
-          <li><a href="engines.html" data-i18n-key="nav.engines">工业发动机</a></li>
-          <li><a href="oilfield.html" data-i18n-key="nav.oilfield">油田钻采设备</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>导航&nbsp;Sitemap</h5>
-        <ul>
-          <li><a href="#s-apps">应用领域</a></li>
-          <li><a href="#s-stats">技术实力</a></li>
-          <li><a href="#s-models">精选型号</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>联系&nbsp;Contact</h5>
-        <ul>
-          <li><a href="mailto:sales@example.com">sales@example.com</a></li>
-          <li><a href="tel:+864000000000">+86 400-000-0000</a></li>
-          <li><a href="#">微信公众号 / WeChat</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="base">
-      <span>© 2026 KST POWER</span>
-      <span>A Trusted Name in Power Solutions</span>
-      <span>某ICP备00000000号</span>
-    </div>
-  </div>
-  <div class="watermark">KST&nbsp;POWER</div>
-</footer>
+<site-footer base=""></site-footer>
 
 <!-- 微信浮窗 -->
 <div class="float" title="微信咨询">
@@ -665,17 +627,6 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
 </div>
 
 <script>
-/* ── 品牌 LOGO 组件:header / footer 共用同一处定义;有 href 则渲染为链接 ── */
-customElements.define('site-logo', class extends HTMLElement{
-  connectedCallback(){
-    const href=this.getAttribute('href');
-    const inner='<span class="mark">KST<b>POWER</b></span>'+
-                '<span class="sub">A trusted name in power solutions.</span>';
-    this.innerHTML = href
-      ? '<a class="logo" href="'+href+'">'+inner+'</a>'
-      : '<span class="logo">'+inner+'</span>';
-  }
-});
 
 /* ── 顶栏:滚动变实底 ── */
 const hd=document.getElementById('hd');
