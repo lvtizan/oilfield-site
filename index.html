@@ -262,6 +262,7 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
   .cta .act{flex-direction:column}
 }
 @media (prefers-reduced-motion:reduce){.panel .art{animation:none}.scrolldn .stem{animation:none}*{transition-duration:.01ms!important}}
+html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,html[data-lang="en"] .models .shead>.en,html[data-lang="en"] .app .cap>span{display:none}
 </style>
 <script src="assets/js/brand.js"></script>
 </head>
@@ -318,7 +319,7 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
     <div class="txt">
       <div class="en" data-i18n-key="legacy.panel.generators">Generator&nbsp;Sets</div>
       <h2 data-i18n-key="legacy.panel.generators">发电机组</h2>
-      <div class="tag">功率覆盖 <i>74 – 4400 hp</i> · 陆地井场 / 电站 / 备用电源</div>
+      <div class="tag">Power <i>74 – 4400 hp</i> · wellsite / power plant / standby</div>
       <span class="go"><span class="ln"></span><span data-i18n-key="legacy.panel.enter">进入</span></span>
     </div>
   </a>
@@ -363,7 +364,7 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
     <div class="txt">
       <div class="en" data-i18n-key="legacy.panel.engines">Industrial&nbsp;Engines</div>
       <h2 data-i18n-key="legacy.panel.engines">工业发动机</h2>
-      <div class="tag">矿用 / 钻井动力 · 高原高寒工况长周期运转</div>
+      <div class="tag">Mining / drilling power · long-duty in high-altitude &amp; extreme-cold conditions</div>
       <span class="go"><span class="ln"></span><span data-i18n-key="legacy.panel.enter">进入</span></span>
     </div>
   </a>
@@ -403,7 +404,7 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
     <div class="txt">
       <div class="en" data-i18n-key="legacy.panel.oilfield">Drilling&nbsp;&amp;&nbsp;Production</div>
       <h2 data-i18n-key="legacy.panel.oilfield">油田钻采设备</h2>
-      <div class="tag">钻采成套 · 最大钻深 <i>9000 m</i> · 最大工压 <i>175 MPa</i></div>
+      <div class="tag">Complete D&amp;P sets · max depth <i>9000 m</i> · max pressure <i>175 MPa</i></div>
       <span class="go"><span class="ln"></span><span data-i18n-key="legacy.panel.enter">进入</span></span>
     </div>
   </a>
@@ -416,7 +417,7 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
   <div class="wrap">
     <div class="shead reveal">
       <span class="no">01</span><span class="rule"></span>
-      <h3>应用领域</h3>
+      <h3 data-i18n-key="home.apps.title">Applications</h3>
       <span class="en">Applications</span>
     </div>
   </div>
@@ -426,38 +427,38 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
       <img class="bg-img" src="images/apps/oilfield.jpg" alt="石油应用场景" loading="lazy" decoding="async">
     </div><div class="cap">
       <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3c3.5 4.4 6 7.6 6 10.5a6 6 0 1 1-12 0C6 10.6 8.5 7.4 12 3Z"/></svg></div>
-      <h4>石　油</h4><span>Oilfield</span>
+      <h4 data-i18n-key="home.apps.oil">Oilfield</h4><span>Oilfield</span>
     </div></div>
     <!-- 天然气 -->
     <div class="app"><div class="bg">
       <img class="bg-img" src="images/apps/gas.jpg" alt="天然气应用场景" loading="lazy" decoding="async">
     </div><div class="cap">
       <div class="ic"><svg viewBox="0 0 24 24"><path d="M8.5 14a5 5 0 1 0 7-4.6C16 6.5 14 4.5 11.5 3c.6 2.8-.4 4.5-1.8 6C8.6 10.2 8.5 12 8.5 14Z"/></svg></div>
-      <h4>天然气</h4><span>Natural&nbsp;Gas</span>
+      <h4 data-i18n-key="home.apps.gas">Natural Gas</h4><span>Natural&nbsp;Gas</span>
     </div></div>
     <!-- 钻井 -->
     <div class="app"><div class="bg">
       <img class="bg-img" src="images/apps/drilling.jpg" alt="钻井应用场景" loading="lazy" decoding="async">
     </div><div class="cap">
       <div class="ic"><svg viewBox="0 0 24 24"><path d="M9.2 21 12 3l2.8 18M7.6 15.4h8.8M8.8 9.4h6.4M5.5 21h13"/></svg></div>
-      <h4>钻　井</h4><span>Drilling</span>
+      <h4 data-i18n-key="home.apps.drill">Drilling</h4><span>Drilling</span>
     </div></div>
     <!-- 矿山 -->
     <div class="app"><div class="bg">
       <img class="bg-img" src="images/apps/mining.jpg" alt="矿山应用场景" loading="lazy" decoding="async">
     </div><div class="cap">
       <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 20 10 6l4 7 3-4 4 11H3Z"/></svg></div>
-      <h4>矿　山</h4><span>Mining</span>
+      <h4 data-i18n-key="home.apps.mining">Mining</h4><span>Mining</span>
     </div></div>
     <!-- 电力 -->
     <div class="app"><div class="bg">
       <img class="bg-img" src="images/apps/power.jpg" alt="电力应用场景" loading="lazy" decoding="async">
     </div><div class="cap">
       <div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div>
-      <h4>电　力</h4><span>Power</span>
+      <h4 data-i18n-key="home.apps.power">Power</h4><span>Power</span>
     </div></div>
   </div>
-  <div class="wrap"><p class="lead reveal">五大应用场景,同一套动力标准。从油气井场的钻采动力,到矿区与电站的持续供电,<span class="kstmark">KST<b>POWER</b></span> 以成套化设备与实测硬指标交付。</p></div>
+  <div class="wrap"><p class="lead reveal">Five application scenarios, one power standard. From drilling &amp; production power at oil and gas wellsites to continuous supply for mines and power stations, <span class="kstmark">KST<b>POWER</b></span> delivers complete-set equipment on measured, hard specifications.</p></div>
 </section>
 
 <!-- ═════════ 02 技术实力 ═════════ -->
@@ -475,28 +476,28 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
   <div class="wrap">
     <div class="shead reveal" style="color:var(--ink)">
       <span class="no">02</span><span class="rule"></span>
-      <h3>技术实力</h3>
+      <h3 data-i18n-key="home.stats.title">Capabilities</h3>
       <span class="en">Capabilities&nbsp;·&nbsp;Measured,&nbsp;Not&nbsp;Claimed</span>
     </div>
     <div class="statgrid reveal">
       <div class="stat">
         <div class="num"><span class="pre">74–</span><span class="cnt" data-to="4400">0</span><span class="unit">hp</span></div>
-        <div class="lab">功率覆盖范围</div>
+        <div class="lab" data-i18n-key="home.stats.lab1">Power coverage</div>
       </div>
       <div class="stat">
         <div class="num"><span class="cnt" data-to="9000">0</span><span class="unit">m</span></div>
-        <div class="lab">最大钻井深度</div>
+        <div class="lab" data-i18n-key="home.stats.lab2">Max drilling depth</div>
       </div>
       <div class="stat">
         <div class="num"><span class="cnt" data-to="175">0</span><span class="unit">MPa</span></div>
-        <div class="lab">最大工作压力</div>
+        <div class="lab" data-i18n-key="home.stats.lab3">Max working pressure</div>
       </div>
       <div class="stat">
         <div class="num"><span class="pre">Tier</span><span class="cnt" data-to="4">0</span></div>
-        <div class="lab">非道路排放标准</div>
+        <div class="lab" data-i18n-key="home.stats.lab4">Off-road emission tier</div>
       </div>
     </div>
-    <p class="note reveal">— 全部为实测硬指标 · 拒绝资质吹嘘 —</p>
+    <p class="note reveal" data-i18n-key="home.stats.note">— All measured, hard specifications · no credential boasting —</p>
   </div>
 </section>
 
@@ -505,16 +506,16 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
   <div class="wrap">
     <div class="shead reveal">
       <span class="no">03</span><span class="rule"></span>
-      <h3>精选型号</h3>
+      <h3 data-i18n-key="home.models.title">Featured Models</h3>
       <span class="en">Featured&nbsp;Models</span>
     </div>
     <div class="modelgrid">
       <!-- QSK50 -->
       <div class="model reveal">
         <div class="ghost">QSK50</div>
-        <div class="cat">Generator&nbsp;Engine&nbsp;·&nbsp;发电机组</div>
+        <div class="cat">Generator&nbsp;Engine</div>
         <h4>QSK50</h4>
-        <div class="desc">50L 排量 16 缸 · 井场主电源平台</div>
+        <div class="desc" data-i18n-key="home.models.d1">50 L displacement, 16 cylinders · wellsite main power platform</div>
         <div class="fig">
           <svg viewBox="0 0 300 160">
             <rect x="30" y="52" width="200" height="80" rx="5"/>
@@ -527,16 +528,16 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
           </svg>
         </div>
         <div class="kv">
-          <div><b>1875<i>hp</i></b><span>额定功率</span></div>
-          <div><b>16<i>缸</i></b><span>气缸数</span></div>
+          <div><b>1875<i>hp</i></b><span data-i18n-key="home.models.kv1">Rated power</span></div>
+          <div><b>16<i>cyl</i></b><span data-i18n-key="home.models.kv2">Cylinders</span></div>
         </div>
       </div>
       <!-- SZJ180 -->
       <div class="model reveal" style="transition-delay:.12s">
         <div class="ghost">SZJ180</div>
-        <div class="cat">Drilling&nbsp;Rig&nbsp;·&nbsp;钻机</div>
+        <div class="cat">Drilling&nbsp;Rig</div>
         <h4>SZJ180</h4>
-        <div class="desc">车载钻机 · 快速搬迁 · 沙漠戈壁工况</div>
+        <div class="desc" data-i18n-key="home.models.d2">Truck-mounted rig · fast relocation · desert &amp; gobi conditions</div>
         <div class="fig">
           <svg viewBox="0 0 300 160">
             <path d="M96 130 L120 22 H132 L156 130 M102 100 H150 M108 70 H144 M114 44 H138"/>
@@ -547,16 +548,16 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
           </svg>
         </div>
         <div class="kv">
-          <div><b>1800<i>m</i></b><span>钻井深度</span></div>
-          <div><b>≤48<i>h</i></b><span>整机搬迁</span></div>
+          <div><b>1800<i>m</i></b><span data-i18n-key="home.models.kv3">Drilling depth</span></div>
+          <div><b>≤48<i>h</i></b><span data-i18n-key="home.models.kv4">Full relocation</span></div>
         </div>
       </div>
       <!-- SGJ600 -->
       <div class="model reveal" style="transition-delay:.24s">
         <div class="ghost">SGJ600</div>
-        <div class="cat">Workover&nbsp;·&nbsp;修井机</div>
+        <div class="cat">Workover</div>
         <h4>SGJ600</h4>
-        <div class="desc">大修作业 · 深井提升 · 成套交付</div>
+        <div class="desc" data-i18n-key="home.models.d3">Major workover · deep-well hoisting · complete-set delivery</div>
         <div class="fig">
           <svg viewBox="0 0 300 160">
             <path d="M120 128 L142 18 H150 L172 128 M126 96 H166 M132 62 H160"/>
@@ -567,8 +568,8 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
           </svg>
         </div>
         <div class="kv">
-          <div><b>600<i>kN</i></b><span>最大钩载</span></div>
-          <div><b>6000<i>m</i></b><span>修井深度</span></div>
+          <div><b>600<i>kN</i></b><span data-i18n-key="home.models.kv5">Max hook load</span></div>
+          <div><b>6000<i>m</i></b><span data-i18n-key="home.models.kv6">Workover depth</span></div>
         </div>
       </div>
     </div>
@@ -582,7 +583,7 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
     <div class="inner reveal">
       <div class="en">Tell&nbsp;Us&nbsp;Your&nbsp;Requirements</div>
       <h3 data-i18n-key="legacy.cta.title">告诉我们您的功率与井场需求</h3>
-      <p>提供工况参数,72 小时内回复选型方案与报价。<br>支持整机出口 · 成套配置 · 现场调试</p>
+      <p><span data-i18n-key="home.cta.p1">Send your operating parameters — selection plan and quotation within 72 hours.</span><br><span data-i18n-key="home.cta.p2">Complete-unit export · full-set configuration · on-site commissioning</span></p>
       <div class="act">
         <a class="btn" href="mailto:sales@example.com" data-i18n-key="legacy.cta.action">获取选型方案</a>
         <div class="tel"><span>Sales&nbsp;Hotline</span>+86&nbsp;400-000-0000</div>
