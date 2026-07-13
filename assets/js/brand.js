@@ -13,15 +13,10 @@
 (function (window, document) {
   'use strict';
 
-  var SANS = "'Inter','Helvetica Neue','Segoe UI',Roboto,Arial,'Noto Sans SC',sans-serif";
+  var SANS = "'Inter','Helvetica Neue','Segoe UI',Roboto,Arial,'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif";
 
-  /* ---- 只注入一次:字体 + 作用域样式 ---- */
+  /* ---- 只注入一次:作用域样式(字体由各页 assets/fonts/fonts.css 本地加载)---- */
   if (!document.getElementById('kst-brand-css')) {
-    var font = document.createElement('link');
-    font.rel = 'stylesheet';
-    font.href = 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;1,600&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400&display=swap';
-    document.head.appendChild(font);
-
     var css = document.createElement('style');
     css.id = 'kst-brand-css';
     css.textContent = [

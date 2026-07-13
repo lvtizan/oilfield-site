@@ -29,9 +29,9 @@
   --color-on-dark-surface: rgba(255,255,255,.03);
 
   /* Type */
-  --font-display: "Inter", "Noto Sans SC", system-ui, sans-serif;
-  --font-body: "Inter", "Noto Sans SC", system-ui, sans-serif;
-  --font-zh: "Noto Sans SC", "Inter", system-ui, sans-serif;
+  --font-display: "Inter", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  --font-body: "Inter", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  --font-zh: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Inter", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   /* Type scale */
@@ -1507,7 +1507,9 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
   background: transparent;
   color: var(--color-ink-soft);
   font: inherit;
+  font-size: 1.12rem;
   font-weight: 700;
+  letter-spacing: .01em;
   cursor: pointer;
   transition: color var(--dur), border-color var(--dur);
 }
