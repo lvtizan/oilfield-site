@@ -38,13 +38,12 @@ header .bar{display:flex;align-items:center;height:76px;padding:0 48px;gap:52px}
 header.solid{background:rgba(15,19,23,.96);box-shadow:0 1px 0 var(--line)}
 site-logo{display:contents}
 .logo{display:flex;flex-direction:column;align-items:flex-start;gap:3px;flex-shrink:0}
-.logo .mark{font-family:var(--num);font-weight:600;font-style:italic;font-size:25px;line-height:1;letter-spacing:.06em;color:#fff;text-transform:uppercase}
+/* LOGO 唯一样式源:header/footer 共用 <site-logo>,只改这一处两边全同步 */
+.logo .mark{font-family:var(--num);font-weight:600;font-style:italic;font-size:33px;line-height:1;letter-spacing:.06em;color:#fff;text-transform:uppercase}
 .logo .mark b{color:var(--acc);font-weight:600;margin-left:.28em}
 .logo .sub{font-family:var(--num);font-size:10.5px;letter-spacing:.08em;color:var(--mut)}
 .kstmark{font-family:var(--num);font-style:italic;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;color:#14181c}
 .kstmark b{color:var(--acc);font-weight:600;margin-left:.22em}
-/* 顶部 LOGO 放大,使 KST POWER 宽度≈下方口号 */
-header .logo .mark{font-size:33px}
 nav{display:flex;gap:40px;margin-left:auto;align-items:flex-start}
 nav a{position:relative;font-size:14.5px;font-weight:400;letter-spacing:.08em;color:rgba(233,236,239,.85);padding:8px 0;transition:color .3s}
 nav a:hover{color:#fff}
@@ -211,7 +210,7 @@ footer h5{font-family:var(--num);font-size:11px;letter-spacing:.38em;text-transf
 footer li{list-style:none;margin-bottom:13px}
 footer li a{font-size:14px;letter-spacing:.08em;color:rgba(233,236,239,.66);transition:color .3s}
 footer li a:hover{color:#fff}
-footer .about .logo .mark{font-size:34px;letter-spacing:.06em;transform:scaleX(1.28);transform-origin:left;display:inline-block}
+/* footer 不再单独设 LOGO 尺寸,完全继承上方唯一样式源 */
 footer .about p{font-size:14px;line-height:2;letter-spacing:.05em;color:var(--mut);max-width:340px;margin-top:18px}
 footer .base{position:relative;z-index:2;border-top:1px solid var(--line);padding:26px 90px 30px 0;display:flex;gap:28px;font-size:12px;letter-spacing:.1em;color:var(--mut-dark)}
 footer .base span:last-child{margin-left:auto}
