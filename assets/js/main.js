@@ -168,21 +168,47 @@
   });
 })();
 
-/* ---- Spec table search / filter ---- */
+/* ---- Spec table search: searches ACROSS all brands, auto-switches to matching brand ---- */
+window.KST_SPEC_SEARCH = (function () {
+  'use strict';
+  var inputs = Array.prototype.slice.call(document.querySelectorAll('[data-spec-search]'));
+  if (!inputs.length) return function () {};
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.generator-brand-panel'));
+
+  function apply(qraw, source) {
+    var q = qraw.trim().toLowerCase();
+    inputs.forEach(function (i) { if (i !== source && i.value !== qraw) i.value = qraw; });
+    var firstMatch = null;
+    panels.forEach(function (p) {
+      var hit = false;
+      Array.prototype.slice.call(p.querySelectorAll('.spec-table tbody tr')).forEach(function (tr) {
+        var m = !q || tr.textContent.toLowerCase().indexOf(q) !== -1;
+        tr.hidden = !m;
+        if (m && q) hit = true;
+      });
+      if (hit && !firstMatch) firstMatch = p;
+    });
+    if (q && firstMatch) {
+      var active = document.querySelector('.generator-brand-panel:not([hidden])');
+      var activeHit = active && Array.prototype.slice.call(active.querySelectorAll('.spec-table tbody tr')).some(function (tr) { return !tr.hidden; });
+      if (!activeHit) {
+        var btn = document.querySelector('[data-generator-tab="' + firstMatch.id + '"]');
+        if (btn) btn.click();
+      }
+    }
+  }
+  inputs.forEach(function (input) {
+    input.addEventListener('input', function () { apply(input.value, input); });
+  });
+  return apply;
+})();
+
+/* ---- Deep-link: homepage model search ?q= → filter + jump to matching brand ---- */
 (function () {
   'use strict';
-  document.querySelectorAll('[data-spec-search]').forEach(function (input) {
-    var scope = input.closest('.generator-brand-content') || document;
-    var rows = Array.prototype.slice.call(scope.querySelectorAll('.spec-table tbody tr'));
-    var empty = null;
-    input.addEventListener('input', function () {
-      var q = input.value.trim().toLowerCase();
-      var shown = 0;
-      rows.forEach(function (tr) {
-        var hit = !q || tr.textContent.toLowerCase().indexOf(q) !== -1;
-        tr.hidden = !hit;
-        if (hit) shown++;
-      });
-    });
-  });
+  var q = new URLSearchParams(location.search).get('q');
+  if (!q || typeof window.KST_SPEC_SEARCH !== 'function') return;
+  window.KST_SPEC_SEARCH(q);
+  var showcase = document.querySelector('.generator-brand-showcase');
+  if (showcase) setTimeout(function () { showcase.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 350);
 })();
