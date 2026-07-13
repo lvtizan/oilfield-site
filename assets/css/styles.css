@@ -1591,7 +1591,7 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
 .generator-brand-visual figcaption { margin-top: .8rem; color: var(--color-ink-soft); font-size: .84rem; }
 .generator-brand-content h3 { font-size: clamp(1.9rem, 4.2vw, 3.8rem); line-height: 1.05; margin: .45rem 0 .9rem; max-width: 22ch; }
 .generator-brand-content > p:not(.eyebrow):not(.generator-source) { color: var(--color-ink-soft); max-width: 75ch; margin-bottom: 1.3rem; font-size: var(--fs-lead); }
-.generator-brand-content .table-scroll { margin-top: 1.6rem; max-height: 62vh; overflow: auto; border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
+.generator-brand-content .table-scroll { margin-top: 1.6rem; max-height: 93vh; overflow: auto; border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
 .generator-brand-content .spec-table { width: 100%; min-width: 640px; table-layout: auto; }
 .generator-brand-content .spec-table thead th { position: sticky; top: 0; z-index: 1; }
 .spec-search { position: relative; display: flex; align-items: center; margin-top: 1.5rem; max-width: 360px; }
