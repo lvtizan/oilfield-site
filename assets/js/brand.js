@@ -18,7 +18,7 @@
   if (!document.getElementById('kst-brand-css')) {
     var font = document.createElement('link');
     font.rel = 'stylesheet';
-    font.href = 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;1,600&family=Noto+Sans+SC:wght@400&display=swap';
+    font.href = 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;1,600&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400&display=swap';
     document.head.appendChild(font);
 
     var css = document.createElement('style');
@@ -33,12 +33,12 @@
       "site-logo[theme='ink'] .logo .mark{color:#14181c}",
       "site-logo[theme='ink'] .logo .sub{color:#6d7378}",
       /* —— <site-footer> —— */
-      "site-footer{display:block;background:#0a0d10;position:relative;overflow:hidden;font-family:'Barlow Condensed','Arial Narrow',sans-serif}",
+      "site-footer{display:block;background:#0a0d10;position:relative;overflow:hidden;font-family:'Inter','Helvetica Neue','Segoe UI',Roboto,Arial,'Noto Sans SC',sans-serif}",
       "site-footer *{margin:0;padding:0;box-sizing:border-box}",
       "site-footer .kstf-wrap{max-width:1400px;margin:0 auto;padding:0 48px;position:relative}",
       "site-footer .kstf-cols{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:40px;padding:92px 0 70px;position:relative;z-index:2}",
-      "site-footer .kstf-about p{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;font-size:14px;line-height:2;letter-spacing:.03em;color:#8b959e;max-width:340px;margin-top:20px}",
-      "site-footer h5{font-size:11px;letter-spacing:.38em;text-transform:uppercase;color:#8b959e;margin-bottom:24px;font-weight:400}",
+      "site-footer .kstf-about p{font-size:13.5px;line-height:1.85;letter-spacing:.01em;color:#8b959e;max-width:340px;margin-top:20px}",
+      "site-footer h5{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8b959e;margin-bottom:24px}",
       "site-footer ul{list-style:none}",
       "site-footer li{margin-bottom:13px}",
       "site-footer li a{font-size:14px;letter-spacing:.08em;color:rgba(233,236,239,.66);text-decoration:none;transition:color .3s}",
