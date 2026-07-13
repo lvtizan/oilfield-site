@@ -149,5 +149,40 @@
     dots.forEach(function (dot) {
       dot.addEventListener('click', function () { show(Number(dot.getAttribute('data-gallery-dot'))); });
     });
+
+    /* 移动端触摸左右滑动切换 */
+    var stage = gallery.querySelector('.generator-gallery-stage') || gallery;
+    var startX = null, startY = null;
+    stage.addEventListener('touchstart', function (e) {
+      startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+    }, { passive: true });
+    stage.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        show(index + (dx < 0 ? 1 : -1));
+      }
+      startX = startY = null;
+    }, { passive: true });
+  });
+})();
+
+/* ---- Spec table search / filter ---- */
+(function () {
+  'use strict';
+  document.querySelectorAll('[data-spec-search]').forEach(function (input) {
+    var scope = input.closest('.generator-brand-content') || document;
+    var rows = Array.prototype.slice.call(scope.querySelectorAll('.spec-table tbody tr'));
+    var empty = null;
+    input.addEventListener('input', function () {
+      var q = input.value.trim().toLowerCase();
+      var shown = 0;
+      rows.forEach(function (tr) {
+        var hit = !q || tr.textContent.toLowerCase().indexOf(q) !== -1;
+        tr.hidden = !hit;
+        if (hit) shown++;
+      });
+    });
   });
 })();

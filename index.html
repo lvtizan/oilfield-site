@@ -222,6 +222,9 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
 
 /* ---------- 响应式 ---------- */
 @media (max-width:960px){
+  /* 移动端:去动画,简单直接显示 */
+  .reveal{opacity:1;transform:none;transition:none}
+  .panel,.panel .dim{transition:none}
   header .bar{padding:0 22px;gap:20px}
   .burger{display:flex}
   .scrim{display:block}
@@ -240,8 +243,8 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
   nav .subnav a:hover{padding-left:0;background:none}
   .hero{flex-direction:column;height:auto;min-height:auto;padding-top:76px}
   .panel{min-height:58vh;border-left:none;border-top:1px solid var(--line)}
-  /* 图片铺满面板,消除 112vw 造成的左右模糊穿帮 */
-  .panel .art{left:0;top:0;width:100%;height:100%;transform:none}
+  /* 图片铺满面板:关掉 kenburns(其关键帧 translate(-50%,-50%) 会把定位挪歪露黑边) */
+  .panel .art{left:0;top:0;width:100%;height:100%;transform:none;animation:none}
   #p-gen .art img.ph{object-position:50% 45%;transform:scale(1.05)}
   #p-eng .art img.ph{object-position:50% 66%;transform:scale(1.24)}
   #p-oil .art img.ph{object-position:50% 62%}

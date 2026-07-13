@@ -1591,9 +1591,14 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
 .generator-brand-visual figcaption { margin-top: .8rem; color: var(--color-ink-soft); font-size: .84rem; }
 .generator-brand-content h3 { font-size: clamp(1.9rem, 4.2vw, 3.8rem); line-height: 1.05; margin: .45rem 0 .9rem; max-width: 22ch; }
 .generator-brand-content > p:not(.eyebrow):not(.generator-source) { color: var(--color-ink-soft); max-width: 75ch; margin-bottom: 1.3rem; font-size: var(--fs-lead); }
-.generator-brand-content .table-scroll { margin-top: 1.6rem; overflow: visible; }
-.generator-brand-content .table-scroll { border: 0; border-radius: 0; }
-.generator-brand-content .spec-table { width: 100%; min-width: 0; table-layout: fixed; }
+.generator-brand-content .table-scroll { margin-top: 1.6rem; max-height: 62vh; overflow: auto; border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
+.generator-brand-content .spec-table { width: 100%; min-width: 640px; table-layout: auto; }
+.generator-brand-content .spec-table thead th { position: sticky; top: 0; z-index: 1; }
+.spec-search { position: relative; display: flex; align-items: center; margin-top: 1.5rem; max-width: 360px; }
+.spec-search svg { position: absolute; left: 13px; width: 17px; height: 17px; fill: none; stroke: var(--color-ink-soft); stroke-width: 1.9; stroke-linecap: round; pointer-events: none; }
+.spec-search-input { width: 100%; padding: .62rem .9rem .62rem 2.4rem; font: inherit; font-size: .95rem; color: var(--color-ink); background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: border-color var(--dur); }
+.spec-search-input:focus { outline: none; border-color: var(--color-brand); }
+.spec-search-input::placeholder { color: var(--color-ink-soft); }
 .generator-brand-content .spec-table th,
 .generator-brand-content .spec-table td { overflow-wrap: anywhere; }
 .generator-source { color: var(--color-ink-soft); font-size: .78rem; margin-top: 1rem; }
@@ -1625,7 +1630,8 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
   .generator-gallery-stage, .generator-gallery.is-single .generator-gallery-stage { min-height: 260px; height: min(480px, 75vw); }
   .generator-gallery-thumbs { flex-direction: row; overflow-x: auto; }
   .generator-gallery-thumbs button { flex: 0 0 74px; }
-  .generator-gallery-arrow--next { right: .6rem; }
+  /* 移动端去掉左右箭头(有遮挡),改用触摸滑动 + 点缩略图切换 */
+  .generator-gallery-arrow { display: none; }
 }
 
 @media (max-width: 560px) {
