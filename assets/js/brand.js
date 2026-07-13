@@ -20,6 +20,7 @@
     var css = document.createElement('style');
     css.id = 'kst-brand-css';
     css.textContent = [
+      "html{-webkit-tap-highlight-color:transparent}",
       /* ===== <site-logo> ===== */
       "site-logo{display:contents}",
       "site-logo .logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1}",

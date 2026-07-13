@@ -572,9 +572,9 @@ a.card { color: inherit; }
 }
 .spec-table tbody td { padding: .7rem 1rem; border-bottom: 1px solid var(--color-border); font-variant-numeric: tabular-nums; }
 .spec-table tbody tr:nth-child(even) td { background: var(--color-surface); }
-.spec-table tbody tr:hover td { background: var(--color-brand-tint); }
+.spec-table tbody tr:hover td { background: rgba(31,41,51,.05); }
 .spec-table tbody tr:last-child td { border-bottom: 0; }
-.spec-table .model { font-family: var(--font-mono); font-weight: 600; color: var(--color-ink); background: var(--color-brand-tint); white-space: nowrap; }
+.spec-table .model { font-family: var(--font-mono); font-weight: 600; color: var(--color-ink); white-space: nowrap; }
 .spec-table td .unit { color: var(--color-ink-soft); font-size: .78em; margin-left: .2rem; }
 
 .tag-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
@@ -1479,6 +1479,19 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
   flex-direction: column;
   justify-content: flex-end;
 }
+/* 移动端:pano 横幅太矮装不下文字 → 改为“横幅在上 + 文字在下方深色块”堆叠,避免文字压图 */
+@media (max-width: 720px) {
+  .generator-page .prod-hero--pano {
+    margin-top: 0; aspect-ratio: auto; min-height: 0; display: block; background: #12181c;
+  }
+  .generator-page .prod-hero--pano .prod-hero-img {
+    position: relative; inset: auto; width: 100%; height: 180px; object-fit: cover; object-position: center;
+  }
+  .generator-page .prod-hero--pano .prod-hero-scrim { display: none; }
+  .generator-page .prod-hero--pano .prod-hero-copy {
+    position: static; inset: auto; display: block; padding: 1.4rem 22px 1.9rem;
+  }
+}
 
 /* ============ Generator brand switcher ============ */
 .generator-brand-showcase {
@@ -1517,6 +1530,12 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
 .generator-tab:focus-visible { border-bottom-color: var(--color-brand); color: var(--color-brand); }
 .generator-tab.is-active { border-bottom-color: var(--color-brand); color: var(--color-ink); }
 .generator-brand-panel[hidden] { display: none; }
+/* 切换 tab 时面板柔和淡入,替代生硬闪切 */
+.generator-brand-panel:not([hidden]) { animation: gp-fade .32s cubic-bezier(.22,.61,.36,1); }
+@keyframes gp-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+/* 去掉移动端点击的灰色 tap-highlight 闪光(“底色暗一下”的元凶) */
+.generator-tab, .generator-gallery-arrow, .generator-gallery-thumbs button,
+.kst-lang button, .ksth-burger, .ksth-nav a { -webkit-tap-highlight-color: transparent; }
 .generator-brand-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -1610,10 +1629,11 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
 }
 
 @media (max-width: 560px) {
-  .generator-tabs { gap: 1.25rem; }
-  .generator-tab { padding-inline: .65rem; font-size: .92rem; }
+  .generator-tabs { gap: 1.6rem; }
+  .generator-tab { padding-inline: .2rem; font-size: 1.4rem; font-weight: 700; letter-spacing: -.01em; }
   .generator-gallery-arrow { width: 2.5rem; height: 2.5rem; }
   .generator-brand-content h3 { font-size: clamp(1.8rem, 9vw, 2.6rem); }
+  .generator-brand-content .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .generator-brand-content .spec-table { font-size: .72rem; }
   .generator-brand-content .spec-table th,
   .generator-brand-content .spec-table td { padding: .65rem .4rem; line-height: 1.35; }
