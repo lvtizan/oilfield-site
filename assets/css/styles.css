@@ -63,6 +63,7 @@ body {
   font-family: var(--font-body);
   color: var(--color-ink);
   background: var(--color-bg);
+  overflow-x: clip;
   line-height: 1.6;
   font-size: var(--fs-body);
   -webkit-font-smoothing: antialiased;
@@ -832,7 +833,7 @@ html[data-lang="ru"] .site-header--overlay .lang-toggle [data-set="ru"] { backgr
 /* Nav dropdown */
 .primary-nav .has-sub { position: relative; }
 .primary-nav .caret { font-size: .7em; opacity: .8; }
-.primary-nav .subnav { position: absolute; top: 100%; left: 0; min-width: 230px; list-style: none; margin: 0; padding: .4rem;
+.primary-nav .subnav { position: absolute; top: 100%; right: 0; left: auto; min-width: 230px; list-style: none; margin: 0; padding: .4rem;
   background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-sm); box-shadow: var(--shadow-card);
   opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity var(--dur), transform var(--dur), visibility var(--dur); z-index: 60; }
 .primary-nav .has-sub:hover .subnav, .primary-nav .has-sub:focus-within .subnav { opacity: 1; visibility: visible; transform: translateY(0); }
