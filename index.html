@@ -174,10 +174,10 @@ section{position:relative}
 .models{background:var(--paper);color:var(--ink-dark)}
 /* 型号搜索框:输型号跳到发电机页对应品牌表 */
 .model-finder{display:flex;align-items:stretch;max-width:600px;margin:0 0 48px;background:#fff;border:1px solid var(--line-dark);border-radius:5px;overflow:hidden;position:relative}
-.model-finder svg{position:absolute;left:17px;top:50%;transform:translateY(-50%);width:18px;height:18px;fill:none;stroke:var(--mut-dark);stroke-width:1.8;stroke-linecap:round;pointer-events:none}
-.model-finder input{flex:1;min-width:0;background:transparent;border:0;color:var(--ink-dark);font-family:var(--cn);font-weight:400;font-size:15px;letter-spacing:.01em;padding:17px 14px 17px 48px;outline:none}
+.model-finder input{flex:1;min-width:0;background:transparent;border:0;color:var(--ink-dark);font-family:var(--cn);font-weight:400;font-size:15px;letter-spacing:.01em;padding:17px 18px;outline:none}
 .model-finder input::placeholder{color:var(--mut-dark)}
-.model-finder button{background:var(--acc);color:#fff;border:0;font-family:var(--num);font-weight:500;font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:0 30px;cursor:pointer;transition:filter .25s;flex-shrink:0}
+.model-finder button{background:var(--acc);color:#fff;border:0;padding:0 26px;cursor:pointer;transition:filter .25s;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.model-finder button svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;display:block}
 .model-finder button:hover{filter:brightness(1.12)}
 .modelgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-bottom:140px}
 .model{position:relative;background:#fff;border:1px solid var(--line-dark);overflow:hidden;padding:38px 34px 34px;min-height:430px;display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
@@ -531,7 +531,7 @@ html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,htm
       <h3 data-i18n-key="home.models.title">Featured Models</h3>
       <span class="en">Featured&nbsp;Models</span>
     </div>
-    <form class="model-finder reveal" onsubmit="return kstFindModel(event)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg><input type="search" id="kst-model-q" placeholder="Find a generator model — e.g. KPD200C, DE300E0, KPD440BD" aria-label="Search generator models" /><button type="submit">Search</button></form>
+    <form class="model-finder reveal" onsubmit="return kstFindModel(event)"><input type="search" id="kst-model-q" placeholder="Find a generator model — e.g. KPD200C, DE300E0, KPD440BD" aria-label="Search generator models" /><button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg></button></form>
       <div class="modelgrid">
       <!-- QSK50 -->
       <div class="model reveal">
