@@ -175,27 +175,35 @@ window.KST_SPEC_SEARCH = (function () {
   if (!inputs.length) return function () {};
   var panels = Array.prototype.slice.call(document.querySelectorAll('.generator-brand-panel'));
 
+  var lastScrolled = null;
   function apply(qraw, source) {
     var q = qraw.trim().toLowerCase();
     inputs.forEach(function (i) { if (i !== source && i.value !== qraw) i.value = qraw; });
-    var firstMatch = null;
+    /* 高亮匹配行(不隐藏其它行,表格保持全展开) */
+    var firstRow = null, firstPanel = null;
     panels.forEach(function (p) {
-      var hit = false;
       Array.prototype.slice.call(p.querySelectorAll('.spec-table tbody tr')).forEach(function (tr) {
-        var m = !q || tr.textContent.toLowerCase().indexOf(q) !== -1;
-        tr.hidden = !m;
-        if (m && q) hit = true;
+        var m = !!q && tr.textContent.toLowerCase().indexOf(q) !== -1;
+        tr.classList.toggle('is-match', m);
+        if (m && !firstRow) { firstRow = tr; firstPanel = p; }
       });
-      if (hit && !firstMatch) firstMatch = p;
     });
-    if (q && firstMatch) {
+    if (q && firstPanel) {
+      /* 当前品牌没匹配就切到有匹配的品牌 */
       var active = document.querySelector('.generator-brand-panel:not([hidden])');
-      var activeHit = active && Array.prototype.slice.call(active.querySelectorAll('.spec-table tbody tr')).some(function (tr) { return !tr.hidden; });
-      if (!activeHit) {
-        var btn = document.querySelector('[data-generator-tab="' + firstMatch.id + '"]');
+      if (!(active && active.querySelector('.spec-table tbody tr.is-match'))) {
+        var btn = document.querySelector('[data-generator-tab="' + firstPanel.id + '"]');
         if (btn) btn.click();
       }
+      /* 滚动到第一处匹配(仅当匹配行变化时,避免每次击键都滚) */
+      if (firstRow !== lastScrolled) {
+        lastScrolled = firstRow;
+        setTimeout(function () { firstRow.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 80);
+      }
+    } else {
+      lastScrolled = null;
     }
+    return firstRow;
   }
   inputs.forEach(function (input) {
     input.addEventListener('input', function () { apply(input.value, input); });
@@ -208,7 +216,9 @@ window.KST_SPEC_SEARCH = (function () {
   'use strict';
   var q = new URLSearchParams(location.search).get('q');
   if (!q || typeof window.KST_SPEC_SEARCH !== 'function') return;
-  window.KST_SPEC_SEARCH(q);
-  var showcase = document.querySelector('.generator-brand-showcase');
-  if (showcase) setTimeout(function () { showcase.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 350);
+  var match = window.KST_SPEC_SEARCH(q);
+  if (!match) {
+    var showcase = document.querySelector('.generator-brand-showcase');
+    if (showcase) setTimeout(function () { showcase.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300);
+  }
 })();

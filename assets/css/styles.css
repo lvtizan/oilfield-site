@@ -573,6 +573,10 @@ a.card { color: inherit; }
 .spec-table tbody td { padding: .7rem 1rem; border-bottom: 1px solid var(--color-border); font-variant-numeric: tabular-nums; }
 .spec-table tbody tr:nth-child(even) td { background: var(--color-surface); }
 .spec-table tbody tr:hover td { background: rgba(31,41,51,.05); }
+/* 搜索命中行高亮 */
+.spec-table tbody tr.is-match td { background: #fff4d3; }
+.spec-table tbody tr.is-match td:first-child { box-shadow: inset 3px 0 0 var(--color-brand); }
+.spec-table tbody tr.is-match .model { color: var(--color-brand); }
 .spec-table tbody tr:last-child td { border-bottom: 0; }
 .spec-table .model { font-family: var(--font-mono); font-weight: 600; color: var(--color-ink); white-space: nowrap; }
 .spec-table td .unit { color: var(--color-ink-soft); font-size: .78em; margin-left: .2rem; }
@@ -1131,7 +1135,7 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 }
 
 /* ============ 产品页 大主图 (prod-hero) ============ */
-.prod-hero { position: relative; min-height: clamp(300px, 42vh, 480px); max-width: 1400px; margin-inline: auto; display: flex; align-items: flex-end; overflow: hidden; padding: 0; }
+.prod-hero { position: relative; min-height: clamp(300px, 42vh, 480px); max-width: 1920px; margin-inline: auto; display: flex; align-items: flex-end; overflow: hidden; padding: 0; }
 .prod-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 .prod-hero-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(31,41,51,0) 0%, rgba(31,41,51,0) 52%, rgba(31,41,51,.34) 80%, rgba(31,41,51,.82) 100%); }
 .prod-hero-copy { position: relative; z-index: 2; color: var(--color-on-dark); padding-block: clamp(2rem,5vw,4rem); width: 100%; }
@@ -1559,7 +1563,7 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
 .generator-gallery-stage {
   position: relative;
   min-width: 0;
-  height: min(560px, calc((100vw - 2 * var(--gutter) - clamp(78px, 10vw, 120px) - 1.2rem) * .58));
+  height: min(620px, calc((100vw - 2 * var(--gutter) - clamp(78px, 10vw, 120px) - 1.2rem) * .75));
   min-height: 300px;
   overflow: hidden;
 }
@@ -1572,7 +1576,7 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
   will-change: transform;
 }
 .generator-gallery.is-single .generator-gallery-stage { height: min(620px, calc((100vw - 2 * var(--gutter)) * .75)); }
-.generator-slide { flex: 0 0 100%; display: grid; place-items: start center; height: 100%; }
+.generator-slide { flex: 0 0 100%; display: grid; place-items: center; height: 100%; }
 .generator-slide img { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; background: transparent; }
 .generator-gallery-arrow {
   position: absolute; top: 50%; transform: translateY(-50%);
@@ -1591,9 +1595,8 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
 .generator-brand-visual figcaption { margin-top: .8rem; color: var(--color-ink-soft); font-size: .84rem; }
 .generator-brand-content h3 { font-size: clamp(1.9rem, 4.2vw, 3.8rem); line-height: 1.05; margin: .45rem 0 .9rem; max-width: 22ch; }
 .generator-brand-content > p:not(.eyebrow):not(.generator-source) { color: var(--color-ink-soft); max-width: 75ch; margin-bottom: 1.3rem; font-size: var(--fs-lead); }
-.generator-brand-content .table-scroll { margin-top: 1.6rem; max-height: 93vh; overflow: auto; border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
+.generator-brand-content .table-scroll { margin-top: 1.6rem; overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
 .generator-brand-content .spec-table { width: 100%; min-width: 640px; table-layout: auto; }
-.generator-brand-content .spec-table thead th { position: sticky; top: 0; z-index: 1; }
 .spec-search { position: relative; display: flex; align-items: center; margin-top: 1.5rem; max-width: 360px; }
 .spec-search svg { position: absolute; left: 13px; width: 17px; height: 17px; fill: none; stroke: var(--color-ink-soft); stroke-width: 1.9; stroke-linecap: round; pointer-events: none; }
 .spec-search-input { width: 100%; padding: .62rem .9rem .62rem 2.4rem; font: inherit; font-size: .95rem; color: var(--color-ink); background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: border-color var(--dur); }
