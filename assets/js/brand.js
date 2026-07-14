@@ -26,7 +26,7 @@
       "site-logo .logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1;width:max-content}",
       "site-logo .logo .mark{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:600;font-style:italic;font-size:33px;line-height:1;letter-spacing:.06em;color:#fff;text-transform:uppercase;white-space:nowrap}",
       "site-logo .logo .mark b{color:#e8232b;font-weight:600;margin-left:.28em}",
-      "site-logo .logo .sub{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:10.5px;letter-spacing:.148em;color:#8b959e;white-space:nowrap}",
+      "site-logo .logo .sub{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:10.5px;letter-spacing:.08em;color:#8b959e;width:100%;text-align:justify;text-align-last:justify}",
       "site-logo[theme='ink'] .logo .mark{color:#14181c}",
       "site-logo[theme='ink'] .logo .sub{color:#6d7378}",
 
@@ -73,7 +73,7 @@
       "site-header .ksth-subnav a{padding:11px 0;font-size:14px;color:rgba(233,236,239,.62)}",
       "site-header .ksth-subnav a:hover{padding-left:0;background:none}",
       "site-header .ksth-bar site-logo .logo .mark{font-size:26px}",
-      "site-header .ksth-bar site-logo .logo .sub{display:block}",
+      "site-header .ksth-bar site-logo .logo .sub{display:none}",
       "site-header .ksth-lang button{padding:4px 6px;font-size:12px}",
       "site-header .ksth-burger{margin-left:8px}",
       "}",
@@ -148,10 +148,10 @@
               '<nav class="ksth-nav" aria-label="Primary">' +
                 link('index.html', 'nav.home', 'Home', 'home') +
                 link('about.html', 'nav.company', 'Company', 'company') +
-                link('generators.html', 'nav.generators', 'Generator Sets', 'generators') +
+                link('generators.html', 'nav.generators', 'Power Generation', 'generators') +
                 link('engines.html', 'nav.engines', 'Industrial Engines', 'engines') +
                 '<span class="ksth-ni' + oilOn + '">' +
-                  '<a href="' + base + 'oilfield.html"' + (active === 'oilfield' ? ' aria-current="page"' : '') + '><span data-i18n-key="nav.oilfield">Oilfield Drilling &amp; Production</span><span class="ksth-caret" aria-hidden="true">▾</span></a>' +
+                  '<a href="' + base + 'oilfield.html"' + (active === 'oilfield' ? ' aria-current="page"' : '') + '><span data-i18n-key="nav.oilfield">Oil &amp; Gas</span><span class="ksth-caret" aria-hidden="true">▾</span></a>' +
                   '<div class="ksth-subnav">' +
                     sub('#drilling', 'nav.drilling', 'Drilling') +
                     sub('#workover', 'nav.workover', 'Workover') +
@@ -209,9 +209,9 @@
               '</div>' +
               '<div>' +
                 '<h5 data-i18n-key="footer.products">Products</h5><ul>' +
-                  link('generators.html', 'nav.generators', 'Generator Sets') +
+                  link('generators.html', 'nav.generators', 'Power Generation') +
                   link('engines.html', 'nav.engines', 'Industrial Engines') +
-                  link('oilfield.html', 'nav.oilfield', 'Oilfield Equipment') +
+                  link('oilfield.html', 'nav.oilfield', 'Oil &amp; Gas') +
                 '</ul>' +
               '</div>' +
               '<div>' +
