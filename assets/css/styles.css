@@ -655,6 +655,8 @@ a.card { color: inherit; }
 .cta-band .actions { display: flex; flex-wrap: wrap; gap: .8rem; }
 
 /* ============ CONTACT ============ */
+/* 合并进 about 页后,锚点跳转要避开吸顶导航 */
+#contact { scroll-margin-top: 90px; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,5vw,4rem); align-items: start; }
 .contact-list { display: grid; gap: 1.4rem; }
 .contact-list .row { display: flex; gap: 1rem; align-items: flex-start; }

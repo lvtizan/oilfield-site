@@ -148,7 +148,7 @@
               '<site-logo href="index.html"></site-logo>' +
               '<nav class="ksth-nav" aria-label="Primary">' +
                 link('index.html', 'nav.home', 'Home', 'home') +
-                link('about.html', 'nav.company', 'Company', 'company') +
+                link('about.html', 'nav.company', 'About', 'company') +
                 link('generators.html', 'nav.generators', 'Power Generation', 'generators') +
                 link('engines.html', 'nav.engines', 'Industrial Engines', 'engines') +
                 '<span class="ksth-ni' + oilOn + '">' +
@@ -161,7 +161,6 @@
                   '</div>' +
                 '</span>' +
                 link('service.html', 'nav.service', 'Service', 'service') +
-                link('contact.html', 'nav.contact', 'Contact', 'contact') +
               '</nav>' +
               '<div class="kst-lang ksth-lang" role="group" aria-label="Language">' +
                 '<button type="button" data-set="en" aria-label="Switch to English">EN</button>' +
@@ -219,13 +218,12 @@
                 '<h5 data-i18n-key="footer.company">Company</h5><ul>' +
                   link('about.html', 'nav.company', 'About') +
                   link('service.html', 'nav.service', 'Service') +
-                  link('contact.html', 'nav.contact', 'Contact') +
                 '</ul>' +
               '</div>' +
               '<div>' +
                 '<h5 data-i18n-key="footer.contactHead">Contact</h5><ul>' +
                   '<li><a href="mailto:sales@kstpower.com">sales@kstpower.com</a></li>' +
-                  '<li><a href="' + base + 'contact.html" data-i18n-key="footer.wechat">WeChat / Email</a></li>' +
+                  '<li><a href="' + base + 'about.html#contact" data-i18n-key="footer.wechat">WeChat / Email</a></li>' +
                 '</ul>' +
               '</div>' +
             '</div>' +
