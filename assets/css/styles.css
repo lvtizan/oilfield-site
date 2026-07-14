@@ -544,19 +544,15 @@ a.card { color: inherit; }
 .card .icon svg { width: 100%; height: 100%; stroke: var(--color-ink); }
 .card .more { margin-top: 1rem; font-size: .8rem; font-weight: 600; color: var(--color-brand); display: inline-flex; gap: .35rem; align-items: center; }
 
-/* ============ OILFIELD PAGE: category chips + sections + spec tables ============ */
-.chip-nav { display: flex; flex-wrap: wrap; gap: .6rem; margin: clamp(1.2rem, 3vw, 2rem) 0 clamp(2.4rem, 4vw, 3.4rem); padding: .65rem; border: 1px solid var(--color-border); background: var(--color-surface); }
-.chip-nav a {
-  font-family: var(--font-display); font-size: .82rem; font-weight: 600;
-  min-height: 2.75rem; display: inline-flex; align-items: center;
-  border: 1px solid var(--color-border); border-radius: 999px; padding: .4rem 1rem;
-  color: var(--color-ink-soft); background: var(--color-bg); transition: all var(--dur);
-}
-.chip-nav a:hover { border-color: var(--color-ink); color: var(--color-ink); }
-.chip-nav a .num { color: var(--color-brand); font-weight: 700; margin-right: .35rem; }
+/* ============ OILFIELD PAGE: category tabs + sections + spec tables ============ */
+/* 分类 tab 复用 .generator-tabs 组件;这里只加顶部间距、换行与序号样式 */
+.oil-cat-tabs { margin-top: clamp(1.2rem, 3vw, 2rem); flex-wrap: wrap; row-gap: .2rem; }
+.oil-cat-tabs .num { color: var(--color-brand); font-weight: 800; margin-right: .4rem; font-variant-numeric: tabular-nums; }
 
 .oil-section { padding-block: clamp(2.8rem, 5vw, 4.4rem); border-top: 1px solid var(--color-border); scroll-margin-top: 96px; }
 .oil-section:first-of-type { border-top: 0; }
+/* 作为 tab 面板时:单个展示,去掉顶部分隔线与上内边距,紧贴 tab 栏 */
+.oil-section.generator-brand-panel { border-top: 0; padding-top: 0; }
 .oil-head { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; }
 .oil-head .idx { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: var(--color-brand); letter-spacing: .06em; line-height: 1; padding-top: .25rem; }
 .oil-head h2 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
