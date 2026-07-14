@@ -174,6 +174,12 @@ window.KST_SPEC_SEARCH = (function () {
   var inputs = Array.prototype.slice.call(document.querySelectorAll('[data-spec-search]'));
   if (!inputs.length) return function () {};
   var panels = Array.prototype.slice.call(document.querySelectorAll('.generator-brand-panel'));
+  if (!panels.length) {
+    /* 无品牌分栏(如 engines 页):以每个 spec-table 所在区块为搜索范围 */
+    panels = Array.prototype.slice.call(document.querySelectorAll('.spec-table')).map(function (t) {
+      return t.closest('section') || t.parentElement;
+    });
+  }
 
   var lastScrolled = null;
   function apply(qraw, source) {

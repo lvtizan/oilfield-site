@@ -31,8 +31,9 @@
       "site-logo[theme='ink'] .logo .sub{color:#6d7378}",
 
       /* ===== <site-header> ===== */
-      "site-header{display:block}",
-      "site-header .ksth{position:sticky;top:0;z-index:100;background:rgba(15,19,23,.96);box-shadow:0 1px 0 rgba(255,255,255,.10);transition:background .5s cubic-bezier(.22,.61,.36,1),box-shadow .5s cubic-bezier(.22,.61,.36,1)}",
+      "site-header{display:block;position:sticky;top:0;z-index:100}",
+      "site-header .ksth{z-index:100;background:rgba(15,19,23,.96);box-shadow:0 1px 0 rgba(255,255,255,.10);transition:background .5s cubic-bezier(.22,.61,.36,1),box-shadow .5s cubic-bezier(.22,.61,.36,1)}",
+      "site-header[transparent]{position:static}",
       "site-header[transparent] .ksth{position:fixed;left:0;right:0;top:0;background:transparent;box-shadow:none}",
       "site-header[transparent] .ksth.solid{background:rgba(15,19,23,.96);box-shadow:0 1px 0 rgba(255,255,255,.10)}",
       "site-header .ksth-bar{display:flex;align-items:center;height:76px;padding:0 clamp(22px,3vw,48px);gap:clamp(20px,3vw,48px);font-family:" + SANS + "}",
