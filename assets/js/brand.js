@@ -15,6 +15,16 @@
 
   var SANS = "'Inter','Helvetica Neue','Segoe UI',Roboto,Arial,'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif";
 
+  /* ── 联系信息:全站单一变量源。改这里,页脚 + 关于页联系区一起更新(待客户给真实信息替换占位) ── */
+  var CONTACT = {
+    email:  'sales@kstpower.com',
+    phone:  '+86 20 0000 0000',
+    wechat: '#',                       /* 微信号链接 / 二维码页 占位 */
+    addrZh: '中国 · 广东 · 广州',
+    addrEn: 'Guangzhou, Guangdong, China'
+  };
+  window.KST = window.KST || {}; window.KST.contact = CONTACT;
+
   /* ---- 只注入一次:作用域样式(字体由各页 assets/fonts/fonts.css 本地加载)---- */
   if (!document.getElementById('kst-brand-css')) {
     var css = document.createElement('style');
@@ -222,7 +232,7 @@
               '</div>' +
               '<div>' +
                 '<h5 data-i18n-key="footer.contactHead">Contact</h5><ul>' +
-                  '<li><a href="mailto:sales@kstpower.com">sales@kstpower.com</a></li>' +
+                  '<li><a href="mailto:' + CONTACT.email + '">' + CONTACT.email + '</a></li>' +
                   '<li><a href="' + base + 'about.html#contact" data-i18n-key="footer.wechat">WeChat / Email</a></li>' +
                 '</ul>' +
               '</div>' +
@@ -237,4 +247,15 @@
       }
     });
   }
+
+  /* ── 用 CONTACT 填充页面内联的 data-kst 元素(关于页联系区等) ── */
+  function fillContact() {
+    var c = CONTACT, q = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    q('[data-kst="email"]').forEach(function (el) { el.textContent = c.email; if (el.tagName === 'A') el.href = 'mailto:' + c.email; });
+    q('[data-kst="mailto"]').forEach(function (el) { el.href = 'mailto:' + c.email + '?subject=Inquiry%20%E2%80%94%20KST%20POWER'; });
+    q('[data-kst="phone"]').forEach(function (el) { el.textContent = c.phone; });
+    q('[data-kst="wechat"]').forEach(function (el) { el.href = c.wechat; });
+    q('[data-kst="addr"]').forEach(function (el) { el.innerHTML = '<span class="zh">' + c.addrZh + '</span><span class="en">' + c.addrEn + '</span>'; });
+  }
+  if (document.readyState !== 'loading') fillContact(); else document.addEventListener('DOMContentLoaded', fillContact);
 })(window, document);
