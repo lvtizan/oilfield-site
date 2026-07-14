@@ -132,43 +132,12 @@
         <div class="contact-cta">
           <h3><span class="zh">获取产品资料与报价</span><span class="en">Request specs &amp; a quote</span></h3>
           <p>
-            <span class="zh">填写下表，我们会附上匹配的产品型号、技术参数与报价。带 * 为必填。</span>
-            <span class="en">Fill in the form and we'll return matching models, specs and pricing. Fields marked * are required.</span>
+            <span class="zh">告诉我们您的功率或井场需求，我们直接邮件回复选型方案与报价。</span>
+            <span class="en">Tell us your power or wellsite needs — we'll reply by email with selection and pricing.</span>
           </p>
-          <!-- Static site, no backend. -->
-          <!-- TODO: for reliable delivery, wire to Formspree/EmailJS or a backend endpoint; mailto is a placeholder. -->
-          <form action="mailto:sales@kstpower.com" method="post" enctype="text/plain" class="form-grid">
-            <div class="field">
-              <label for="name"><span class="zh">姓名 *</span><span class="en">Name *</span></label>
-              <input type="text" id="name" name="name" required />
-            </div>
-            <div class="field">
-              <label for="company"><span class="zh">公司</span><span class="en">Company</span></label>
-              <input type="text" id="company" name="company" />
-            </div>
-            <div class="field">
-              <label for="email"><span class="zh">邮箱 *</span><span class="en">Email *</span></label>
-              <input type="email" id="email" name="email" required />
-            </div>
-            <div class="field">
-              <label for="category"><span class="zh">产品品类</span><span class="en">Product category</span></label>
-              <select id="category" name="category">
-                <option value="power-generation">发电机组 / Power Generation</option>
-                <option value="engines">工业发动机 / Industrial Engines</option>
-                <option value="drilling">钻井 / Drilling</option>
-                <option value="workover">修井 / Workover</option>
-                <option value="cementing">固井 / Cementing</option>
-                <option value="fracturing">压裂 / Fracturing</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="message"><span class="zh">需求描述</span><span class="en">Message</span></label>
-              <textarea id="message" name="message"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary"><span class="zh">提交询价</span><span class="en">Send Inquiry</span></button>
-            <!-- TODO: 替换为客户微信号/二维码 -->
-            <a class="btn btn-ghost" href="#"><span class="zh">微信咨询</span><span class="en">Chat on WeChat</span></a>
-          </form>
+          <!-- 询价表单先隐藏,客户确认接收方式后再启用(表单代码见 git 历史);当前改为点击直接发邮件。邮箱为占位,待客户提供真实邮箱替换。 -->
+          <a class="btn btn-primary" href="mailto:sales@kstpower.com?subject=Inquiry%20%E2%80%94%20KST%20POWER"><span class="zh">发邮件咨询</span><span class="en">Email us</span></a>
+          <a class="btn btn-ghost" href="#"><span class="zh">微信咨询</span><span class="en">Chat on WeChat</span></a>
         </div>
       </div>
 
