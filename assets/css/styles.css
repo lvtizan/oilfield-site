@@ -557,11 +557,10 @@ a.card { color: inherit; }
 .oil-section:first-of-type { border-top: 0; }
 /* 作为 tab 面板时:单个展示,去掉顶部分隔线与上内边距,紧贴 tab 栏 */
 .oil-section.generator-brand-panel { border-top: 0; padding-top: 0; }
-.oil-head { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; }
-.oil-head .idx { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: var(--color-brand); letter-spacing: .06em; line-height: 1; padding-top: .25rem; }
+.oil-head { margin-bottom: clamp(1.9rem, 3.6vw, 2.8rem); }
 .oil-head h2 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
 .oil-head h2 .zh { font-family: var(--font-zh); font-weight: 900; }
-.oil-head .en-sub { font-size: .9rem; color: var(--color-ink-soft); font-weight: 500; margin-top: .15rem; }
+.oil-head .en-sub { font-size: .95rem; color: var(--color-ink-soft); font-weight: 500; margin-top: .6rem; }
 .oil-section .intro { color: var(--color-ink-soft); max-width: 68ch; margin-bottom: 1.6rem; }
 
 .table-scroll { overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius); -webkit-overflow-scrolling: touch; overscroll-behavior-inline: contain; }
@@ -1629,6 +1628,8 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
 .generator-brand-content .table-scroll { margin-top: 1.6rem; overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
 .generator-brand-content .spec-table { width: 100%; min-width: 640px; table-layout: auto; }
 .spec-search { position: relative; display: flex; align-items: center; margin-top: 1.5rem; max-width: 360px; }
+/* 搜索框与其后的表格保持标准间距(与 generators 一致,不要贴太近) */
+.spec-search + .table-scroll { margin-top: 1.6rem; }
 .spec-search svg { position: absolute; left: 13px; width: 17px; height: 17px; fill: none; stroke: var(--color-ink-soft); stroke-width: 1.9; stroke-linecap: round; pointer-events: none; }
 .spec-search-input { width: 100%; padding: .62rem .9rem .62rem 2.4rem; font: inherit; font-size: .95rem; color: var(--color-ink); background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: border-color var(--dur); }
 .spec-search-input:focus { outline: none; border-color: var(--color-brand); }
