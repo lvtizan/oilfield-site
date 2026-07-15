@@ -552,7 +552,6 @@ a.card { color: inherit; }
 /* ============ OILFIELD PAGE: category tabs + sections + spec tables ============ */
 /* 分类 tab 复用 .generator-tabs 组件;这里只加顶部间距、换行与序号样式 */
 .oil-cat-tabs { margin-top: clamp(1.2rem, 3vw, 2rem); flex-wrap: wrap; row-gap: .2rem; }
-.oil-cat-tabs .num { color: var(--color-brand); font-weight: 800; margin-right: .4rem; font-variant-numeric: tabular-nums; }
 
 .oil-section { padding-block: clamp(2.8rem, 5vw, 4.4rem); border-top: 1px solid var(--color-border); scroll-margin-top: 96px; }
 .oil-section:first-of-type { border-top: 0; }
@@ -1275,13 +1274,18 @@ a.contact-tile:hover { border-color: var(--color-brand); }
   display: block; width: 100%; border-radius: 1.85rem; box-shadow: 0 24px 64px rgba(8,14,23,.14);
 }
 .engine-wide-story { padding-bottom: 0 !important; background: var(--color-bg); }
-.engine-wide-copy { margin-bottom: clamp(3rem,6vw,5rem); }
+/* 两栏:左标题 / 右引导文案(顶对齐,填满右侧空白) */
+.engine-wide-copy { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem,5vw,5rem); align-items: start; margin-bottom: clamp(3rem,6vw,5rem); }
 .engine-wide-copy h2,
 .engine-uptime-copy > h2 {
   max-width: 12ch; margin: .75rem 0 clamp(1.8rem,3vw,2.5rem);
   font-family: var(--font-display); font-size: clamp(3.2rem,7.5vw,7.4rem);
   line-height: .98; letter-spacing: -.045em; font-weight: 800;
 }
+/* pit-to-port 标题收敛字号(仅本区,不影响 uptime) */
+.engine-wide-head { align-self: start; }
+.engine-wide-copy h2 { max-width: 15ch; margin-bottom: 0; font-size: clamp(2.3rem,4.6vw,4.2rem); line-height: 1.02; letter-spacing: -.035em; }
+.engine-wide-lead { align-self: center; }
 .engine-wide-copy h2 .zh,
 .engine-uptime-copy > h2 .zh { font-family: var(--font-zh); letter-spacing: -.025em; }
 .engine-wide-copy p:not(.eyebrow) {
@@ -1364,7 +1368,9 @@ a.contact-tile:hover { border-color: var(--color-brand); }
   .app-cards { grid-template-columns: repeat(2,1fr); }
   .engine-story-grid,
   .engine-uptime-grid,
+  .engine-wide-copy,
   .engine-service-grid { grid-template-columns: 1fr; }
+  .engine-wide-copy { gap: 1.4rem; }
   .engine-metric-grid { grid-template-columns: repeat(2,1fr); }
   .engine-editorial-hero h1,
   .engine-wide-copy h2,
