@@ -151,7 +151,7 @@
         var sub = function (hash, key, text) {
           return '<a href="' + base + 'oilfield.html' + hash + '"><span data-i18n-key="' + key + '">' + text + '</span></a>';
         };
-        var oilOn = (active === 'oilfield') ? ' class="on"' : '';
+        var oilOn = (active === 'oilfield') ? ' on' : '';
         this.innerHTML =
           '<header class="ksth">' +
             '<div class="ksth-bar">' +
