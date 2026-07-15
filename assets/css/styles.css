@@ -634,7 +634,7 @@ a.card { color: inherit; }
 .service .eyebrow { color: var(--color-on-dark); opacity: .85; }
 .service h2 { color: var(--color-on-dark); }
 .service .sec-head p { color: var(--color-on-dark-soft); }
-.svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.1rem; margin-top: 1rem; }
+.svc-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.1rem; margin-top: 1rem; }
 .svc { border: 1px solid var(--color-on-dark-border); border-radius: var(--radius); padding: 1.5rem 1.4rem; background: var(--color-on-dark-surface); }
 .svc .icon { width: 34px; height:34px; color:var(--color-on-dark); margin-bottom:.8rem; }
 .svc .icon svg { width:100%; height:100%; stroke:var(--color-on-dark); }
@@ -1147,7 +1147,7 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 }
 
 /* ============ 产品页 大主图 (prod-hero) ============ */
-.prod-hero { position: relative; min-height: clamp(300px, 42vh, 480px); max-width: 1920px; margin-inline: auto; display: flex; align-items: flex-end; overflow: hidden; padding: 0; }
+.prod-hero { position: relative; min-height: clamp(300px, 42vh, 480px); display: flex; align-items: flex-end; overflow: hidden; padding: 0; }
 .prod-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 .prod-hero-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(18,22,26,0) 26%, rgba(18,22,26,.42) 58%, rgba(18,22,26,.74) 82%, rgba(18,22,26,.92) 100%); }
 .prod-hero-copy { position: relative; z-index: 2; color: var(--color-on-dark); padding-block: clamp(2rem,5vw,4rem); width: 100%; }
@@ -1229,12 +1229,10 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 }
 .engine-metrics { padding-block: clamp(1.6rem,3.2vw,2.8rem) !important; background: var(--color-bg); }
 .engine-metric-grid {
-  display: grid; grid-template-columns: repeat(4,1fr); gap: 1px;
-  background: var(--color-border); border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm); overflow: hidden;
+  display: grid; grid-template-columns: repeat(4,1fr); gap: clamp(1rem,3vw,2.4rem);
 }
 .engine-metric-grid > div {
-  min-height: 116px; padding: 1.5rem 1.3rem; background: var(--color-bg);
+  padding: .4rem 1rem;
   display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
 }
 .engine-metric-grid .k {
