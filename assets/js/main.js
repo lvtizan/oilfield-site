@@ -122,6 +122,22 @@
       activate(tabs[next]);
     });
   });
+
+  /* 从 URL hash 激活对应 tab —— 导航下拉深链(oilfield.html#workover 等)会真正展开该分类内容 */
+  function activateFromHash() {
+    var id = (location.hash || '').replace('#', '');
+    if (!id) return;
+    for (var i = 0; i < tabs.length; i++) {
+      if (tabs[i].getAttribute('aria-controls') === id) {
+        activate(tabs[i]);
+        var panel = document.getElementById(id);
+        if (panel) setTimeout(function () { panel.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 90);
+        return;
+      }
+    }
+  }
+  activateFromHash();
+  window.addEventListener('hashchange', activateFromHash);
 })();
 
 /* ---- Generator image galleries ---- */
