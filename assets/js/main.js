@@ -152,20 +152,33 @@
     var stageEl = gallery.querySelector('.generator-gallery-stage');
     function fitHeight() {
       if (!adaptive || !stageEl) return;
+      /* 舞台尚未获得宽度(如隐藏面板)时不要把高度设为 0,直接返回,等 ResizeObserver 触发 */
+      if (stageEl.clientWidth === 0) return;
       var slide = slides[index];
       var img = slide && slide.querySelector('img');
       if (!img) return;
-      if (!img.naturalWidth) {
+      /* 图片尚未加载完成时挂一次 load 再算,避免 naturalWidth=0 导致高度塌陷 */
+      if (!(img.complete && img.naturalWidth > 0)) {
         img.addEventListener('load', fitHeight, { once: true });
         return;
       }
       var ratio = img.naturalWidth / img.naturalHeight;
       if (ratio > 0) stageEl.style.height = (stageEl.clientWidth / ratio) + 'px';
     }
+    /* 舞台真正拿到尺寸时重算(隐藏→显示切换 + 视口变化都会触发);无 ResizeObserver 时回退到 window resize */
+    function watchStage() {
+      if (!adaptive || !stageEl) return;
+      if (window.ResizeObserver) {
+        var ro = new ResizeObserver(function () { fitHeight(); });
+        ro.observe(stageEl);
+      } else {
+        window.addEventListener('resize', fitHeight);
+      }
+    }
     if (slides.length < 2) {
       gallery.classList.add('is-single');
       fitHeight();
-      if (adaptive) window.addEventListener('resize', fitHeight);
+      watchStage();
       return;
     }
 
@@ -200,9 +213,9 @@
       startX = startY = null;
     }, { passive: true });
 
-    /* 初始高度 + 视口变化时重算(仅 cat-gallery) */
+    /* 初始高度 + 舞台尺寸/视口变化时重算(仅 cat-gallery) */
     fitHeight();
-    if (adaptive) window.addEventListener('resize', fitHeight);
+    watchStage();
   });
 })();
 
