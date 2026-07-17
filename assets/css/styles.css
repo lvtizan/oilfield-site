@@ -564,6 +564,9 @@ a.card { color: inherit; }
 .oil-head h2 .zh { font-family: var(--font-zh); font-weight: 900; }
 .oil-head .en-sub { font-size: .95rem; color: var(--color-ink-soft); font-weight: 500; margin-top: .6rem; }
 .oil-section .intro { color: var(--color-ink-soft); max-width: 68ch; margin-bottom: 1.6rem; }
+/* 压裂页:图廊下方那段整段一行显示(桌面),并与图片拉开约2行间距 */
+#fracturing .cat-gallery { margin-bottom: 0; }
+#fracturing .intro { max-width: none; margin-top: clamp(2rem, 3.6vw, 3.3rem); font-size: clamp(.9rem, 1.08vw, .96rem); }
 
 .table-scroll { overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius); -webkit-overflow-scrolling: touch; overscroll-behavior-inline: contain; }
 .spec-table { width: 100%; border-collapse: collapse; font-size: var(--fs-small); min-width: 520px; }
