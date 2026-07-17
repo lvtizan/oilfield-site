@@ -1183,8 +1183,8 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 
 /* 分类主图 (油田钻采 各子类) */
 .cat-img { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; border-radius: var(--radius); margin: 0 0 1.4rem; background: var(--color-surface-2); border: 1px solid var(--color-border); }
-/* 钻井井场图为近方形航拍:去掉 16/7 裁切,显示完整画面(露出底部地面设备/井场建筑),限高避免过大,contain 保证不裁上下 */
-.cat-img--drilling { aspect-ratio: auto; height: auto; object-fit: contain; max-height: clamp(420px, 52vh, 680px); }
+/* 钻井井场图为近方形航拍:去掉 16/7 裁切,满宽显示完整画面(露出底部地面设备/井场建筑),去掉限高避免两侧letterbox灰块 */
+.cat-img--drilling { aspect-ratio: auto; height: auto; width: 100%; object-fit: contain; max-height: none; }
 
 /* ============ 编辑式版式(产品页) ============ */
 .prod-hero--tall { min-height: clamp(320px, 46vh, 520px); }
