@@ -102,6 +102,8 @@
       "site-footer li a:hover{color:#fff}",
       "site-footer .kstf-base{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.10);padding:26px 0 30px;display:flex;flex-wrap:wrap;gap:28px;font-size:12px;letter-spacing:.02em;color:#6d7378}",
       "site-footer .kstf-base span:last-child{margin-left:auto}",
+      "site-footer .kstf-mark{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-style:italic;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#fff}",
+      "site-footer .kstf-mark b{color:#e8232b;font-weight:600;margin-left:.24em}",
       "site-footer .kstf-watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:center;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:clamp(90px,13vw,210px);letter-spacing:.06em;color:rgba(255,255,255,.028);line-height:1;user-select:none;pointer-events:none;white-space:nowrap}",
       "@media(max-width:820px){",
       "site-footer .kstf-cols{grid-template-columns:1fr 1fr;gap:30px;padding:60px 0 44px}",
@@ -238,7 +240,7 @@
               '</div>' +
             '</div>' +
             '<div class="kstf-base">' +
-              '<span>© 2026 Guangzhou KST Mechanical Equipment Co., Ltd.</span>' +
+              '<span>© 2026 Guangzhou <span class="kstf-mark">KST<b>POWER</b></span> Mechanical Equipment Co., Ltd.</span>' +
               '<span data-i18n-key="footer.trademark">Product model names and trademarks belong to their respective manufacturers.</span>' +
             '</div>' +
             '<div class="kstf-watermark" aria-hidden="true">KST&nbsp;POWER</div>' +
