@@ -580,6 +580,10 @@ a.card { color: inherit; }
 .spec-table tbody tr.is-match .model { color: var(--color-brand); }
 .spec-table tbody tr:last-child td { border-bottom: 0; }
 .spec-table .model { font-family: var(--font-mono); font-weight: 600; color: var(--color-ink); white-space: nowrap; }
+/* 矩阵型规格表:参数为行、型号为列(密集参数用,如全电动压裂撬) */
+.spec-table--matrix tbody th { text-align: left; font-weight: 600; color: var(--color-ink-soft); white-space: nowrap; padding: .7rem 1rem; border-bottom: 1px solid var(--color-border); }
+.spec-table--matrix tbody tr:nth-child(even) th { background: var(--color-surface); }
+.spec-table--matrix tbody td { white-space: nowrap; }
 .spec-table td .unit { color: var(--color-ink-soft); font-size: .78em; margin-left: .2rem; }
 
 .tag-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
@@ -634,7 +638,7 @@ a.card { color: inherit; }
 .service .eyebrow { color: var(--color-on-dark); opacity: .85; }
 .service h2 { color: var(--color-on-dark); }
 .service .sec-head p { color: var(--color-on-dark-soft); }
-.svc-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.1rem; margin-top: 1rem; }
+.svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.1rem; margin-top: 1rem; }
 .svc { border: 1px solid var(--color-on-dark-border); border-radius: var(--radius); padding: 1.5rem 1.4rem; background: var(--color-on-dark-surface); }
 .svc .icon { width: 34px; height:34px; color:var(--color-on-dark); margin-bottom:.8rem; }
 .svc .icon svg { width:100%; height:100%; stroke:var(--color-on-dark); }
@@ -1147,7 +1151,7 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 }
 
 /* ============ 产品页 大主图 (prod-hero) ============ */
-.prod-hero { position: relative; min-height: clamp(300px, 42vh, 480px); display: flex; align-items: flex-end; overflow: hidden; padding: 0; }
+.prod-hero { position: relative; min-height: clamp(300px, 42vh, 480px); max-width: 1920px; margin-inline: auto; display: flex; align-items: flex-end; overflow: hidden; padding: 0; }
 .prod-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 .prod-hero-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(18,22,26,0) 26%, rgba(18,22,26,.42) 58%, rgba(18,22,26,.74) 82%, rgba(18,22,26,.92) 100%); }
 .prod-hero-copy { position: relative; z-index: 2; color: var(--color-on-dark); padding-block: clamp(2rem,5vw,4rem); width: 100%; }
@@ -1229,10 +1233,12 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 }
 .engine-metrics { padding-block: clamp(1.6rem,3.2vw,2.8rem) !important; background: var(--color-bg); }
 .engine-metric-grid {
-  display: grid; grid-template-columns: repeat(4,1fr); gap: clamp(1rem,3vw,2.4rem);
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 1px;
+  background: var(--color-border); border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm); overflow: hidden;
 }
 .engine-metric-grid > div {
-  padding: .4rem 1rem;
+  min-height: 116px; padding: 1.5rem 1.3rem; background: var(--color-bg);
   display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
 }
 .engine-metric-grid .k {
@@ -1491,6 +1497,7 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
    统一高度:2172/724 宽幅(以 generators 为标准);cover 裁切填充,object-position 偏下
    → 以设备为主体、优先裁掉上方天空。文字压底,导航下间距=标准间距×2。面包屑另置横幅下方。 */
 .prod-hero--pano {
+  margin-top: clamp(2.4rem, 5vw, 4rem);
   min-height: 0;
   aspect-ratio: 2172 / 724;
   align-items: stretch;
