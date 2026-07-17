@@ -102,7 +102,6 @@
       "site-footer li a:hover{color:#fff}",
       "site-footer .kstf-base{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.10);padding:26px 0 30px;display:flex;flex-wrap:wrap;gap:28px;font-size:12px;letter-spacing:.02em;color:#6d7378}",
       "site-footer .kstf-base span:last-child{margin-left:auto}",
-      "site-footer .kstf-about site-logo .logo .sub{display:none}",
       "site-footer .kstf-watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:center;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:clamp(90px,13vw,210px);letter-spacing:.06em;color:rgba(255,255,255,.028);line-height:1;user-select:none;pointer-events:none;white-space:nowrap}",
       "@media(max-width:820px){",
       "site-footer .kstf-cols{grid-template-columns:1fr 1fr;gap:30px;padding:60px 0 44px}",
