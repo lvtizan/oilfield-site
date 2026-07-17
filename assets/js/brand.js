@@ -36,7 +36,7 @@
       "site-logo .logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1;width:max-content}",
       "site-logo .logo .mark{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:600;font-style:italic;font-size:33px;line-height:1;letter-spacing:.06em;color:#fff;text-transform:uppercase;white-space:nowrap}",
       "site-logo .logo .mark b{color:#e8232b;font-weight:600;margin-left:.28em}",
-      "site-logo .logo .sub{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:10.5px;letter-spacing:.146em;color:#8b959e;white-space:nowrap}",
+      "site-logo .logo .sub{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:10.5px;letter-spacing:.08em;color:#8b959e;width:100%;text-align:justify;text-align-last:justify}",
       "site-logo[theme='ink'] .logo .mark{color:#14181c}",
       "site-logo[theme='ink'] .logo .sub{color:#6d7378}",
 
@@ -102,6 +102,7 @@
       "site-footer li a:hover{color:#fff}",
       "site-footer .kstf-base{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.10);padding:26px 0 30px;display:flex;flex-wrap:wrap;gap:28px;font-size:12px;letter-spacing:.02em;color:#6d7378}",
       "site-footer .kstf-base span:last-child{margin-left:auto}",
+      "site-footer .kstf-about site-logo .logo .sub{display:none}",
       "site-footer .kstf-watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:center;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:clamp(90px,13vw,210px);letter-spacing:.06em;color:rgba(255,255,255,.028);line-height:1;user-select:none;pointer-events:none;white-space:nowrap}",
       "@media(max-width:820px){",
       "site-footer .kstf-cols{grid-template-columns:1fr 1fr;gap:30px;padding:60px 0 44px}",
@@ -158,6 +159,7 @@
               '<site-logo href="index.html"></site-logo>' +
               '<nav class="ksth-nav" aria-label="Primary">' +
                 link('index.html', 'nav.home', 'Home', 'home') +
+                link('about.html', 'nav.company', 'About', 'company') +
                 link('generators.html', 'nav.generators', 'Power Generation', 'generators') +
                 link('engines.html', 'nav.engines', 'Industrial Engines', 'engines') +
                 '<span class="ksth-ni' + oilOn + '">' +
@@ -170,7 +172,6 @@
                   '</div>' +
                 '</span>' +
                 link('service.html', 'nav.service', 'Service', 'service') +
-                link('about.html', 'nav.company', 'About', 'company') +
               '</nav>' +
               '<div class="kst-lang ksth-lang" role="group" aria-label="Language">' +
                 '<button type="button" data-set="en" aria-label="Switch to English">EN</button>' +
