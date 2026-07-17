@@ -1517,7 +1517,6 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
    统一高度:2172/724 宽幅(以 generators 为标准);cover 裁切填充,object-position 偏下
    → 以设备为主体、优先裁掉上方天空。文字压底,导航下间距=标准间距×2。面包屑另置横幅下方。 */
 .prod-hero--pano {
-  margin-top: clamp(2.4rem, 5vw, 4rem);
   min-height: 0;
   aspect-ratio: 2172 / 724;
   align-items: stretch;
