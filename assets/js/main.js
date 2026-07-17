@@ -147,8 +147,25 @@
     var slides = Array.prototype.slice.call(gallery.querySelectorAll('.generator-slide'));
     var dots = Array.prototype.slice.call(gallery.querySelectorAll('[data-gallery-dot]'));
     var index = 0;
+    /* 自适应高度:仅对油气分类页 .cat-gallery 生效(舞台按当前图片自然比例定高,填满宽度) */
+    var adaptive = gallery.closest('.cat-gallery');
+    var stageEl = gallery.querySelector('.generator-gallery-stage');
+    function fitHeight() {
+      if (!adaptive || !stageEl) return;
+      var slide = slides[index];
+      var img = slide && slide.querySelector('img');
+      if (!img) return;
+      if (!img.naturalWidth) {
+        img.addEventListener('load', fitHeight, { once: true });
+        return;
+      }
+      var ratio = img.naturalWidth / img.naturalHeight;
+      if (ratio > 0) stageEl.style.height = (stageEl.clientWidth / ratio) + 'px';
+    }
     if (slides.length < 2) {
       gallery.classList.add('is-single');
+      fitHeight();
+      if (adaptive) window.addEventListener('resize', fitHeight);
       return;
     }
 
@@ -158,6 +175,7 @@
       if (track) track.style.transform = 'translate3d(-' + (index * 100) + '%,0,0)';
       slides.forEach(function (slide, i) { slide.classList.toggle('is-active', i === index); });
       dots.forEach(function (dot, i) { dot.classList.toggle('is-active', i === index); });
+      fitHeight();
     }
 
     gallery.querySelector('[data-gallery-prev]').addEventListener('click', function () { show(index - 1); });
@@ -181,6 +199,10 @@
       }
       startX = startY = null;
     }, { passive: true });
+
+    /* 初始高度 + 视口变化时重算(仅 cat-gallery) */
+    fitHeight();
+    if (adaptive) window.addEventListener('resize', fitHeight);
   });
 })();
 
