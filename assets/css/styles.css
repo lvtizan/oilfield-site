@@ -589,6 +589,12 @@ a.card { color: inherit; }
 .spec-table--matrix tbody th { text-align: left; font-weight: 600; color: var(--color-ink-soft); white-space: nowrap; padding: .7rem 1rem; border-bottom: 1px solid var(--color-border); }
 .spec-table--matrix tbody tr:nth-child(even) th { background: var(--color-surface); }
 .spec-table--matrix tbody td { white-space: nowrap; }
+/* 钻井 6 列宽表:表头允许换行、收紧内边距字号,让底座型式那列也放得下不用横滚 */
+.spec-table--drill { font-size: calc(var(--fs-small) - .015rem); min-width: 720px; }
+.spec-table--drill thead th { white-space: normal; padding: .6rem .7rem; line-height: 1.25; vertical-align: bottom; }
+.spec-table--drill tbody td { padding: .6rem .7rem; }
+.spec-table--drill tbody td:last-child { white-space: normal; min-width: 12ch; }
+.spec-table--drill .unit { display: block; margin-left: 0; margin-top: .15rem; }
 /* 油气分类页里复用品牌图廊做图片切换:宽幅设备图,压低舞台高度避免大片留白 */
 .cat-gallery { margin: 0 0 1.4rem; }
 .cat-gallery .generator-gallery-stage,
