@@ -567,6 +567,8 @@ a.card { color: inherit; }
 /* 压裂页:图廊下方那段整段一行显示(桌面),并与图片拉开约2行间距 */
 #fracturing .cat-gallery { margin-bottom: 0; }
 #fracturing .intro { max-width: none; margin-top: clamp(2rem, 3.6vw, 3.3rem); font-size: clamp(.9rem, 1.08vw, .96rem); }
+/* 钻井页:说明段桌面单行(英文句更长,字号略小于压裂) */
+#drilling .intro { max-width: none; font-size: clamp(.86rem, 1.02vw, .94rem); }
 
 .table-scroll { overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius); -webkit-overflow-scrolling: touch; overscroll-behavior-inline: contain; }
 .spec-table { width: 100%; border-collapse: collapse; font-size: var(--fs-small); min-width: 520px; }
@@ -1181,6 +1183,8 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 
 /* 分类主图 (油田钻采 各子类) */
 .cat-img { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; border-radius: var(--radius); margin: 0 0 1.4rem; background: var(--color-surface-2); border: 1px solid var(--color-border); }
+/* 钻井井场图为近方形航拍:去掉 16/7 裁切,显示完整画面(露出底部地面设备/井场建筑),限高避免过大,contain 保证不裁上下 */
+.cat-img--drilling { aspect-ratio: auto; height: auto; object-fit: contain; max-height: clamp(420px, 52vh, 680px); }
 
 /* ============ 编辑式版式(产品页) ============ */
 .prod-hero--tall { min-height: clamp(320px, 46vh, 520px); }
