@@ -584,6 +584,10 @@ a.card { color: inherit; }
 .spec-table--matrix tbody th { text-align: left; font-weight: 600; color: var(--color-ink-soft); white-space: nowrap; padding: .7rem 1rem; border-bottom: 1px solid var(--color-border); }
 .spec-table--matrix tbody tr:nth-child(even) th { background: var(--color-surface); }
 .spec-table--matrix tbody td { white-space: nowrap; }
+/* 油气分类页里复用品牌图廊做图片切换:宽幅设备图,压低舞台高度避免大片留白 */
+.cat-gallery { margin: 0 0 1.4rem; }
+.cat-gallery .generator-gallery-stage,
+.cat-gallery.generator-gallery.is-single .generator-gallery-stage { height: clamp(220px, 30vw, 430px); min-height: 0; }
 .spec-table td .unit { color: var(--color-ink-soft); font-size: .78em; margin-left: .2rem; }
 
 .tag-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
