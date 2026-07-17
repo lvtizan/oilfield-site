@@ -204,11 +204,11 @@ html[data-lang="ru"] .lang-toggle [data-set="ru"] {
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .5rem; white-space: nowrap;
   font-family: var(--font-display); font-weight: 600; font-size: .92rem;
-  padding: .7rem 1.25rem; border-radius: var(--radius-sm);
+  padding: .7rem 1.25rem; border-radius: 4px;
   border: 1px solid transparent; cursor: pointer; transition: all var(--dur);
 }
-.btn-primary { background: var(--color-brand); color: var(--color-on-dark); border-radius: 0; letter-spacing: .18em; }
-.btn-primary:hover { background: #fff; color: #14181c; }
+.btn-primary { background: var(--color-brand); color: var(--color-on-dark); letter-spacing: .18em; }
+.btn-primary:hover { background: #c1000f; color: var(--color-on-dark); }
 .btn-ghost { background: transparent; color: var(--color-ink); border-color: var(--color-border); }
 .btn-ghost:hover { border-color: var(--color-ink); }
 
