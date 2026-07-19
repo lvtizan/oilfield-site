@@ -15,7 +15,8 @@
 
   var SANS = "'Inter','Helvetica Neue','Segoe UI',Roboto,Arial,'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif";
 
-  /* ── 联系信息:全站单一变量源。改这里,页脚 + 关于页联系区一起更新(待客户给真实信息替换占位) ── */
+  /* ── 联系信息:不要手改这里。唯一数据源是根目录 contact.config.json,
+        改完跑 `node tools/sync-contact.mjs`,静态 HTML 与本处一起同步。 ── */
   var CONTACT = {
     email:  'sales@kst-power.com',
     phone:  '+86 20 0000 0000',
