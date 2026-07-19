@@ -1,0 +1,166 @@
+{
+  "_comment": "新闻唯一数据源。改完跑 `node tools/build-news.mjs` 生成详情页、列表页与首页最新三条。body 为「一图一段」的组数组,顺序即页面顺序;图或文可缺其一。语言缺省回落 en。",
+  "items": [
+    {
+      "date": "2025-05",
+      "category": "expo",
+      "cover": "assets/img/products/gen-hero-2172.jpg",
+      "title": {
+        "zh": "第 25 届中国国际石油石化技术装备展 (cippe 2025)",
+        "en": "25th China Intl. Petroleum &amp; Petrochemical Expo (cippe 2025)"
+      },
+      "summary": {
+        "zh": "北京 · 展出油田发电机组与成套动力方案。",
+        "en": "Beijing · Showcasing oilfield gensets and complete power solutions."
+      },
+      "slug": "2025-05-25th-china-intl-petroleum",
+      "body": [
+        {
+          "image": "assets/img/products/gen-hero-2172.jpg",
+          "text": {
+            "zh": "北京 · 展出油田发电机组与成套动力方案。",
+            "en": "Beijing · Showcasing oilfield gensets and complete power solutions."
+          }
+        }
+      ]
+    },
+    {
+      "date": "2025-03",
+      "category": "case",
+      "cover": "images/hero-rigs.jpg",
+      "title": {
+        "zh": "中东某油田 · 交付 6 台 QSK50 发电机组",
+        "en": "Middle East oilfield · 6× QSK50 gensets delivered"
+      },
+      "summary": {
+        "zh": "井场主电源成套供应，含现场调试与备件计划。",
+        "en": "Wellsite prime-power package with commissioning and spare-parts plan."
+      },
+      "slug": "2025-03-middle-east-oilfield-6",
+      "body": [
+        {
+          "image": "images/hero-rigs.jpg",
+          "text": {
+            "zh": "井场主电源成套供应，含现场调试与备件计划。",
+            "en": "Wellsite prime-power package with commissioning and spare-parts plan."
+          }
+        }
+      ]
+    },
+    {
+      "date": "2024-12",
+      "category": "case",
+      "cover": "assets/img/products/special/mobile-power-semi-01.jpg",
+      "title": {
+        "zh": "中亚矿区 · 移动电力车项目",
+        "en": "Central Asia mine · Mobile power truck project"
+      },
+      "summary": {
+        "zh": "大功率半挂移动电力车，保障矿区分散点位供电。",
+        "en": "High-capacity semi-trailer mobile power units for scattered mine sites."
+      },
+      "slug": "2024-12-central-asia-mine-mobile",
+      "body": [
+        {
+          "image": "assets/img/products/special/mobile-power-semi-01.jpg",
+          "text": {
+            "zh": "大功率半挂移动电力车，保障矿区分散点位供电。",
+            "en": "High-capacity semi-trailer mobile power units for scattered mine sites."
+          }
+        }
+      ]
+    },
+    {
+      "date": "2024-11",
+      "category": "expo",
+      "cover": "images/apps/oilfield.jpg",
+      "title": {
+        "zh": "ADIPEC 2024 阿布扎比国际石油展",
+        "en": "ADIPEC 2024, Abu Dhabi"
+      },
+      "summary": {
+        "zh": "阿联酋 · 与中东买家洽谈钻采成套装备与压裂机组。",
+        "en": "UAE · Met Middle East buyers on drilling packages and fracturing units."
+      },
+      "slug": "2024-11-adipec-2024-abu-dhabi",
+      "body": [
+        {
+          "image": "images/apps/oilfield.jpg",
+          "text": {
+            "zh": "阿联酋 · 与中东买家洽谈钻采成套装备与压裂机组。",
+            "en": "UAE · Met Middle East buyers on drilling packages and fracturing units."
+          }
+        }
+      ]
+    },
+    {
+      "date": "2024-09",
+      "category": "expo",
+      "cover": "images/apps/mining.jpg",
+      "title": {
+        "zh": "中国—东盟矿业合作论坛暨展览会",
+        "en": "China–ASEAN Mining Cooperation Forum &amp; Expo"
+      },
+      "summary": {
+        "zh": "南宁 · 展示矿用工业发动机与移动电力车。",
+        "en": "Nanning · Presenting mining industrial engines and mobile power trucks."
+      },
+      "slug": "2024-09-china-asean-mining-cooperation",
+      "body": [
+        {
+          "image": "images/apps/mining.jpg",
+          "text": {
+            "zh": "南宁 · 展示矿用工业发动机与移动电力车。",
+            "en": "Nanning · Presenting mining industrial engines and mobile power trucks."
+          }
+        }
+      ]
+    },
+    {
+      "date": "2024-08",
+      "category": "case",
+      "cover": "images/apps/drilling.jpg",
+      "title": {
+        "zh": "非洲某钻井项目 · 成套动力供应",
+        "en": "Africa drilling project · Complete power supply"
+      },
+      "summary": {
+        "zh": "钻机动力模块与备用发电机组打包交付。",
+        "en": "Rig power modules and standby gensets delivered as a package."
+      },
+      "slug": "2024-08-africa-drilling-project-complete",
+      "body": [
+        {
+          "image": "images/apps/drilling.jpg",
+          "text": {
+            "zh": "钻机动力模块与备用发电机组打包交付。",
+            "en": "Rig power modules and standby gensets delivered as a package."
+          }
+        }
+      ]
+    },
+    {
+      "date": "2024-03",
+      "category": "expo",
+      "cover": "images/apps/power.jpg",
+      "title": {
+        "zh": "cippe 2024 中国国际石油石化展",
+        "en": "cippe 2024, Beijing"
+      },
+      "summary": {
+        "zh": "北京 · 发电机组与新能源微电网方案首次同台展出。",
+        "en": "Beijing · Gensets and renewable microgrid solutions shown together."
+      },
+      "slug": "2024-03-cippe-2024-beijing",
+      "body": [
+        {
+          "image": "images/apps/power.jpg",
+          "text": {
+            "zh": "北京 · 发电机组与新能源微电网方案首次同台展出。",
+            "en": "Beijing · Gensets and renewable microgrid solutions shown together."
+          }
+        }
+      ]
+    }
+  ]
+}

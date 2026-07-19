@@ -565,6 +565,54 @@ a.card { color: inherit; }
    不要 .oil-section 的顶部分隔线 —— 图文左右交替本身就是分节,再加线显得碎 */
 .special-vehicle-section { border-top: 0; }
 
+/* 新闻详情页(由 tools/build-news.mjs 生成)。正文是「一图一段」的组结构,
+   与客户交稿格式一致:桌面左图右文,窄屏图上文下 */
+.news-article { border-top: 0; }
+.news-article .na-date {
+  font-family: var(--font-display); font-size: .84rem; font-weight: 700;
+  letter-spacing: .1em; color: var(--color-brand); margin-bottom: .7rem;
+}
+.news-article h1 {
+  font-family: var(--font-display); font-size: clamp(1.9rem, 3.6vw, 3rem);
+  font-weight: 800; letter-spacing: -.02em; line-height: 1.14; max-width: 22ch; margin-bottom: 1rem;
+}
+.news-article h1 .zh { font-family: var(--font-zh); font-weight: 900; }
+.news-article .na-summary {
+  color: var(--color-ink-soft); font-size: var(--fs-lead);
+  max-width: 62ch; margin-bottom: clamp(2rem, 4vw, 3.2rem);
+}
+.na-block {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.4rem, 3vw, 2.8rem); align-items: center;
+  margin-bottom: clamp(2rem, 4vw, 3.2rem);
+}
+/* 交替要在正文容器内数,否则 nth-child 会把标题、摘要等兄弟节点一起算进去 */
+.na-body .na-block:nth-child(even) .na-fig { order: 2; }
+.na-fig { margin: 0; }
+.na-fig img {
+  display: block; width: 100%; height: auto; max-height: 460px; aspect-ratio: 4 / 3;
+  object-fit: contain; background: #fff; border: 1px solid var(--color-border);
+}
+.na-txt p { color: var(--color-ink); font-size: 1.02rem; line-height: 1.8; margin: 0; }
+.na-nav {
+  display: flex; justify-content: space-between; gap: 1rem;
+  margin-top: clamp(2rem, 4vw, 3rem); padding-top: 1.4rem;
+  border-top: 1px solid var(--color-border);
+}
+.na-nav a { color: var(--color-ink-soft); font-size: .92rem; max-width: 44%; }
+.na-nav a:hover { color: var(--color-brand); }
+.na-back { margin-top: 1.2rem; font-size: .92rem; }
+@media (max-width: 760px) {
+  .na-block { grid-template-columns: 1fr; }
+  .na-body .na-block:nth-child(even) .na-fig { order: 0; }
+  .na-nav { flex-direction: column; }
+  .na-nav a { max-width: 100%; }
+}
+
+/* 列表页时间线卡片现在是整卡可点 */
+.tl-card { text-decoration: none; color: inherit; transition: border-color var(--dur), transform var(--dur); }
+.tl-card:hover { border-color: var(--color-brand); transform: translateY(-2px); }
+
 /* 型号搜索结果页:命中的型号按所属页面分组,点进去由 ?q= 高亮对应参数行 */
 .sr-group { margin-bottom: clamp(2rem, 4vw, 3rem); }
 .sr-group h2 {
