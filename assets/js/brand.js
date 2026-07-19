@@ -160,7 +160,6 @@
               '<site-logo href="index.html"></site-logo>' +
               '<nav class="ksth-nav" aria-label="Primary">' +
                 link('index.html', 'nav.home', 'Home', 'home') +
-                link('about.html', 'nav.company', 'About', 'company') +
                 link('generators.html', 'nav.generators', 'Power Generation', 'generators') +
                 link('engines.html', 'nav.engines', 'Industrial Engines', 'engines') +
                 '<span class="ksth-ni' + oilOn + '">' +
@@ -182,6 +181,7 @@
                 '</span>' +
                 link('service.html', 'nav.service', 'Service', 'service') +
                 link('news.html', 'nav.news', 'Activity &amp; News', 'news') +
+                link('about.html', 'nav.company', 'About', 'company') +
               '</nav>' +
               '<div class="kst-lang ksth-lang" role="group" aria-label="Language">' +
                 '<button type="button" data-set="en" aria-label="Switch to English">EN</button>' +
