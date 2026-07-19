@@ -172,7 +172,16 @@
                     sub('#fracturing', 'nav.fracturing', 'Fracturing') +
                   '</div>' +
                 '</span>' +
+                '<span class="ksth-ni' + (active === 'special' ? ' on' : '') + '">' +
+                  '<a href="' + base + 'special.html"' + (active === 'special' ? ' aria-current="page"' : '') + '><span data-i18n-key="nav.special">Special Vehicle</span><span class="ksth-caret" aria-hidden="true">▾</span></a>' +
+                  '<div class="ksth-subnav">' +
+                    '<a href="' + base + 'special.html#mobile-power"><span data-i18n-key="nav.mobilepower">Mobile Power Truck</span></a>' +
+                    '<a href="' + base + 'special.html#sweeper"><span data-i18n-key="nav.sweeper">Sweeper Truck</span></a>' +
+                    '<a href="' + base + 'special.html#tanker"><span data-i18n-key="nav.tanker">Tanker Truck</span></a>' +
+                  '</div>' +
+                '</span>' +
                 link('service.html', 'nav.service', 'Service', 'service') +
+                link('news.html', 'nav.news', 'Activity &amp; News', 'news') +
               '</nav>' +
               '<div class="kst-lang ksth-lang" role="group" aria-label="Language">' +
                 '<button type="button" data-set="en" aria-label="Switch to English">EN</button>' +
