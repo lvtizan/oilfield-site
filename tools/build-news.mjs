@@ -86,7 +86,7 @@ function detailPage(item, prev, next) {
   <link rel="stylesheet" href="../assets/fonts/fonts.css" />
   <link rel="stylesheet" href="../assets/css/styles.css?v=20260719-news" />
   <script>(function(){try{var l=localStorage.getItem('kst-lang');if(l==='en'||l==='ru'||l==='zh'){document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l==='zh'?'zh-CN':l);}}catch(e){}})();</script>
-  <script src="../assets/js/brand.js?v=20260719-inlinelogo"></script>
+  <script src="../assets/js/brand.js?v=20260719-i18nfix"></script>
 </head>
 <body class="generator-page">
   <a class="skip-link" href="#main"><span class="zh">跳到主要内容</span><span class="en">Skip to content</span></a>
@@ -117,7 +117,7 @@ ${blocks}
   </main>
 
   <site-footer base="../"></site-footer>
-  <script src="../assets/js/languages.js?v=20260719-search"></script>
+  <script src="../assets/js/languages.js?v=20260719-i18nfix"></script>
   <script src="../assets/js/main.js?v=20260719-search"></script>
 </body>
 </html>
@@ -140,13 +140,17 @@ function timeline(cat) {
             </div>`).join('\n') + `\n          </div>`;
 }
 
+/* 首页不加载 styles.css,且把 .en 当装饰标签用(面板眉标、区块英文名),
+   不能套全局 .zh/.en 显隐规则 —— 这里用卡内专用的 .t-zh/.t-en */
+const bi = (f) => `<span class="t-zh">${esc(f?.zh ?? f?.en ?? '')}</span><span class="t-en">${esc(f?.en ?? f?.zh ?? '')}</span>`;
+
 /* ── 首页最新三条 ────────────────────────────────────── */
 function homeCards() {
   return items.slice(0, 3).map((i, n) => `      <a class="newscard reveal"${n ? ` style="transition-delay:.${n * 12}s"` : ''} href="news/${attr(i.slug)}.html">
         <div class="newscard-media"><img src="${attr(i.cover)}" alt="" loading="lazy" decoding="async" /></div>
         <div class="newscard-body">
-          <h4>${esc(plain(i.title))}</h4>
-          <p>${esc(plain(i.summary))}</p>
+          <h4>${bi(i.title)}</h4>
+          <p>${bi(i.summary)}</p>
           <time class="newscard-date" datetime="${attr(i.date)}">${dateLabel(i.date)}</time>
         </div>
       </a>`).join('\n');

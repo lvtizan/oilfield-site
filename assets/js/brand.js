@@ -161,8 +161,11 @@
     customElements.define('site-logo', class extends HTMLElement {
       connectedCallback() {
         var href = this.getAttribute('href');
+        /* inline 变体不渲染副标语:它若留在 DOM 里,会被读 textContent 的逻辑
+           (如 languages.js 生成俄语回退文案)当成正文抠出来拼进句子 */
         var inner = '<span class="mark">KST<b>POWER</b></span>' +
-                    '<span class="sub">A trusted name in power solutions.</span>';
+                    (this.hasAttribute('inline') ? '' :
+                     '<span class="sub">A trusted name in power solutions.</span>');
         this.innerHTML = href
           ? '<a class="logo" href="' + href + '">' + inner + '</a>'
           : '<span class="logo">' + inner + '</span>';

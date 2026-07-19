@@ -199,6 +199,10 @@ section{position:relative}
 .newscard-body{padding:26px 28px 30px}
 .newscard h4{font-size:18px;line-height:1.45;letter-spacing:.01em;color:var(--ink-dark)}
 .newscard p{margin-top:10px;font-size:14px;line-height:1.7;letter-spacing:.04em;color:var(--mut-dark)}
+/* 新闻卡双语:首页 .en 另有装饰用途,这里用独立类名,作用域限定在卡内 */
+.newscard .t-zh{display:none}
+html[data-lang="zh"] .newscard .t-zh{display:inline}
+html[data-lang="zh"] .newscard .t-en{display:none}
 .newscard-date{display:block;margin-top:14px;font-family:var(--num);font-size:12px;letter-spacing:.14em;color:var(--acc);font-weight:600}
 @media(max-width:900px){.newsgrid{grid-template-columns:1fr;gap:24px;padding-bottom:70px}}
 
@@ -348,7 +352,7 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
 @media (prefers-reduced-motion:reduce){.panel .art{animation:none}.scrolldn .stem{animation:none}*{transition-duration:.01ms!important}}
 html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,html[data-lang="en"] .models .shead>.en,html[data-lang="en"] .app .cap>span{display:none}
 </style>
-<script src="assets/js/brand.js?v=20260719-inlinelogo"></script>
+<script src="assets/js/brand.js?v=20260719-i18nfix"></script>
 </head>
 <body>
 
@@ -403,7 +407,7 @@ html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,htm
     <div class="txt">
       <div class="en" data-i18n-key="legacy.panel.generators">Power&nbsp;Generation</div>
       <h2 data-i18n-key="legacy.panel.generators">发电机组</h2>
-      <div class="tag">Power <i>74 – 4400 hp</i> · wellsite / power plant / standby</div>
+      <div class="tag"><span data-i18n-key="home.p1.tagA">Power</span> <i>74 – 4400 hp</i> <span data-i18n-key="home.p1.tagB">· wellsite / power plant / standby</span></div>
       <span class="go"><span class="ln"></span><span data-i18n-key="legacy.panel.enter">进入</span></span>
     </div>
   </a>
@@ -448,7 +452,7 @@ html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,htm
     <div class="txt">
       <div class="en" data-i18n-key="legacy.panel.engines">Industrial&nbsp;Engines</div>
       <h2 data-i18n-key="legacy.panel.engines">工业发动机</h2>
-      <div class="tag">Mining / drilling power · long-duty in high-altitude &amp; extreme-cold conditions</div>
+      <div class="tag"><span data-i18n-key="home.p2.tag">Mining / drilling power · long-duty in high-altitude &amp; extreme-cold conditions</span></div>
       <span class="go"><span class="ln"></span><span data-i18n-key="legacy.panel.enter">进入</span></span>
     </div>
   </a>
@@ -488,12 +492,12 @@ html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,htm
     <div class="txt">
       <div class="en" data-i18n-key="legacy.panel.oilfield">Oil&nbsp;&amp;&nbsp;Gas</div>
       <h2 data-i18n-key="legacy.panel.oilfield">油田钻采设备</h2>
-      <div class="tag">Complete D&amp;P sets · max depth <i>9000 m</i> · max pressure <i>175 MPa</i></div>
+      <div class="tag"><span data-i18n-key="home.p3.tagA">Complete D&amp;P sets · max depth</span> <i>9000 m</i> <span data-i18n-key="home.p3.tagB">· max pressure</span> <i>175 MPa</i></div>
       <span class="go"><span class="ln"></span><span data-i18n-key="legacy.panel.enter">进入</span></span>
     </div>
   </a>
 
-  <div class="scrolldn"><span>Scroll</span><span class="stem"></span></div>
+  <div class="scrolldn"><span data-i18n-key="home.scroll">Scroll</span><span class="stem"></span></div>
 </section>
 
 <!-- ═════════ 01 应用领域 ═════════ -->
@@ -542,7 +546,7 @@ html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,htm
       <h4 data-i18n-key="home.apps.power">Power</h4><span>Power</span>
     </div></a>
   </div>
-  <div class="wrap"><p class="lead reveal">Five application scenarios, one power standard. From drilling &amp; production power at oil and gas wellsites to continuous supply for mines and power stations, <span class="kstmark">KST<b>POWER</b></span> delivers complete-set equipment on measured, hard specifications.</p></div>
+  <div class="wrap"><p class="lead reveal"><span data-i18n-key="home.apps.leadA">Five application scenarios, one power standard. From drilling &amp; production power at oil and gas wellsites to continuous supply for mines and power stations,</span> <span class="kstmark">KST<b>POWER</b></span> <span data-i18n-key="home.apps.leadB">delivers complete-set equipment on measured, hard specifications.</span></p></div>
 </section>
 
 <!-- ═════════ 02 技术实力 ═════════ -->
@@ -598,24 +602,24 @@ html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,htm
       <a class="newscard reveal" href="news/2025-05-25th-china-intl-petroleum.html">
         <div class="newscard-media"><img src="assets/img/products/gen-hero-2172.jpg" alt="" loading="lazy" decoding="async" /></div>
         <div class="newscard-body">
-          <h4>25th China Intl. Petroleum &amp; Petrochemical Expo (cippe 2025)</h4>
-          <p>Beijing · Showcasing oilfield gensets and complete power solutions.</p>
+          <h4><span class="t-zh">第 25 届中国国际石油石化技术装备展 (cippe 2025)</span><span class="t-en">25th China Intl. Petroleum &amp; Petrochemical Expo (cippe 2025)</span></h4>
+          <p><span class="t-zh">北京 · 展出油田发电机组与成套动力方案。</span><span class="t-en">Beijing · Showcasing oilfield gensets and complete power solutions.</span></p>
           <time class="newscard-date" datetime="2025-05">2025.05</time>
         </div>
       </a>
       <a class="newscard reveal" style="transition-delay:.12s" href="news/2025-03-middle-east-oilfield-6.html">
         <div class="newscard-media"><img src="images/hero-rigs.jpg" alt="" loading="lazy" decoding="async" /></div>
         <div class="newscard-body">
-          <h4>Middle East oilfield · 6× QSK50 gensets delivered</h4>
-          <p>Wellsite prime-power package with commissioning and spare-parts plan.</p>
+          <h4><span class="t-zh">中东某油田 · 交付 6 台 QSK50 发电机组</span><span class="t-en">Middle East oilfield · 6× QSK50 gensets delivered</span></h4>
+          <p><span class="t-zh">井场主电源成套供应，含现场调试与备件计划。</span><span class="t-en">Wellsite prime-power package with commissioning and spare-parts plan.</span></p>
           <time class="newscard-date" datetime="2025-03">2025.03</time>
         </div>
       </a>
       <a class="newscard reveal" style="transition-delay:.24s" href="news/2024-12-central-asia-mine-mobile.html">
         <div class="newscard-media"><img src="assets/img/products/special/mobile-power-semi-01.jpg" alt="" loading="lazy" decoding="async" /></div>
         <div class="newscard-body">
-          <h4>Central Asia mine · Mobile power truck project</h4>
-          <p>High-capacity semi-trailer mobile power units for scattered mine sites.</p>
+          <h4><span class="t-zh">中亚矿区 · 移动电力车项目</span><span class="t-en">Central Asia mine · Mobile power truck project</span></h4>
+          <p><span class="t-zh">大功率半挂移动电力车，保障矿区分散点位供电。</span><span class="t-en">High-capacity semi-trailer mobile power units for scattered mine sites.</span></p>
           <time class="newscard-date" datetime="2024-12">2024.12</time>
         </div>
       </a>
@@ -738,6 +742,6 @@ const nio=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.6});
 document.querySelectorAll('.cnt').forEach(el=>nio.observe(el));
 </script>
-<script src="assets/js/languages.js?v=20260719-search"></script>
+<script src="assets/js/languages.js?v=20260719-i18nfix"></script>
 </body>
 </html>
