@@ -204,9 +204,11 @@ section{position:relative}
 
 /* ---------- 04 关于我们 ---------- */
 .cta{background:var(--bg-2);overflow:hidden}
-.cta .inner{position:relative;padding:150px 0 150px;text-align:center}
-/* 区块名:比正文提示语大一号,但保持灰度 —— 它是标签不是标题,不该抢白色正文的注意力 */
-.cta .en{font-family:var(--num);font-size:16px;letter-spacing:.42em;text-transform:uppercase;color:rgba(233,236,239,.55)}
+.cta .inner{position:relative;padding:110px 0 130px;text-align:center}
+/* 区块名做成大字水印:参照页脚 KST POWER 水印的手法 —— 尺寸很大但透明度极低,
+   起氛围与分区作用,不与下方联系信息抢注意力 */
+.cta .en{font-family:var(--num);font-weight:600;font-size:clamp(52px,9vw,132px);letter-spacing:.06em;
+  text-transform:uppercase;color:rgba(255,255,255,.055);line-height:1;user-select:none;white-space:nowrap}
 .cta h3{margin-top:26px;font-size:clamp(30px,4vw,58px);font-weight:400;letter-spacing:.14em;color:#fff}
 .cta h3 b{color:var(--acc);font-weight:500}
 .cta p{margin-top:22px;font-size:15px;letter-spacing:.1em;color:var(--mut);line-height:1.9}
@@ -218,7 +220,7 @@ section{position:relative}
 .cta .glowline{position:absolute;left:50%;top:0;transform:translateX(-50%);width:1px;height:86px;background:linear-gradient(180deg,var(--acc),transparent)}
 
 /* ---------- 04b 联系方式(深色版,取自 about.html 的联系区) ---------- */
-.ctc{margin-top:34px;text-align:left}
+.ctc{margin-top:10px;text-align:left}
 /* 地址由 brand.js / sync-contact 注入 zh+en 两份(brand.js 会覆写 innerHTML,
    languages.js 补的 .ru span 未必存在),本页不加载 styles.css,故在此自管显隐:
    默认走英文,俄语也回落英文(RU_COPY 无地址译文,结果本就与英文一致),仅中文切换 */
@@ -340,7 +342,7 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
   footer .cols{grid-template-columns:1fr 1fr}
   .cta .act{flex-direction:column}
   /* 询盘/联系区:150px 上下留白在手机上就是一整屏空白 */
-  .cta .inner{padding:64px 0 72px}
+  .cta .inner{padding:44px 0 64px}
   .cta .glowline{height:44px}
 }
 @media (prefers-reduced-motion:reduce){.panel .art{animation:none}.scrolldn .stem{animation:none}*{transition-duration:.01ms!important}}
