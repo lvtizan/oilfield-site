@@ -1245,9 +1245,12 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 /* 首屏两栏:左文案 + 右图片轮播。文案收窄让出轮播位 */
 .engine-hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(1.6rem, 4vw, 3.6rem);
+  /* 右栏略宽:箭头占掉的横向空间从这里补回来,图片不至于被压小 */
+  grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+  gap: clamp(1.4rem, 3vw, 2.6rem);
   align-items: center;
+  /* 首屏正下方紧接通栏大图,末行不能贴着图 */
+  padding-bottom: clamp(2rem, 4vw, 3.4rem);
 }
 .engine-hero-copy .engine-editorial-lead {
   max-width: 42ch; font-size: clamp(1.05rem,1.25vw,1.32rem);
@@ -1671,17 +1674,17 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
 /* 发动机页首屏轮播:复用 generator-gallery,但左右箭头改为排在图片两侧(不压图),
    指示条移到图片下方 */
 .engine-hero-gallery {
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center; align-content: start; column-gap: .75rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center; align-content: start; column-gap: clamp(.4rem, 1vw, .9rem);
 }
+/* ‹ 图 › 三格并排:箭头在图片左右两侧的留白里,垂直居中,不压图 */
+.engine-hero-gallery .generator-gallery-arrow--prev { grid-column: 1; grid-row: 1; }
 .engine-hero-gallery .generator-gallery-stage {
-  grid-column: 1 / -1; grid-row: 1;
+  grid-column: 2; grid-row: 1;
   height: auto; min-height: 0; aspect-ratio: 4 / 3; background: #fff;
 }
-/* 控制条整体居中:‹ 贴右、指示条居中、› 贴左 */
-.engine-hero-gallery .generator-gallery-arrow--prev { grid-column: 1; grid-row: 2; justify-self: end; }
+.engine-hero-gallery .generator-gallery-arrow--next { grid-column: 3; grid-row: 1; }
 .engine-hero-gallery .generator-gallery-thumbs { grid-column: 2; grid-row: 2; }
-.engine-hero-gallery .generator-gallery-arrow--next { grid-column: 3; grid-row: 2; justify-self: start; }
 .engine-hero-gallery .generator-slide picture { display: block; width: 100%; height: 100%; }
 .engine-hero-gallery .generator-slide img { width: 100%; height: 100%; object-fit: contain; }
 /* 箭头脱离绝对定位,作为网格项排在图片左右两侧 */
@@ -1690,16 +1693,11 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
   width: 2.4rem; height: 2.4rem; font-size: 1.5rem;
   display: grid; place-items: center; background: #fff;
 }
+/* 缩略图与 generators / special 页保持一致(选中描红边),只是改为横向排列 */
 .engine-hero-gallery .generator-gallery-thumbs {
-  flex-direction: row; justify-content: center; gap: .5rem;
+  flex-direction: row; flex-wrap: wrap; justify-content: center; gap: .5rem;
 }
-.engine-hero-gallery .generator-gallery-thumbs button {
-  width: 2.1rem; height: 3px; padding: 0; border: 0; border-radius: 2px;
-  background: var(--color-border-strong); transition: background var(--dur);
-}
-.engine-hero-gallery .generator-gallery-thumbs button:hover,
-.engine-hero-gallery .generator-gallery-thumbs button:focus-visible { background: var(--color-ink-soft); }
-.engine-hero-gallery .generator-gallery-thumbs button.is-active { background: var(--color-brand); }
+.engine-hero-gallery .generator-gallery-thumbs button { width: clamp(46px, 5.2vw, 74px); }
 
 .generator-brand-visual figcaption { margin-top: .8rem; color: var(--color-ink-soft); font-size: .84rem; }
 .generator-brand-content h3 { font-size: clamp(1.9rem, 4.2vw, 3.8rem); line-height: 1.05; margin: .45rem 0 .9rem; max-width: 22ch; }
