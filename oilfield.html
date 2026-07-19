@@ -49,8 +49,9 @@
       <div class="wrap">
         <div class="generator-tabs oil-cat-tabs" role="tablist" aria-label="油田钻采设备分类 Oil &amp; gas equipment categories">
           <button type="button" class="generator-tab is-active" id="oil-tab-drilling" role="tab" aria-selected="true" aria-controls="drilling" data-generator-tab="drilling"><span class="zh">钻井装备</span><span class="en">Drilling</span></button>
-          <button type="button" class="generator-tab" id="oil-tab-workover" role="tab" aria-selected="false" aria-controls="workover" data-generator-tab="workover"><span class="zh">修井装备</span><span class="en">Workover</span></button>
-          <button type="button" class="generator-tab" id="oil-tab-cementing" role="tab" aria-selected="false" aria-controls="cementing" data-generator-tab="cementing"><span class="zh">固井装备</span><span class="en">Cementing</span></button>
+          <!-- 修井/固井 暂不主推,先隐藏(去掉 style 即恢复) -->
+          <button type="button" class="generator-tab" id="oil-tab-workover" role="tab" aria-selected="false" aria-controls="workover" data-generator-tab="workover" style="display:none"><span class="zh">修井装备</span><span class="en">Workover</span></button>
+          <button type="button" class="generator-tab" id="oil-tab-cementing" role="tab" aria-selected="false" aria-controls="cementing" data-generator-tab="cementing" style="display:none"><span class="zh">固井装备</span><span class="en">Cementing</span></button>
           <button type="button" class="generator-tab" id="oil-tab-fracturing" role="tab" aria-selected="false" aria-controls="fracturing" data-generator-tab="fracturing"><span class="zh">压裂装备</span><span class="en">Fracturing</span></button>
         </div>
 
