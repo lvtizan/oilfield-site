@@ -271,7 +271,9 @@ html[data-lang="ru"] .lang-toggle [data-set="ru"] {
   margin-bottom: 1.35rem;
 }
 .hero .eyebrow { color: var(--color-on-dark); }
-.hero-ctas { display: flex; flex-wrap: wrap; gap: .8rem; min-height: 45px; margin-bottom: 1.65rem; }
+/* align-items:center 必须有 —— 否则子项 stretch,会被 min-height 拉成整块高度
+   (560px 断点下 min-height:96px 曾把按钮拉成 96px 高) */
+.hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; min-height: 45px; margin-bottom: 1.65rem; }
 .hero .btn-ghost {
   background: rgba(255,255,255,.12);
   border-color: rgba(255,255,255,.28);
@@ -1818,7 +1820,14 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
 }
 
 @media (max-width: 560px) {
-  .generator-tabs { gap: 1.6rem; }
+  /* 三个品牌按钮在 390px 下排不开,曾撑出 6px 横向溢出(整页可左右拨动)。
+     改为容器内横向滚动,不再顶破视口 */
+  .generator-tabs {
+    gap: 1.6rem; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .generator-tabs::-webkit-scrollbar { display: none; }
+  .generator-tab { flex: 0 0 auto; }
   .generator-tab { padding-inline: .2rem; font-size: 1.4rem; font-weight: 700; letter-spacing: -.01em; }
   .generator-gallery-arrow { width: 2.5rem; height: 2.5rem; }
   .generator-brand-content h3 { font-size: clamp(1.8rem, 9vw, 2.6rem); }

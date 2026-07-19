@@ -21,8 +21,8 @@
     email:  'sales@kst-power.com',
     phone:  '+86 20 0000 0000',
     wechat: '#',                       /* 微信号链接 / 二维码页 占位 */
-    addrZh: '中国 · 广东 · 广州',
-    addrEn: 'Guangzhou, Guangdong, China'
+    addrZh: '中国 · 香港',
+    addrEn: 'Hong Kong, China'
   };
   window.KST = window.KST || {}; window.KST.contact = CONTACT;
 
@@ -48,20 +48,13 @@
       "site-header[transparent] .ksth{position:fixed;left:0;right:0;top:0;background:transparent;box-shadow:none}",
       "site-header[transparent] .ksth.solid{background:rgba(15,19,23,.96);box-shadow:0 1px 0 rgba(255,255,255,.10)}",
       "site-header .ksth-bar{display:flex;align-items:center;height:76px;padding:0 clamp(22px,3vw,48px);gap:clamp(14px,2vw,28px);font-family:" + SANS + "}",
-      "site-header .ksth-nav{display:flex;gap:clamp(12px,1.3vw,20px);margin-left:auto;align-items:center}",
-      "site-header .ksth-nav>a,site-header .ksth-ni>a{position:relative;font-size:14.5px;font-weight:400;letter-spacing:.02em;color:rgba(233,236,239,.85);padding:8px 0;transition:color .3s;white-space:nowrap;display:inline-flex;align-items:center}",
+      "site-header .ksth-nav{display:flex;gap:clamp(14px,1.6vw,26px);margin:0 auto;align-items:center}",
+      "site-header .ksth-nav>a{position:relative;font-size:14.5px;font-weight:400;letter-spacing:.02em;color:rgba(233,236,239,.85);padding:8px 0;transition:color .3s;white-space:nowrap;display:inline-flex;align-items:center}",
       "site-header .ksth-nav a:hover{color:#fff}",
-      "site-header .ksth-nav>a::after,site-header .ksth-ni>a::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:100%;background:#e8232b;transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.22,.61,.36,1)}",
-      "site-header .ksth-nav>a:hover::after,site-header .ksth-ni>a:hover::after,site-header .ksth-nav>a.on::after,site-header .ksth-ni.on>a::after{transform:scaleX(1)}",
-      "site-header .ksth-nav>a.on,site-header .ksth-ni.on>a{color:#fff}",
-      "site-header .ksth-ni{position:relative;display:flex;align-items:center}",
-      "site-header .ksth-caret{display:inline-block;margin-left:6px;font-size:9px;line-height:1;color:#8b959e;transition:transform .3s,color .3s}",
-      "site-header .ksth-ni:hover .ksth-caret{transform:rotate(180deg);color:#fff}",
-      "site-header .ksth-subnav{position:absolute;top:100%;left:0;min-width:210px;padding:10px 0;background:rgba(15,19,23,.98);border:1px solid rgba(255,255,255,.10);box-shadow:0 26px 52px -22px rgba(0,0,0,.65);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px);transition:opacity .3s,transform .3s;z-index:120}",
-      "site-header .ksth-ni:hover .ksth-subnav{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}",
-      "site-header .ksth-subnav a{display:block;padding:10px 22px;font-size:13.5px;letter-spacing:.01em;color:rgba(233,236,239,.82);transition:background .25s,color .25s,padding .25s;white-space:nowrap}",
-      "site-header .ksth-subnav a:hover{background:rgba(255,255,255,.05);color:#fff;padding-left:26px}",
-      "site-header .ksth-search{display:flex;align-items:center;gap:6px;height:30px;padding:0 9px;margin-left:4px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:4px;transition:border-color .3s,background .3s}",
+      "site-header .ksth-nav>a::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:100%;background:#e8232b;transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.22,.61,.36,1)}",
+      "site-header .ksth-nav>a:hover::after,site-header .ksth-nav>a.on::after{transform:scaleX(1)}",
+      "site-header .ksth-nav>a.on{color:#fff}",
+      "site-header .ksth-search{display:flex;align-items:center;gap:6px;height:30px;padding:0 9px;margin-left:0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:4px;transition:border-color .3s,background .3s}",
       "site-header .ksth-search:focus-within{border-color:rgba(255,255,255,.42);background:rgba(255,255,255,.11)}",
       "site-header .ksth-search:focus-within input{width:clamp(150px,15vw,230px)}",
       "site-header .ksth-search svg{width:14px;height:14px;fill:none;stroke:#8b959e;stroke-width:2;stroke-linecap:round;flex-shrink:0}",
@@ -85,21 +78,35 @@
       "site-header .ksth.open .ksth-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}",
       "site-header .ksth-scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .3s;z-index:95}",
       "site-header .ksth.open~.ksth-scrim{opacity:1;visibility:visible}",
+      /* 960–1120px:六个导航项 + 搜索 + 语言在 1024 排不下(曾溢出 99px),收紧字号与间距 */
+      "@media(max-width:1120px){",
+      "site-header .ksth-bar{padding:0 20px;gap:12px}",
+      "site-header .ksth-nav{gap:14px}",
+      "site-header .ksth-nav>a{font-size:13.2px}",
+      "site-header .ksth-search input{width:76px}",
+      "site-header .ksth-lang{margin-left:8px}",
+      "site-header .ksth-lang button{padding:4px 6px;font-size:12px}",
+      "}",
+      "@media(max-width:400px){",
+      "site-header .ksth-bar{padding:0 10px;gap:5px}",
+      "site-header .ksth-bar site-logo .logo .mark{font-size:20px}",
+      "site-header .ksth-lang button{padding:4px 4px;font-size:11.5px}",
+      "site-header .ksth-burger{margin-left:4px}",
+      "site-header .ksth-lang button{padding:4px 5px}",
+      "site-header .ksth-search{padding:0 7px}",
+      "}",
       "@media(max-width:960px){",
       "site-header .ksth-burger{display:flex}",
       "site-header .ksth-scrim{display:block}",
       "site-header .ksth-lang{margin-left:auto}",
       "site-header .ksth-nav{position:fixed;top:0;right:0;z-index:100;width:min(82vw,320px);height:100dvh;margin:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(10,13,16,.98);padding:88px 26px 40px;overflow-y:auto;transform:translateX(100%);transition:transform .4s cubic-bezier(.22,.61,.36,1)}",
       "site-header .ksth.open .ksth-nav{transform:translateX(0)}",
-      "site-header .ksth-nav>a,site-header .ksth-ni>a{font-size:17px;padding:15px 2px;border-bottom:1px solid rgba(255,255,255,.10)}",
-      "site-header .ksth-search{width:100%;margin:16px 0 0;height:42px}",
-      "site-header .ksth-search input{width:100%;font-size:15px}",
-      "site-header .ksth-nav>a::after,site-header .ksth-ni>a::after{display:none}",
-      "site-header .ksth-ni{display:block;align-items:stretch}",
-      "site-header .ksth-caret{display:none}",
-      "site-header .ksth-subnav{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;min-width:0;padding:0 0 6px 14px;background:none;border:none;box-shadow:none}",
-      "site-header .ksth-subnav a{padding:11px 0;font-size:14px;color:rgba(233,236,239,.62)}",
-      "site-header .ksth-subnav a:hover{padding-left:0;background:none}",
+      "site-header .ksth-nav>a{font-size:17px;padding:15px 2px;border-bottom:1px solid rgba(255,255,255,.10)}",
+      "site-header .ksth-search{margin-left:auto}",
+      "site-header .ksth-search input{width:0;font-size:15px}",
+      "site-header .ksth-search:focus-within input{width:min(46vw,190px)}",
+      "site-header .ksth-lang{margin-left:10px}",
+      "site-header .ksth-nav>a::after{display:none}",
       "site-header .ksth-bar site-logo .logo .mark{font-size:26px}",
       "site-header .ksth-bar site-logo .logo .sub{display:none}",
       "site-header .ksth-lang button{padding:4px 6px;font-size:12px}",
@@ -168,10 +175,6 @@
           var cur = (active === act) ? ' aria-current="page"' : '';
           return '<a href="' + href + '"' + on + cur + '><span data-i18n-key="' + key + '">' + text + '</span></a>';
         };
-        var sub = function (hash, key, text) {
-          return '<a href="' + base + 'oilfield.html' + hash + '"><span data-i18n-key="' + key + '">' + text + '</span></a>';
-        };
-        var oilOn = (active === 'oilfield') ? ' on' : '';
         this.innerHTML =
           '<header class="ksth">' +
             '<div class="ksth-bar">' +
@@ -180,34 +183,16 @@
                 link('index.html', 'nav.home', 'Home', 'home') +
                 link('generators.html', 'nav.generators', 'Power Generation', 'generators') +
                 link('engines.html', 'nav.engines', 'Industrial Engines', 'engines') +
-                '<span class="ksth-ni' + oilOn + '">' +
-                  '<a href="' + base + 'oilfield.html"' + (active === 'oilfield' ? ' aria-current="page"' : '') + '><span data-i18n-key="nav.oilfield">Oil &amp; Gas</span><span class="ksth-caret" aria-hidden="true">▾</span></a>' +
-                  '<div class="ksth-subnav">' +
-                    sub('#drilling', 'nav.drilling', 'Drilling') +
-                    sub('#workover', 'nav.workover', 'Workover') +
-                    sub('#cementing', 'nav.cementing', 'Cementing') +
-                    sub('#fracturing', 'nav.fracturing', 'Fracturing') +
-                  '</div>' +
-                '</span>' +
-                '<span class="ksth-ni' + (active === 'special' ? ' on' : '') + '">' +
-                  '<a href="' + base + 'special.html"' + (active === 'special' ? ' aria-current="page"' : '') + '><span data-i18n-key="nav.special">Special Vehicle</span><span class="ksth-caret" aria-hidden="true">▾</span></a>' +
-                  '<div class="ksth-subnav">' +
-                    '<a href="' + base + 'special.html#mobile-power"><span data-i18n-key="nav.mobilepower">Mobile Power Truck</span></a>' +
-                    '<a href="' + base + 'special.html#sweeper"><span data-i18n-key="nav.sweeper">Sweeper Truck</span></a>' +
-                    '<a href="' + base + 'special.html#sprinkler"><span data-i18n-key="nav.sprinkler">Water Sprinkler Truck</span></a>' +
-
-                    '<a href="' + base + 'special.html#tanker"><span data-i18n-key="nav.tanker">Tanker Truck</span></a>' +
-                    '<a href="' + base + 'special.html#refuse"><span data-i18n-key="nav.refuse">Refuse Truck</span></a>' +
-                  '</div>' +
-                '</span>' +
+                link('oilfield.html', 'nav.oilfield', 'Oil &amp; Gas', 'oilfield') +
+                link('special.html', 'nav.special', 'Special Vehicle', 'special') +
                 link('news.html', 'nav.news', 'Activity &amp; News', 'news') +
-                '<form class="ksth-search" role="search" data-model-search>' +
-                  '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>' +
-                  '<input type="search" name="q" autocomplete="off" data-i18n-attr="placeholder:nav.searchPlaceholder" ' +
-                    'placeholder="QSK60-C" aria-label="Search products" />' +
-                  '<div class="ksth-sugg" role="listbox" hidden></div>' +
-                '</form>' +
               '</nav>' +
+              '<form class="ksth-search" role="search" data-model-search>' +
+                '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>' +
+                '<input type="search" name="q" autocomplete="off" data-i18n-attr="placeholder:nav.searchPlaceholder" ' +
+                  'placeholder="QSK60-C" aria-label="Search products" />' +
+                '<div class="ksth-sugg" role="listbox" hidden></div>' +
+              '</form>' +
               '<div class="kst-lang ksth-lang" role="group" aria-label="Language">' +
                 '<button type="button" data-set="en" aria-label="Switch to English">EN</button>' +
                 '<button type="button" data-set="ru" aria-label="Переключить на русский">RU</button>' +
@@ -277,7 +262,7 @@
               '</div>' +
             '</div>' +
             '<div class="kstf-base">' +
-              '<span>© 2026 Guangzhou <span class="kstf-mark">KST<b>POWER</b></span> Mechanical Equipment Co., Ltd.</span>' +
+              '<span>© 2026 <span class="kstf-mark">KST<b>POWER</b></span></span>' +
               '<span data-i18n-key="footer.trademark">Product model names and trademarks belong to their respective manufacturers.</span>' +
             '</div>' +
             '<div class="kstf-watermark" aria-hidden="true">KST&nbsp;POWER</div>' +

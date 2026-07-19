@@ -189,7 +189,7 @@ section{position:relative}
 
 /* ---------- 03 精选型号 ---------- */
 .models{background:var(--paper);color:var(--ink-dark)}
-/* 三个入口卡:上图下文,一行三个 */
+/* 新闻卡:上图下文,一行三个,副标题下带日期 */
 .newsgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-bottom:110px}
 .newscard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line-dark);overflow:hidden;text-decoration:none;color:inherit;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
 .newscard:hover{transform:translateY(-8px);box-shadow:0 30px 60px -30px rgba(23,27,31,.35)}
@@ -199,12 +199,14 @@ section{position:relative}
 .newscard-body{padding:26px 28px 30px}
 .newscard h4{font-size:18px;line-height:1.45;letter-spacing:.01em;color:var(--ink-dark)}
 .newscard p{margin-top:10px;font-size:14px;line-height:1.7;letter-spacing:.04em;color:var(--mut-dark)}
+.newscard-date{display:block;margin-top:14px;font-family:var(--num);font-size:12px;letter-spacing:.14em;color:var(--acc);font-weight:600}
 @media(max-width:900px){.newsgrid{grid-template-columns:1fr;gap:24px;padding-bottom:70px}}
 
 /* ---------- 04 关于我们 ---------- */
 .cta{background:var(--bg-2);overflow:hidden}
 .cta .inner{position:relative;padding:150px 0 150px;text-align:center}
-.cta .en{font-family:var(--num);font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--mut)}
+/* 区块名:比正文提示语大一号,但保持灰度 —— 它是标签不是标题,不该抢白色正文的注意力 */
+.cta .en{font-family:var(--num);font-size:16px;letter-spacing:.42em;text-transform:uppercase;color:rgba(233,236,239,.55)}
 .cta h3{margin-top:26px;font-size:clamp(30px,4vw,58px);font-weight:400;letter-spacing:.14em;color:#fff}
 .cta h3 b{color:var(--acc);font-weight:500}
 .cta p{margin-top:22px;font-size:15px;letter-spacing:.1em;color:var(--mut);line-height:1.9}
@@ -329,12 +331,17 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
   .stat{padding:28px 18px}
   .stat .num{font-size:clamp(34px,9.5vw,52px)}
   .stat .lab{font-size:12px}
+  /* 首屏三分屏:原 58vh × 3 ≈ 174vh,图片是 cover,上半截全是天空没有信息量 */
+  .panel{min-height:clamp(280px,42vh,400px)}
   .modelgrid{grid-template-columns:1fr}
   .model-finder{margin-bottom:32px}
   .model-finder input{font-size:14px;padding:15px 10px 15px 42px}
   .model-finder button{padding:0 18px;letter-spacing:.1em}
   footer .cols{grid-template-columns:1fr 1fr}
   .cta .act{flex-direction:column}
+  /* 询盘/联系区:150px 上下留白在手机上就是一整屏空白 */
+  .cta .inner{padding:64px 0 72px}
+  .cta .glowline{height:44px}
 }
 @media (prefers-reduced-motion:reduce){.panel .art{animation:none}.scrolldn .stem{animation:none}*{transition-duration:.01ms!important}}
 html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,html[data-lang="en"] .models .shead>.en,html[data-lang="en"] .app .cap>span{display:none}
@@ -576,34 +583,37 @@ html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,htm
   </div>
 </section>
 
-<!-- ═════════ 03 三个入口 ═════════ -->
-<section class="models" id="s-explore">
+<!-- ═════════ 03 最新动态(取新闻页最新三条,时间倒序) ═════════ -->
+<section class="models" id="s-news">
   <div class="wrap">
     <div class="shead reveal">
       <span class="no">03</span><span class="rule"></span>
-      <h3 data-i18n-key="home.explore.title">Explore</h3>
-      <span class="en">Explore</span>
+      <h3 data-i18n-key="home.news.title">Activity &amp; News</h3>
+      <span class="en">Activity&nbsp;&&nbsp;News</span>
     </div>
     <div class="newsgrid">
-      <a class="newscard reveal" href="#s-apps">
-        <div class="newscard-media"><img src="images/apps/oilfield.jpg" alt="" loading="lazy" decoding="async" /></div>
+      <a class="newscard reveal" href="news.html#news-panel-expo">
+        <div class="newscard-media"><img src="assets/img/products/gen-hero-2172.jpg" alt="" loading="lazy" decoding="async" /></div>
         <div class="newscard-body">
-          <h4 data-i18n-key="home.explore.app">Application</h4>
-          <p data-i18n-key="home.explore.appDesc">Oilfield, natural gas, mining, drilling and power supply — matched to site conditions.</p>
+          <h4 data-i18n-key="home.news.t1">25th China Intl. Petroleum &amp; Petrochemical Expo (cippe 2025)</h4>
+          <p data-i18n-key="home.news.d1">Beijing · Showcasing oilfield gensets and complete power solutions.</p>
+          <time class="newscard-date" datetime="2025-05">2025.05</time>
         </div>
       </a>
-      <a class="newscard reveal" style="transition-delay:.12s" href="generators.html">
-        <div class="newscard-media"><img src="assets/img/products/generator-brands/cummins-01.jpg" alt="" loading="lazy" decoding="async" /></div>
+      <a class="newscard reveal" style="transition-delay:.12s" href="news.html#news-panel-case">
+        <div class="newscard-media"><img src="images/hero-rigs.jpg" alt="" loading="lazy" decoding="async" /></div>
         <div class="newscard-body">
-          <h4 data-i18n-key="home.explore.models">Featured Models</h4>
-          <p data-i18n-key="home.explore.modelsDesc">Cummins, Caterpillar and Baudouin generator sets — models and specifications.</p>
+          <h4 data-i18n-key="home.news.t2">Middle East oilfield · 6× QSK50 gensets delivered</h4>
+          <p data-i18n-key="home.news.d2">Wellsite prime-power package with commissioning and spare-parts support.</p>
+          <time class="newscard-date" datetime="2025-03">2025.03</time>
         </div>
       </a>
-      <a class="newscard reveal" style="transition-delay:.24s" href="news.html">
-        <div class="newscard-media"><img src="images/apps/mining.jpg" alt="" loading="lazy" decoding="async" /></div>
+      <a class="newscard reveal" style="transition-delay:.24s" href="news.html#news-panel-case">
+        <div class="newscard-media"><img src="assets/img/products/special/mobile-power-02.jpg" alt="" loading="lazy" decoding="async" /></div>
         <div class="newscard-body">
-          <h4 data-i18n-key="home.explore.news">Activity &amp; News</h4>
-          <p data-i18n-key="home.explore.newsDesc">International exhibitions we attend and customer project cases worldwide.</p>
+          <h4 data-i18n-key="home.news.t3">Central Asia mine · Mobile power truck project</h4>
+          <p data-i18n-key="home.news.d3">High-capacity semi-trailer mobile power units for scattered pit sites.</p>
+          <time class="newscard-date" datetime="2024-12">2024.12</time>
         </div>
       </a>
     </div>
@@ -626,7 +636,7 @@ html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,htm
             </div>
             <div>
               <div class="k" data-i18n-key="home.contact.addrLabel">Headquarters</div>
-              <div class="v" data-kst="addr"><span class="zh">中国 · 广东 · 广州</span><span class="en">Guangzhou, Guangdong, China</span></div>
+              <div class="v" data-kst="addr"><span class="zh">中国 · 香港</span><span class="en">Hong Kong, China</span></div>
             </div>
           </div>
           <div class="ctc-item">
