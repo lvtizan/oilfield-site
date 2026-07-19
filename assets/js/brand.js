@@ -47,7 +47,7 @@
       "site-logo[inline]{display:inline}",
       "site-logo[inline] .logo{display:inline;width:auto;gap:0;vertical-align:baseline}",
       "site-logo[inline] .logo .sub{display:none}",
-      "site-logo[inline] .logo .mark{font-size:1.04em;line-height:inherit;letter-spacing:.03em;white-space:nowrap}",
+      "site-logo[inline] .logo .mark{font-size:1em;line-height:inherit;letter-spacing:.02em;white-space:nowrap}",
 
       /* ===== <site-header> ===== */
       "site-header{display:block;position:sticky;top:0;z-index:100}",
