@@ -17,7 +17,7 @@
 
   /* ── 联系信息:全站单一变量源。改这里,页脚 + 关于页联系区一起更新(待客户给真实信息替换占位) ── */
   var CONTACT = {
-    email:  'sales@kstpower.com',
+    email:  'sales@kst-power.com',
     phone:  '+86 20 0000 0000',
     wechat: '#',                       /* 微信号链接 / 二维码页 占位 */
     addrZh: '中国 · 广东 · 广州',
