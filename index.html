@@ -22,9 +22,9 @@
 <meta name="twitter:image" content="https://www.kstpower.com/images/hero-genset.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.kstpower.com/#org","name":"Guangzhou KST Mechanical Equipment Co., Ltd","alternateName":"KST POWER","url":"https://www.kstpower.com/","description":"Supplier of Cummins, Caterpillar and Baudouin diesel generator sets, industrial engines, and oil & gas equipment for overseas buyers.","address":{"@type":"PostalAddress","addressLocality":"Guangzhou","addressRegion":"Guangdong","addressCountry":"CN"},"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"sales@kst-power.com","availableLanguage":["en","zh"]},"areaServed":"Worldwide"},{"@type":"WebSite","@id":"https://www.kstpower.com/#website","url":"https://www.kstpower.com/","name":"KST POWER","publisher":{"@id":"https://www.kstpower.com/#org"},"inLanguage":"en"}]}</script>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
-<link rel="preload" as="image" type="image/webp" imagesrcset="images/hero-genset-900.webp 801w, images/hero-genset.webp 1399w" imagesizes="(max-width:960px) 112vw, 50vw">
-<link rel="preload" as="image" type="image/webp" imagesrcset="images/hero-truck-900.webp 582w, images/hero-truck.webp 1034w" imagesizes="(max-width:960px) 112vw, 50vw">
-<link rel="preload" as="image" type="image/webp" imagesrcset="images/hero-rig-900.webp 1241w, images/hero-rig.webp 2483w" imagesizes="(max-width:960px) 112vw, 50vw">
+<link rel="preload" as="image" type="image/webp" imagesrcset="images/hero-genset-900.webp 900w, images/hero-genset.webp 1600w" imagesizes="(max-width:960px) 112vw, 50vw">
+<link rel="preload" as="image" type="image/webp" imagesrcset="images/hero-truck-900.webp 900w, images/hero-truck.webp 1600w" imagesizes="(max-width:960px) 112vw, 50vw">
+<link rel="preload" as="image" type="image/webp" imagesrcset="images/hero-rig-900.webp 1280w, images/hero-rig.webp 2560w" imagesizes="(max-width:960px) 112vw, 50vw">
 <style>
 :root{
   --bg:#0f1317;          /* 主深色 */
@@ -321,12 +321,11 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
   .panel .art img.ph{min-width:100%;min-height:100%}
   /* 面板压矮后取景要跟着下移,否则显示的是大片天空、设备挤在下缘;
      放大倍数也要收 —— 1.24 倍会把矿卡车轮切在面板外 */
-  /* 源图自带的模糊边已从文件裁掉,不再需要靠放大去遮,缩放收回正常值,
-     主体才不会被面板切掉。translateZ(0) 必须带上(基础规则里有),少了它
-     部分移动 GPU 会按缩放前分辨率栅格化再放大,图像发虚 */
-  #p-gen .art img.ph{object-position:50% 72%;transform:scale(1.03) translateZ(0)}
-  #p-eng .art img.ph{object-position:50% 56%;transform:scale(1.02) translateZ(0)}
-  #p-oil .art img.ph{object-position:50% 58%;transform:scale(1.03) translateZ(0)}
+  /* translateZ(0) 不能漏:基础规则里有,少了这个合成提示,部分移动 GPU 会按
+     缩放前分辨率栅格化再放大,图像发虚。缩放留出余量,边缘软化推到面板之外 */
+  #p-gen .art img.ph{object-position:50% 72%;transform:scale(1.14) translateZ(0)}
+  #p-eng .art img.ph{object-position:50% 56%;transform:scale(1.10) translateZ(0)}
+  #p-oil .art img.ph{object-position:50% 58%;transform:scale(1.12) translateZ(0)}
   /* 底部加重深色,标题落在黑色蒙层区 */
   .panel .veil{background:linear-gradient(180deg,rgba(15,19,23,.30) 0%,rgba(15,19,23,0) 26%,rgba(15,19,23,.55) 62%,rgba(15,19,23,.96) 100%)}
   .panel .txt{left:24px;right:24px;bottom:30px}
@@ -411,7 +410,7 @@ html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,htm
         </g>
       </svg>
       <picture>
-        <source type="image/webp" srcset="images/hero-genset-900.webp 801w, images/hero-genset.webp 1399w" sizes="(max-width:960px) 112vw, 50vw">
+        <source type="image/webp" srcset="images/hero-genset-900.webp 900w, images/hero-genset.webp 1600w" sizes="(max-width:960px) 112vw, 50vw">
         <img class="ph" src="images/hero-genset.jpg" alt="发电机组实拍" decoding="async" fetchpriority="high"
              onload="this.closest('.art').classList.add('ld')" onerror="this.closest('picture').remove()">
       </picture>
@@ -456,7 +455,7 @@ html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,htm
         </g>
       </svg>
       <picture>
-        <source type="image/webp" srcset="images/hero-truck-900.webp 582w, images/hero-truck.webp 1034w" sizes="(max-width:960px) 112vw, 50vw">
+        <source type="image/webp" srcset="images/hero-truck-900.webp 900w, images/hero-truck.webp 1600w" sizes="(max-width:960px) 112vw, 50vw">
         <img class="ph" src="images/hero-truck.jpg" alt="工业发动机·矿用工况实拍" decoding="async" fetchpriority="high"
              onload="this.closest('.art').classList.add('ld')" onerror="this.closest('picture').remove()">
       </picture>
@@ -496,7 +495,7 @@ html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,htm
         </g>
       </svg>
       <picture>
-        <source type="image/webp" srcset="images/hero-rig-900.webp 1241w, images/hero-rig.webp 2483w" sizes="(max-width:960px) 112vw, 50vw">
+        <source type="image/webp" srcset="images/hero-rig-900.webp 1280w, images/hero-rig.webp 2560w" sizes="(max-width:960px) 112vw, 50vw">
         <img class="ph" src="images/hero-rig.jpg" alt="油田钻采设备实拍" decoding="async" fetchpriority="high"
              onload="this.closest('.art').classList.add('ld')" onerror="this.closest('picture').remove()">
       </picture>
