@@ -217,6 +217,56 @@ section{position:relative}
 .cta .tel span{display:block;font-size:10px;letter-spacing:.34em;color:var(--mut);text-transform:uppercase;margin-bottom:4px}
 .cta .glowline{position:absolute;left:50%;top:0;transform:translateX(-50%);width:1px;height:86px;background:linear-gradient(180deg,var(--acc),transparent)}
 
+/* ---------- 04b 联系方式(深色版,取自 about.html 的联系区) ---------- */
+.ctc{margin-top:64px;text-align:left}
+/* 地址由 brand.js / sync-contact 注入 zh+en 两份(brand.js 会覆写 innerHTML,
+   languages.js 补的 .ru span 未必存在),本页不加载 styles.css,故在此自管显隐:
+   默认走英文,俄语也回落英文(RU_COPY 无地址译文,结果本就与英文一致),仅中文切换 */
+[data-kst="addr"] .zh,[data-kst="addr"] .ru{display:none}
+[data-kst="addr"] .en{display:inline;font-family:inherit;font-size:inherit;letter-spacing:inherit;text-transform:none;color:inherit}
+html[data-lang="zh"] [data-kst="addr"] .zh{display:inline}
+html[data-lang="zh"] [data-kst="addr"] .en{display:none}
+
+.ctc-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;
+  padding:30px 0;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12)}
+.ctc-item{display:flex;gap:16px;align-items:flex-start}
+.ctc-item .ic{width:26px;height:26px;flex:none;margin-top:2px}
+.ctc-item .ic svg{width:100%;height:100%;fill:none;stroke:var(--acc)}
+.ctc-item .k{font-family:var(--num);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--mut)}
+.ctc-item .v{margin-top:7px;font-size:15.5px;line-height:1.55;letter-spacing:.04em;color:#f0f2f4}
+.ctc-item .v a{color:#f0f2f4;border-bottom:1px solid rgba(255,255,255,.22);transition:.3s}
+.ctc-item .v a:hover{color:#fff;border-bottom-color:var(--acc)}
+
+.ctc-panel{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch;margin-top:44px}
+.ctc-media{overflow:hidden;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04)}
+.ctc-media img{width:100%;height:100%;min-height:260px;object-fit:cover;display:block}
+.ctc-card{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);
+  padding:42px 44px;display:flex;flex-direction:column;justify-content:center}
+.ctc-card h4{font-size:24px;font-weight:400;letter-spacing:.06em;line-height:1.35;color:#fff}
+.cta .ctc-card p{margin-top:16px;font-size:15px;line-height:1.85;letter-spacing:.03em;color:rgba(233,236,239,.80)}
+.ctc-act{margin-top:32px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.ctc-act .btn{padding:15px 34px;font-size:14px;letter-spacing:.14em;border-radius:3px}
+.ctc-ghost{display:inline-block;padding:15px 30px;border:1px solid rgba(255,255,255,.28);border-radius:3px;
+  font-size:14px;font-weight:400;letter-spacing:.14em;color:#eef1f4;transition:.35s var(--ease)}
+.ctc-ghost:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.06);color:#fff}
+.ctc-more{margin-left:6px;font-size:14px;letter-spacing:.14em;color:rgba(233,236,239,.74);border-bottom:1px solid rgba(255,255,255,.22);padding-bottom:2px;transition:.3s}
+.ctc-more:hover{color:#fff;border-bottom-color:var(--acc)}
+
+@media (max-width:960px){
+  .ctc{margin-top:44px}
+  .ctc-row{grid-template-columns:1fr;gap:24px;padding:24px 0}
+  .ctc-panel{grid-template-columns:1fr;gap:0;margin-top:32px}
+  .ctc-media img{min-height:200px;max-height:280px}
+  .ctc-card{padding:30px 24px;border-top:none}
+  .ctc-card h4{font-size:20px}
+  .ctc-act{gap:12px}
+  .ctc-act .btn,.ctc-ghost{padding:14px 24px;letter-spacing:.1em}
+}
+@media (max-width:520px){
+  .ctc-act .btn,.ctc-ghost{flex:1 1 100%;text-align:center}
+  .ctc-more{margin-left:0}
+}
+
 /* ---------- 页脚 ---------- */
 footer{background:#0a0d10;position:relative;overflow:hidden}
 footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:40px;padding:96px 0 72px;position:relative;z-index:2}
@@ -575,8 +625,53 @@ html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,htm
       <h3 data-i18n-key="home.about.title">KST Group</h3>
       <p class="about-body"><span data-i18n-key="home.about.p1">Founded in 2005, KST Group is a diversified industrial conglomerate with core businesses covering mining, special vehicles, construction machinery, power generation, and oil &amp; gas drilling. Rooted in heavy industry and energy equipment sectors, the Group relies on professional technologies and a global supply chain to deliver reliable products and integrated solutions to customers.</span></p>
       <p class="about-body"><span data-i18n-key="home.about.p2">The company has maintained long-term in-depth cooperation with world-leading enterprises, including Caterpillar, SJPETRO, BELAZ, Cummins, Baudouin and STAMFORD, and has earned recognition from domestic and overseas markets for stable quality and efficient services.</span></p>
-      <div class="act">
-        <a class="btn" href="about.html" data-i18n-key="home.about.more">Learn more</a>
+
+      <!-- 联系方式:与 about.html 同源,值由 contact.config.json + brand.js/sync-contact 维护,勿手改 -->
+      <div class="ctc">
+        <div class="ctc-row">
+          <div class="ctc-item">
+            <div class="ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            </div>
+            <div>
+              <div class="k" data-i18n-key="home.contact.addrLabel">Headquarters</div>
+              <div class="v" data-kst="addr"><span class="zh">中国 · 广东 · 广州</span><span class="en">Guangzhou, Guangdong, China</span></div>
+            </div>
+          </div>
+          <div class="ctc-item">
+            <div class="ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            </div>
+            <div>
+              <div class="k" data-i18n-key="home.contact.emailLabel">Email</div>
+              <div class="v"><a data-kst="email" href="mailto:sales@kst-power.com">sales@kst-power.com</a></div>
+            </div>
+          </div>
+          <div class="ctc-item">
+            <div class="ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L20 12l2 5v4a2 2 0 0 1-2.2 2A18 18 0 0 1 3 6.2 2 2 0 0 1 4 4z"/></svg>
+            </div>
+            <div>
+              <div class="k" data-i18n-key="home.contact.phoneLabel">Phone · WeChat</div>
+              <div class="v" data-kst="phone">+86 20 0000 0000</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctc-panel">
+          <div class="ctc-media">
+            <img src="assets/img/products/gen-hero-2172.jpg" alt="KST POWER generator set" loading="lazy" decoding="async">
+          </div>
+          <div class="ctc-card">
+            <h4 data-i18n-key="home.contact.title">Request specs &amp; a quote</h4>
+            <p data-i18n-key="home.contact.desc">Tell us your power or wellsite needs — we'll reply by email with selection and pricing.</p>
+            <div class="ctc-act">
+              <a class="btn" data-kst="mailto" href="mailto:sales@kst-power.com?subject=Inquiry%20%E2%80%94%20KST%20POWER" data-i18n-key="home.contact.mailto">Email us</a>
+              <a class="ctc-ghost" data-kst="wechat" href="#" data-i18n-key="home.contact.wechat">Chat on WeChat</a>
+              <a class="ctc-more" href="about.html" data-i18n-key="home.about.more">Learn more</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

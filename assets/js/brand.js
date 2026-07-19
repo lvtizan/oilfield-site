@@ -61,10 +61,11 @@
       "site-header .ksth-ni:hover .ksth-subnav{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}",
       "site-header .ksth-subnav a{display:block;padding:10px 22px;font-size:13.5px;letter-spacing:.01em;color:rgba(233,236,239,.82);transition:background .25s,color .25s,padding .25s;white-space:nowrap}",
       "site-header .ksth-subnav a:hover{background:rgba(255,255,255,.05);color:#fff;padding-left:26px}",
-      "site-header .ksth-search{display:flex;align-items:center;gap:7px;height:34px;padding:0 11px;margin-left:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:4px;transition:border-color .3s,background .3s}",
+      "site-header .ksth-search{display:flex;align-items:center;gap:6px;height:30px;padding:0 9px;margin-left:4px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:4px;transition:border-color .3s,background .3s}",
       "site-header .ksth-search:focus-within{border-color:rgba(255,255,255,.42);background:rgba(255,255,255,.11)}",
-      "site-header .ksth-search svg{width:15px;height:15px;fill:none;stroke:#8b959e;stroke-width:2;stroke-linecap:round;flex-shrink:0}",
-      "site-header .ksth-search input{width:clamp(150px,15vw,250px);min-width:0;background:transparent;border:0;outline:none;color:#e9ecef;font-size:13px;letter-spacing:.01em;padding:0;font-family:inherit}",
+      "site-header .ksth-search:focus-within input{width:clamp(150px,15vw,230px)}",
+      "site-header .ksth-search svg{width:14px;height:14px;fill:none;stroke:#8b959e;stroke-width:2;stroke-linecap:round;flex-shrink:0}",
+      "site-header .ksth-search input{width:clamp(84px,7vw,120px);transition:width .32s cubic-bezier(.22,.61,.36,1);min-width:0;background:transparent;border:0;outline:none;color:#e9ecef;font-size:13px;letter-spacing:.01em;padding:0;font-family:inherit}",
       "site-header .ksth-search input::placeholder{color:rgba(233,236,239,.38)}",
       "site-header .ksth-search input::-webkit-search-cancel-button{-webkit-appearance:none}",
       "site-header .ksth-search{position:relative}",
@@ -203,7 +204,7 @@
                 '<form class="ksth-search" role="search" data-model-search>' +
                   '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>' +
                   '<input type="search" name="q" autocomplete="off" data-i18n-attr="placeholder:nav.searchPlaceholder" ' +
-                    'placeholder="Search products — e.g. QSK60-C" aria-label="Search products" />' +
+                    'placeholder="QSK60-C" aria-label="Search products" />' +
                   '<div class="ksth-sugg" role="listbox" hidden></div>' +
                 '</form>' +
               '</nav>' +
