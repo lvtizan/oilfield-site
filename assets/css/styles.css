@@ -572,9 +572,10 @@ a.card { color: inherit; }
   font-family: var(--font-display); font-size: .84rem; font-weight: 700;
   letter-spacing: .1em; color: var(--color-brand); margin-bottom: .7rem;
 }
+/* 不设 ch 级 max-width:新闻标题是真标题不是短口号,限宽会把长标题折成一堆短行 */
 .news-article h1 {
   font-family: var(--font-display); font-size: clamp(1.9rem, 3.6vw, 3rem);
-  font-weight: 800; letter-spacing: -.02em; line-height: 1.14; max-width: 22ch; margin-bottom: 1rem;
+  font-weight: 800; letter-spacing: -.02em; line-height: 1.14; margin-bottom: 1rem;
 }
 .news-article h1 .zh { font-family: var(--font-zh); font-weight: 900; }
 .news-article .na-summary {
@@ -589,8 +590,9 @@ a.card { color: inherit; }
 /* 交替要在正文容器内数,否则 nth-child 会把标题、摘要等兄弟节点一起算进去 */
 .na-body .na-block:nth-child(even) .na-fig { order: 2; }
 .na-fig { margin: 0; }
+/* 不锁死比例:新闻照片横竖比例不一,强套 4:3 会在图片上下留出大片空白 */
 .na-fig img {
-  display: block; width: 100%; height: auto; max-height: 460px; aspect-ratio: 4 / 3;
+  display: block; width: 100%; height: auto; max-height: 520px;
   object-fit: contain; background: #fff; border: 1px solid var(--color-border);
 }
 .na-txt p { color: var(--color-ink); font-size: 1.02rem; line-height: 1.8; margin: 0; }
