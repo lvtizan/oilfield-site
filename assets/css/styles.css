@@ -559,7 +559,9 @@ a.card { color: inherit; }
 .oil-section:first-of-type { border-top: 0; }
 /* 作为 tab 面板时:单个展示,去掉顶部分隔线与上内边距,紧贴 tab 栏 */
 .oil-section.generator-brand-panel { border-top: 0; padding-top: 0; }
-/* 特种车辆页:车型小节统一「图 + 文」两栏,图片沿用整站白底 4:3 规格 */
+/* 特种车辆页:车型小节统一「图 + 文」两栏,图片沿用整站白底 4:3 规格。
+   不要 .oil-section 的顶部分隔线 —— 图文左右交替本身就是分节,再加线显得碎 */
+.special-vehicle-section { border-top: 0; }
 .special-vehicle-layout {
   display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
   gap: clamp(1.6rem, 4vw, 3.4rem); align-items: center;
