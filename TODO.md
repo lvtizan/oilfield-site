@@ -124,3 +124,21 @@ node tools/build-news.mjs --check
 
 > 注意：不要试图用放大（`transform: scale`）遮糊边——矿卡需要 1.48× 才能遮住，
 > 那会把车轮切出面板，与上面「矿卡取景待调」直接冲突。
+
+## 待做：首页联系区三项之间加两条竖分割线
+
+首页最底部「CONTACT US」下方的三项（HEADQUARTERS / EMAIL / PHONE·WECHAT）
+之间目前只有留白，客户要求加**两条竖分割线**分隔。
+
+- 位置：`index.html` 第 240 行 `.ctc-row`（三列网格），
+  第 264 行是 ≤960px 的单列覆盖。
+- 做法：给第 2、3 个 `.ctc-item` 加左边框，例如
+  ```css
+  .ctc-item + .ctc-item{border-left:1px solid rgba(255,255,255,.12); padding-left:32px}
+  ```
+  颜色沿用本区块已有的 `rgba(255,255,255,.12)`（与卡片描边同一档），
+  不要用实色，深底上会过重。
+- 注意：**窄屏变单列后必须去掉竖线**（第 264 行那个媒体查询里加
+  `.ctc-item + .ctc-item{border-left:0;padding-left:0}`），否则竖线会
+  串到堆叠布局里变成一条竖在左侧的孤线。
+- `gap:32px` 与 `padding-left` 的关系要一起看，避免线两侧间距不对称。
