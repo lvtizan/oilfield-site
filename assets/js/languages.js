@@ -402,12 +402,18 @@
     return null;
   }
 
+  /* 俄语来源优先级:HTML 里手写的 <span class="ru"> > RU_COPY > 回退英文。
+     手写的 .ru 与 .zh/.en 并列存放,和另外两种语言同一处维护;改中文文案时
+     不会像 RU_COPY(以中文原文为键)那样静默失效。生成的那份打 data-ru-auto
+     标记,便于下次区分,不会覆盖手写内容。 */
   function ensureRussianSpans() {
     document.querySelectorAll('.zh').forEach(function (zh) {
       var ru = directSibling(zh, 'ru');
+      if (ru && !ru.hasAttribute('data-ru-auto')) return;   /* 手写译文,不动 */
       if (!ru) {
         ru = document.createElement('span');
         ru.className = 'ru';
+        ru.setAttribute('data-ru-auto', '');
         zh.parentElement.appendChild(ru);
       }
       var source = normalize(zh.textContent);

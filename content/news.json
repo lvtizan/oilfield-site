@@ -7,11 +7,13 @@
       "cover": "assets/img/products/gen-hero-2172.jpg",
       "title": {
         "zh": "第 25 届中国国际石油石化技术装备展 (cippe 2025)",
-        "en": "25th China Intl. Petroleum &amp; Petrochemical Expo (cippe 2025)"
+        "en": "25th China Intl. Petroleum &amp; Petrochemical Expo (cippe 2025)",
+        "ru": "25-я Китайская международная выставка нефтегазового оборудования (cippe 2025)"
       },
       "summary": {
         "zh": "北京 · 展出油田发电机组与成套动力方案。",
-        "en": "Beijing · Showcasing oilfield gensets and complete power solutions."
+        "en": "Beijing · Showcasing oilfield gensets and complete power solutions.",
+        "ru": "Пекин · Демонстрация нефтепромысловых генераторных установок и комплектных решений по электроснабжению."
       },
       "slug": "2025-05-25th-china-intl-petroleum",
       "body": [
@@ -19,7 +21,8 @@
           "image": "assets/img/products/gen-hero-2172.jpg",
           "text": {
             "zh": "北京 · 展出油田发电机组与成套动力方案。",
-            "en": "Beijing · Showcasing oilfield gensets and complete power solutions."
+            "en": "Beijing · Showcasing oilfield gensets and complete power solutions.",
+            "ru": "Пекин · Демонстрация нефтепромысловых генераторных установок и комплектных решений по электроснабжению."
           }
         }
       ]
@@ -30,11 +33,13 @@
       "cover": "images/hero-rigs.jpg",
       "title": {
         "zh": "中东某油田 · 交付 6 台 QSK50 发电机组",
-        "en": "Middle East oilfield · 6× QSK50 gensets delivered"
+        "en": "Middle East oilfield · 6× QSK50 gensets delivered",
+        "ru": "Месторождение на Ближнем Востоке · поставка 6 генераторных установок QSK50"
       },
       "summary": {
         "zh": "井场主电源成套供应，含现场调试与备件计划。",
-        "en": "Wellsite prime-power package with commissioning and spare-parts plan."
+        "en": "Wellsite prime-power package with commissioning and spare-parts plan.",
+        "ru": "Комплект основного электроснабжения буровой площадки с пусконаладкой и обеспечением запасными частями."
       },
       "slug": "2025-03-middle-east-oilfield-6",
       "body": [
@@ -42,7 +47,8 @@
           "image": "images/hero-rigs.jpg",
           "text": {
             "zh": "井场主电源成套供应，含现场调试与备件计划。",
-            "en": "Wellsite prime-power package with commissioning and spare-parts plan."
+            "en": "Wellsite prime-power package with commissioning and spare-parts plan.",
+            "ru": "Комплект основного электроснабжения буровой площадки с пусконаладкой и обеспечением запасными частями."
           }
         }
       ]
@@ -53,11 +59,13 @@
       "cover": "assets/img/products/special/mobile-power-semi-01.jpg",
       "title": {
         "zh": "中亚矿区 · 移动电力车项目",
-        "en": "Central Asia mine · Mobile power truck project"
+        "en": "Central Asia mine · Mobile power truck project",
+        "ru": "Рудник в Центральной Азии · проект мобильных электростанций"
       },
       "summary": {
         "zh": "大功率半挂移动电力车，保障矿区分散点位供电。",
-        "en": "High-capacity semi-trailer mobile power units for scattered mine sites."
+        "en": "High-capacity semi-trailer mobile power units for scattered mine sites.",
+        "ru": "Мобильные электростанции большой мощности на полуприцепе для рассредоточенных участков рудника."
       },
       "slug": "2024-12-central-asia-mine-mobile",
       "body": [
@@ -65,7 +73,8 @@
           "image": "assets/img/products/special/mobile-power-semi-01.jpg",
           "text": {
             "zh": "大功率半挂移动电力车，保障矿区分散点位供电。",
-            "en": "High-capacity semi-trailer mobile power units for scattered mine sites."
+            "en": "High-capacity semi-trailer mobile power units for scattered mine sites.",
+            "ru": "Мобильные электростанции большой мощности на полуприцепе для рассредоточенных участков рудника."
           }
         }
       ]
@@ -76,11 +85,13 @@
       "cover": "images/apps/oilfield.jpg",
       "title": {
         "zh": "ADIPEC 2024 阿布扎比国际石油展",
-        "en": "ADIPEC 2024, Abu Dhabi"
+        "en": "ADIPEC 2024, Abu Dhabi",
+        "ru": "ADIPEC 2024, Абу-Даби"
       },
       "summary": {
         "zh": "阿联酋 · 与中东买家洽谈钻采成套装备与压裂机组。",
-        "en": "UAE · Met Middle East buyers on drilling packages and fracturing units."
+        "en": "UAE · Met Middle East buyers on drilling packages and fracturing units.",
+        "ru": "ОАЭ · Переговоры с покупателями Ближнего Востока по буровым комплексам и флотам ГРП."
       },
       "slug": "2024-11-adipec-2024-abu-dhabi",
       "body": [
@@ -88,7 +99,8 @@
           "image": "images/apps/oilfield.jpg",
           "text": {
             "zh": "阿联酋 · 与中东买家洽谈钻采成套装备与压裂机组。",
-            "en": "UAE · Met Middle East buyers on drilling packages and fracturing units."
+            "en": "UAE · Met Middle East buyers on drilling packages and fracturing units.",
+            "ru": "ОАЭ · Переговоры с покупателями Ближнего Востока по буровым комплексам и флотам ГРП."
           }
         }
       ]
@@ -99,11 +111,13 @@
       "cover": "images/apps/mining.jpg",
       "title": {
         "zh": "中国—东盟矿业合作论坛暨展览会",
-        "en": "China–ASEAN Mining Cooperation Forum &amp; Expo"
+        "en": "China–ASEAN Mining Cooperation Forum &amp; Expo",
+        "ru": "Форум и выставка горнодобывающего сотрудничества Китай — АСЕАН"
       },
       "summary": {
         "zh": "南宁 · 展示矿用工业发动机与移动电力车。",
-        "en": "Nanning · Presenting mining industrial engines and mobile power trucks."
+        "en": "Nanning · Presenting mining industrial engines and mobile power trucks.",
+        "ru": "Наньнин · Представлены промышленные двигатели для горной добычи и мобильные электростанции."
       },
       "slug": "2024-09-china-asean-mining-cooperation",
       "body": [
@@ -111,7 +125,8 @@
           "image": "images/apps/mining.jpg",
           "text": {
             "zh": "南宁 · 展示矿用工业发动机与移动电力车。",
-            "en": "Nanning · Presenting mining industrial engines and mobile power trucks."
+            "en": "Nanning · Presenting mining industrial engines and mobile power trucks.",
+            "ru": "Наньнин · Представлены промышленные двигатели для горной добычи и мобильные электростанции."
           }
         }
       ]
@@ -122,11 +137,13 @@
       "cover": "images/apps/drilling.jpg",
       "title": {
         "zh": "非洲某钻井项目 · 成套动力供应",
-        "en": "Africa drilling project · Complete power supply"
+        "en": "Africa drilling project · Complete power supply",
+        "ru": "Буровой проект в Африке · комплектное электроснабжение"
       },
       "summary": {
         "zh": "钻机动力模块与备用发电机组打包交付。",
-        "en": "Rig power modules and standby gensets delivered as a package."
+        "en": "Rig power modules and standby gensets delivered as a package.",
+        "ru": "Силовые модули буровой установки и резервные генераторные установки поставлены единым комплектом."
       },
       "slug": "2024-08-africa-drilling-project-complete",
       "body": [
@@ -134,7 +151,8 @@
           "image": "images/apps/drilling.jpg",
           "text": {
             "zh": "钻机动力模块与备用发电机组打包交付。",
-            "en": "Rig power modules and standby gensets delivered as a package."
+            "en": "Rig power modules and standby gensets delivered as a package.",
+            "ru": "Силовые модули буровой установки и резервные генераторные установки поставлены единым комплектом."
           }
         }
       ]
@@ -145,11 +163,13 @@
       "cover": "images/apps/power.jpg",
       "title": {
         "zh": "cippe 2024 中国国际石油石化展",
-        "en": "cippe 2024, Beijing"
+        "en": "cippe 2024, Beijing",
+        "ru": "cippe 2024, Пекин"
       },
       "summary": {
         "zh": "北京 · 发电机组与新能源微电网方案首次同台展出。",
-        "en": "Beijing · Gensets and renewable microgrid solutions shown together."
+        "en": "Beijing · Gensets and renewable microgrid solutions shown together.",
+        "ru": "Пекин · Совместный показ генераторных установок и решений для микросетей на ВИЭ."
       },
       "slug": "2024-03-cippe-2024-beijing",
       "body": [
@@ -157,7 +177,8 @@
           "image": "images/apps/power.jpg",
           "text": {
             "zh": "北京 · 发电机组与新能源微电网方案首次同台展出。",
-            "en": "Beijing · Gensets and renewable microgrid solutions shown together."
+            "en": "Beijing · Gensets and renewable microgrid solutions shown together.",
+            "ru": "Пекин · Совместный показ генераторных установок и решений для микросетей на ВИЭ."
           }
         }
       ]

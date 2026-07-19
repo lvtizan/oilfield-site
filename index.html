@@ -200,9 +200,11 @@ section{position:relative}
 .newscard h4{font-size:18px;line-height:1.45;letter-spacing:.01em;color:var(--ink-dark)}
 .newscard p{margin-top:10px;font-size:14px;line-height:1.7;letter-spacing:.04em;color:var(--mut-dark)}
 /* 新闻卡双语:首页 .en 另有装饰用途,这里用独立类名,作用域限定在卡内 */
-.newscard .t-zh{display:none}
+.newscard .t-zh,.newscard .t-ru{display:none}
 html[data-lang="zh"] .newscard .t-zh{display:inline}
 html[data-lang="zh"] .newscard .t-en{display:none}
+html[data-lang="ru"] .newscard .t-ru{display:inline}
+html[data-lang="ru"] .newscard .t-en{display:none}
 .newscard-date{display:block;margin-top:14px;font-family:var(--num);font-size:12px;letter-spacing:.14em;color:var(--acc);font-weight:600}
 @media(max-width:900px){.newsgrid{grid-template-columns:1fr;gap:24px;padding-bottom:70px}}
 
@@ -227,8 +229,10 @@ html[data-lang="zh"] .newscard .t-en{display:none}
 .ctc{margin-top:76px;text-align:left}
 /* 地址由 brand.js / sync-contact 注入 zh+en 两份(brand.js 会覆写 innerHTML,
    languages.js 补的 .ru span 未必存在),本页不加载 styles.css,故在此自管显隐:
-   默认走英文,俄语也回落英文(RU_COPY 无地址译文,结果本就与英文一致),仅中文切换 */
+   默认走英文,中文/俄文各自切换(俄文地址来自 contact.config.json 的 addrRu) */
 [data-kst="addr"] .zh,[data-kst="addr"] .ru{display:none}
+html[data-lang="ru"] [data-kst="addr"] .ru{display:inline}
+html[data-lang="ru"] [data-kst="addr"] .en{display:none}
 [data-kst="addr"] .en{display:inline;font-family:inherit;font-size:inherit;letter-spacing:inherit;text-transform:none;color:inherit}
 html[data-lang="zh"] [data-kst="addr"] .zh{display:inline}
 html[data-lang="zh"] [data-kst="addr"] .en{display:none}
@@ -352,7 +356,7 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
 @media (prefers-reduced-motion:reduce){.panel .art{animation:none}.scrolldn .stem{animation:none}*{transition-duration:.01ms!important}}
 html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,html[data-lang="en"] .models .shead>.en,html[data-lang="en"] .app .cap>span{display:none}
 </style>
-<script src="assets/js/brand.js?v=20260719-i18nfix"></script>
+<script src="assets/js/brand.js?v=20260719-ru"></script>
 </head>
 <body>
 
@@ -602,24 +606,24 @@ html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,htm
       <a class="newscard reveal" href="news/2025-05-25th-china-intl-petroleum.html">
         <div class="newscard-media"><img src="assets/img/products/gen-hero-2172.jpg" alt="" loading="lazy" decoding="async" /></div>
         <div class="newscard-body">
-          <h4><span class="t-zh">第 25 届中国国际石油石化技术装备展 (cippe 2025)</span><span class="t-en">25th China Intl. Petroleum &amp; Petrochemical Expo (cippe 2025)</span></h4>
-          <p><span class="t-zh">北京 · 展出油田发电机组与成套动力方案。</span><span class="t-en">Beijing · Showcasing oilfield gensets and complete power solutions.</span></p>
+          <h4><span class="t-zh">第 25 届中国国际石油石化技术装备展 (cippe 2025)</span><span class="t-en">25th China Intl. Petroleum &amp; Petrochemical Expo (cippe 2025)</span><span class="t-ru">25-я Китайская международная выставка нефтегазового оборудования (cippe 2025)</span></h4>
+          <p><span class="t-zh">北京 · 展出油田发电机组与成套动力方案。</span><span class="t-en">Beijing · Showcasing oilfield gensets and complete power solutions.</span><span class="t-ru">Пекин · Демонстрация нефтепромысловых генераторных установок и комплектных решений по электроснабжению.</span></p>
           <time class="newscard-date" datetime="2025-05">2025.05</time>
         </div>
       </a>
       <a class="newscard reveal" style="transition-delay:.12s" href="news/2025-03-middle-east-oilfield-6.html">
         <div class="newscard-media"><img src="images/hero-rigs.jpg" alt="" loading="lazy" decoding="async" /></div>
         <div class="newscard-body">
-          <h4><span class="t-zh">中东某油田 · 交付 6 台 QSK50 发电机组</span><span class="t-en">Middle East oilfield · 6× QSK50 gensets delivered</span></h4>
-          <p><span class="t-zh">井场主电源成套供应，含现场调试与备件计划。</span><span class="t-en">Wellsite prime-power package with commissioning and spare-parts plan.</span></p>
+          <h4><span class="t-zh">中东某油田 · 交付 6 台 QSK50 发电机组</span><span class="t-en">Middle East oilfield · 6× QSK50 gensets delivered</span><span class="t-ru">Месторождение на Ближнем Востоке · поставка 6 генераторных установок QSK50</span></h4>
+          <p><span class="t-zh">井场主电源成套供应，含现场调试与备件计划。</span><span class="t-en">Wellsite prime-power package with commissioning and spare-parts plan.</span><span class="t-ru">Комплект основного электроснабжения буровой площадки с пусконаладкой и обеспечением запасными частями.</span></p>
           <time class="newscard-date" datetime="2025-03">2025.03</time>
         </div>
       </a>
       <a class="newscard reveal" style="transition-delay:.24s" href="news/2024-12-central-asia-mine-mobile.html">
         <div class="newscard-media"><img src="assets/img/products/special/mobile-power-semi-01.jpg" alt="" loading="lazy" decoding="async" /></div>
         <div class="newscard-body">
-          <h4><span class="t-zh">中亚矿区 · 移动电力车项目</span><span class="t-en">Central Asia mine · Mobile power truck project</span></h4>
-          <p><span class="t-zh">大功率半挂移动电力车，保障矿区分散点位供电。</span><span class="t-en">High-capacity semi-trailer mobile power units for scattered mine sites.</span></p>
+          <h4><span class="t-zh">中亚矿区 · 移动电力车项目</span><span class="t-en">Central Asia mine · Mobile power truck project</span><span class="t-ru">Рудник в Центральной Азии · проект мобильных электростанций</span></h4>
+          <p><span class="t-zh">大功率半挂移动电力车，保障矿区分散点位供电。</span><span class="t-en">High-capacity semi-trailer mobile power units for scattered mine sites.</span><span class="t-ru">Мобильные электростанции большой мощности на полуприцепе для рассредоточенных участков рудника.</span></p>
           <time class="newscard-date" datetime="2024-12">2024.12</time>
         </div>
       </a>
@@ -644,7 +648,7 @@ html[data-lang="en"] .apps .shead>.en,html[data-lang="en"] .stats .shead>.en,htm
             </div>
             <div>
               <div class="k" data-i18n-key="home.contact.addrLabel">Headquarters</div>
-              <div class="v" data-kst="addr"><span class="zh">中国 · 香港</span><span class="en">Hong Kong, China</span></div>
+              <div class="v" data-kst="addr"><span class="zh">中国 · 香港</span><span class="en">Hong Kong, China</span><span class="ru">Гонконг, Китай</span></div>
             </div>
           </div>
           <div class="ctc-item">
@@ -742,6 +746,6 @@ const nio=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.6});
 document.querySelectorAll('.cnt').forEach(el=>nio.observe(el));
 </script>
-<script src="assets/js/languages.js?v=20260719-i18nfix"></script>
+<script src="assets/js/languages.js?v=20260719-ru"></script>
 </body>
 </html>

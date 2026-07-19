@@ -19,7 +19,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CHECK = process.argv.includes('--check');
 
 const cfg = JSON.parse(readFileSync(join(ROOT, 'contact.config.json'), 'utf8'));
-for (const k of ['email', 'phone', 'wechat', 'addrZh', 'addrEn']) {
+for (const k of ['email', 'phone', 'wechat', 'addrZh', 'addrEn', 'addrRu']) {
   if (!cfg[k]) throw new Error(`contact.config.json 缺少 ${k}`);
 }
 
@@ -46,7 +46,7 @@ function syncHtml(src) {
   // 否则惰性匹配会停在第一个 </span> 上,把内容重复注入
   out = out.replace(
     /<(\w+)([^>]*\sdata-kst="addr"[^>]*)>[\s\S]*?<\/\1>/g,
-    `<$1$2><span class="zh">${cfg.addrZh}</span><span class="en">${cfg.addrEn}</span></$1>`);
+    `<$1$2><span class="zh">${cfg.addrZh}</span><span class="en">${cfg.addrEn}</span><span class="ru">${cfg.addrRu}</span></$1>`);
 
   return out;
 }
@@ -58,7 +58,8 @@ function syncBrandJs(src) {
     .replace(/(phone:\s*')[^']*(')/, `$1${cfg.phone}$2`)
     .replace(/(wechat:\s*')[^']*(')/, `$1${cfg.wechat}$2`)
     .replace(/(addrZh:\s*')[^']*(')/, `$1${cfg.addrZh}$2`)
-    .replace(/(addrEn:\s*')[^']*(')/, `$1${cfg.addrEn}$2`);
+    .replace(/(addrEn:\s*')[^']*(')/, `$1${cfg.addrEn}$2`)
+    .replace(/(addrRu:\s*')[^']*(')/, `$1${cfg.addrRu}$2`);
 }
 
 const targets = [

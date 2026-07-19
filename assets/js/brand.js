@@ -22,7 +22,8 @@
     phone:  '+86 20 0000 0000',
     wechat: '#',                       /* 微信号链接 / 二维码页 占位 */
     addrZh: '中国 · 香港',
-    addrEn: 'Hong Kong, China'
+    addrEn: 'Hong Kong, China',
+    addrRu: 'Гонконг, Китай'
   };
   window.KST = window.KST || {}; window.KST.contact = CONTACT;
 
@@ -398,7 +399,12 @@
     q('[data-kst="mailto"]').forEach(function (el) { el.href = 'mailto:' + c.email + '?subject=Inquiry%20%E2%80%94%20KST%20POWER'; });
     q('[data-kst="phone"]').forEach(function (el) { el.textContent = c.phone; });
     q('[data-kst="wechat"]').forEach(function (el) { el.href = c.wechat; });
-    q('[data-kst="addr"]').forEach(function (el) { el.innerHTML = '<span class="zh">' + c.addrZh + '</span><span class="en">' + c.addrEn + '</span>'; });
+    /* 三语一起写:该元素 innerHTML 被运行时覆写,页面里手加 .ru 会被冲掉 */
+  q('[data-kst="addr"]').forEach(function (el) {
+    el.innerHTML = '<span class="zh">' + c.addrZh + '</span>' +
+                   '<span class="en">' + c.addrEn + '</span>' +
+                   '<span class="ru">' + (c.addrRu || c.addrEn) + '</span>';
+  });
   }
   function boot() {
     fillContact();

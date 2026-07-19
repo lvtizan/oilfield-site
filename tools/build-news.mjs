@@ -29,11 +29,11 @@ const esc = (s = '') => String(s).replace(/&(?![a-z]+;|#\d+;)/g, '&amp;').replac
 const attr = (s = '') => esc(s).replace(/"/g, '&quot;');
 
 /** 三语 span;缺失语种回落 en,俄语没有单独文案时不额外输出 */
-function ml(field, cls = '') {
+function ml(field) {
   const en = field?.en ?? '';
   const zh = field?.zh ?? en;
-  const c = cls ? ` class="${cls}"` : '';
-  return `<span${c ? '' : ''} class="zh">${esc(zh)}</span><span class="en">${esc(en)}</span>`;
+  const ru = field?.ru ?? en;   /* 缺俄文时回落英文,与站内其他页一致 */
+  return `<span class="zh">${esc(zh)}</span><span class="en">${esc(en)}</span><span class="ru">${esc(ru)}</span>`;
 }
 const plain = (field) => field?.en ?? field?.zh ?? '';
 const dateLabel = (d) => d.replace('-', '.');
@@ -52,8 +52,8 @@ function detailPage(item, prev, next) {
   }).join('\n');
 
   const nav = [
-    prev ? `<a class="na-nav-prev" href="${attr(prev.slug)}.html"><span class="zh">← ${esc(plain(prev.title))}</span><span class="en">← ${esc(plain(prev.title))}</span></a>` : '<span></span>',
-    next ? `<a class="na-nav-next" href="${attr(next.slug)}.html"><span class="zh">${esc(plain(next.title))} →</span><span class="en">${esc(plain(next.title))} →</span></a>` : '<span></span>',
+    prev ? `<a class="na-nav-prev" href="${attr(prev.slug)}.html">← ${ml(prev.title)}</a>` : '<span></span>',
+    next ? `<a class="na-nav-next" href="${attr(next.slug)}.html">${ml(next.title)} →</a>` : '<span></span>',
   ].join('\n        ');
 
   const ld = {
@@ -86,16 +86,16 @@ function detailPage(item, prev, next) {
   <link rel="stylesheet" href="../assets/fonts/fonts.css" />
   <link rel="stylesheet" href="../assets/css/styles.css?v=20260719-news" />
   <script>(function(){try{var l=localStorage.getItem('kst-lang');if(l==='en'||l==='ru'||l==='zh'){document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l==='zh'?'zh-CN':l);}}catch(e){}})();</script>
-  <script src="../assets/js/brand.js?v=20260719-i18nfix"></script>
+  <script src="../assets/js/brand.js?v=20260719-ru"></script>
 </head>
 <body class="generator-page">
-  <a class="skip-link" href="#main"><span class="zh">跳到主要内容</span><span class="en">Skip to content</span></a>
+  <a class="skip-link" href="#main"><span class="zh">跳到主要内容</span><span class="en">Skip to content</span><span class="ru">Перейти к содержанию</span></a>
 
   <site-header active="news" base="../"></site-header>
 
   <main id="main">
     <div class="wrap breadcrumb-bar">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="../index.html"><span class="zh">首页</span><span class="en">Home</span></a></li><li><a href="../news.html"><span class="zh">活动与新闻</span><span class="en">Activity &amp; News</span></a></li><li aria-current="page">${ml(item.title)}</li></ol></nav>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="../index.html"><span class="zh">首页</span><span class="en">Home</span><span class="ru">Главная</span></a></li><li><a href="../news.html"><span class="zh">活动与新闻</span><span class="en">Activity &amp; News</span><span class="ru">События и новости</span></a></li><li aria-current="page">${ml(item.title)}</li></ol></nav>
     </div>
 
     <article class="oil-section news-article">
@@ -111,13 +111,13 @@ ${blocks}
         <nav class="na-nav" aria-label="More news">
         ${nav}
         </nav>
-        <p class="na-back"><a href="../news.html"><span class="zh">← 返回活动与新闻</span><span class="en">← Back to Activity &amp; News</span></a></p>
+        <p class="na-back"><a href="../news.html"><span class="zh">← 返回活动与新闻</span><span class="en">← Back to Activity &amp; News</span><span class="ru">← Назад к событиям и новостям</span></a></p>
       </div>
     </article>
   </main>
 
   <site-footer base="../"></site-footer>
-  <script src="../assets/js/languages.js?v=20260719-i18nfix"></script>
+  <script src="../assets/js/languages.js?v=20260719-ru"></script>
   <script src="../assets/js/main.js?v=20260719-search"></script>
 </body>
 </html>
@@ -142,7 +142,9 @@ function timeline(cat) {
 
 /* 首页不加载 styles.css,且把 .en 当装饰标签用(面板眉标、区块英文名),
    不能套全局 .zh/.en 显隐规则 —— 这里用卡内专用的 .t-zh/.t-en */
-const bi = (f) => `<span class="t-zh">${esc(f?.zh ?? f?.en ?? '')}</span><span class="t-en">${esc(f?.en ?? f?.zh ?? '')}</span>`;
+const bi = (f) => `<span class="t-zh">${esc(f?.zh ?? f?.en ?? '')}</span>` +
+  `<span class="t-en">${esc(f?.en ?? f?.zh ?? '')}</span>` +
+  `<span class="t-ru">${esc(f?.ru ?? f?.en ?? '')}</span>`;
 
 /* ── 首页最新三条 ────────────────────────────────────── */
 function homeCards() {
