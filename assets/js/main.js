@@ -213,6 +213,24 @@
       startX = startY = null;
     }, { passive: true });
 
+    /* 自动轮播:仅当画廊显式声明 data-gallery-autoplay="毫秒" 时启用 */
+    var autoplayMs = parseInt(gallery.getAttribute('data-gallery-autoplay'), 10);
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (autoplayMs > 0 && !reduceMotion) {
+      var timer = null;
+      function start() { if (!timer) timer = setInterval(function () { show(index + 1); }, autoplayMs); }
+      function stop() { if (timer) { clearInterval(timer); timer = null; } }
+      /* 鼠标悬停、键盘聚焦、页面切到后台时暂停,避免用户看图时被切走 */
+      gallery.addEventListener('mouseenter', stop);
+      gallery.addEventListener('mouseleave', start);
+      gallery.addEventListener('focusin', stop);
+      gallery.addEventListener('focusout', start);
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) stop(); else start();
+      });
+      start();
+    }
+
     /* 初始高度 + 舞台尺寸/视口变化时重算(仅 cat-gallery) */
     fitHeight();
     watchStage();
