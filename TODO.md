@@ -9,6 +9,12 @@
 > 位置：`oilfield.html` 四个 tab（Drilling 已做；上面 3 个待补）。
 > Drilling 可作为格式参照（图 + intro + `.spec-table` 型号参数表）。
 
+## 特种车辆 / 活动新闻 待补
+
+- [ ] **Special Vehicle — 扫地车 Sweeper**：车型图 + 说明/参数（现为"即将上线"占位）
+- [ ] **Special Vehicle — 罐车 Tanker**：车型图 + 说明/参数（现为占位）
+- [ ] **Activity & News**：把参展/客户案例的**虚拟示例**替换为真实展会照片、名称、日期、案例
+
 ## 待客户提供后替换的占位
 
 - [ ] 真实联系方式（邮箱/电话/微信/地址）→ 改 `assets/js/brand.js` 顶部 `CONTACT` 一处即可全站生效
