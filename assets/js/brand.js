@@ -5,7 +5,7 @@
  *   <site-footer>  页脚(内部复用 <site-logo>)
  * 自包含:自行注入 Barlow Condensed / Inter 字体 + 作用域 CSS,不依赖各页 CSS 变量。改这一处,全站同步。
  *
- * <site-logo>   href / theme="ink"(浅底深字)
+ * <site-logo>   href / theme="ink"(浅底深字) / inline(黑红 LOGO:随正文字号内嵌,无副标语)
  * <site-header> active="home|company|generators|engines|oilfield|service|contact"  base="site/"|""  [transparent]
  * <site-footer> base="site/"|""
  * 部署扁平化时构建脚本把 base="site/" 剥成 base=""。
@@ -40,6 +40,14 @@
       "site-logo .logo .sub{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:10.5px;letter-spacing:.146em;color:#8b959e;white-space:nowrap}",
       "site-logo[theme='ink'] .logo .mark{color:#14181c}",
       "site-logo[theme='ink'] .logo .sub{color:#6d7378}",
+      /* ── 黑红 LOGO ──────────────────────────────────────────────
+         用法:<site-logo theme="ink" inline></site-logo>
+         黑色 KST + 红色 POWER,随正文字号内嵌在句子里(不带副标语、不成链接)。
+         浅底正文中代替公司名时使用;深底请去掉 theme="ink"。 */
+      "site-logo[inline]{display:inline}",
+      "site-logo[inline] .logo{display:inline;width:auto;gap:0;vertical-align:baseline}",
+      "site-logo[inline] .logo .sub{display:none}",
+      "site-logo[inline] .logo .mark{font-size:1.04em;line-height:inherit;letter-spacing:.03em;white-space:nowrap}",
 
       /* ===== <site-header> ===== */
       "site-header{display:block;position:sticky;top:0;z-index:100}",

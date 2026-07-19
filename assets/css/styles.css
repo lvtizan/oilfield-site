@@ -606,17 +606,6 @@ a.card { color: inherit; }
 .special-vehicle-copy h2 .zh { font-family: var(--font-zh); font-weight: 900; }
 .special-vehicle-copy .intro { margin-bottom: .9rem; }
 .special-vehicle-note { color: var(--color-ink-soft); font-size: .9rem; }
-/* 车型配置清单:比正文再小一号,红色短横起首,避免和 intro 抢注意力 */
-.special-vehicle-list { list-style: none; margin: 0 0 1rem; display: grid; gap: .5rem; }
-.special-vehicle-list li {
-  position: relative; padding-left: 1.1rem;
-  color: var(--color-ink-soft); font-size: .92rem; line-height: 1.6;
-}
-.special-vehicle-list li::before {
-  content: ''; position: absolute; left: 0; top: .62em;
-  width: .55rem; height: 2px; background: var(--color-brand);
-}
-.special-vehicle-list strong { color: var(--color-ink); font-weight: 700; }
 /* 相邻车型左右交替放图,避免整页一个节奏 */
 .special-vehicle-layout--reverse .special-vehicle-figure { order: 2; }
 /* 页头与紧随其后的首个车型块收紧,读起来是一整块而不是断成两截(仅 special 页出现此相邻关系) */
