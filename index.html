@@ -317,9 +317,11 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
   .panel{min-height:58vh;border-left:none;border-top:1px solid var(--line)}
   /* 图片铺满面板:关掉 kenburns(其关键帧 translate(-50%,-50%) 会把定位挪歪露黑边) */
   .panel .art{left:0;top:0;width:100%;height:100%;transform:none;animation:none}
-  #p-gen .art img.ph{object-position:50% 45%;transform:scale(1.05)}
-  #p-eng .art img.ph{object-position:50% 66%;transform:scale(1.24)}
-  #p-oil .art img.ph{object-position:50% 62%}
+  /* 面板压矮后取景要跟着下移,否则显示的是大片天空、设备挤在下缘;
+     放大倍数也要收 —— 1.24 倍会把矿卡车轮切在面板外 */
+  #p-gen .art img.ph{object-position:50% 72%;transform:scale(1.08)}
+  #p-eng .art img.ph{object-position:50% 56%;transform:scale(1.02)}
+  #p-oil .art img.ph{object-position:50% 58%;transform:scale(1.04)}
   /* 底部加重深色,标题落在黑色蒙层区 */
   .panel .veil{background:linear-gradient(180deg,rgba(15,19,23,.30) 0%,rgba(15,19,23,0) 26%,rgba(15,19,23,.55) 62%,rgba(15,19,23,.96) 100%)}
   .panel .txt{left:24px;right:24px;bottom:30px}
@@ -328,6 +330,9 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
   .panel .go{display:none}
   .hero.engaged .panel.hot{flex:1.3 1 0}
   .claim{display:none}
+  /* 滚动提示是给桌面满屏首屏用的;移动端面板压矮后它会落在第三块的标题上,
+     而且手机本来就知道要往下滑 */
+  .scrolldn{display:none}
   .wrap{padding:0 22px}
   .appstrip{flex-direction:column;height:auto;gap:10px;background:var(--bg)}
   .app{min-height:180px;border:none}
