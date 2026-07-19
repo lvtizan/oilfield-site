@@ -111,6 +111,7 @@
       "site-footer .kstf-wrap{max-width:1400px;margin:0 auto;padding:0 48px;position:relative}",
       "site-footer .kstf-cols{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:40px;padding:92px 0 70px;position:relative;z-index:2}",
       "site-footer .kstf-about p{font-size:13.5px;line-height:1.85;letter-spacing:.01em;color:#8b959e;max-width:340px;margin-top:20px}",
+      "site-footer .kstf-about p+p{margin-top:12px}",
       "site-footer h5{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8b959e;margin-bottom:24px}",
       "site-footer ul{list-style:none}",
       "site-footer li{margin-bottom:13px}",
@@ -249,7 +250,8 @@
             '<div class="kstf-cols">' +
               '<div class="kstf-about">' +
                 '<site-logo></site-logo>' +
-                '<p data-i18n-key="footer.about">Supplying generator sets, industrial engines and oilfield drilling &amp; production equipment — selection and quotation by model specifications.</p>' +
+                '<p data-i18n-key="footer.about">KST POWER operates across mining, oil &amp; gas, power generation and special vehicles. Supported by professional tech and global supply chains, we supply trusted products and integrated solutions.</p>' +
+                '<p data-i18n-key="footer.about2">We cooperate long-term with top brands including Caterpillar, Cummins, Baudouin, etc., well-regarded globally for stable quality and efficient service.</p>' +
               '</div>' +
               '<div>' +
                 '<h5 data-i18n-key="footer.products">Products</h5><ul>' +
