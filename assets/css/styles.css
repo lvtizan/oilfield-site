@@ -1668,14 +1668,28 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
 .generator-gallery-thumbs button:hover, .generator-gallery-thumbs button:focus-visible { border-color: var(--color-ink-soft); }
 .generator-gallery-thumbs button.is-active { border-color: var(--color-brand); }
 .generator-gallery-thumbs img { width: 100%; aspect-ratio: 1.35; object-fit: contain; background: var(--color-surface); }
-/* 发动机页首屏轮播:复用 generator-gallery,但改为单栏 + 图片下方一排指示条 */
-.engine-hero-gallery { grid-template-columns: minmax(0, 1fr); align-content: start; }
+/* 发动机页首屏轮播:复用 generator-gallery,但左右箭头改为排在图片两侧(不压图),
+   指示条移到图片下方 */
+.engine-hero-gallery {
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center; align-content: start; column-gap: .75rem;
+}
 .engine-hero-gallery .generator-gallery-stage {
+  grid-column: 1 / -1; grid-row: 1;
   height: auto; min-height: 0; aspect-ratio: 4 / 3; background: #fff;
 }
+/* 控制条整体居中:‹ 贴右、指示条居中、› 贴左 */
+.engine-hero-gallery .generator-gallery-arrow--prev { grid-column: 1; grid-row: 2; justify-self: end; }
+.engine-hero-gallery .generator-gallery-thumbs { grid-column: 2; grid-row: 2; }
+.engine-hero-gallery .generator-gallery-arrow--next { grid-column: 3; grid-row: 2; justify-self: start; }
 .engine-hero-gallery .generator-slide picture { display: block; width: 100%; height: 100%; }
 .engine-hero-gallery .generator-slide img { width: 100%; height: 100%; object-fit: contain; }
-.engine-hero-gallery .generator-gallery-arrow { width: 2.5rem; height: 2.5rem; font-size: 1.6rem; }
+/* 箭头脱离绝对定位,作为网格项排在图片左右两侧 */
+.engine-hero-gallery .generator-gallery-arrow {
+  position: static; transform: none; align-self: center;
+  width: 2.4rem; height: 2.4rem; font-size: 1.5rem;
+  display: grid; place-items: center; background: #fff;
+}
 .engine-hero-gallery .generator-gallery-thumbs {
   flex-direction: row; justify-content: center; gap: .5rem;
 }
