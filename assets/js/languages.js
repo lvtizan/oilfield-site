@@ -29,6 +29,10 @@
         'home.stats.lab4': 'Off-road emission tier',
         'home.stats.note': '— All measured, hard specifications · no credential boasting —',
         'home.explore.title': 'Explore',
+        'home.about.title': 'KST Group',
+        'home.about.p1': 'Founded in 2005, KST Group is a diversified industrial conglomerate with core businesses covering mining, special vehicles, construction machinery, power generation, and oil & gas drilling. Rooted in heavy industry and energy equipment sectors, the Group relies on professional technologies and a global supply chain to deliver reliable products and integrated solutions to customers.',
+        'home.about.p2': 'The company has maintained long-term in-depth cooperation with world-leading enterprises, including Caterpillar, SJPETRO, BELAZ, Cummins, Baudouin and STAMFORD, and has earned recognition from domestic and overseas markets for stable quality and efficient services.',
+        'home.about.more': 'Learn more',
         'home.explore.app': 'Application',
         'home.explore.appDesc': 'Oilfield, natural gas, mining, drilling and power supply — matched to site conditions.',
         'home.explore.models': 'Featured Models',
@@ -63,6 +67,9 @@
         'nav.tanker': 'Tanker Truck',
         'nav.refuse': 'Refuse Truck',
         'nav.news': 'Activity & News',
+        'nav.searchPlaceholder': 'Search products — e.g. QSK60-C',
+        'nav.searchNone': 'No matching model',
+        'nav.searchAll': 'results — see all',
         'action.inquiry': 'Inquiry',
         'action.sendInquiry': 'Send Inquiry',
         'action.contactUs': 'Contact Us',
@@ -110,6 +117,10 @@
         'home.stats.lab4': 'Внедорожный экостандарт',
         'home.stats.note': '— Только измеренные характеристики —',
         'home.explore.title': 'Смотрите также',
+        'home.about.title': 'KST Group',
+        'home.about.p1': 'Основанная в 2005 году, KST Group — диверсифицированный промышленный холдинг, основные направления которого охватывают горную добычу, спецтехнику, строительную технику, электроэнергетику и нефтегазовое бурение. Опираясь на профессиональные технологии и глобальную цепочку поставок, группа поставляет надёжную продукцию и комплексные решения.',
+        'home.about.p2': 'Компания поддерживает долгосрочное сотрудничество с мировыми лидерами — Caterpillar, SJPETRO, BELAZ, Cummins, Baudouin и STAMFORD — и заслужила признание на внутреннем и зарубежных рынках стабильным качеством и эффективным сервисом.',
+        'home.about.more': 'Подробнее',
         'home.explore.app': 'Применение',
         'home.explore.appDesc': 'Нефтепромысел, газ, горная добыча, бурение и электроснабжение — под условия объекта.',
         'home.explore.models': 'Избранные модели',
@@ -144,6 +155,9 @@
         'nav.tanker': 'Автоцистерна',
         'nav.refuse': 'Мусоровоз',
         'nav.news': 'События и новости',
+        'nav.searchPlaceholder': 'Поиск по моделям — напр. QSK60-C',
+        'nav.searchNone': 'Модель не найдена',
+        'nav.searchAll': 'результатов — показать все',
         'action.inquiry': 'Запросить предложение',
         'action.sendInquiry': 'Отправить запрос',
         'action.contactUs': 'Связаться с нами',
@@ -191,6 +205,10 @@
         'home.stats.lab4': '非道路排放标准',
         'home.stats.note': '— 全部为实测硬指标 · 拒绝资质吹嘘 —',
         'home.explore.title': '继续了解',
+        'home.about.title': 'KST 集团',
+        'home.about.p1': 'KST 集团成立于 2005 年，是一家多元化工业集团，核心业务覆盖矿业、特种车辆、工程机械、电力设备与油气钻采。集团扎根重工与能源装备领域，依托专业技术与全球供应链，为客户提供可靠的产品与一体化解决方案。',
+        'home.about.p2': '公司与卡特彼勒、SJPETRO、别拉斯、康明斯、博杜安、STAMFORD 等世界一流企业保持长期深度合作，凭稳定的品质与高效的服务赢得国内外市场认可。',
+        'home.about.more': '了解更多',
         'home.explore.app': '应用场景',
         'home.explore.appDesc': '油田、天然气、矿山、钻井与电力保障——按工况匹配动力方案。',
         'home.explore.models': '精选型号',
@@ -225,6 +243,9 @@
         'nav.tanker': '油罐车',
         'nav.refuse': '垃圾车',
         'nav.news': '活动与新闻',
+        'nav.searchPlaceholder': '搜索产品型号 —— 如 QSK60-C',
+        'nav.searchNone': '未找到匹配型号',
+        'nav.searchAll': '个结果 —— 查看全部',
         'action.inquiry': '询价',
         'action.sendInquiry': '发送询盘',
         'action.contactUs': '联系我们',
@@ -365,6 +386,15 @@
       var key = element.getAttribute('data-i18n-key');
       var value = PACK[lang].ui[key] || PACK.en.ui[key];
       if (value) element.textContent = value;
+    });
+    /* 属性型翻译:data-i18n-attr="placeholder:nav.searchPlaceholder"(可逗号分隔多组) */
+    document.querySelectorAll('[data-i18n-attr]').forEach(function (element) {
+      element.getAttribute('data-i18n-attr').split(',').forEach(function (pair) {
+        var bits = pair.split(':');
+        if (bits.length !== 2) return;
+        var value = PACK[lang].ui[bits[1].trim()] || PACK.en.ui[bits[1].trim()];
+        if (value) element.setAttribute(bits[0].trim(), value);
+      });
     });
     document.querySelectorAll('.lang-toggle button, .kst-lang button').forEach(function (button) {
       button.setAttribute('aria-pressed', String(button.getAttribute('data-set') === lang));

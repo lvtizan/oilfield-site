@@ -562,6 +562,25 @@ a.card { color: inherit; }
 /* 特种车辆页:车型小节统一「图 + 文」两栏,图片沿用整站白底 4:3 规格。
    不要 .oil-section 的顶部分隔线 —— 图文左右交替本身就是分节,再加线显得碎 */
 .special-vehicle-section { border-top: 0; }
+
+/* 型号搜索结果页:命中的型号按所属页面分组,点进去由 ?q= 高亮对应参数行 */
+.sr-group { margin-bottom: clamp(2rem, 4vw, 3rem); }
+.sr-group h2 {
+  font-family: var(--font-display); font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  font-weight: 800; letter-spacing: -.01em; margin-bottom: 1rem;
+  padding-bottom: .7rem; border-bottom: 1px solid var(--color-border);
+}
+.sr-list { display: flex; flex-wrap: wrap; gap: .6rem; }
+.sr-hit {
+  display: inline-flex; align-items: center; padding: .55rem 1rem;
+  border: 1px solid var(--color-border); border-radius: var(--radius-sm);
+  font-family: var(--font-display); font-weight: 700; font-size: .95rem;
+  color: var(--color-ink); background: #fff; text-decoration: none;
+  transition: border-color var(--dur), color var(--dur), transform var(--dur);
+}
+.sr-hit:hover, .sr-hit:focus-visible {
+  border-color: var(--color-brand); color: var(--color-brand); transform: translateY(-2px);
+}
 /* 页尾询盘:去掉分割线后这块和上方车型糊在一起,用一块很浅的底把它单独立出来 */
 .special-vehicle-section.oil-section--cta .contact-cta--center {
   max-width: 880px; text-align: center;

@@ -61,6 +61,19 @@
       "site-header .ksth-ni:hover .ksth-subnav{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}",
       "site-header .ksth-subnav a{display:block;padding:10px 22px;font-size:13.5px;letter-spacing:.01em;color:rgba(233,236,239,.82);transition:background .25s,color .25s,padding .25s;white-space:nowrap}",
       "site-header .ksth-subnav a:hover{background:rgba(255,255,255,.05);color:#fff;padding-left:26px}",
+      "site-header .ksth-search{display:flex;align-items:center;gap:7px;height:34px;padding:0 11px;margin-left:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:4px;transition:border-color .3s,background .3s}",
+      "site-header .ksth-search:focus-within{border-color:rgba(255,255,255,.42);background:rgba(255,255,255,.11)}",
+      "site-header .ksth-search svg{width:15px;height:15px;fill:none;stroke:#8b959e;stroke-width:2;stroke-linecap:round;flex-shrink:0}",
+      "site-header .ksth-search input{width:clamp(150px,15vw,250px);min-width:0;background:transparent;border:0;outline:none;color:#e9ecef;font-size:13px;letter-spacing:.01em;padding:0;font-family:inherit}",
+      "site-header .ksth-search input::placeholder{color:rgba(233,236,239,.38)}",
+      "site-header .ksth-search input::-webkit-search-cancel-button{-webkit-appearance:none}",
+      "site-header .ksth-search{position:relative}",
+      "site-header .ksth-sugg{position:absolute;top:calc(100% + 8px);right:0;min-width:260px;max-height:320px;overflow-y:auto;padding:6px 0;background:rgba(15,19,23,.98);border:1px solid rgba(255,255,255,.12);box-shadow:0 26px 52px -22px rgba(0,0,0,.7);z-index:130}",
+      "site-header .ksth-sugg button{display:flex;width:100%;align-items:baseline;gap:10px;padding:9px 16px;background:none;border:0;cursor:pointer;text-align:left;color:rgba(233,236,239,.9);font-family:" + SANS + ";font-size:13.5px;transition:background .2s}",
+      "site-header .ksth-sugg button:hover,site-header .ksth-sugg button.on{background:rgba(255,255,255,.07);color:#fff}",
+      "site-header .ksth-sugg button em{font-style:normal;font-size:11.5px;color:#8b959e;margin-left:auto;white-space:nowrap}",
+      "site-header .ksth-sugg .none{padding:11px 16px;color:#8b959e;font-family:" + SANS + ";font-size:13px}",
+      "site-header .ksth-sugg button.all{border-top:1px solid rgba(255,255,255,.10);margin-top:4px;color:#8b959e;font-size:12.5px}",
       "site-header .ksth-lang{display:inline-flex;gap:2px;margin-left:clamp(16px,2vw,40px);flex-shrink:0}",
       "site-header .ksth-lang button{border:0;background:transparent;color:#8b959e;font-family:" + SANS + ";font-size:13px;letter-spacing:.08em;padding:4px 9px;cursor:pointer;transition:.3s}",
       "site-header .ksth-lang button[aria-pressed='true']{color:#fff;background:rgba(255,255,255,.12)}",
@@ -78,6 +91,8 @@
       "site-header .ksth-nav{position:fixed;top:0;right:0;z-index:100;width:min(82vw,320px);height:100dvh;margin:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(10,13,16,.98);padding:88px 26px 40px;overflow-y:auto;transform:translateX(100%);transition:transform .4s cubic-bezier(.22,.61,.36,1)}",
       "site-header .ksth.open .ksth-nav{transform:translateX(0)}",
       "site-header .ksth-nav>a,site-header .ksth-ni>a{font-size:17px;padding:15px 2px;border-bottom:1px solid rgba(255,255,255,.10)}",
+      "site-header .ksth-search{width:100%;margin:16px 0 0;height:42px}",
+      "site-header .ksth-search input{width:100%;font-size:15px}",
       "site-header .ksth-nav>a::after,site-header .ksth-ni>a::after{display:none}",
       "site-header .ksth-ni{display:block;align-items:stretch}",
       "site-header .ksth-caret{display:none}",
@@ -183,9 +198,13 @@
                     '<a href="' + base + 'special.html#refuse"><span data-i18n-key="nav.refuse">Refuse Truck</span></a>' +
                   '</div>' +
                 '</span>' +
-                link('service.html', 'nav.service', 'Service', 'service') +
                 link('news.html', 'nav.news', 'Activity &amp; News', 'news') +
-                link('about.html', 'nav.company', 'About', 'company') +
+                '<form class="ksth-search" role="search" data-model-search>' +
+                  '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>' +
+                  '<input type="search" name="q" autocomplete="off" data-i18n-attr="placeholder:nav.searchPlaceholder" ' +
+                    'placeholder="Search products — e.g. QSK60-C" aria-label="Search products" />' +
+                  '<div class="ksth-sugg" role="listbox" hidden></div>' +
+                '</form>' +
               '</nav>' +
               '<div class="kst-lang ksth-lang" role="group" aria-label="Language">' +
                 '<button type="button" data-set="en" aria-label="Switch to English">EN</button>' +
@@ -265,6 +284,114 @@
     });
   }
 
+  /* ── 顶栏型号搜索:查 assets/data/models.json 定位型号所在页面,
+        跳过去后由 main.js 的 ?q= 处理器高亮对应行 ── */
+  function initModelSearch(form) {
+    var input = form.querySelector('input[name="q"]');
+    var box = form.querySelector('.ksth-sugg');
+    var idx = null, loading = false, items = [], cursor = -1;
+    var base = (document.querySelector('site-header') || {}).getAttribute
+      ? (document.querySelector('site-header').getAttribute('base') || '') : '';
+
+    function load() {
+      if (idx || loading) return;
+      loading = true;
+      fetch(base + 'assets/data/models.json')
+        .then(function (r) { return r.json(); })
+        .then(function (j) { idx = j; render(); })
+        .catch(function () { idx = { pages: {}, models: {} }; });
+    }
+
+    /* 模糊匹配:归一化后双向包含。
+       客户会搜 QSK60 / QSK60-C / QSK60-G / QSK60-L 等各种写法,
+       去掉连字符空格点号再比,搜 QSK60 出全系,搜 QSK60-C 也能命中只写 QSK60 的行。 */
+    function norm(x) { return x.toUpperCase().replace(/[\s._/-]/g, ''); }
+
+    function match(q) {
+      if (!idx || !q) return [];
+      var nq = norm(q);
+      if (!nq) return [];
+      var exact = [], starts = [], has = [], rev = [];
+      Object.keys(idx.models).forEach(function (m) {
+        var nm = norm(m);
+        if (nm === nq) exact.push(m);
+        else if (nm.indexOf(nq) === 0) starts.push(m);
+        else if (nm.indexOf(nq) > 0) has.push(m);
+        else if (nq.indexOf(nm) === 0) rev.push(m);   // 搜得比表里更细
+      });
+      return exact.concat(starts, has, rev);
+    }
+
+    function go(model) {
+      var page = idx.models[model];
+      location.href = base + page + '?q=' + encodeURIComponent(model);
+    }
+
+    function render() {
+      var q = input.value.trim();
+      items = match(q);
+      cursor = -1;
+      if (!q) { box.hidden = true; box.innerHTML = ''; return; }
+      if (!items.length) {
+        box.hidden = false;
+        box.innerHTML = '<div class="none" data-i18n-key="nav.searchNone">No matching model</div>';
+        /* 该节点是刚插入的,补一次翻译(KST_I18N 只暴露 applyLanguage) */
+        if (window.KST_I18N && window.KST_I18N.applyLanguage) {
+          window.KST_I18N.applyLanguage(document.documentElement.getAttribute('data-lang'), false);
+        }
+        return;
+      }
+      box.hidden = false;
+      box.innerHTML = items.slice(0, 8).map(function (m) {
+        var page = idx.models[m];
+        return '<button type="button" data-model="' + m + '">' + m +
+               '<em>' + (idx.pages[page] || page).split('—')[0].trim() + '</em></button>';
+      }).join('') + (items.length > 8
+        ? '<button type="button" class="all" data-all="1">' + items.length +
+          ' <span data-i18n-key="nav.searchAll">results — see all</span></button>'
+        : '');
+      if (window.KST_I18N && window.KST_I18N.applyLanguage) {
+        window.KST_I18N.applyLanguage(document.documentElement.getAttribute('data-lang'), false);
+      }
+    }
+
+    function goResults(q) {
+      location.href = base + 'search.html?q=' + encodeURIComponent(q);
+    }
+
+    input.addEventListener('focus', load);
+    input.addEventListener('input', function () { load(); render(); });
+    input.addEventListener('keydown', function (e) {
+      if (!items.length) return;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        cursor = (cursor + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+        Array.prototype.slice.call(box.querySelectorAll('button')).forEach(function (b, i) {
+          b.classList.toggle('on', i === cursor);
+        });
+      } else if (e.key === 'Escape') { box.hidden = true; }
+    });
+    box.addEventListener('click', function (e) {
+      var all = e.target.closest('button[data-all]');
+      if (all) { goResults(input.value.trim()); return; }
+      var b = e.target.closest('button[data-model]');
+      if (b) go(b.getAttribute('data-model'));
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var q = input.value.trim();
+      if (!q) return;
+      /* 下拉里选中了某一条就直达该型号;
+         否则一律进结果页 —— 模糊查询常跨页命中多个型号,直接跳第一条会误导 */
+      if (cursor >= 0 && items[cursor]) go(items[cursor]);
+      else if (items.length === 1) go(items[0]);
+      else goResults(q);
+    });
+    document.addEventListener('click', function (e) {
+      if (!form.contains(e.target)) box.hidden = true;
+    });
+  }
+
   /* ── 用 CONTACT 填充页面内联的 data-kst 元素(关于页联系区等) ── */
   function fillContact() {
     var c = CONTACT, q = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
@@ -274,5 +401,9 @@
     q('[data-kst="wechat"]').forEach(function (el) { el.href = c.wechat; });
     q('[data-kst="addr"]').forEach(function (el) { el.innerHTML = '<span class="zh">' + c.addrZh + '</span><span class="en">' + c.addrEn + '</span>'; });
   }
-  if (document.readyState !== 'loading') fillContact(); else document.addEventListener('DOMContentLoaded', fillContact);
+  function boot() {
+    fillContact();
+    Array.prototype.slice.call(document.querySelectorAll('[data-model-search]')).forEach(initModelSearch);
+  }
+  if (document.readyState !== 'loading') boot(); else document.addEventListener('DOMContentLoaded', boot);
 })(window, document);

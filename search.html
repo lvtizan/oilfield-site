@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- 型号搜索结果 — 读 ?q=,查 assets/data/models.json,按所属页面分组列出。模糊匹配规则与顶栏搜索框一致。 -->
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model Search | KST POWER</title>
+  <meta name="description" content="Search generator set, industrial engine and oilfield equipment models across the KST POWER catalogue.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="assets/fonts/fonts.css" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260719-search" />
+  <script>(function(){try{var l=localStorage.getItem('kst-lang');if(l==='en'||l==='ru'||l==='zh'){document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l==='zh'?'zh-CN':l);}}catch(e){}})();</script>
+  <script src="assets/js/brand.js?v=20260719-search"></script>
+</head>
+<body class="generator-page">
+  <a class="skip-link" href="#main"><span class="zh">跳到主要内容</span><span class="en">Skip to content</span></a>
+
+  <site-header base=""></site-header>
+
+  <main id="main">
+    <section class="page-hero page-hero--flat">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html"><span class="zh">首页</span><span class="en">Home</span></a></li><li aria-current="page"><span class="zh">型号搜索</span><span class="en">Model search</span></li></ol></nav>
+        <h1 id="sr-title"><span class="zh">型号搜索</span><span class="en">Model search</span></h1>
+        <p class="lead" id="sr-summary"></p>
+      </div>
+    </section>
+
+    <section class="oil-section special-vehicle-section">
+      <div class="wrap">
+        <div id="sr-results"></div>
+      </div>
+    </section>
+  </main>
+
+  <site-footer base=""></site-footer>
+
+  <script src="assets/js/languages.js?v=20260719-search"></script>
+  <script src="assets/js/main.js?v=20260719-search"></script>
+  <script>
+  (function () {
+    'use strict';
+    var q = new URLSearchParams(location.search).get('q') || '';
+    var zh = function () { return document.documentElement.getAttribute('data-lang') === 'zh'; };
+    var summary = document.getElementById('sr-summary');
+    var out = document.getElementById('sr-results');
+
+    /* 与顶栏搜索同一套模糊规则:归一化后双向包含 */
+    function norm(x) { return x.toUpperCase().replace(/[\s._/-]/g, ''); }
+
+    function match(idx, query) {
+      var nq = norm(query);
+      if (!nq) return [];
+      var exact = [], starts = [], has = [], rev = [];
+      Object.keys(idx.models).forEach(function (m) {
+        var nm = norm(m);
+        if (nm === nq) exact.push(m);
+        else if (nm.indexOf(nq) === 0) starts.push(m);
+        else if (nm.indexOf(nq) > 0) has.push(m);
+        else if (nq.indexOf(nm) === 0) rev.push(m);
+      });
+      return exact.concat(starts, has, rev);
+    }
+
+    function esc(s) { return s.replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+    if (!q) {
+      summary.textContent = zh() ? '请输入型号进行搜索。' : 'Enter a model number to search.';
+      return;
+    }
+
+    fetch('assets/data/models.json').then(function (r) { return r.json(); }).then(function (idx) {
+      var hits = match(idx, q);
+      if (!hits.length) {
+        summary.textContent = zh()
+          ? '没有找到与「' + q + '」匹配的型号。'
+          : 'No models matched "' + q + '".';
+        out.innerHTML = '<p class="intro">' + (zh()
+          ? '可以直接把需求发给我们，我们按工况选型报价。'
+          : 'Send us your requirement and we will select and quote by specification.') +
+          '</p><a class="btn btn-primary" href="about.html#contact">' +
+          (zh() ? '发送询盘' : 'Send inquiry') + '</a>';
+        return;
+      }
+
+      summary.textContent = zh()
+        ? '「' + q + '」匹配到 ' + hits.length + ' 个型号。'
+        : hits.length + ' model' + (hits.length > 1 ? 's' : '') + ' matched "' + q + '".';
+
+      /* 按所属页面分组 —— 同一个 QSK60 可能同时出现在发电机组和工业发动机页 */
+      var groups = {};
+      hits.forEach(function (m) {
+        var page = idx.models[m];
+        (groups[page] = groups[page] || []).push(m);
+      });
+
+      out.innerHTML = Object.keys(groups).map(function (page) {
+        var label = (idx.pages[page] || page).split('—')[0].trim();
+        return '<div class="sr-group">' +
+          '<h2>' + esc(label) + '</h2>' +
+          '<div class="sr-list">' + groups[page].map(function (m) {
+            return '<a class="sr-hit" href="' + page + '?q=' + encodeURIComponent(m) + '">' +
+                   esc(m) + '</a>';
+          }).join('') + '</div></div>';
+      }).join('');
+    }).catch(function () {
+      summary.textContent = zh() ? '型号索引加载失败，请稍后重试。' : 'Could not load the model index. Please try again.';
+    });
+  })();
+  </script>
+</body>
+</html>

@@ -241,7 +241,9 @@
 window.KST_SPEC_SEARCH = (function () {
   'use strict';
   var inputs = Array.prototype.slice.call(document.querySelectorAll('[data-spec-search]'));
-  if (!inputs.length) return function () {};
+  /* 没有可见搜索框的页面(如油气页)也要能响应顶栏搜索的 ?q= 高亮,
+     所以这里不再因为 inputs 为空就直接返回 —— 只要页面上有 .spec-table 就继续 */
+  if (!inputs.length && !document.querySelector('.spec-table')) return function () {};
   var panels = Array.prototype.slice.call(document.querySelectorAll('.generator-brand-panel'));
   if (!panels.length) {
     /* 无品牌分栏(如 engines 页):以每个 spec-table 所在区块为搜索范围 */
