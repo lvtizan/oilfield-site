@@ -236,12 +236,14 @@
                   link('generators.html', 'nav.generators', 'Power Generation') +
                   link('engines.html', 'nav.engines', 'Industrial Engines') +
                   link('oilfield.html', 'nav.oilfield', 'Oil &amp; Gas') +
+                  link('special.html', 'nav.special', 'Special Vehicle') +
                 '</ul>' +
               '</div>' +
               '<div>' +
                 '<h5 data-i18n-key="footer.company">Company</h5><ul>' +
                   link('about.html', 'nav.company', 'About') +
                   link('service.html', 'nav.service', 'Service') +
+                  link('news.html', 'nav.news', 'Activity &amp; News') +
                 '</ul>' +
               '</div>' +
               '<div>' +
