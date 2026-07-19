@@ -176,7 +176,10 @@
                   '<div class="ksth-subnav">' +
                     '<a href="' + base + 'special.html#mobile-power"><span data-i18n-key="nav.mobilepower">Mobile Power Truck</span></a>' +
                     '<a href="' + base + 'special.html#sweeper"><span data-i18n-key="nav.sweeper">Sweeper Truck</span></a>' +
+                    '<a href="' + base + 'special.html#sprinkler"><span data-i18n-key="nav.sprinkler">Water Sprinkler Truck</span></a>' +
+
                     '<a href="' + base + 'special.html#tanker"><span data-i18n-key="nav.tanker">Tanker Truck</span></a>' +
+                    '<a href="' + base + 'special.html#refuse"><span data-i18n-key="nav.refuse">Refuse Truck</span></a>' +
                   '</div>' +
                 '</span>' +
                 link('service.html', 'nav.service', 'Service', 'service') +

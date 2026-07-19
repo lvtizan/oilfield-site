@@ -559,6 +559,33 @@ a.card { color: inherit; }
 .oil-section:first-of-type { border-top: 0; }
 /* 作为 tab 面板时:单个展示,去掉顶部分隔线与上内边距,紧贴 tab 栏 */
 .oil-section.generator-brand-panel { border-top: 0; padding-top: 0; }
+/* 特种车辆页:车型小节统一「图 + 文」两栏,图片沿用整站白底 4:3 规格 */
+.special-vehicle-layout {
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: clamp(1.6rem, 4vw, 3.4rem); align-items: center;
+}
+.special-vehicle-figure { margin: 0; }
+.special-vehicle-figure img {
+  display: block; width: 100%; height: auto; aspect-ratio: 4 / 3;
+  object-fit: contain; background: #fff;
+}
+.special-vehicle-copy h2 {
+  font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 800;
+  letter-spacing: -.02em; line-height: 1.1; margin: .35rem 0 .9rem;
+}
+.special-vehicle-copy h2 .zh { font-family: var(--font-zh); font-weight: 900; }
+.special-vehicle-copy .intro { margin-bottom: .9rem; }
+.special-vehicle-note { color: var(--color-ink-soft); font-size: .9rem; }
+/* 相邻车型左右交替放图,避免整页一个节奏 */
+.special-vehicle-layout--reverse .special-vehicle-figure { order: 2; }
+/* 页头与紧随其后的首个车型块收紧,读起来是一整块而不是断成两截(仅 special 页出现此相邻关系) */
+.page-hero--flat + .generator-brand-showcase { padding-top: clamp(1.2rem, 2.4vw, 2rem) !important; }
+@media (max-width: 900px) {
+  .special-vehicle-layout { grid-template-columns: 1fr; }
+  .special-vehicle-figure { max-width: 560px; }
+  .special-vehicle-layout--reverse .special-vehicle-figure { order: 0; }
+}
+
 .oil-head { margin-bottom: clamp(1.9rem, 3.6vw, 2.8rem); }
 .oil-head h2 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
 .oil-head h2 .zh { font-family: var(--font-zh); font-weight: 900; }
@@ -1226,11 +1253,11 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 .engine-page section { padding-block: clamp(3.5rem, 7vw, 6rem); }
 .engine-editorial-hero { padding-block: clamp(1.4rem,2.8vw,2.2rem) 0 !important; background: var(--color-bg); }
 .engine-editorial-inner { padding-top: 0; }
-.engine-editorial-hero .breadcrumb { margin-bottom: clamp(1.5rem,3vw,2.6rem); }
+.engine-editorial-hero .breadcrumb { margin-bottom: clamp(1rem,2vw,1.6rem); }
 .engine-editorial-hero h1 {
-  max-width: 16ch; margin: .8rem 0 1.5rem;
-  font-family: var(--font-display); font-size: clamp(2.4rem,4.6vw,4.2rem);
-  line-height: 1.02; letter-spacing: -.03em; font-weight: 800; color: var(--color-ink);
+  max-width: 18ch; margin: .5rem 0 .9rem;
+  font-family: var(--font-display); font-size: clamp(2rem,3.4vw,3.1rem);
+  line-height: 1.06; letter-spacing: -.03em; font-weight: 800; color: var(--color-ink);
 }
 /* OEM 适配设备列:内容长,字号小、列加宽,整表可横向滚动 */
 .engine-oem-table { min-width: 780px; }
@@ -1250,13 +1277,18 @@ a.contact-tile:hover { border-color: var(--color-brand); }
   gap: clamp(1.4rem, 3vw, 2.6rem);
   align-items: center;
   /* 首屏正下方紧接通栏大图,末行不能贴着图 */
-  padding-bottom: clamp(2rem, 4vw, 3.4rem);
+  padding-bottom: clamp(1.4rem, 2.6vw, 2.2rem);
 }
+/* 首屏必须在 1280x720 的笔记本上完整可见:文案区压紧行距与间距 */
 .engine-hero-copy .engine-editorial-lead {
-  max-width: 42ch; font-size: clamp(1.05rem,1.25vw,1.32rem);
-  line-height: 1.45; font-weight: 600;
+  max-width: 42ch; margin: .9rem 0 1rem;
+  font-size: clamp(1rem,1.15vw,1.2rem);
+  line-height: 1.4; font-weight: 600;
 }
-.engine-hero-copy .engine-editorial-copy { max-width: 46ch; margin-bottom: 0; }
+.engine-hero-copy .engine-editorial-copy {
+  max-width: 46ch; margin-bottom: 0; gap: .65rem;
+  font-size: clamp(.94rem,1.05vw,1.04rem); line-height: 1.6;
+}
 /* .engine-hero-gallery 的覆盖规则必须排在 .generator-gallery 基础样式之后(见文件下方) */
 .engine-editorial-copy {
   display: grid; gap: 1.1rem; max-width: 76ch; margin-bottom: clamp(2.2rem,4.5vw,3.8rem);
