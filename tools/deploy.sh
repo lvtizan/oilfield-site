@@ -37,6 +37,7 @@ rsync -az --delete $DRY \
   --exclude='tools' \
   --exclude='content' \
   --exclude='docs' \
+  --exclude='brand-assets' \
   --exclude='contact.config.json' \
   --exclude='TODO.md' \
   --exclude='_*.html' \
