@@ -142,3 +142,15 @@ node tools/build-news.mjs --check
   `.ctc-item + .ctc-item{border-left:0;padding-left:0}`），否则竖线会
   串到堆叠布局里变成一条竖在左侧的孤线。
 - `gap:32px` 与 `padding-left` 的关系要一起看，避免线两侧间距不对称。
+
+## 部署
+
+除 GitHub Pages 外,已部署到自有服务器 43.157.43.105(nginx,根目录
+`/home/wwwroot/default`)。密钥免密已配好:
+
+```bash
+./tools/deploy.sh            # 部署到自有服务器 + curl 验证
+./tools/deploy.sh --dry-run  # 预览
+```
+
+GitHub Pages 仍靠 git push 到 origin/main 自动部署。两处都要保持最新。
