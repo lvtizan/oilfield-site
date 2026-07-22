@@ -56,12 +56,32 @@ function detailPage(item, prev, next) {
     next ? `<a class="na-nav-next" href="${attr(next.slug)}.html">${ml(next.title)} →</a>` : '<span></span>',
   ].join('\n        ');
 
+  const publishedISO = item.date + '-01';          /* 2025-05 → 2025-05-01 */
+  const canonical = `${SITE}/news/${item.slug}.html`;
+
   const ld = {
     '@context': 'https://schema.org', '@type': 'NewsArticle',
-    headline: title, datePublished: item.date + '-01', image: `${SITE}/${item.cover}`,
+    headline: title,
+    datePublished: publishedISO,
+    dateModified: publishedISO,
+    image: `${SITE}/${item.cover}`,
     description: summary,
-    publisher: { '@type': 'Organization', name: 'KST POWER', '@id': `${SITE}/#org` },
-    mainEntityOfPage: `${SITE}/news/${item.slug}.html`,
+    mainEntityOfPage: canonical,
+    author: { '@type': 'Organization', name: 'KST POWER', '@id': `${SITE}/#org` },
+    publisher: {
+      '@type': 'Organization', name: 'KST POWER', '@id': `${SITE}/#org`,
+      logo: { '@type': 'ImageObject', url: `${SITE}/brand-assets/KST-POWER-logo-ink.png` },
+    },
+  };
+
+  /* 面包屑富媒体结果:首页 › 活动与新闻 › 本文(末项为当前页,不带 item) */
+  const breadcrumbLd = {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/index.html` },
+      { '@type': 'ListItem', position: 2, name: 'Activity & News', item: `${SITE}/news.html` },
+      { '@type': 'ListItem', position: 3, name: title },
+    ],
   };
 
   return `<!DOCTYPE html>
@@ -73,16 +93,23 @@ function detailPage(item, prev, next) {
   <title>${esc(title)} | KST POWER</title>
   <meta name="description" content="${attr(summary)}">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="${SITE}/news/${item.slug}.html">
+  <link rel="canonical" href="${canonical}">
   <meta property="og:type" content="article">
+  <meta property="og:site_name" content="KST POWER">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:locale:alternate" content="ru_RU">
   <meta property="og:title" content="${attr(title)}">
   <meta property="og:description" content="${attr(summary)}">
   <meta property="og:image" content="${SITE}/${attr(item.cover)}">
-  <meta property="og:url" content="${SITE}/news/${item.slug}.html">
+  <meta property="og:image:alt" content="${attr(title)}">
+  <meta property="og:url" content="${canonical}">
+  <meta property="article:published_time" content="${publishedISO}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${attr(title)}">
   <meta name="twitter:image" content="${SITE}/${attr(item.cover)}">
   <script type="application/ld+json">${JSON.stringify(ld)}</script>
+  <script type="application/ld+json">${JSON.stringify(breadcrumbLd)}</script>
   <link rel="stylesheet" href="../assets/fonts/fonts.css" />
   <link rel="stylesheet" href="../assets/css/styles.css?v=20260719-news" />
   <script>(function(){try{var l=localStorage.getItem('kst-lang');if(l==='en'||l==='ru'||l==='zh'){document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l==='zh'?'zh-CN':l);}}catch(e){}})();</script>
