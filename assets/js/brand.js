@@ -19,7 +19,7 @@
         改完跑 `node tools/sync-contact.mjs`,静态 HTML 与本处一起同步。 ── */
   var CONTACT = {
     email:  'sales@kst-power.com',
-    phone:  '+86 20 0000 0000',
+    phone:  '+852 6069 2397',
     wechat: '#',                       /* 微信号链接 / 二维码页 占位 */
     addrZh: '中国 · 香港',
     addrEn: 'Hong Kong, China',

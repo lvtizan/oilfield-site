@@ -1,7 +1,7 @@
 {
   "_comment": "全站联系方式唯一数据源。改这里,然后跑 `node tools/sync-contact.mjs` 把静态 HTML 与 brand.js 一起同步。不要手改各页里的邮箱/电话/地址。",
   "email": "sales@kst-power.com",
-  "phone": "+86 20 0000 0000",
+  "phone": "+852 6069 2397",
   "wechat": "#",
   "addrZh": "中国 · 香港",
   "addrEn": "Hong Kong, China",
