@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /search.html
 
-Sitemap: https://www.kstpower.com/sitemap.xml
+Sitemap: https://kst-power.com/sitemap.xml
