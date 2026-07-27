@@ -269,7 +269,7 @@
               '<div>' +
                 '<h5 data-i18n-key="footer.contactHead">Contact</h5><ul>' +
                   '<li><a href="mailto:' + CONTACT.email + '">' + CONTACT.email + '</a></li>' +
-                  '<li><a href="' + base + 'about.html#contact" data-i18n-key="footer.wechat">WeChat / Email</a></li>' +
+                  '<li><a href="https://wa.me/85260692397">WhatsApp / Phone: +852 6069 2397</a></li>' +
                 '</ul>' +
               '</div>' +
             '</div>' +
