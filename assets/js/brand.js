@@ -13,6 +13,18 @@
 (function (window, document) {
   'use strict';
 
+  /* ===== Google Analytics 4 (GA4) — 全站访问统计 ===== */
+  (function () {
+    var GA_ID = 'G-51YSCD5LQD';
+    if (window.__ga4) return; window.__ga4 = 1;
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag; gtag('js', new Date()); gtag('config', GA_ID);
+  })();
+
   var SANS = "'Inter','Helvetica Neue','Segoe UI',Roboto,Arial,'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif";
 
   /* ── 联系信息:不要手改这里。唯一数据源是根目录 contact.config.json,
