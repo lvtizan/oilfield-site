@@ -25,6 +25,54 @@
     window.gtag = gtag; gtag('js', new Date()); gtag('config', GA_ID);
   })();
 
+  /* ===== 邮箱点击/复制 统计 + 一键复制按钮 ===== */
+  (function () {
+    function fireGA(name, params) { try { if (window.gtag) window.gtag('event', name, params || {}); } catch (e) {} }
+    function emailOf(a) {
+      var h = a.getAttribute('href') || '';
+      return h.replace(/^mailto:/i, '').split('?')[0].trim() || (a.textContent || '').trim();
+    }
+    /* 1) 点击任意 mailto 链接 → email_click 事件(全站委托) */
+    document.addEventListener('click', function (e) {
+      var t = e.target, a = (t && t.closest) ? t.closest('a[href^="mailto:"],a[href^="MAILTO:"]') : null;
+      if (a) fireGA('email_click', { email: emailOf(a), page_path: location.pathname });
+    }, true);
+    /* 2) 邮箱地址旁加复制按钮 → 复制到剪贴板 + email_copy 事件 */
+    function copyText(text, cb) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(cb, function () { legacyCopy(text); cb(); });
+      } else { legacyCopy(text); cb(); }
+    }
+    function legacyCopy(text) {
+      try { var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;left:-9999px;opacity:0'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); } catch (e) {}
+    }
+    function addCopyButtons() {
+      var links = document.querySelectorAll('a[data-kst="email"]');
+      Array.prototype.forEach.call(links, function (a) {
+        if (a.getAttribute('data-copy-added')) return;
+        a.setAttribute('data-copy-added', '1');
+        var email = emailOf(a); if (!email) return;
+        var btn = document.createElement('button');
+        btn.type = 'button'; btn.title = 'Copy'; btn.setAttribute('aria-label', 'Copy email address');
+        btn.style.cssText = 'display:inline-flex;align-items:center;margin-left:8px;padding:0;background:none;border:0;cursor:pointer;color:inherit;opacity:.6;vertical-align:middle;transition:opacity .2s';
+        btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+        btn.onmouseover = function () { btn.style.opacity = '1'; };
+        btn.onmouseout = function () { btn.style.opacity = '.6'; };
+        btn.addEventListener('click', function (ev) {
+          ev.preventDefault(); ev.stopPropagation();
+          copyText(email, function () {
+            fireGA('email_copy', { email: email, page_path: location.pathname });
+            var old = btn.innerHTML; btn.innerHTML = '<span style="font-size:12px;white-space:nowrap">✓ Copied</span>';
+            setTimeout(function () { btn.innerHTML = old; }, 1500);
+          });
+        });
+        if (a.parentNode) a.parentNode.insertBefore(btn, a.nextSibling);
+      });
+    }
+    if (window.addEventListener) window.addEventListener('load', addCopyButtons);
+    if (document.readyState === 'complete') addCopyButtons();
+  })();
+
   var SANS = "'Inter','Helvetica Neue','Segoe UI',Roboto,Arial,'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif";
 
   /* ── 联系信息:不要手改这里。唯一数据源是根目录 contact.config.json,
