@@ -194,8 +194,8 @@
       "site-footer li{margin-bottom:13px}",
       "site-footer li a{font-size:14px;font-weight:500;letter-spacing:.01em;color:rgba(233,236,239,.86);text-decoration:none;transition:color .3s}",
       "site-footer li a:hover{color:#fff}",
-      "site-footer .kstf-base{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.10);padding:26px 0 14px;display:flex;flex-wrap:wrap;gap:28px;font-size:12px;letter-spacing:.02em;color:#8b939a}",
-      "site-footer .kstf-legal{position:relative;z-index:2;text-align:center;font-size:11px;letter-spacing:.02em;color:#8b939a;opacity:.85;padding:0 0 28px}",
+      "site-footer .kstf-base{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.10);padding:26px 0 30px;display:flex;flex-wrap:wrap;gap:28px;font-size:12px;letter-spacing:.02em;color:#8b939a}",
+      "site-footer .kstf-meta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:flex-end}",
       "site-footer .kstf-base span:last-child{margin-left:auto}",
       "site-footer .kstf-credit a{color:inherit;text-decoration:none;opacity:.85;transition:opacity .2s}",
       "site-footer .kstf-credit a:hover{opacity:1;color:#fff}",
@@ -338,9 +338,11 @@
             '</div>' +
             '<div class="kstf-base">' +
               '<span>© 2026 <span class="kstf-mark">KST<b>POWER</b></span></span>' +
-              '<span class="kstf-credit"><a href="https://yoyant.com" target="_blank" rel="noopener">Site by YOYANT</a></span>' +
+              '<span class="kstf-meta">' +
+                '<span data-i18n-key="footer.trademark">Product model names and trademarks belong to their respective manufacturers.</span>' +
+                '<span class="kstf-credit"><a href="https://yoyant.com" target="_blank" rel="noopener">Site by YOYANT</a></span>' +
+              '</span>' +
             '</div>' +
-            '<div class="kstf-legal"><span data-i18n-key="footer.trademark">Product model names and trademarks belong to their respective manufacturers.</span></div>' +
             '<div class="kstf-watermark" aria-hidden="true">KST&nbsp;POWER</div>' +
           '</div>';
         reapplyI18n();
