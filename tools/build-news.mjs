@@ -41,12 +41,23 @@ const dateLabel = (d) => d.replace('-', '.');
 /** 详情页在 news/ 子目录下,资源与站内链接都要回退一级 */
 const up = (p) => (/^https?:|^#/.test(p) ? p : '../' + p);
 
+/** 若同名 -800/-1280 webp 变体都在盘上,返回 ` srcset="…" sizes="…"`(webp 优选,
+ *  原 jpg 作 src 兜底给不支持 webp 的浏览器);变体缺失则返回空串,退回纯 <img>。
+ *  prefix 用于详情页把根相对路径加 ../ 前缀。存在性判断走未加前缀的根相对路径。 */
+function variants(imgPath, sizes, prefix = (p) => p) {
+  const m = String(imgPath).match(/^(.*)\.(jpe?g|png)$/i);
+  if (!m) return '';
+  const w800 = `${m[1]}-800.webp`, w1280 = `${m[1]}-1280.webp`;
+  if (!existsSync(join(ROOT, w800)) || !existsSync(join(ROOT, w1280))) return '';
+  return ` srcset="${attr(prefix(w800))} 800w, ${attr(prefix(w1280))} 1280w" sizes="${attr(sizes)}"`;
+}
+
 /* ── 详情页 ──────────────────────────────────────────── */
 function detailPage(item, prev, next) {
   const title = plain(item.title);
   const summary = plain(item.summary);
   const blocks = (item.body || []).map((b) => {
-    const img = b.image ? `<figure class="na-fig"><img src="${attr(up(b.image))}" alt="" loading="lazy" decoding="async" /></figure>` : '';
+    const img = b.image ? `<figure class="na-fig"><img src="${attr(up(b.image))}"${variants(b.image, '(max-width: 768px) 100vw, 680px', up)} alt="" loading="lazy" decoding="async" /></figure>` : '';
     const txt = b.text ? `<div class="na-txt"><p>${ml(b.text)}</p></div>` : '';
     return `        <div class="na-block">\n          ${img}\n          ${txt}\n        </div>`;
   }).join('\n');
@@ -158,7 +169,7 @@ function timeline(cat) {
   return `          <div class="tl">\n` + list.map((i) => `            <div class="tl-item">
               <div class="tl-date">${dateLabel(i.date)}</div>
               <a class="tl-card" href="news/${attr(i.slug)}.html">
-                <div class="tl-media"><img src="${attr(i.cover)}" alt="" loading="lazy" decoding="async" /></div>
+                <div class="tl-media"><img src="${attr(i.cover)}"${variants(i.cover, '(max-width: 768px) 100vw, 420px')} alt="" loading="lazy" decoding="async" /></div>
                 <div class="tl-body">
                   <h3>${ml(i.title)}</h3>
                   <p>${ml(i.summary)}</p>
@@ -176,7 +187,7 @@ const bi = (f) => `<span class="t-zh">${esc(f?.zh ?? f?.en ?? '')}</span>` +
 /* ── 首页最新三条 ────────────────────────────────────── */
 function homeCards() {
   return items.slice(0, 3).map((i, n) => `      <a class="newscard reveal"${n ? ` style="transition-delay:.${n * 12}s"` : ''} href="news/${attr(i.slug)}.html">
-        <div class="newscard-media"><img src="${attr(i.cover)}" alt="" loading="lazy" decoding="async" /></div>
+        <div class="newscard-media"><img src="${attr(i.cover)}"${variants(i.cover, '(max-width: 768px) 100vw, 380px')} alt="" loading="lazy" decoding="async" /></div>
         <div class="newscard-body">
           <h4>${bi(i.title)}</h4>
           <p>${bi(i.summary)}</p>
