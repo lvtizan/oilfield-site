@@ -76,6 +76,39 @@
       ]
     },
     {
+      "date": "2025-09",
+      "category": "expo",
+      "cover": "assets/img/news/kazan/kazan-01.jpg",
+      "title": {
+        "zh": "喀山国际石油天然气化工展(KAZAN Oil, Gas & Chemistry)",
+        "en": "KAZAN Oil, Gas & Chemistry — International Petrochemical Exhibition",
+        "ru": "Международная нефтегазохимическая выставка «KAZAN Oil, Gas & Chemistry»"
+      },
+      "summary": {
+        "zh": "俄罗斯喀山 · KST POWER 亮相国际石油天然气化工展,展示面向油气与矿山的成套动力方案。",
+        "en": "Kazan, Russia · KST POWER joined the international petroleum, gas & chemistry exhibition, presenting complete power solutions for oil, gas and mining.",
+        "ru": "Казань, Россия · KST POWER приняла участие в международной нефтегазохимической выставке, представив комплектные энергетические решения для нефтегазовой и горнодобывающей отраслей."
+      },
+      "slug": "2025-09-kazan-oil-gas-chemistry",
+      "body": [
+        {
+          "image": "assets/img/news/kazan/kazan-01.jpg",
+          "text": {
+            "zh": "KST POWER 参加在俄罗斯喀山举办的 KAZAN Oil, Gas & Chemistry 国际石油天然气化工展,与区域内油气及矿山领域的伙伴和客户深入交流。",
+            "en": "KST POWER took part in the KAZAN Oil, Gas & Chemistry international petrochemical exhibition in Kazan, Russia, connecting with partners and customers from the oil, gas and mining sectors across the region.",
+            "ru": "KST POWER приняла участие в международной нефтегазохимической выставке «KAZAN Oil, Gas & Chemistry» в Казани (Россия), встретившись с партнёрами и заказчиками из нефтегазовой и горнодобывающей отраслей региона."
+          }
+        },
+        {
+          "text": {
+            "zh": "展会现场,我们展示了面向油田、钻井与矿山的柴油发电机组及成套动力方案,并就俄罗斯与中亚客户的配套动力项目进行洽谈。",
+            "en": "At the show we presented our diesel gensets and complete power packages for oilfield, drilling and mining applications, and discussed matched-power projects for customers across Russia and Central Asia.",
+            "ru": "На выставке мы представили дизельные генераторные установки и комплектные энергетические решения для нефтепромысловых, буровых и горнодобывающих применений, а также обсудили проекты по подбору силовых установок для заказчиков из России и Центральной Азии."
+          }
+        }
+      ]
+    },
+    {
       "date": "2025-05",
       "category": "expo",
       "cover": "assets/img/products/gen-hero-2172.jpg",
