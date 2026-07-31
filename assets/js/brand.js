@@ -196,7 +196,7 @@
       "site-footer li a:hover{color:#fff}",
       "site-footer .kstf-base{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.10);padding:26px 0 30px;display:flex;flex-wrap:wrap;gap:28px;font-size:12px;letter-spacing:.02em;color:#8b939a}",
       "site-footer .kstf-base span:last-child{margin-left:auto}",
-      "site-footer .kstf-credit a{color:inherit;text-decoration:none;opacity:.68;transition:opacity .2s}",
+      "site-footer .kstf-credit a{color:inherit;text-decoration:none;opacity:.85;transition:opacity .2s}",
       "site-footer .kstf-credit a:hover{opacity:1;color:#fff}",
       "site-footer .kstf-mark{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-style:italic;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#fff}",
       "site-footer .kstf-mark b{color:#e8232b;font-weight:600;margin-left:.24em}",
