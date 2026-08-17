@@ -204,11 +204,11 @@ html[data-lang="ru"] .lang-toggle [data-set="ru"] {
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .5rem; white-space: nowrap;
   font-family: var(--font-display); font-weight: 600; font-size: .92rem;
-  padding: .7rem 1.25rem; border-radius: var(--radius-sm);
+  padding: .7rem 1.25rem; border-radius: 4px;
   border: 1px solid transparent; cursor: pointer; transition: all var(--dur);
 }
-.btn-primary { background: var(--color-brand); color: var(--color-on-dark); border-radius: 0; letter-spacing: .18em; }
-.btn-primary:hover { background: #fff; color: #14181c; }
+.btn-primary { background: var(--color-brand); color: var(--color-on-dark); letter-spacing: .18em; }
+.btn-primary:hover { background: #c1000f; color: var(--color-on-dark); }
 .btn-ghost { background: transparent; color: var(--color-ink); border-color: var(--color-border); }
 .btn-ghost:hover { border-color: var(--color-ink); }
 
@@ -271,7 +271,9 @@ html[data-lang="ru"] .lang-toggle [data-set="ru"] {
   margin-bottom: 1.35rem;
 }
 .hero .eyebrow { color: var(--color-on-dark); }
-.hero-ctas { display: flex; flex-wrap: wrap; gap: .8rem; min-height: 45px; margin-bottom: 1.65rem; }
+/* align-items:center 必须有 —— 否则子项 stretch,会被 min-height 拉成整块高度
+   (560px 断点下 min-height:96px 曾把按钮拉成 96px 高) */
+.hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; min-height: 45px; margin-bottom: 1.65rem; }
 .hero .btn-ghost {
   background: rgba(255,255,255,.12);
   border-color: rgba(255,255,255,.28);
@@ -559,6 +561,111 @@ a.card { color: inherit; }
 .oil-section:first-of-type { border-top: 0; }
 /* 作为 tab 面板时:单个展示,去掉顶部分隔线与上内边距,紧贴 tab 栏 */
 .oil-section.generator-brand-panel { border-top: 0; padding-top: 0; }
+/* 特种车辆页:车型小节统一「图 + 文」两栏,图片沿用整站白底 4:3 规格。
+   不要 .oil-section 的顶部分隔线 —— 图文左右交替本身就是分节,再加线显得碎 */
+.special-vehicle-section { border-top: 0; }
+
+/* 新闻详情页(由 tools/build-news.mjs 生成)。正文是「一图一段」的组结构,
+   与客户交稿格式一致:桌面左图右文,窄屏图上文下 */
+.news-article { border-top: 0; }
+.news-article .na-date {
+  font-family: var(--font-display); font-size: .84rem; font-weight: 700;
+  letter-spacing: .1em; color: var(--color-brand); margin-bottom: .7rem;
+}
+/* 不设 ch 级 max-width:新闻标题是真标题不是短口号,限宽会把长标题折成一堆短行 */
+.news-article h1 {
+  font-family: var(--font-display); font-size: clamp(1.9rem, 3.6vw, 3rem);
+  font-weight: 800; letter-spacing: -.02em; line-height: 1.14; margin-bottom: 1rem;
+}
+.news-article h1 .zh { font-family: var(--font-zh); font-weight: 900; }
+.news-article .na-summary {
+  color: var(--color-ink-soft); font-size: var(--fs-lead);
+  max-width: 62ch; margin-bottom: clamp(2rem, 4vw, 3.2rem);
+}
+.na-block {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.4rem, 3vw, 2.8rem); align-items: center;
+  margin-bottom: clamp(2rem, 4vw, 3.2rem);
+}
+/* 交替要在正文容器内数,否则 nth-child 会把标题、摘要等兄弟节点一起算进去 */
+.na-body .na-block:nth-child(even) .na-fig { order: 2; }
+.na-fig { margin: 0; }
+/* 不锁死比例:新闻照片横竖比例不一,强套 4:3 会在图片上下留出大片空白 */
+.na-fig img {
+  display: block; width: 100%; height: auto; max-height: 520px;
+  object-fit: contain; background: #fff; border: 1px solid var(--color-border);
+}
+.na-txt p { color: var(--color-ink); font-size: 1.02rem; line-height: 1.8; margin: 0; }
+.na-nav {
+  display: flex; justify-content: space-between; gap: 1rem;
+  margin-top: clamp(2rem, 4vw, 3rem); padding-top: 1.4rem;
+  border-top: 1px solid var(--color-border);
+}
+.na-nav a { color: var(--color-ink-soft); font-size: .92rem; max-width: 44%; }
+.na-nav a:hover { color: var(--color-brand); }
+.na-back { margin-top: 1.2rem; font-size: .92rem; }
+@media (max-width: 760px) {
+  .na-block { grid-template-columns: 1fr; }
+  .na-body .na-block:nth-child(even) .na-fig { order: 0; }
+  .na-nav { flex-direction: column; }
+  .na-nav a { max-width: 100%; }
+}
+
+/* 列表页时间线卡片现在是整卡可点 */
+.tl-card { text-decoration: none; color: inherit; transition: border-color var(--dur), transform var(--dur); }
+.tl-card:hover { border-color: var(--color-brand); transform: translateY(-2px); }
+
+/* 型号搜索结果页:命中的型号按所属页面分组,点进去由 ?q= 高亮对应参数行 */
+.sr-group { margin-bottom: clamp(2rem, 4vw, 3rem); }
+.sr-group h2 {
+  font-family: var(--font-display); font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  font-weight: 800; letter-spacing: -.01em; margin-bottom: 1rem;
+  padding-bottom: .7rem; border-bottom: 1px solid var(--color-border);
+}
+.sr-list { display: flex; flex-wrap: wrap; gap: .6rem; }
+.sr-hit {
+  display: inline-flex; align-items: center; padding: .55rem 1rem;
+  border: 1px solid var(--color-border); border-radius: var(--radius-sm);
+  font-family: var(--font-display); font-weight: 700; font-size: .95rem;
+  color: var(--color-ink); background: #fff; text-decoration: none;
+  transition: border-color var(--dur), color var(--dur), transform var(--dur);
+}
+.sr-hit:hover, .sr-hit:focus-visible {
+  border-color: var(--color-brand); color: var(--color-brand); transform: translateY(-2px);
+}
+/* 页尾询盘:去掉分割线后这块和上方车型糊在一起,用一块很浅的底把它单独立出来 */
+.special-vehicle-section.oil-section--cta .contact-cta--center {
+  max-width: 880px; text-align: center;
+  background: var(--color-surface); border-radius: var(--radius);
+  padding: clamp(2rem, 4.5vw, 3.2rem) clamp(1.4rem, 4vw, 3rem);
+}
+.special-vehicle-section.oil-section--cta .intro { max-width: 54ch; margin-inline: auto; }
+.special-vehicle-layout {
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: clamp(1.6rem, 4vw, 3.4rem); align-items: center;
+}
+.special-vehicle-figure { margin: 0; }
+.special-vehicle-figure img {
+  display: block; width: 100%; height: auto; aspect-ratio: 4 / 3;
+  object-fit: contain; background: #fff;
+}
+.special-vehicle-copy h2 {
+  font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 800;
+  letter-spacing: -.02em; line-height: 1.1; margin: .35rem 0 .9rem;
+}
+.special-vehicle-copy h2 .zh { font-family: var(--font-zh); font-weight: 900; }
+.special-vehicle-copy .intro { margin-bottom: .9rem; }
+.special-vehicle-note { color: var(--color-ink-soft); font-size: .9rem; }
+/* 相邻车型左右交替放图,避免整页一个节奏 */
+.special-vehicle-layout--reverse .special-vehicle-figure { order: 2; }
+/* 页头与紧随其后的首个车型块收紧,读起来是一整块而不是断成两截(仅 special 页出现此相邻关系) */
+.page-hero--flat + .generator-brand-showcase { padding-top: clamp(1.2rem, 2.4vw, 2rem) !important; }
+@media (max-width: 900px) {
+  .special-vehicle-layout { grid-template-columns: 1fr; }
+  .special-vehicle-figure { max-width: 560px; }
+  .special-vehicle-layout--reverse .special-vehicle-figure { order: 0; }
+}
+
 .oil-head { margin-bottom: clamp(1.9rem, 3.6vw, 2.8rem); }
 .oil-head h2 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
 .oil-head h2 .zh { font-family: var(--font-zh); font-weight: 900; }
@@ -703,10 +810,6 @@ a.card { color: inherit; }
 .contact-cta p { color: var(--color-ink-soft); margin-bottom: 1.3rem; }
 .contact-cta .btn { width: 100%; }
 .contact-cta .btn + .btn { margin-top: .7rem; }
-.contact-qr-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; margin-top: 1rem; }
-.contact-qr-card { margin: 0; padding: .75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-bg); }
-.contact-qr-card img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; background: #fff; }
-.contact-qr-card figcaption { margin-top: .55rem; font-family: var(--font-display); font-size: .76rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-ink-soft); text-align: center; }
 
 /* static inquiry form (contact page) */
 .form-grid { display: grid; gap: .8rem; }
@@ -1174,7 +1277,6 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 }
 
 /* ============ 产品页 大主图 (prod-hero) ============ */
-/* 满宽 hero:去掉 1920px 上限——否则视口>1920px 时 hero 被居中,两侧露白边(header 是满宽的,对不齐)。见踩坑记录 */
 .prod-hero { position: relative; min-height: clamp(300px, 42vh, 480px); width: 100%; display: flex; align-items: flex-end; overflow: hidden; padding: 0; }
 .prod-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 .prod-hero-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(18,22,26,0) 26%, rgba(18,22,26,.42) 58%, rgba(18,22,26,.74) 82%, rgba(18,22,26,.92) 100%); }
@@ -1231,11 +1333,11 @@ a.contact-tile:hover { border-color: var(--color-brand); }
 .engine-page section { padding-block: clamp(3.5rem, 7vw, 6rem); }
 .engine-editorial-hero { padding-block: clamp(1.4rem,2.8vw,2.2rem) 0 !important; background: var(--color-bg); }
 .engine-editorial-inner { padding-top: 0; }
-.engine-editorial-hero .breadcrumb { margin-bottom: clamp(1.5rem,3vw,2.6rem); }
+.engine-editorial-hero .breadcrumb { margin-bottom: clamp(1rem,2vw,1.6rem); }
 .engine-editorial-hero h1 {
-  max-width: 16ch; margin: .8rem 0 1.5rem;
-  font-family: var(--font-display); font-size: clamp(2.4rem,4.6vw,4.2rem);
-  line-height: 1.02; letter-spacing: -.03em; font-weight: 800; color: var(--color-ink);
+  max-width: 18ch; margin: .5rem 0 .9rem;
+  font-family: var(--font-display); font-size: clamp(2rem,3.4vw,3.1rem);
+  line-height: 1.06; letter-spacing: -.03em; font-weight: 800; color: var(--color-ink);
 }
 /* OEM 适配设备列:内容长,字号小、列加宽,整表可横向滚动 */
 .engine-oem-table { min-width: 780px; }
@@ -1246,6 +1348,28 @@ a.contact-tile:hover { border-color: var(--color-brand); }
   color: var(--color-ink); font-size: clamp(1.25rem,1.75vw,1.8rem);
   line-height: 1.32; font-weight: 700;
 }
+
+/* 首屏两栏:左文案 + 右图片轮播。文案收窄让出轮播位 */
+.engine-hero-grid {
+  display: grid;
+  /* 右栏略宽:箭头占掉的横向空间从这里补回来,图片不至于被压小 */
+  grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+  gap: clamp(1.4rem, 3vw, 2.6rem);
+  align-items: center;
+  /* 首屏正下方紧接通栏大图,末行不能贴着图 */
+  padding-bottom: clamp(1.4rem, 2.6vw, 2.2rem);
+}
+/* 首屏必须在 1280x720 的笔记本上完整可见:文案区压紧行距与间距 */
+.engine-hero-copy .engine-editorial-lead {
+  max-width: 42ch; margin: .9rem 0 1rem;
+  font-size: clamp(1rem,1.15vw,1.2rem);
+  line-height: 1.4; font-weight: 600;
+}
+.engine-hero-copy .engine-editorial-copy {
+  max-width: 46ch; margin-bottom: 0; gap: .65rem;
+  font-size: clamp(.94rem,1.05vw,1.04rem); line-height: 1.6;
+}
+/* .engine-hero-gallery 的覆盖规则必须排在 .generator-gallery 基础样式之后(见文件下方) */
 .engine-editorial-copy {
   display: grid; gap: 1.1rem; max-width: 76ch; margin-bottom: clamp(2.2rem,4.5vw,3.8rem);
   color: var(--color-ink-soft); font-size: clamp(1rem,1.35vw,1.18rem); line-height: 1.72;
@@ -1407,6 +1531,15 @@ a.contact-tile:hover { border-color: var(--color-brand); }
   .engine-editorial-hero h1,
   .engine-wide-copy h2,
   .engine-uptime-copy > h2 { max-width: 100%; }
+  /* 单栏堆叠时轮播收窄居中;指示条下方留白,否则紧贴下方的通栏大图 */
+  .engine-hero-grid { grid-template-columns: 1fr; gap: clamp(1.6rem,4vw,2.4rem); }
+  .engine-hero-gallery {
+    max-width: 620px; width: 100%; margin-inline: auto;
+    margin-bottom: clamp(1.6rem,4vw,2.6rem);
+  }
+  .engine-hero-copy .engine-editorial-lead,
+  .engine-hero-copy .engine-editorial-copy { max-width: 100%; }
+  .engine-hero-copy .engine-editorial-lead { font-size: 1.18rem; }
   .engine-story-media,
   .engine-uptime-media { max-width: 560px; }
   .engine-night { min-height: 720px; }
@@ -1522,7 +1655,6 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
    统一高度:2172/724 宽幅(以 generators 为标准);cover 裁切填充,object-position 偏下
    → 以设备为主体、优先裁掉上方天空。文字压底,导航下间距=标准间距×2。面包屑另置横幅下方。 */
 .prod-hero--pano {
-  margin-top: clamp(2.4rem, 5vw, 4rem);
   min-height: 0;
   aspect-ratio: 2172 / 724;
   align-items: stretch;
@@ -1564,7 +1696,6 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
 .generator-section-head { max-width: 900px; margin-bottom: clamp(1.8rem, 4vw, 3rem); }
 .generator-section-head h2 { font-size: var(--fs-h2); line-height: 1.1; margin: .45rem 0 .8rem; }
 .generator-section-head h2 .zh,
-.generator-brand-content h3 .zh { font-family: var(--font-zh); font-weight: 900; }
 .generator-section-head > p:last-child { color: var(--color-ink-soft); max-width: 66ch; font-size: var(--fs-lead); }
 .generator-tabs {
   display: flex;
@@ -1651,8 +1782,35 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
 .generator-gallery-thumbs button:hover, .generator-gallery-thumbs button:focus-visible { border-color: var(--color-ink-soft); }
 .generator-gallery-thumbs button.is-active { border-color: var(--color-brand); }
 .generator-gallery-thumbs img { width: 100%; aspect-ratio: 1.35; object-fit: contain; background: var(--color-surface); }
+/* 发动机页首屏轮播:复用 generator-gallery,但左右箭头改为排在图片两侧(不压图),
+   指示条移到图片下方 */
+.engine-hero-gallery {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center; align-content: start; column-gap: clamp(.4rem, 1vw, .9rem);
+}
+/* ‹ 图 › 三格并排:箭头在图片左右两侧的留白里,垂直居中,不压图 */
+.engine-hero-gallery .generator-gallery-arrow--prev { grid-column: 1; grid-row: 1; }
+.engine-hero-gallery .generator-gallery-stage {
+  grid-column: 2; grid-row: 1;
+  height: auto; min-height: 0; aspect-ratio: 4 / 3; background: #fff;
+}
+.engine-hero-gallery .generator-gallery-arrow--next { grid-column: 3; grid-row: 1; }
+.engine-hero-gallery .generator-gallery-thumbs { grid-column: 2; grid-row: 2; }
+.engine-hero-gallery .generator-slide picture { display: block; width: 100%; height: 100%; }
+.engine-hero-gallery .generator-slide img { width: 100%; height: 100%; object-fit: contain; }
+/* 箭头脱离绝对定位,作为网格项排在图片左右两侧 */
+.engine-hero-gallery .generator-gallery-arrow {
+  position: static; transform: none; align-self: center;
+  width: 2.4rem; height: 2.4rem; font-size: 1.5rem;
+  display: grid; place-items: center; background: #fff;
+}
+/* 缩略图与 generators / special 页保持一致(选中描红边),只是改为横向排列 */
+.engine-hero-gallery .generator-gallery-thumbs {
+  flex-direction: row; flex-wrap: wrap; justify-content: center; gap: .5rem;
+}
+.engine-hero-gallery .generator-gallery-thumbs button { width: clamp(46px, 5.2vw, 74px); }
+
 .generator-brand-visual figcaption { margin-top: .8rem; color: var(--color-ink-soft); font-size: .84rem; }
-.generator-brand-content h3 { font-size: clamp(1.9rem, 4.2vw, 3.8rem); line-height: 1.05; margin: .45rem 0 .9rem; max-width: 22ch; }
 .generator-brand-content > p:not(.eyebrow):not(.generator-source) { color: var(--color-ink-soft); max-width: 75ch; margin-bottom: 1.3rem; font-size: var(--fs-lead); }
 .generator-brand-content .table-scroll { margin-top: 1.6rem; overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
 .generator-brand-content .spec-table { width: 100%; min-width: 640px; table-layout: auto; }
@@ -1699,10 +1857,16 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
 }
 
 @media (max-width: 560px) {
-  .generator-tabs { gap: 1.6rem; }
+  /* 三个品牌按钮在 390px 下排不开,曾撑出 6px 横向溢出(整页可左右拨动)。
+     改为容器内横向滚动,不再顶破视口 */
+  .generator-tabs {
+    gap: 1.6rem; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .generator-tabs::-webkit-scrollbar { display: none; }
+  .generator-tab { flex: 0 0 auto; }
   .generator-tab { padding-inline: .2rem; font-size: 1.4rem; font-weight: 700; letter-spacing: -.01em; }
   .generator-gallery-arrow { width: 2.5rem; height: 2.5rem; }
-  .generator-brand-content h3 { font-size: clamp(1.8rem, 9vw, 2.6rem); }
   .generator-brand-content .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .generator-brand-content .spec-table { font-size: .72rem; }
   .generator-brand-content .spec-table th,
@@ -1712,3 +1876,4 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
   .generator-brand-content .spec-table th,
   .generator-brand-content .spec-table td { overflow-wrap: anywhere; word-break: break-word; }
 }
+

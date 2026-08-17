@@ -5,7 +5,7 @@
  *   <site-footer>  页脚(内部复用 <site-logo>)
  * 自包含:自行注入 Barlow Condensed / Inter 字体 + 作用域 CSS,不依赖各页 CSS 变量。改这一处,全站同步。
  *
- * <site-logo>   href / theme="ink"(浅底深字)
+ * <site-logo>   href / theme="ink"(浅底深字) / inline(黑红 LOGO:随正文字号内嵌,无副标语)
  * <site-header> active="home|company|generators|engines|oilfield|service|contact"  base="site/"|""  [transparent]
  * <site-footer> base="site/"|""
  * 部署扁平化时构建脚本把 base="site/" 剥成 base=""。
@@ -13,17 +13,77 @@
 (function (window, document) {
   'use strict';
 
+  /* ===== Google Analytics 4 (GA4) — 全站访问统计 ===== */
+  (function () {
+    var GA_ID = 'G-51YSCD5LQD';
+    if (window.__ga4) return; window.__ga4 = 1;
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag; gtag('js', new Date()); gtag('config', GA_ID);
+  })();
+
+  /* ===== 邮箱点击/复制 统计 + 一键复制按钮 ===== */
+  (function () {
+    function fireGA(name, params) { try { if (window.gtag) window.gtag('event', name, params || {}); } catch (e) {} }
+    function emailOf(a) {
+      var h = a.getAttribute('href') || '';
+      return h.replace(/^mailto:/i, '').split('?')[0].trim() || (a.textContent || '').trim();
+    }
+    /* 1) 点击任意 mailto 链接 → email_click 事件(全站委托) */
+    document.addEventListener('click', function (e) {
+      var t = e.target, a = (t && t.closest) ? t.closest('a[href^="mailto:"],a[href^="MAILTO:"]') : null;
+      if (a) fireGA('email_click', { email: emailOf(a), page_path: location.pathname });
+    }, true);
+    /* 2) 邮箱地址旁加复制按钮 → 复制到剪贴板 + email_copy 事件 */
+    function copyText(text, cb) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(cb, function () { legacyCopy(text); cb(); });
+      } else { legacyCopy(text); cb(); }
+    }
+    function legacyCopy(text) {
+      try { var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;left:-9999px;opacity:0'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); } catch (e) {}
+    }
+    function addCopyButtons() {
+      var links = document.querySelectorAll('a[data-kst="email"]');
+      Array.prototype.forEach.call(links, function (a) {
+        if (a.getAttribute('data-copy-added')) return;
+        a.setAttribute('data-copy-added', '1');
+        var email = emailOf(a); if (!email) return;
+        var btn = document.createElement('button');
+        btn.type = 'button'; btn.title = 'Copy'; btn.setAttribute('aria-label', 'Copy email address');
+        btn.style.cssText = 'display:inline-flex;align-items:center;margin-left:8px;padding:0;background:none;border:0;cursor:pointer;color:inherit;opacity:.6;vertical-align:middle;transition:opacity .2s';
+        btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+        btn.onmouseover = function () { btn.style.opacity = '1'; };
+        btn.onmouseout = function () { btn.style.opacity = '.6'; };
+        btn.addEventListener('click', function (ev) {
+          ev.preventDefault(); ev.stopPropagation();
+          copyText(email, function () {
+            fireGA('email_copy', { email: email, page_path: location.pathname });
+            var old = btn.innerHTML; btn.innerHTML = '<span style="font-size:12px;white-space:nowrap">✓ Copied</span>';
+            setTimeout(function () { btn.innerHTML = old; }, 1500);
+          });
+        });
+        if (a.parentNode) a.parentNode.insertBefore(btn, a.nextSibling);
+      });
+    }
+    if (window.addEventListener) window.addEventListener('load', addCopyButtons);
+    if (document.readyState === 'complete') addCopyButtons();
+  })();
+
   var SANS = "'Inter','Helvetica Neue','Segoe UI',Roboto,Arial,'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif";
 
-  /* ── 联系信息:全站单一变量源。改这里,页脚 + 关于页联系区一起更新(待客户给真实信息替换占位) ── */
+  /* ── 联系信息:不要手改这里。唯一数据源是根目录 contact.config.json,
+        改完跑 `node tools/sync-contact.mjs`,静态 HTML 与本处一起同步。 ── */
   var CONTACT = {
     email:  'sales@kst-power.com',
-    phone:  '+852 60692397',
+    phone:  '+852 6069 2397',
     wechat: '#',                       /* 微信号链接 / 二维码页 占位 */
-    whatsappQr: 'assets/img/contact/whatsapp-qr.jpg',
-    wechatQr: 'assets/img/contact/wechat-qr.jpg',
-    addrZh: '中国 · 广东 · 广州',
-    addrEn: 'Guangzhou, Guangdong, China'
+    addrZh: '中国 · 香港',
+    addrEn: 'Hong Kong, China',
+    addrRu: 'Гонконг, Китай'
   };
   window.KST = window.KST || {}; window.KST.contact = CONTACT;
 
@@ -38,9 +98,17 @@
       "site-logo .logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1;width:max-content}",
       "site-logo .logo .mark{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:600;font-style:italic;font-size:33px;line-height:1;letter-spacing:.06em;color:#fff;text-transform:uppercase;white-space:nowrap}",
       "site-logo .logo .mark b{color:#e8232b;font-weight:600;margin-left:.28em}",
-      "site-logo .logo .sub{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:10.5px;letter-spacing:.08em;color:#8b959e;width:100%;text-align:justify;text-align-last:justify}",
+      "site-logo .logo .sub{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:10.5px;letter-spacing:.146em;color:#8b959e;white-space:nowrap}",
       "site-logo[theme='ink'] .logo .mark{color:#14181c}",
       "site-logo[theme='ink'] .logo .sub{color:#6d7378}",
+      /* ── 黑红 LOGO ──────────────────────────────────────────────
+         用法:<site-logo theme="ink" inline></site-logo>
+         黑色 KST + 红色 POWER,随正文字号内嵌在句子里(不带副标语、不成链接)。
+         浅底正文中代替公司名时使用;深底请去掉 theme="ink"。 */
+      "site-logo[inline]{display:inline}",
+      "site-logo[inline] .logo{display:inline;width:auto;gap:0;vertical-align:baseline}",
+      "site-logo[inline] .logo .sub{display:none}",
+      "site-logo[inline] .logo .mark{font-size:1em;line-height:inherit;letter-spacing:.02em;white-space:nowrap}",
 
       /* ===== <site-header> ===== */
       "site-header{display:block;position:sticky;top:0;z-index:100}",
@@ -48,21 +116,28 @@
       "site-header[transparent]{position:static}",
       "site-header[transparent] .ksth{position:fixed;left:0;right:0;top:0;background:transparent;box-shadow:none}",
       "site-header[transparent] .ksth.solid{background:rgba(15,19,23,.96);box-shadow:0 1px 0 rgba(255,255,255,.10)}",
-      "site-header .ksth-bar{display:flex;align-items:center;height:76px;padding:0 clamp(22px,3vw,48px);gap:clamp(20px,3vw,48px);font-family:" + SANS + "}",
-      "site-header .ksth-nav{display:flex;gap:clamp(22px,2.4vw,38px);margin-left:auto;align-items:center}",
-      "site-header .ksth-nav>a,site-header .ksth-ni>a{position:relative;font-size:14.5px;font-weight:400;letter-spacing:.02em;color:rgba(233,236,239,.85);padding:8px 0;transition:color .3s;white-space:nowrap;display:inline-flex;align-items:center}",
+      "site-header .ksth-bar{display:flex;align-items:center;height:76px;padding:0 clamp(22px,3vw,48px);gap:clamp(14px,2vw,28px);font-family:" + SANS + "}",
+      "site-header .ksth-nav{display:flex;gap:clamp(14px,1.6vw,26px);margin:0 auto;align-items:center}",
+      "site-header .ksth-nav>a{position:relative;font-size:14.5px;font-weight:400;letter-spacing:.02em;color:rgba(233,236,239,.85);padding:8px 0;transition:color .3s;white-space:nowrap;display:inline-flex;align-items:center}",
       "site-header .ksth-nav a:hover{color:#fff}",
-      "site-header .ksth-nav>a::after,site-header .ksth-ni>a::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:100%;background:#e8232b;transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.22,.61,.36,1)}",
-      "site-header .ksth-nav>a:hover::after,site-header .ksth-ni>a:hover::after,site-header .ksth-nav>a.on::after,site-header .ksth-ni.on>a::after{transform:scaleX(1)}",
-      "site-header .ksth-nav>a.on,site-header .ksth-ni.on>a{color:#fff}",
-      "site-header .ksth-ni{position:relative;display:flex;align-items:center}",
-      "site-header .ksth-caret{display:inline-block;margin-left:6px;font-size:9px;line-height:1;color:#8b959e;transition:transform .3s,color .3s}",
-      "site-header .ksth-ni:hover .ksth-caret{transform:rotate(180deg);color:#fff}",
-      "site-header .ksth-subnav{position:absolute;top:100%;left:0;min-width:210px;padding:10px 0;background:rgba(15,19,23,.98);border:1px solid rgba(255,255,255,.10);box-shadow:0 26px 52px -22px rgba(0,0,0,.65);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px);transition:opacity .3s,transform .3s;z-index:120}",
-      "site-header .ksth-ni:hover .ksth-subnav{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}",
-      "site-header .ksth-subnav a{display:block;padding:10px 22px;font-size:13.5px;letter-spacing:.01em;color:rgba(233,236,239,.82);transition:background .25s,color .25s,padding .25s;white-space:nowrap}",
-      "site-header .ksth-subnav a:hover{background:rgba(255,255,255,.05);color:#fff;padding-left:26px}",
-      "site-header .ksth-lang{display:inline-flex;gap:2px;margin-left:clamp(16px,2vw,40px);flex-shrink:0}",
+      "site-header .ksth-nav>a::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:100%;background:#e8232b;transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.22,.61,.36,1)}",
+      "site-header .ksth-nav>a:hover::after,site-header .ksth-nav>a.on::after{transform:scaleX(1)}",
+      "site-header .ksth-nav>a.on{color:#fff}",
+      "site-header .ksth-search{display:flex;align-items:center;gap:6px;height:30px;padding:0 9px;margin-left:0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:4px;transition:border-color .3s,background .3s}",
+      "site-header .ksth-search:focus-within{border-color:rgba(255,255,255,.42);background:rgba(255,255,255,.11)}",
+      "site-header .ksth-search:focus-within input{width:clamp(150px,15vw,230px)}",
+      "site-header .ksth-search svg{width:14px;height:14px;fill:none;stroke:#8b959e;stroke-width:2;stroke-linecap:round;flex-shrink:0}",
+      "site-header .ksth-search input{width:clamp(84px,7vw,120px);transition:width .32s cubic-bezier(.22,.61,.36,1);min-width:0;background:transparent;border:0;outline:none;color:#e9ecef;font-size:13px;letter-spacing:.01em;padding:0;font-family:inherit}",
+      "site-header .ksth-search input::placeholder{color:rgba(233,236,239,.38)}",
+      "site-header .ksth-search input::-webkit-search-cancel-button{-webkit-appearance:none}",
+      "site-header .ksth-search{position:relative}",
+      "site-header .ksth-sugg{position:absolute;top:calc(100% + 8px);right:0;min-width:260px;max-height:320px;overflow-y:auto;padding:6px 0;background:rgba(15,19,23,.98);border:1px solid rgba(255,255,255,.12);box-shadow:0 26px 52px -22px rgba(0,0,0,.7);z-index:130}",
+      "site-header .ksth-sugg button{display:flex;width:100%;align-items:baseline;gap:10px;padding:9px 16px;background:none;border:0;cursor:pointer;text-align:left;color:rgba(233,236,239,.9);font-family:" + SANS + ";font-size:13.5px;transition:background .2s}",
+      "site-header .ksth-sugg button:hover,site-header .ksth-sugg button.on{background:rgba(255,255,255,.07);color:#fff}",
+      "site-header .ksth-sugg button em{font-style:normal;font-size:11.5px;color:#8b959e;margin-left:auto;white-space:nowrap}",
+      "site-header .ksth-sugg .none{padding:11px 16px;color:#8b959e;font-family:" + SANS + ";font-size:13px}",
+      "site-header .ksth-sugg button.all{border-top:1px solid rgba(255,255,255,.10);margin-top:4px;color:#8b959e;font-size:12.5px}",
+      "site-header .ksth-lang{display:inline-flex;gap:2px;margin-left:clamp(10px,1.1vw,20px);flex-shrink:0}",
       "site-header .ksth-lang button{border:0;background:transparent;color:#8b959e;font-family:" + SANS + ";font-size:13px;letter-spacing:.08em;padding:4px 9px;cursor:pointer;transition:.3s}",
       "site-header .ksth-lang button[aria-pressed='true']{color:#fff;background:rgba(255,255,255,.12)}",
       "site-header .ksth-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;padding:0;margin-left:16px;background:none;border:none;cursor:pointer;flex-shrink:0;z-index:110}",
@@ -72,19 +147,35 @@
       "site-header .ksth.open .ksth-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}",
       "site-header .ksth-scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .3s;z-index:95}",
       "site-header .ksth.open~.ksth-scrim{opacity:1;visibility:visible}",
+      /* 960–1120px:六个导航项 + 搜索 + 语言在 1024 排不下(曾溢出 99px),收紧字号与间距 */
+      "@media(max-width:1120px){",
+      "site-header .ksth-bar{padding:0 20px;gap:12px}",
+      "site-header .ksth-nav{gap:14px}",
+      "site-header .ksth-nav>a{font-size:13.2px}",
+      "site-header .ksth-search input{width:76px}",
+      "site-header .ksth-lang{margin-left:8px}",
+      "site-header .ksth-lang button{padding:4px 6px;font-size:12px}",
+      "}",
+      "@media(max-width:400px){",
+      "site-header .ksth-bar{padding:0 10px;gap:5px}",
+      "site-header .ksth-bar site-logo .logo .mark{font-size:20px}",
+      "site-header .ksth-lang button{padding:4px 4px;font-size:11.5px}",
+      "site-header .ksth-burger{margin-left:4px}",
+      "site-header .ksth-lang button{padding:4px 5px}",
+      "site-header .ksth-search{padding:0 7px}",
+      "}",
       "@media(max-width:960px){",
       "site-header .ksth-burger{display:flex}",
       "site-header .ksth-scrim{display:block}",
       "site-header .ksth-lang{margin-left:auto}",
       "site-header .ksth-nav{position:fixed;top:0;right:0;z-index:100;width:min(82vw,320px);height:100dvh;margin:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(10,13,16,.98);padding:88px 26px 40px;overflow-y:auto;transform:translateX(100%);transition:transform .4s cubic-bezier(.22,.61,.36,1)}",
       "site-header .ksth.open .ksth-nav{transform:translateX(0)}",
-      "site-header .ksth-nav>a,site-header .ksth-ni>a{font-size:17px;padding:15px 2px;border-bottom:1px solid rgba(255,255,255,.10)}",
-      "site-header .ksth-nav>a::after,site-header .ksth-ni>a::after{display:none}",
-      "site-header .ksth-ni{display:block;align-items:stretch}",
-      "site-header .ksth-caret{display:none}",
-      "site-header .ksth-subnav{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;min-width:0;padding:0 0 6px 14px;background:none;border:none;box-shadow:none}",
-      "site-header .ksth-subnav a{padding:11px 0;font-size:14px;color:rgba(233,236,239,.62)}",
-      "site-header .ksth-subnav a:hover{padding-left:0;background:none}",
+      "site-header .ksth-nav>a{font-size:17px;padding:15px 2px;border-bottom:1px solid rgba(255,255,255,.10)}",
+      "site-header .ksth-search{margin-left:auto}",
+      "site-header .ksth-search input{width:0;font-size:15px}",
+      "site-header .ksth-search:focus-within input{width:min(46vw,190px)}",
+      "site-header .ksth-lang{margin-left:10px}",
+      "site-header .ksth-nav>a::after{display:none}",
       "site-header .ksth-bar site-logo .logo .mark{font-size:26px}",
       "site-header .ksth-bar site-logo .logo .sub{display:none}",
       "site-header .ksth-lang button{padding:4px 6px;font-size:12px}",
@@ -96,33 +187,27 @@
       "site-footer *{margin:0;padding:0;box-sizing:border-box}",
       "site-footer .kstf-wrap{max-width:1400px;margin:0 auto;padding:0 48px;position:relative}",
       "site-footer .kstf-cols{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:40px;padding:92px 0 70px;position:relative;z-index:2}",
-      "site-footer .kstf-about p{font-size:13.5px;line-height:1.85;letter-spacing:.01em;color:#8b959e;max-width:340px;margin-top:20px}",
-      "site-footer h5{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8b959e;margin-bottom:24px}",
+      "site-footer .kstf-about p{font-size:13.5px;line-height:1.85;letter-spacing:.01em;color:#aeb6bd;max-width:340px;margin-top:20px}",
+      "site-footer .kstf-about p+p{margin-top:12px}",
+      "site-footer h5{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a7afb6;margin-bottom:24px}",
       "site-footer ul{list-style:none}",
       "site-footer li{margin-bottom:13px}",
-      "site-footer li a{font-size:14px;letter-spacing:.01em;color:rgba(233,236,239,.66);text-decoration:none;transition:color .3s}",
+      "site-footer li a{font-size:14px;font-weight:500;letter-spacing:.01em;color:rgba(233,236,239,.86);text-decoration:none;transition:color .3s}",
       "site-footer li a:hover{color:#fff}",
-      "site-footer .kstf-contact-list{margin-bottom:18px}",
-      "site-footer .kstf-contact-list li{margin-bottom:10px}",
-      "site-footer .kstf-contact-list a,site-footer .kstf-contact-list span{font-size:14px;letter-spacing:.01em;color:rgba(233,236,239,.72);text-decoration:none}",
-      "site-footer .kstf-contact-list strong{display:block;margin-bottom:3px;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8b959e}",
-      "site-footer .kstf-qr-grid{display:grid;grid-template-columns:repeat(2,minmax(0,96px));gap:12px;margin-top:14px}",
-      "site-footer .kstf-qr-card{display:block;text-decoration:none;color:rgba(233,236,239,.72)}",
-      "site-footer .kstf-qr-card img{display:block;width:96px;height:96px;object-fit:cover;background:#fff;border:1px solid rgba(255,255,255,.14)}",
-      "site-footer .kstf-qr-card span{display:block;margin-top:8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8b959e}",
-      "site-footer .kstf-base{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.10);padding:26px 0 30px;display:flex;flex-wrap:wrap;gap:28px;font-size:12px;letter-spacing:.02em;color:#6d7378}",
+      "site-footer .kstf-base{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.10);padding:26px 0 30px;display:flex;flex-wrap:wrap;gap:28px;font-size:12px;letter-spacing:.02em;color:#8b939a}",
+      "site-footer .kstf-meta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:flex-end}",
       "site-footer .kstf-base span:last-child{margin-left:auto}",
-      "site-footer .kstf-about site-logo .logo .sub{display:none}",
+      "site-footer .kstf-credit a{color:inherit;text-decoration:none;opacity:.85;transition:opacity .2s}",
+      "site-footer .kstf-credit a:hover{opacity:1;color:#fff}",
+      "site-footer .kstf-mark{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-style:italic;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#fff}",
+      "site-footer .kstf-mark b{color:#e8232b;font-weight:600;margin-left:.24em}",
       "site-footer .kstf-watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:center;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:clamp(90px,13vw,210px);letter-spacing:.06em;color:rgba(255,255,255,.028);line-height:1;user-select:none;pointer-events:none;white-space:nowrap}",
       "@media(max-width:820px){",
       "site-footer .kstf-cols{grid-template-columns:1fr 1fr;gap:30px;padding:60px 0 44px}",
       "site-footer .kstf-about{grid-column:1/-1}",
-      "site-footer .kstf-cols>div:last-child{grid-column:1/-1}",
       "site-footer .kstf-wrap{padding:0 22px}",
       "site-footer .kstf-base{flex-direction:column;gap:8px}",
       "site-footer .kstf-base span:last-child{margin-left:0}",
-      "site-footer .kstf-qr-grid{grid-template-columns:repeat(2,minmax(0,88px))}",
-      "site-footer .kstf-qr-card img{width:88px;height:88px}",
       "site-footer .kstf-watermark{bottom:-20px}",
       "}"
     ].join('');
@@ -140,8 +225,11 @@
     customElements.define('site-logo', class extends HTMLElement {
       connectedCallback() {
         var href = this.getAttribute('href');
+        /* inline 变体不渲染副标语:它若留在 DOM 里,会被读 textContent 的逻辑
+           (如 languages.js 生成俄语回退文案)当成正文抠出来拼进句子 */
         var inner = '<span class="mark">KST<b>POWER</b></span>' +
-                    '<span class="sub">A trusted name in power solutions.</span>';
+                    (this.hasAttribute('inline') ? '' :
+                     '<span class="sub">A trusted name in power solutions.</span>');
         this.innerHTML = href
           ? '<a class="logo" href="' + href + '">' + inner + '</a>'
           : '<span class="logo">' + inner + '</span>';
@@ -162,30 +250,24 @@
           var cur = (active === act) ? ' aria-current="page"' : '';
           return '<a href="' + href + '"' + on + cur + '><span data-i18n-key="' + key + '">' + text + '</span></a>';
         };
-        var sub = function (hash, key, text) {
-          return '<a href="' + base + 'oilfield.html' + hash + '"><span data-i18n-key="' + key + '">' + text + '</span></a>';
-        };
-        var oilOn = (active === 'oilfield') ? ' on' : '';
         this.innerHTML =
           '<header class="ksth">' +
             '<div class="ksth-bar">' +
               '<site-logo href="index.html"></site-logo>' +
               '<nav class="ksth-nav" aria-label="Primary">' +
                 link('index.html', 'nav.home', 'Home', 'home') +
-                link('about.html', 'nav.company', 'About', 'company') +
                 link('generators.html', 'nav.generators', 'Power Generation', 'generators') +
                 link('engines.html', 'nav.engines', 'Industrial Engines', 'engines') +
-                '<span class="ksth-ni' + oilOn + '">' +
-                  '<a href="' + base + 'oilfield.html"' + (active === 'oilfield' ? ' aria-current="page"' : '') + '><span data-i18n-key="nav.oilfield">Oil &amp; Gas</span><span class="ksth-caret" aria-hidden="true">▾</span></a>' +
-                  '<div class="ksth-subnav">' +
-                    sub('#drilling', 'nav.drilling', 'Drilling') +
-                    sub('#workover', 'nav.workover', 'Workover') +
-                    sub('#cementing', 'nav.cementing', 'Cementing') +
-                    sub('#fracturing', 'nav.fracturing', 'Fracturing') +
-                  '</div>' +
-                '</span>' +
-                link('service.html', 'nav.service', 'Service', 'service') +
+                link('oilfield.html', 'nav.oilfield', 'Oil &amp; Gas', 'oilfield') +
+                link('special.html', 'nav.special', 'Special Vehicle', 'special') +
+                link('news.html', 'nav.news', 'Activity &amp; News', 'news') +
               '</nav>' +
+              '<form class="ksth-search" role="search" data-model-search>' +
+                '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>' +
+                '<input type="search" name="q" autocomplete="off" data-i18n-attr="placeholder:nav.searchPlaceholder" ' +
+                  'placeholder="QSK60-C" aria-label="Search products" />' +
+                '<div class="ksth-sugg" role="listbox" hidden></div>' +
+              '</form>' +
               '<div class="kst-lang ksth-lang" role="group" aria-label="Language">' +
                 '<button type="button" data-set="en" aria-label="Switch to English">EN</button>' +
                 '<button type="button" data-set="ru" aria-label="Переключить на русский">RU</button>' +
@@ -229,47 +311,150 @@
             '<div class="kstf-cols">' +
               '<div class="kstf-about">' +
                 '<site-logo></site-logo>' +
-                '<p data-i18n-key="footer.about">Supplying generator sets, industrial engines and oilfield drilling &amp; production equipment — selection and quotation by model specifications.</p>' +
+                '<p data-i18n-key="footer.about">KST POWER operates across mining, oil &amp; gas, power generation and special vehicles. Supported by professional tech and global supply chains, we supply trusted products and integrated solutions.</p>' +
+                '<p data-i18n-key="footer.about2">We cooperate long-term with top brands including Caterpillar, Cummins, Baudouin, etc., well-regarded globally for stable quality and efficient service.</p>' +
               '</div>' +
               '<div>' +
                 '<h5 data-i18n-key="footer.products">Products</h5><ul>' +
                   link('generators.html', 'nav.generators', 'Power Generation') +
                   link('engines.html', 'nav.engines', 'Industrial Engines') +
                   link('oilfield.html', 'nav.oilfield', 'Oil &amp; Gas') +
+                  link('special.html', 'nav.special', 'Special Vehicle') +
                 '</ul>' +
               '</div>' +
               '<div>' +
                 '<h5 data-i18n-key="footer.company">Company</h5><ul>' +
                   link('about.html', 'nav.company', 'About') +
                   link('service.html', 'nav.service', 'Service') +
+                  link('news.html', 'nav.news', 'Activity &amp; News') +
                 '</ul>' +
               '</div>' +
               '<div>' +
-                '<h5 data-i18n-key="footer.contactHead">Contact</h5>' +
-                '<ul class="kstf-contact-list">' +
-                  '<li><strong>Email</strong><a href="mailto:' + CONTACT.email + '">' + CONTACT.email + '</a></li>' +
-                  '<li><strong>Phone</strong><span>' + CONTACT.phone + '</span></li>' +
+                '<h5 data-i18n-key="footer.contactHead">Contact</h5><ul>' +
+                  '<li><a href="mailto:' + CONTACT.email + '">' + CONTACT.email + '</a></li>' +
+                  '<li><a href="https://wa.me/85260692397">WhatsApp / Phone: +852 6069 2397</a></li>' +
                 '</ul>' +
-                '<div class="kstf-qr-grid" aria-label="Contact QR codes">' +
-                  '<a class="kstf-qr-card" href="' + base + CONTACT.whatsappQr + '" target="_blank" rel="noopener">' +
-                    '<img src="' + base + CONTACT.whatsappQr + '" alt="WhatsApp QR code" loading="lazy">' +
-                    '<span>WhatsApp</span>' +
-                  '</a>' +
-                  '<a class="kstf-qr-card" href="' + base + CONTACT.wechatQr + '" target="_blank" rel="noopener">' +
-                    '<img src="' + base + CONTACT.wechatQr + '" alt="WeChat QR code" loading="lazy">' +
-                    '<span>WeChat</span>' +
-                  '</a>' +
-                '</div>' +
               '</div>' +
             '</div>' +
             '<div class="kstf-base">' +
-              '<span>© 2026 Guangzhou KST Mechanical Equipment Co., Ltd.</span>' +
-              '<span data-i18n-key="footer.trademark">Product model names and trademarks belong to their respective manufacturers.</span>' +
+              '<span>© 2026 <span class="kstf-mark">KST<b>POWER</b></span></span>' +
+              '<span class="kstf-meta">' +
+                '<span data-i18n-key="footer.trademark">Product model names and trademarks belong to their respective manufacturers.</span>' +
+                '<span class="kstf-credit"><a href="https://yoyant.com" target="_blank" rel="noopener">Site by YOYANT</a></span>' +
+              '</span>' +
             '</div>' +
             '<div class="kstf-watermark" aria-hidden="true">KST&nbsp;POWER</div>' +
           '</div>';
         reapplyI18n();
       }
+    });
+  }
+
+  /* ── 顶栏型号搜索:查 assets/data/models.json 定位型号所在页面,
+        跳过去后由 main.js 的 ?q= 处理器高亮对应行 ── */
+  function initModelSearch(form) {
+    var input = form.querySelector('input[name="q"]');
+    var box = form.querySelector('.ksth-sugg');
+    var idx = null, loading = false, items = [], cursor = -1;
+    var base = (document.querySelector('site-header') || {}).getAttribute
+      ? (document.querySelector('site-header').getAttribute('base') || '') : '';
+
+    function load() {
+      if (idx || loading) return;
+      loading = true;
+      fetch(base + 'assets/data/models.json')
+        .then(function (r) { return r.json(); })
+        .then(function (j) { idx = j; render(); })
+        .catch(function () { idx = { pages: {}, models: {} }; });
+    }
+
+    /* 模糊匹配:归一化后双向包含。
+       客户会搜 QSK60 / QSK60-C / QSK60-G / QSK60-L 等各种写法,
+       去掉连字符空格点号再比,搜 QSK60 出全系,搜 QSK60-C 也能命中只写 QSK60 的行。 */
+    function norm(x) { return x.toUpperCase().replace(/[\s._/-]/g, ''); }
+
+    function match(q) {
+      if (!idx || !q) return [];
+      var nq = norm(q);
+      if (!nq) return [];
+      var exact = [], starts = [], has = [], rev = [];
+      Object.keys(idx.models).forEach(function (m) {
+        var nm = norm(m);
+        if (nm === nq) exact.push(m);
+        else if (nm.indexOf(nq) === 0) starts.push(m);
+        else if (nm.indexOf(nq) > 0) has.push(m);
+        else if (nq.indexOf(nm) === 0) rev.push(m);   // 搜得比表里更细
+      });
+      return exact.concat(starts, has, rev);
+    }
+
+    function go(model) {
+      var page = idx.models[model];
+      location.href = base + page + '?q=' + encodeURIComponent(model);
+    }
+
+    function render() {
+      var q = input.value.trim();
+      items = match(q);
+      cursor = -1;
+      if (!q) { box.hidden = true; box.innerHTML = ''; return; }
+      if (!items.length) {
+        box.hidden = false;
+        box.innerHTML = '<div class="none" data-i18n-key="nav.searchNone">No matching model</div>';
+        /* 该节点是刚插入的,补一次翻译(KST_I18N 只暴露 applyLanguage) */
+        if (window.KST_I18N && window.KST_I18N.applyLanguage) {
+          window.KST_I18N.applyLanguage(document.documentElement.getAttribute('data-lang'), false);
+        }
+        return;
+      }
+      box.hidden = false;
+      box.innerHTML = items.slice(0, 8).map(function (m) {
+        var page = idx.models[m];
+        return '<button type="button" data-model="' + m + '">' + m +
+               '<em>' + (idx.pages[page] || page).split('—')[0].trim() + '</em></button>';
+      }).join('') + (items.length > 8
+        ? '<button type="button" class="all" data-all="1">' + items.length +
+          ' <span data-i18n-key="nav.searchAll">results — see all</span></button>'
+        : '');
+      if (window.KST_I18N && window.KST_I18N.applyLanguage) {
+        window.KST_I18N.applyLanguage(document.documentElement.getAttribute('data-lang'), false);
+      }
+    }
+
+    function goResults(q) {
+      location.href = base + 'search.html?q=' + encodeURIComponent(q);
+    }
+
+    input.addEventListener('focus', load);
+    input.addEventListener('input', function () { load(); render(); });
+    input.addEventListener('keydown', function (e) {
+      if (!items.length) return;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        cursor = (cursor + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+        Array.prototype.slice.call(box.querySelectorAll('button')).forEach(function (b, i) {
+          b.classList.toggle('on', i === cursor);
+        });
+      } else if (e.key === 'Escape') { box.hidden = true; }
+    });
+    box.addEventListener('click', function (e) {
+      var all = e.target.closest('button[data-all]');
+      if (all) { goResults(input.value.trim()); return; }
+      var b = e.target.closest('button[data-model]');
+      if (b) go(b.getAttribute('data-model'));
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var q = input.value.trim();
+      if (!q) return;
+      /* 下拉里选中了某一条就直达该型号;
+         否则一律进结果页 —— 模糊查询常跨页命中多个型号,直接跳第一条会误导 */
+      if (cursor >= 0 && items[cursor]) go(items[cursor]);
+      else if (items.length === 1) go(items[0]);
+      else goResults(q);
+    });
+    document.addEventListener('click', function (e) {
+      if (!form.contains(e.target)) box.hidden = true;
     });
   }
 
@@ -280,7 +465,16 @@
     q('[data-kst="mailto"]').forEach(function (el) { el.href = 'mailto:' + c.email + '?subject=Inquiry%20%E2%80%94%20KST%20POWER'; });
     q('[data-kst="phone"]').forEach(function (el) { el.textContent = c.phone; });
     q('[data-kst="wechat"]').forEach(function (el) { el.href = c.wechat; });
-    q('[data-kst="addr"]').forEach(function (el) { el.innerHTML = '<span class="zh">' + c.addrZh + '</span><span class="en">' + c.addrEn + '</span>'; });
+    /* 三语一起写:该元素 innerHTML 被运行时覆写,页面里手加 .ru 会被冲掉 */
+  q('[data-kst="addr"]').forEach(function (el) {
+    el.innerHTML = '<span class="zh">' + c.addrZh + '</span>' +
+                   '<span class="en">' + c.addrEn + '</span>' +
+                   '<span class="ru">' + (c.addrRu || c.addrEn) + '</span>';
+  });
   }
-  if (document.readyState !== 'loading') fillContact(); else document.addEventListener('DOMContentLoaded', fillContact);
+  function boot() {
+    fillContact();
+    Array.prototype.slice.call(document.querySelectorAll('[data-model-search]')).forEach(initModelSearch);
+  }
+  if (document.readyState !== 'loading') boot(); else document.addEventListener('DOMContentLoaded', boot);
 })(window, document);
