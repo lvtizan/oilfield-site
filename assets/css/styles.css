@@ -810,6 +810,10 @@ a.card { color: inherit; }
 .contact-cta p { color: var(--color-ink-soft); margin-bottom: 1.3rem; }
 .contact-cta .btn { width: 100%; }
 .contact-cta .btn + .btn { margin-top: .7rem; }
+.contact-qr-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; margin-top: 1rem; }
+.contact-qr-card { margin: 0; padding: .75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-bg); }
+.contact-qr-card img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; background: #fff; }
+.contact-qr-card figcaption { margin-top: .55rem; font-family: var(--font-display); font-size: .76rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-ink-soft); text-align: center; }
 
 /* static inquiry form (contact page) */
 .form-grid { display: grid; gap: .8rem; }
@@ -1876,4 +1880,3 @@ footer.kst-footer{background:#0a0d10;position:relative;overflow:hidden;color:var
   .generator-brand-content .spec-table th,
   .generator-brand-content .spec-table td { overflow-wrap: anywhere; word-break: break-word; }
 }
-

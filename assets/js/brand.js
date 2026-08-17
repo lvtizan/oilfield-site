@@ -81,6 +81,8 @@
     email:  'sales@kst-power.com',
     phone:  '+852 6069 2397',
     wechat: '#',                       /* 微信号链接 / 二维码页 占位 */
+    whatsappQr: 'assets/img/contact/whatsapp-qr.jpg',
+    wechatQr: 'assets/img/contact/wechat-qr.jpg',
     addrZh: '中国 · 香港',
     addrEn: 'Hong Kong, China',
     addrRu: 'Гонконг, Китай'
@@ -194,6 +196,14 @@
       "site-footer li{margin-bottom:13px}",
       "site-footer li a{font-size:14px;font-weight:500;letter-spacing:.01em;color:rgba(233,236,239,.86);text-decoration:none;transition:color .3s}",
       "site-footer li a:hover{color:#fff}",
+      "site-footer .kstf-contact-list{margin-bottom:18px}",
+      "site-footer .kstf-contact-list li{margin-bottom:10px}",
+      "site-footer .kstf-contact-list a,site-footer .kstf-contact-list span{font-size:14px;font-weight:500;letter-spacing:.01em;color:rgba(233,236,239,.86);text-decoration:none}",
+      "site-footer .kstf-contact-list strong{display:block;margin-bottom:3px;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a7afb6}",
+      "site-footer .kstf-qr-grid{display:grid;grid-template-columns:repeat(2,minmax(0,96px));gap:12px;margin-top:14px}",
+      "site-footer .kstf-qr-card{display:block;text-decoration:none;color:rgba(233,236,239,.72)}",
+      "site-footer .kstf-qr-card img{display:block;width:96px;height:96px;object-fit:cover;background:#fff;border:1px solid rgba(255,255,255,.14)}",
+      "site-footer .kstf-qr-card span{display:block;margin-top:8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a7afb6}",
       "site-footer .kstf-base{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.10);padding:26px 0 30px;display:flex;flex-wrap:wrap;gap:28px;font-size:12px;letter-spacing:.02em;color:#8b939a}",
       "site-footer .kstf-meta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:flex-end}",
       "site-footer .kstf-base span:last-child{margin-left:auto}",
@@ -205,9 +215,12 @@
       "@media(max-width:820px){",
       "site-footer .kstf-cols{grid-template-columns:1fr 1fr;gap:30px;padding:60px 0 44px}",
       "site-footer .kstf-about{grid-column:1/-1}",
+      "site-footer .kstf-cols>div:last-child{grid-column:1/-1}",
       "site-footer .kstf-wrap{padding:0 22px}",
       "site-footer .kstf-base{flex-direction:column;gap:8px}",
       "site-footer .kstf-base span:last-child{margin-left:0}",
+      "site-footer .kstf-qr-grid{grid-template-columns:repeat(2,minmax(0,88px))}",
+      "site-footer .kstf-qr-card img{width:88px;height:88px}",
       "site-footer .kstf-watermark{bottom:-20px}",
       "}"
     ].join('');
@@ -330,10 +343,21 @@
                 '</ul>' +
               '</div>' +
               '<div>' +
-                '<h5 data-i18n-key="footer.contactHead">Contact</h5><ul>' +
-                  '<li><a href="mailto:' + CONTACT.email + '">' + CONTACT.email + '</a></li>' +
-                  '<li><a href="https://wa.me/85260692397">WhatsApp / Phone: +852 6069 2397</a></li>' +
+                '<h5 data-i18n-key="footer.contactHead">Contact</h5>' +
+                '<ul class="kstf-contact-list">' +
+                  '<li><strong>Email</strong><a href="mailto:' + CONTACT.email + '">' + CONTACT.email + '</a></li>' +
+                  '<li><strong>Phone / WhatsApp</strong><a href="https://wa.me/85260692397">' + CONTACT.phone + '</a></li>' +
                 '</ul>' +
+                '<div class="kstf-qr-grid" aria-label="Contact QR codes">' +
+                  '<a class="kstf-qr-card" href="' + base + CONTACT.whatsappQr + '" target="_blank" rel="noopener">' +
+                    '<img src="' + base + CONTACT.whatsappQr + '" alt="WhatsApp QR code" loading="lazy">' +
+                    '<span>WhatsApp</span>' +
+                  '</a>' +
+                  '<a class="kstf-qr-card" href="' + base + CONTACT.wechatQr + '" target="_blank" rel="noopener">' +
+                    '<img src="' + base + CONTACT.wechatQr + '" alt="WeChat QR code" loading="lazy">' +
+                    '<span>WeChat</span>' +
+                  '</a>' +
+                '</div>' +
               '</div>' +
             '</div>' +
             '<div class="kstf-base">' +
