@@ -213,24 +213,6 @@
       startX = startY = null;
     }, { passive: true });
 
-    /* 自动轮播:仅当画廊显式声明 data-gallery-autoplay="毫秒" 时启用 */
-    var autoplayMs = parseInt(gallery.getAttribute('data-gallery-autoplay'), 10);
-    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (autoplayMs > 0 && !reduceMotion) {
-      var timer = null;
-      function start() { if (!timer) timer = setInterval(function () { show(index + 1); }, autoplayMs); }
-      function stop() { if (timer) { clearInterval(timer); timer = null; } }
-      /* 鼠标悬停、键盘聚焦、页面切到后台时暂停,避免用户看图时被切走 */
-      gallery.addEventListener('mouseenter', stop);
-      gallery.addEventListener('mouseleave', start);
-      gallery.addEventListener('focusin', stop);
-      gallery.addEventListener('focusout', start);
-      document.addEventListener('visibilitychange', function () {
-        if (document.hidden) stop(); else start();
-      });
-      start();
-    }
-
     /* 初始高度 + 舞台尺寸/视口变化时重算(仅 cat-gallery) */
     fitHeight();
     watchStage();
@@ -241,9 +223,7 @@
 window.KST_SPEC_SEARCH = (function () {
   'use strict';
   var inputs = Array.prototype.slice.call(document.querySelectorAll('[data-spec-search]'));
-  /* 没有可见搜索框的页面(如油气页)也要能响应顶栏搜索的 ?q= 高亮,
-     所以这里不再因为 inputs 为空就直接返回 —— 只要页面上有 .spec-table 就继续 */
-  if (!inputs.length && !document.querySelector('.spec-table')) return function () {};
+  if (!inputs.length) return function () {};
   var panels = Array.prototype.slice.call(document.querySelectorAll('.generator-brand-panel'));
   if (!panels.length) {
     /* 无品牌分栏(如 engines 页):以每个 spec-table 所在区块为搜索范围 */

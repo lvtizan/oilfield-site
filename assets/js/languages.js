@@ -28,28 +28,6 @@
         'home.stats.lab3': 'Max working pressure',
         'home.stats.lab4': 'Off-road emission tier',
         'home.stats.note': '— All measured, hard specifications · no credential boasting —',
-        'home.news.title': 'Activity & News',
-        'home.p1.tagA': 'Power',
-        'home.p1.tagB': '· Oil & Gas / Power Plant / Mining',
-        'home.p2.tag': 'Mining / Oil & Gas / Construction · long-duty in high-altitude & extreme-cold conditions',
-        'home.p3.tagA': 'Complete D&P sets · max depth',
-        'home.p3.tagB': '· max pressure',
-        'home.scroll': 'Scroll',
-        'home.apps.leadA': 'Five application scenarios, one power standard. From drilling & production power at oil and gas wellsites to continuous supply for mines and power stations,',
-        'home.apps.leadB': 'delivers complete-set equipment on measured, hard specifications.',
-        'home.news.t1': '25th China Intl. Petroleum & Petrochemical Expo (cippe 2025)',
-        'home.news.d1': 'Beijing · Showcasing oilfield gensets and complete power solutions.',
-        'home.news.t2': 'Middle East oilfield · 6× QSK50 gensets delivered',
-        'home.news.d2': 'Wellsite prime-power package with commissioning and spare-parts support.',
-        'home.news.t3': 'Central Asia mine · Mobile power truck project',
-        'home.news.d3': 'High-capacity semi-trailer mobile power units for scattered pit sites.',
-        'home.contact.addrLabel': 'Headquarters',
-        'home.contact.emailLabel': 'Email',
-        'home.contact.phoneLabel': 'Phone',
-        'home.contact.title': 'Request specs & a quote',
-        'home.contact.desc': "Tell us your power or wellsite needs — we'll reply by email with selection and pricing.",
-        'home.contact.mailto': 'Email us',
-        'home.contact.wechat': 'Chat on WeChat',
         'home.models.title': 'Featured Models',
         'home.models.d1': '50 L displacement, 16 cylinders · wellsite main power platform',
         'home.models.d2': 'Truck-mounted rig · fast relocation · desert & gobi conditions',
@@ -71,16 +49,6 @@
         'nav.workover': 'Workover',
         'nav.cementing': 'Cementing',
         'nav.fracturing': 'Fracturing',
-        'nav.special': 'Special Vehicle',
-        'nav.mobilepower': 'Mobile Power Truck',
-        'nav.sweeper': 'Sweeper Truck',
-        'nav.sprinkler': 'Water Sprinkler Truck',
-        'nav.tanker': 'Tanker Truck',
-        'nav.refuse': 'Refuse Truck',
-        'nav.news': 'Activity & News',
-        'nav.searchPlaceholder': 'QSK60-C',
-        'nav.searchNone': 'No matching model',
-        'nav.searchAll': 'results — see all',
         'action.inquiry': 'Inquiry',
         'action.sendInquiry': 'Send Inquiry',
         'action.contactUs': 'Contact Us',
@@ -88,8 +56,6 @@
         'action.viewEngines': 'View engine range',
         'action.viewEquipment': 'View equipment categories',
         'footer.products': 'Products',
-        'footer.about': 'KST POWER operates across mining, oil & gas, power generation and special vehicles. Supported by professional tech and global supply chains, we supply trusted products and integrated solutions.',
-        'footer.about2': 'We cooperate long-term with top brands including Caterpillar, Cummins, Baudouin, etc., well-regarded globally for stable quality and efficient service.',
         'footer.company': 'Company',
         'footer.contact': 'Contact',
         'legacy.nav.applications': 'Applications',
@@ -98,12 +64,12 @@
         'legacy3.nav.applications': 'Applications',
         'legacy3.nav.capabilities': 'Capabilities',
         'legacy3.nav.contact': 'Contact',
-        'legacy3.hero.claim': 'From mining to oil & gas',
+        'legacy3.hero.claim': 'From wellhead to grid',
         'legacy3.hero.subline': 'Generator sets / Industrial engines / Oilfield equipment',
         'legacy3.action.quote': 'Get a selection proposal',
         'legacy3.action.browse': 'Browse products',
         'legacy3.section.products': 'Our Products',
-        'legacy.hero.claim': 'From mining to oil & gas',
+        'legacy.hero.claim': 'From wellhead to grid',
         'legacy.hero.subline': 'Generator sets / Industrial engines / Oilfield equipment',
         'legacy.panel.generators': 'Power Generation',
         'legacy.panel.engines': 'Industrial Engines',
@@ -129,28 +95,6 @@
         'home.stats.lab3': 'Макс. рабочее давление',
         'home.stats.lab4': 'Внедорожный экостандарт',
         'home.stats.note': '— Только измеренные характеристики —',
-        'home.news.title': 'События и новости',
-        'home.p1.tagA': 'Мощность',
-        'home.p1.tagB': '· Нефть и газ / электростанция / горная добыча',
-        'home.p2.tag': 'Горная добыча / нефть и газ / строительство · длительная работа на высоте и в сильный мороз',
-        'home.p3.tagA': 'Комплектные буровые установки · глубина до',
-        'home.p3.tagB': '· давление до',
-        'home.scroll': 'Прокрутка',
-        'home.apps.leadA': 'Пять сценариев применения, один стандарт мощности. От бурения и добычи на кустах скважин до непрерывного питания рудников и электростанций —',
-        'home.apps.leadB': 'поставляет комплектное оборудование по выверенным техническим требованиям.',
-        'home.news.t1': '25-я Китайская выставка нефтегазового оборудования (cippe 2025)',
-        'home.news.d1': 'Пекин · Демонстрация нефтепромысловых генераторов и комплексных решений.',
-        'home.news.t2': 'Месторождение на Ближнем Востоке · поставка 6 генераторов QSK50',
-        'home.news.d2': 'Комплект основного питания для куста скважин с пусконаладкой и запчастями.',
-        'home.news.t3': 'Рудник в Центральной Азии · проект мобильных электростанций',
-        'home.news.d3': 'Мобильные электростанции на полуприцепе для рассредоточенных участков.',
-        'home.contact.addrLabel': 'Головной офис',
-        'home.contact.emailLabel': 'Эл. почта',
-        'home.contact.phoneLabel': 'Телефон',
-        'home.contact.title': 'Запросить спецификации и цену',
-        'home.contact.desc': 'Расскажите о ваших задачах по энергоснабжению или на скважине — ответим по эл. почте с подбором и ценой.',
-        'home.contact.mailto': 'Написать нам',
-        'home.contact.wechat': 'Связаться в WeChat',
         'home.models.title': 'Избранные модели',
         'home.models.d1': 'Рабочий объём 50 л, 16 цилиндров · основной источник питания на кусте',
         'home.models.d2': 'Буровая на шасси · быстрая передислокация · пустыня и гоби',
@@ -172,16 +116,6 @@
         'nav.workover': 'Капитальный ремонт скважин',
         'nav.cementing': 'Цементирование',
         'nav.fracturing': 'Гидроразрыв пласта',
-        'nav.special': 'Спецтехника',
-        'nav.mobilepower': 'Мобильная электростанция',
-        'nav.sweeper': 'Подметальная машина',
-        'nav.sprinkler': 'Поливомоечная машина',
-        'nav.tanker': 'Автоцистерна',
-        'nav.refuse': 'Мусоровоз',
-        'nav.news': 'События и новости',
-        'nav.searchPlaceholder': 'QSK60-C',
-        'nav.searchNone': 'Модель не найдена',
-        'nav.searchAll': 'результатов — показать все',
         'action.inquiry': 'Запросить предложение',
         'action.sendInquiry': 'Отправить запрос',
         'action.contactUs': 'Связаться с нами',
@@ -189,8 +123,6 @@
         'action.viewEngines': 'Смотреть модельный ряд',
         'action.viewEquipment': 'Смотреть категории',
         'footer.products': 'Продукты',
-        'footer.about': 'KST POWER работает в сферах горной добычи, нефти и газа, электроэнергетики и спецтехники. Опираясь на профессиональные технологии и глобальные цепочки поставок, мы поставляем надёжную продукцию и комплексные решения.',
-        'footer.about2': 'Мы поддерживаем долгосрочное сотрудничество с ведущими брендами — Caterpillar, Cummins, Baudouin и др., — заслужив мировое признание стабильным качеством и эффективным сервисом.',
         'footer.company': 'Компания',
         'footer.contact': 'Контакты',
         'legacy.nav.applications': 'Применение',
@@ -230,28 +162,6 @@
         'home.stats.lab3': '最大工作压力',
         'home.stats.lab4': '非道路排放标准',
         'home.stats.note': '— 全部为实测硬指标 · 拒绝资质吹嘘 —',
-        'home.news.title': '活动与新闻',
-        'home.p1.tagA': '功率',
-        'home.p1.tagB': '· 油气 / 电站 / 矿山',
-        'home.p2.tag': '矿山 / 油气 / 工程 · 高原与极寒长时工况',
-        'home.p3.tagA': '成套钻采装备 · 最大钻深',
-        'home.p3.tagB': '· 最高压力',
-        'home.scroll': '向下滚动',
-        'home.apps.leadA': '五类应用场景，一套动力标准。从油气井场的钻采动力，到矿区与电站的连续供电，',
-        'home.apps.leadB': '按实测的硬性技术条件交付成套设备。',
-        'home.news.t1': '第 25 届中国国际石油石化技术装备展 (cippe 2025)',
-        'home.news.d1': '北京 · 展出油田发电机组与成套动力方案。',
-        'home.news.t2': '中东某油田 · 交付 6 台 QSK50 发电机组',
-        'home.news.d2': '井场主电源成套方案,含调试与备件支持。',
-        'home.news.t3': '中亚矿区 · 移动电力车项目',
-        'home.news.d3': '大功率半挂移动电力机组,服务分散矿点。',
-        'home.contact.addrLabel': '总部',
-        'home.contact.emailLabel': '邮箱',
-        'home.contact.phoneLabel': '电话',
-        'home.contact.title': '获取产品资料与报价',
-        'home.contact.desc': '告诉我们您的功率或井场需求，我们直接邮件回复选型方案与报价。',
-        'home.contact.mailto': '发邮件咨询',
-        'home.contact.wechat': '微信咨询',
         'home.models.title': '精选型号',
         'home.models.d1': '50L 排量 16 缸 · 井场主电源平台',
         'home.models.d2': '车载钻机 · 快速搬迁 · 沙漠戈壁工况',
@@ -273,16 +183,6 @@
         'nav.workover': '修井装备',
         'nav.cementing': '固井装备',
         'nav.fracturing': '压裂装备',
-        'nav.special': '特种车辆',
-        'nav.mobilepower': '移动电力车',
-        'nav.sweeper': '扫地车',
-        'nav.sprinkler': '洒水车',
-        'nav.tanker': '油罐车',
-        'nav.refuse': '垃圾车',
-        'nav.news': '活动与新闻',
-        'nav.searchPlaceholder': 'QSK60-C',
-        'nav.searchNone': '未找到匹配型号',
-        'nav.searchAll': '个结果 —— 查看全部',
         'action.inquiry': '询价',
         'action.sendInquiry': '发送询盘',
         'action.contactUs': '联系我们',
@@ -290,8 +190,6 @@
         'action.viewEngines': '查看发动机型谱',
         'action.viewEquipment': '查看装备品类',
         'footer.products': '产品',
-        'footer.about': 'KST POWER 业务覆盖矿业、油气、电力与特种车辆。依托专业技术与全球供应链，为客户提供可靠的产品与一体化解决方案。',
-        'footer.about2': '与卡特彼勒、康明斯、博杜安等一流品牌保持长期合作，凭稳定的品质与高效的服务获得全球市场认可。',
         'footer.company': '公司',
         'footer.contact': '联系',
         'legacy.nav.applications': '应用领域',
@@ -402,18 +300,12 @@
     return null;
   }
 
-  /* 俄语来源优先级:HTML 里手写的 <span class="ru"> > RU_COPY > 回退英文。
-     手写的 .ru 与 .zh/.en 并列存放,和另外两种语言同一处维护;改中文文案时
-     不会像 RU_COPY(以中文原文为键)那样静默失效。生成的那份打 data-ru-auto
-     标记,便于下次区分,不会覆盖手写内容。 */
   function ensureRussianSpans() {
     document.querySelectorAll('.zh').forEach(function (zh) {
       var ru = directSibling(zh, 'ru');
-      if (ru && !ru.hasAttribute('data-ru-auto')) return;   /* 手写译文,不动 */
       if (!ru) {
         ru = document.createElement('span');
         ru.className = 'ru';
-        ru.setAttribute('data-ru-auto', '');
         zh.parentElement.appendChild(ru);
       }
       var source = normalize(zh.textContent);
@@ -431,15 +323,6 @@
       var key = element.getAttribute('data-i18n-key');
       var value = PACK[lang].ui[key] || PACK.en.ui[key];
       if (value) element.textContent = value;
-    });
-    /* 属性型翻译:data-i18n-attr="placeholder:nav.searchPlaceholder"(可逗号分隔多组) */
-    document.querySelectorAll('[data-i18n-attr]').forEach(function (element) {
-      element.getAttribute('data-i18n-attr').split(',').forEach(function (pair) {
-        var bits = pair.split(':');
-        if (bits.length !== 2) return;
-        var value = PACK[lang].ui[bits[1].trim()] || PACK.en.ui[bits[1].trim()];
-        if (value) element.setAttribute(bits[0].trim(), value);
-      });
     });
     document.querySelectorAll('.lang-toggle button, .kst-lang button').forEach(function (button) {
       button.setAttribute('aria-pressed', String(button.getAttribute('data-set') === lang));
