@@ -135,11 +135,12 @@ header.open~.scrim{opacity:1;visibility:visible}
 .panel.hot .go:hover .ln{width:72px}
 /* 品牌陈述层:横跨三栏,不阻挡面板交互 */
 .claim{position:absolute;z-index:5;left:0;right:0;top:24vh;text-align:center;pointer-events:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.claim::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:min(940px,78vw);height:300px;transform:translate(-50%,-45%);background:radial-gradient(ellipse at center,rgba(7,12,18,.46) 0%,rgba(7,12,18,.28) 38%,rgba(7,12,18,.10) 64%,rgba(7,12,18,0) 100%);filter:blur(10px)}
 .hero.engaged .claim{opacity:0;transform:translateY(-26px)}
-.claim h1,.claim .en,.claim p{text-shadow:0 2px 18px rgba(0,0,0,.68),0 8px 34px rgba(0,0,0,.42)}
-.panel .txt{text-shadow:0 1px 14px rgba(0,0,0,.68),0 7px 24px rgba(0,0,0,.36)}
+.claim h1,.claim .en,.claim p{text-shadow:0 1px 2px rgba(0,0,0,.24)}
+.panel .txt{text-shadow:0 1px 12px rgba(0,0,0,.52)}
 .claim .en{font-family:var(--num);font-size:13px;letter-spacing:.6em;text-transform:uppercase;color:rgba(239,243,246,.82);margin-bottom:22px}
-.claim h1{font-size:clamp(38px,5.2vw,78px);font-weight:300;letter-spacing:.18em;color:#fff}
+.claim h1{font-size:clamp(38px,5.2vw,78px);font-weight:300;letter-spacing:.18em;color:#fff;-webkit-text-stroke:.35px rgba(255,255,255,.22)}
 .claim h1 b{font-weight:500;color:var(--acc)}
 .claim p{margin-top:22px;font-size:15px;letter-spacing:.32em;color:rgba(247,249,251,.82)}
 .scrolldn{position:absolute;z-index:5;left:50%;bottom:26px;transform:translateX(-50%);pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:10px;transition:opacity .5s var(--ease)}
