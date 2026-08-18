@@ -98,11 +98,11 @@
       /* ===== <site-logo> ===== */
       "site-logo{display:contents}",
       "site-logo .logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1;width:max-content}",
-      "site-logo .logo .mark{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:600;font-style:italic;font-size:33px;line-height:1;letter-spacing:.06em;color:#fff;text-transform:uppercase;white-space:nowrap}",
+      "site-logo .logo .mark{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:600;font-style:italic;font-size:33px;line-height:1;letter-spacing:.06em;color:#fff;text-transform:uppercase;white-space:nowrap;filter:drop-shadow(0 1px 1px rgba(0,0,0,.24))}",
       "site-logo .logo .mark b{color:#e8232b;font-weight:600;margin-left:.28em}",
-      "site-logo .logo .sub{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:10.5px;letter-spacing:.146em;color:#8b959e;white-space:nowrap}",
+      "site-logo .logo .sub{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:10.5px;letter-spacing:.146em;color:rgba(246,249,251,.88);white-space:nowrap;background:linear-gradient(180deg,#fff 0%,#dbe6ee 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 1px 1px rgba(0,0,0,.22)}",
       "site-logo[theme='ink'] .logo .mark{color:#14181c}",
-      "site-logo[theme='ink'] .logo .sub{color:#6d7378}",
+      "site-logo[theme='ink'] .logo .sub{color:#6d7378;background:none;-webkit-text-fill-color:currentColor;text-shadow:none}",
       /* ── 黑红 LOGO ──────────────────────────────────────────────
          用法:<site-logo theme="ink" inline></site-logo>
          黑色 KST + 红色 POWER,随正文字号内嵌在句子里(不带副标语、不成链接)。
@@ -179,7 +179,7 @@
       "site-header .ksth-lang{margin-left:10px}",
       "site-header .ksth-nav>a::after{display:none}",
       "site-header .ksth-bar site-logo .logo .mark{font-size:26px}",
-      "site-header .ksth-bar site-logo .logo .sub{display:none}",
+      "site-header .ksth-bar site-logo .logo .sub{display:block;font-size:8.8px;letter-spacing:.08em}",
       "site-header .ksth-lang button{padding:4px 6px;font-size:12px}",
       "site-header .ksth-burger{margin-left:8px}",
       "}",
