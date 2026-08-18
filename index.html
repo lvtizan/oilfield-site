@@ -102,14 +102,14 @@ header.open~.scrim{opacity:1;visibility:visible}
   contain:layout paint;transition:flex .35s var(--ease)}
 .panel:first-child{border-left:none}
 .panel .dim{position:absolute;inset:0;z-index:2;background:#0c1116;opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
-.hero.engaged .panel .dim{opacity:.68}
+.hero.engaged .panel .dim{opacity:0}
 .hero.engaged .panel.hot{flex:1.45 1 0}
 .hero.engaged .panel.hot .dim{opacity:0}
 .panel .art{position:absolute;left:50%;top:50%;width:50vw;height:112vh;transform:translate(-50%,-50%)}
 .panel .art svg{position:absolute;inset:0;width:100%;height:100%}
 .panel .art.ld svg{display:none}
-/* 实拍图:盖在线稿之上;三张统一压暗降饱和,保证同屏调性一致。图缺失时 onerror 移除,自动回退线稿 */
-.panel .art img.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12) translateZ(0);transition:transform .9s var(--ease)}
+/* 实拍图:盖在线稿之上;保持明亮通透,图缺失时 onerror 移除,自动回退线稿 */
+.panel .art img.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(1.08) saturate(1.05) contrast(1.02);transform:scale(1.12) translateZ(0);transition:transform .9s var(--ease),filter .9s var(--ease)}
 #p-gen .art img.ph{object-position:58% 47%}
 #p-eng .art img.ph{object-position:50% 56%;transform:scale(1.06) translateZ(0)}
 #p-oil .art img.ph{object-position:50% 40%;transform:scale(1.06) translateZ(0)}
@@ -121,7 +121,7 @@ header.open~.scrim{opacity:1;visibility:visible}
 .panel .art{animation:kenburns 34s ease-in-out infinite alternate;backface-visibility:hidden}
 /* 首屏滚出视口后暂停 Ken Burns,不再空耗 GPU */
 .hero.rest .panel .art{animation-play-state:paused}
-.panel .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,19,23,.72) 0%,rgba(15,19,23,.12) 34%,rgba(15,19,23,.12) 52%,rgba(15,19,23,.92) 100%),linear-gradient(0deg,rgba(16,24,34,.26),rgba(16,24,34,.26))}
+.panel .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,19,23,.36) 0%,rgba(15,19,23,.04) 34%,rgba(15,19,23,.10) 58%,rgba(15,19,23,.72) 100%),linear-gradient(0deg,rgba(16,24,34,.08),rgba(16,24,34,.08))}
 .panel .txt{position:absolute;left:44px;right:36px;bottom:52px;z-index:3}
 .panel .en{font-family:var(--num);font-size:12px;letter-spacing:.42em;text-transform:uppercase;color:var(--mut);margin-bottom:14px;transition:color .5s}
 .panel.hot .en{color:var(--acc)}
@@ -166,12 +166,12 @@ section{position:relative}
   contain:layout paint;transition:flex .8s var(--ease)}
 .app:first-child{border-left:none}
 .app .bg{position:absolute;inset:0;transition:transform 1s var(--ease)}
-.app::after{content:"";position:absolute;inset:0;z-index:1;background:#0c1013;opacity:.42;pointer-events:none;transition:opacity .7s var(--ease)}
-.app:hover::after{opacity:0}
+.app::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,12,16,.08) 0%,rgba(8,12,16,.20) 55%,rgba(8,12,16,.54) 100%);opacity:1;pointer-events:none;transition:opacity .7s var(--ease)}
+.app:hover::after{opacity:.72}
 .app:hover .bg{transform:scale(1.04)}
 .app:hover{flex:1.45}
 .app .bg svg{width:100%;height:100%}
-.app .bg img{width:100%;height:100%;object-fit:cover;display:block}
+.app .bg img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(1.08) saturate(1.05) contrast(1.02)}
 .app .cap{position:absolute;left:26px;bottom:30px;z-index:2;color:#fff}
 .app .cap .ic{margin-bottom:16px;opacity:.9}
 .app .cap .ic svg{width:34px;height:34px;stroke:#fff;fill:none;stroke-width:1.4}
@@ -330,8 +330,8 @@ footer .watermark{position:absolute;left:0;right:0;bottom:-36px;text-align:cente
   #p-gen .art img.ph{object-position:50% 72%;transform:scale(1.14) translateZ(0)}
   #p-eng .art img.ph{object-position:50% 56%;transform:scale(1.10) translateZ(0)}
   #p-oil .art img.ph{object-position:50% 58%;transform:scale(1.12) translateZ(0)}
-  /* 底部加重深色,标题落在黑色蒙层区 */
-  .panel .veil{background:linear-gradient(180deg,rgba(15,19,23,.30) 0%,rgba(15,19,23,0) 26%,rgba(15,19,23,.55) 62%,rgba(15,19,23,.96) 100%)}
+  /* 底部保留文字对比,但不再用黑片压暗整张图 */
+  .panel .veil{background:linear-gradient(180deg,rgba(15,19,23,.22) 0%,rgba(15,19,23,0) 28%,rgba(15,19,23,.32) 64%,rgba(15,19,23,.78) 100%)}
   .panel .txt{left:24px;right:24px;bottom:30px}
   .panel h2{font-size:30px}
   .panel .tag{font-size:13px}
